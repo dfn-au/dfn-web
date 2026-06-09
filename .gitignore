@@ -32,6 +32,29 @@ secrets.*
 *.log
 logs/
 
+# Dependencies and package manager state
+node_modules/
+.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# Next.js
+.next/
+out/
+build/
+next-env.d.ts
+*.tsbuildinfo
+
+# Testing
+coverage/
+
+# Vercel
+.vercel/
+
 # Temporary files
 tmp/
 temp/
