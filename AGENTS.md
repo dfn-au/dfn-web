@@ -4,7 +4,7 @@
 
 ## Git
 
-- Use conventional commits when writing commit messages
+- Use conventional commits when writing commit messages, preferring '!' syntax for breaking changes
 
 ## Agent skills
 
