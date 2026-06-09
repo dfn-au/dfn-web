@@ -1,10 +1,10 @@
 {
   "name": "dfn-web",
   "private": true,
-  "packageManager": "pnpm@10.24.0",
+  "packageManager": "pnpm@11.5.2",
   "engines": {
     "node": ">=24 <26",
-    "pnpm": ">=10.24.0 <11"
+    "pnpm": ">=11.5.2 <12"
   },
   "scripts": {
     "dev": "pnpm --filter web dev",

@@ -31,8 +31,8 @@ apps/web/src/app/api
 Use these development defaults:
 
 - Node 24 LTS as the baseline runtime.
-- pnpm 10 as the package manager.
-- Strict engine enforcement through `.npmrc`.
+- pnpm 11 as the package manager.
+- Strict engine enforcement through `pnpm-workspace.yaml`.
 - Tailwind CSS from the start.
 - Strict TypeScript.
 - Biome for linting and formatting.

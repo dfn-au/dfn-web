@@ -1,6 +1,8 @@
 packages:
   - apps/*
 
-ignoredBuiltDependencies:
-  - sharp
-  - unrs-resolver
+engineStrict: true
+
+allowBuilds:
+  sharp: false
+  unrs-resolver: false
