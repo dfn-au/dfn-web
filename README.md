@@ -1,5 +1,9 @@
 # DFN Web
 
+[![CI](https://github.com/dfn-au/dfn-web/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/dfn-au/dfn-web/actions/workflows/ci.yml)
+![Node](https://img.shields.io/badge/node-24_LTS-339933?logo=node.js&logoColor=white)
+![pnpm](https://img.shields.io/badge/pnpm-10.24.0-F69220?logo=pnpm&logoColor=white)
+
 Website rebuild workspace for the DFN Australia and New Zealand Country Sites.
 
 ## Requirements
