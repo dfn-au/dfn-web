@@ -85,6 +85,10 @@ Affected PRDs:
 Owner/date:
 ```
 
+## Working Reports
+
+- [Operational Plumbing Audit Report](operational-plumbing-audit-report.md) - working guide for observability, webhooks, jobs, abuse protection, consent, secrets, retention, incident response, and related follow-up decisions before payment/event/admin implementation.
+
 ## Adjacent Requirements
 
 Requirements surfaced during discovery that are adjacent to the website but should not expand website launch scope are tracked in [Adjacent Requirements Register](adjacent-requirements-register.md). First-class CRM/DMS/EMS requirements now live in [CRM, Donor Management, Accounting, and Supporter Communications](specs/007-crm-dms-ems.md).
