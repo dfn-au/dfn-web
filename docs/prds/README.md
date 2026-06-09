@@ -69,7 +69,7 @@ Some areas intentionally remain unresolved. Create focused GitHub decision/deep-
 - Physical merchandise/store scope
 - Final AU/NZ receipt rules
 - Campaign country scope and whether any shared cross-country campaign/progress model is required
-- CRM/DMS/EMS source-of-truth boundaries for contacts, gifts, pledges, receipts, subscriptions, events, and sponsorship history
+- CRM/DMS/EMS source-of-truth boundaries for contacts, gifts, receipts, subscriptions, events, sponsorship history, and payment failure status
 - Xero reconciliation/export/integration workflow
 - Marketing/supporter EMS ownership and suppression-list ownership
 

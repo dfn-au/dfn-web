@@ -117,7 +117,7 @@ This parent PRD defines shared launch scope, common acceptance criteria, migrati
 - Active/current campaign inventory per domain.
 - Migration acceptance criteria and launch cutover checklist.
 - Analytics event taxonomy and consent/privacy requirements.
-- CRM/DMS/EMS source-of-truth boundaries for contacts, gifts, pledges, receipts, subscriptions, event history, sponsorship history, and supporter communications.
+- CRM/DMS/EMS source-of-truth boundaries for contacts, gifts, receipts, subscriptions, event history, sponsorship history, supporter communications, and payment failure status.
 
 ## Reference URLs
 
