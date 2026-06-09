@@ -1,27 +1,10 @@
 # Domain Docs
 
-Multi-context monorepo: backend and frontend.
+Read relevant files if they exist. Ignore missing files.
 
-Read relevant files if they exist:
+- `CONTEXT.md` — domain language
+- `docs/adr/` — architecture decisions
+- `docs/prds/` — requirements (coordination material, not the implementation queue)
+- `apps/web/` — application code
 
-- `CONTEXT-MAP.md`
-- `docs/adr/`
-- `src/backend/CONTEXT.md`
-- `src/backend/docs/adr/`
-- `src/frontend/CONTEXT.md`
-- `src/frontend/docs/adr/`
-
-Ignore missing files.
-
-```text
-/
-+-- CONTEXT-MAP.md
-+-- docs/adr/                          # system-wide decisions
-+-- src/
-    +-- backend/
-    |   +-- CONTEXT.md
-    |   +-- docs/adr/                  # backend-specific decisions
-    +-- frontend/
-        +-- CONTEXT.md
-        +-- docs/adr/                  # frontend-specific decisions
-```
+Use the vocabulary in `CONTEXT.md`. Slice implementation work from PRDs into GitHub Issues; see `docs/agents/issue-tracker.md`.
