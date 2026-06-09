@@ -17,13 +17,13 @@ export default function Error({
 
 	return (
 		<main className="mx-auto flex min-h-screen w-full max-w-3xl flex-col justify-center px-6 py-16">
-			<p className="text-sm font-medium uppercase tracking-[0.16em] text-zinc-500">
+			<p className="text-sm font-medium uppercase tracking-[0.16em] text-muted">
 				Something went wrong
 			</p>
-			<h1 className="mt-4 text-3xl font-semibold text-zinc-950">
+			<h1 className="mt-4 text-3xl font-semibold text-foreground">
 				We hit an unexpected error
 			</h1>
-			<p className="mt-5 max-w-2xl text-lg leading-8 text-zinc-600">
+			<p className="mt-5 max-w-2xl text-lg leading-8 text-subtle">
 				The issue has been reported. You can try again, or go back to the home
 				page.
 			</p>
@@ -31,13 +31,13 @@ export default function Error({
 				<button
 					type="button"
 					onClick={() => reset()}
-					className="rounded-full bg-zinc-950 px-4 py-2 text-sm font-medium text-white"
+					className="rounded-full bg-primary px-4 py-2 text-sm font-medium text-primary-foreground"
 				>
 					Try again
 				</button>
 				<a
 					href="/"
-					className="rounded-full border border-zinc-300 px-4 py-2 text-sm font-medium text-zinc-950"
+					className="rounded-full border border-border px-4 py-2 text-sm font-medium text-foreground"
 				>
 					Go home
 				</a>
