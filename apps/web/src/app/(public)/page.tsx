@@ -1,19 +1,47 @@
-export default function Home() {
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import type { PortableTextBlock } from "next-sanity";
+
+import { PageBody } from "@/components/portable-text";
+import { client } from "@/sanity/lib/client";
+import { HOME_PAGE_QUERY, type HomePage } from "@/sanity/lib/queries";
+
+const fetchOptions = { next: { revalidate: 30 } };
+
+async function getHomePage(): Promise<HomePage | null> {
+	return client.fetch<HomePage | null>(HOME_PAGE_QUERY, {}, fetchOptions);
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+	const homePage = await getHomePage();
+
+	if (!homePage) return {};
+
+	return {
+		title: homePage.title,
+	};
+}
+
+export default async function HomePageRoute() {
+	const homePage = await getHomePage();
+
+	if (!homePage) notFound();
+
 	return (
-		<main className="mx-auto flex min-h-screen w-full max-w-5xl flex-col justify-center px-6 py-16">
-			<div className="max-w-3xl">
-				<p className="text-sm font-medium uppercase tracking-[0.16em] text-muted">
-					DFN Web
-				</p>
-				<h1 className="mt-4 text-4xl font-semibold text-foreground sm:text-5xl">
-					Website rebuild scaffold
-				</h1>
-				<p className="mt-5 max-w-2xl text-lg leading-8 text-subtle">
-					Initial Next.js workspace for the Australia and New Zealand Country
-					Sites, with public and admin route groups ready for the first vertical
-					slices.
-				</p>
-			</div>
+		<main className="mx-auto flex min-h-screen w-full max-w-3xl flex-col px-6 py-16">
+			<article>
+				<header>
+					<h1 className="text-4xl font-semibold text-foreground sm:text-5xl">
+						{homePage.title}
+					</h1>
+				</header>
+
+				{Array.isArray(homePage.body) && homePage.body.length > 0 ? (
+					<div className="mt-8">
+						<PageBody value={homePage.body as PortableTextBlock[]} />
+					</div>
+				) : null}
+			</article>
 		</main>
 	);
 }

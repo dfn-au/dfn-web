@@ -1,0 +1,65 @@
+import {
+	PortableText,
+	type PortableTextBlock,
+	type PortableTextComponents,
+} from "next-sanity";
+
+const components: PortableTextComponents = {
+	block: {
+		normal: ({ children }) => (
+			<p className="mt-4 text-lg leading-8 text-subtle">{children}</p>
+		),
+		h2: ({ children }) => (
+			<h2 className="mt-10 text-2xl font-semibold text-foreground">
+				{children}
+			</h2>
+		),
+		h3: ({ children }) => (
+			<h3 className="mt-8 text-xl font-semibold text-foreground">{children}</h3>
+		),
+		blockquote: ({ children }) => (
+			<blockquote className="mt-6 border-l-2 border-border pl-4 text-lg italic text-subtle">
+				{children}
+			</blockquote>
+		),
+	},
+	list: {
+		bullet: ({ children }) => (
+			<ul className="mt-4 list-disc space-y-2 pl-6 text-lg leading-8 text-subtle">
+				{children}
+			</ul>
+		),
+		number: ({ children }) => (
+			<ol className="mt-4 list-decimal space-y-2 pl-6 text-lg leading-8 text-subtle">
+				{children}
+			</ol>
+		),
+	},
+	marks: {
+		strong: ({ children }) => (
+			<strong className="font-semibold text-foreground">{children}</strong>
+		),
+		em: ({ children }) => <em>{children}</em>,
+		link: ({ children, value }) => {
+			const href = value?.href;
+			if (!href) return <>{children}</>;
+
+			const isExternal = !href.startsWith("/");
+			return (
+				<a
+					href={href}
+					className="text-foreground underline underline-offset-4 transition hover:text-subtle"
+					{...(isExternal
+						? { rel: "noreferrer noopener", target: "_blank" }
+						: {})}
+				>
+					{children}
+				</a>
+			);
+		},
+	},
+};
+
+export function PageBody({ value }: { value: PortableTextBlock[] }) {
+	return <PortableText value={value} components={components} />;
+}
