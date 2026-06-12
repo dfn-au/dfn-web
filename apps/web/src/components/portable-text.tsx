@@ -43,10 +43,7 @@ const components: PortableTextComponents = {
 
 			return (
 				<figure className="mt-8">
-					<SanityImage
-						value={value}
-						className="h-auto w-full rounded-lg"
-					/>
+					<SanityImage value={value} className="h-auto w-full rounded-lg" />
 					{value.caption ? (
 						<figcaption className="mt-2 text-center text-sm text-subtle">
 							{value.caption}

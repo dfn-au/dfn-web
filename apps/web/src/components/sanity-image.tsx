@@ -40,11 +40,13 @@ export function SanityImage({
 	const width = Math.min(requestedWidth, naturalWidth);
 	const height = Math.round((width / naturalWidth) * naturalHeight);
 	const lqip = value.asset.metadata?.lqip;
+	// biome-ignore lint/suspicious/noFocusedTests: This is Sanity's image fit method, not a focused test.
+	const src = urlFor(value).width(width).height(height).fit("max").url();
 
 	return (
 		<Image
 			className={className}
-			src={urlFor(value).width(width).height(height).fit("max").url()}
+			src={src}
 			alt={value.alt ?? ""}
 			width={width}
 			height={height}

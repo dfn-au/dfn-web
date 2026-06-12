@@ -6,11 +6,12 @@
 
 import { visionTool } from "@sanity/vision";
 import { defineConfig } from "sanity";
-import { media } from "sanity-plugin-media";
+import { presentationTool } from "sanity/presentation";
 import { structureTool } from "sanity/structure";
+import { media } from "sanity-plugin-media";
 
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
-import { apiVersion, dataset, projectId } from "./src/sanity/env";
+import { apiVersion, dataset, previewUrl, projectId } from "./src/sanity/env";
 import { schema } from "./src/sanity/schemaTypes";
 import { structure } from "./src/sanity/structure";
 
@@ -21,6 +22,14 @@ export default defineConfig({
 	// Add and edit the content schema in the './sanity/schemaTypes' folder.
 	schema,
 	plugins: [
+		presentationTool({
+			previewUrl: {
+				initial: previewUrl,
+				previewMode: {
+					enable: "/api/draft-mode/enable",
+				},
+			},
+		}),
 		structureTool({ structure }),
 		media(),
 		// Vision is for querying with GROQ from inside the Studio.

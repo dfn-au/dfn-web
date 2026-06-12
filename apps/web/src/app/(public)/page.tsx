@@ -3,13 +3,15 @@ import { notFound } from "next/navigation";
 import type { PortableTextBlock } from "next-sanity";
 
 import { PageBody } from "@/components/portable-text";
-import { client } from "@/sanity/lib/client";
+import { sanityFetch } from "@/sanity/lib/live";
 import { HOME_PAGE_QUERY, type HomePage } from "@/sanity/lib/queries";
 
-const fetchOptions = { next: { revalidate: 30 } };
-
 async function getHomePage(): Promise<HomePage | null> {
-	return client.fetch<HomePage | null>(HOME_PAGE_QUERY, {}, fetchOptions);
+	const { data } = await sanityFetch({
+		query: HOME_PAGE_QUERY,
+	});
+
+	return data as HomePage | null;
 }
 
 export async function generateMetadata(): Promise<Metadata> {

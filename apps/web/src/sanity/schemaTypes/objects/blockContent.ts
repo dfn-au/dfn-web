@@ -56,7 +56,8 @@ export const blockContent = defineType({
 					name: "alt",
 					title: "Alternative text",
 					type: "string",
-					description: "Describe the image for screen readers and search engines.",
+					description:
+						"Describe the image for screen readers and search engines.",
 					validation: (rule) =>
 						rule.required().warning("Alt text is important for accessibility"),
 				}),

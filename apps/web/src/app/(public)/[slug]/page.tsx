@@ -4,16 +4,20 @@ import type { PortableTextBlock } from "next-sanity";
 
 import { PageBody } from "@/components/portable-text";
 import { client } from "@/sanity/lib/client";
+import { sanityFetch } from "@/sanity/lib/live";
 import { PAGE_QUERY, PAGE_SLUGS_QUERY, type Page } from "@/sanity/lib/queries";
 
 type RouteProps = {
 	params: Promise<{ slug: string }>;
 };
 
-const fetchOptions = { next: { revalidate: 30 } };
-
 async function getPage(slug: string): Promise<Page | null> {
-	return client.fetch<Page | null>(PAGE_QUERY, { slug }, fetchOptions);
+	const { data } = await sanityFetch({
+		query: PAGE_QUERY,
+		params: { slug },
+	});
+
+	return data as Page | null;
 }
 
 export async function generateStaticParams() {
