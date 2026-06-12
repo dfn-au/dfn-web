@@ -58,7 +58,7 @@ This PRD records current functional requirements while leaving final navigation 
 - Staff should be able to manage reusable impact facts and figures that can be referenced across pages.
 - Reusable impact facts and figures should be editorial content, not automatically generated infographics for launch.
 - The site should be indexable by search engines. Onsite search is not required for launch.
-- SEO requirements should include editable page titles, descriptions, social preview images, canonical URLs, sitemap support, and redirect management per domain.
+- SEO requirements should include editable page titles, descriptions, social preview images, canonical URLs, sitemap support, and redirect management per domain. Social previews should be delivered via Open Graph meta tags (`og:title`, `og:description`, `og:image`, `og:url`) and equivalent Twitter Card tags, with per-domain URLs on `dfn.org.au` and `dfn.org.nz`.
 - Shared content should normally use the same path on both domains, with self-canonical URLs and alternate hints where appropriate.
 - New Zealand pages should not canonicalize to Australian pages, or vice versa.
 - Staff should be able to manage content using draft and published states.
@@ -68,7 +68,7 @@ This PRD records current functional requirements while leaving final navigation 
 ## Testing Decisions
 
 - Test public content pages by verifying navigation, contact details, trust links, bequest resources, story listing/detail pages, and local information on both domains.
-- Test SEO/indexability behaviour through metadata, sitemap availability, self-canonical URLs, alternate hints where applicable, and redirect outcomes per domain.
+- Test SEO/indexability behaviour through page metadata (including Open Graph and Twitter Card tags), sitemap availability, self-canonical URLs, alternate hints where applicable, and redirect outcomes per domain.
 - Test staff content workflows by creating, previewing, publishing, editing, and archiving representative content.
 - Test publishing scope by confirming shared content appears on both domains and site-specific content returns 404 on the other domain unless explicitly redirected.
 - Test sensitive content expectations by checking that profile/story fields support approved limited information and do not require precise geography or surnames.
