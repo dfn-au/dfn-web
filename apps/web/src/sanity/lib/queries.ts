@@ -2,11 +2,29 @@ import { defineQuery } from "next-sanity";
 
 import { HOME_PAGE_DOCUMENT_ID } from "../singletons";
 
+const BODY_PROJECTION = `body[]{
+  ...,
+  markDefs[]{
+    ...,
+  },
+  _type == "image" => {
+    ...,
+    asset->{
+      _id,
+      url,
+      metadata {
+        lqip,
+        dimensions { width, height }
+      }
+    }
+  }
+}`;
+
 export const HOME_PAGE_QUERY = defineQuery(
 	`*[_id == "${HOME_PAGE_DOCUMENT_ID}"][0]{
     _id,
     title,
-    body
+    ${BODY_PROJECTION}
   }`,
 );
 
@@ -15,7 +33,7 @@ export const PAGE_QUERY = defineQuery(
     _id,
     title,
     slug,
-    body
+    ${BODY_PROJECTION}
   }`,
 );
 

@@ -1,4 +1,4 @@
-import { LinkIcon } from "@sanity/icons";
+import { ImageIcon, LinkIcon } from "@sanity/icons";
 import { defineArrayMember, defineField, defineType } from "sanity";
 
 export const blockContent = defineType({
@@ -44,6 +44,28 @@ export const blockContent = defineType({
 					}),
 				],
 			},
+		}),
+		defineArrayMember({
+			type: "image",
+			icon: ImageIcon,
+			options: {
+				hotspot: true,
+			},
+			fields: [
+				defineField({
+					name: "alt",
+					title: "Alternative text",
+					type: "string",
+					description: "Describe the image for screen readers and search engines.",
+					validation: (rule) =>
+						rule.required().warning("Alt text is important for accessibility"),
+				}),
+				defineField({
+					name: "caption",
+					title: "Caption",
+					type: "string",
+				}),
+			],
 		}),
 	],
 });

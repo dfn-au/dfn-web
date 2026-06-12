@@ -1,8 +1,19 @@
 import { withSentryConfig } from "@sentry/nextjs";
 import type { NextConfig } from "next";
 
+import { dataset, projectId } from "./src/sanity/env";
+
 const nextConfig: NextConfig = {
 	productionBrowserSourceMaps: true,
+	images: {
+		remotePatterns: [
+			{
+				protocol: "https",
+				hostname: "cdn.sanity.io",
+				pathname: `/images/${projectId}/${dataset}/**`,
+			},
+		],
+	},
 };
 
 export default withSentryConfig(nextConfig, {

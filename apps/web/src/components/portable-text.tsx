@@ -4,6 +4,8 @@ import {
 	type PortableTextComponents,
 } from "next-sanity";
 
+import { SanityImage } from "@/components/sanity-image";
+
 const components: PortableTextComponents = {
 	block: {
 		normal: ({ children }) => (
@@ -34,6 +36,25 @@ const components: PortableTextComponents = {
 				{children}
 			</ol>
 		),
+	},
+	types: {
+		image: ({ value }) => {
+			if (!value?.asset) return null;
+
+			return (
+				<figure className="mt-8">
+					<SanityImage
+						value={value}
+						className="h-auto w-full rounded-lg"
+					/>
+					{value.caption ? (
+						<figcaption className="mt-2 text-center text-sm text-subtle">
+							{value.caption}
+						</figcaption>
+					) : null}
+				</figure>
+			);
+		},
 	},
 	marks: {
 		strong: ({ children }) => (
