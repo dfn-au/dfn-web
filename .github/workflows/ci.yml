@@ -9,6 +9,9 @@ on:
 jobs:
   checks:
     runs-on: ubuntu-latest
+    env:
+      NEXT_PUBLIC_SANITY_DATASET: ${{ vars.NEXT_PUBLIC_SANITY_DATASET }}
+      NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ vars.NEXT_PUBLIC_SANITY_PROJECT_ID }}
 
     steps:
       - name: Checkout
