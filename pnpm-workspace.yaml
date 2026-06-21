@@ -10,7 +10,6 @@ overrides:
 
 allowBuilds:
   '@posthog/cli': true
-  '@sentry/cli': true
   core-js: true
   esbuild: true
   sharp: false

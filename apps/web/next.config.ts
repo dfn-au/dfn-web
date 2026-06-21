@@ -1,5 +1,4 @@
 import { withPostHogConfig } from "@posthog/nextjs-config";
-import { withSentryConfig } from "@sentry/nextjs";
 import type { NextConfig } from "next";
 
 import { dataset, projectId } from "./src/sanity/env";
@@ -39,21 +38,11 @@ const uploadPostHogSourceMaps =
 	Boolean(process.env.POSTHOG_API_KEY) &&
 	Boolean(process.env.POSTHOG_PROJECT_ID);
 
-export default withPostHogConfig(
-	withSentryConfig(nextConfig, {
-		org: process.env.SENTRY_ORG,
-		project: process.env.SENTRY_PROJECT,
-		authToken: process.env.SENTRY_AUTH_TOKEN,
-		silent: !process.env.CI,
-		widenClientFileUpload: true,
-		tunnelRoute: "/monitoring",
-	}),
-	{
-		personalApiKey: process.env.POSTHOG_API_KEY ?? "",
-		projectId: process.env.POSTHOG_PROJECT_ID,
-		host: process.env.NEXT_PUBLIC_POSTHOG_HOST,
-		sourcemaps: {
-			enabled: uploadPostHogSourceMaps,
-		},
+export default withPostHogConfig(nextConfig, {
+	personalApiKey: process.env.POSTHOG_API_KEY ?? "",
+	projectId: process.env.POSTHOG_PROJECT_ID,
+	host: process.env.NEXT_PUBLIC_POSTHOG_HOST,
+	sourcemaps: {
+		enabled: uploadPostHogSourceMaps,
 	},
-);
+});

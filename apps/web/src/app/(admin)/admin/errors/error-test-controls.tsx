@@ -24,11 +24,11 @@ export function ErrorTestControls() {
 			setServerResult(
 				response.ok
 					? `Unexpected response: ${response.status}`
-					: `Server returned ${response.status}. Check Sentry for "Admin test: unhandled server-side error".`,
+					: `Server returned ${response.status}. Check the server logs for "Admin test: unhandled server-side error".`,
 			);
 		} catch {
 			setServerResult(
-				"Request failed before a response was received. Check the server logs and Sentry.",
+				"Request failed before a response was received. Check the server logs.",
 			);
 		}
 	}
@@ -41,8 +41,8 @@ export function ErrorTestControls() {
 					Client-side error
 				</h2>
 				<p className="mt-3 text-sm leading-6 text-subtle">
-					Throws an unhandled error in the browser. Check Sentry and PostHog for
-					the error message below.
+					Throws an unhandled error in the browser. Check PostHog for the error
+					message below.
 				</p>
 				<code className="mt-4 block break-words text-xs text-muted">
 					{clientErrorMessage}
@@ -62,8 +62,8 @@ export function ErrorTestControls() {
 					Server-side error
 				</h2>
 				<p className="mt-3 text-sm leading-6 text-subtle">
-					Calls a route that throws an unhandled server error. Check Sentry and
-					the server logs.
+					Calls a route that throws an unhandled server error. Check the server
+					logs.
 				</p>
 				<code className="mt-4 block break-words text-xs text-muted">
 					Admin test: unhandled server-side error

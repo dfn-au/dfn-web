@@ -1,6 +1,5 @@
 "use client";
 
-import * as Sentry from "@sentry/nextjs";
 import posthog from "posthog-js";
 import { useEffect } from "react";
 
@@ -13,7 +12,6 @@ export default function Error({
 	reset: () => void;
 }) {
 	useEffect(() => {
-		Sentry.captureException(error);
 		posthog.captureException(error);
 	}, [error]);
 

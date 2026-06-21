@@ -488,22 +488,22 @@ Payment, event registration, and admin workflows can fail in ways that do not sh
 
 ### Current Coverage
 
-The architecture decisions and research name Vercel, Supabase, Stripe, Postmark, Plausible, and later Sentry as an operational gap, but do not define a monitoring baseline.
+The architecture decisions and research name Vercel, Supabase, Stripe, Postmark, Plausible, and PostHog, but do not define a monitoring baseline.
 
 ### Missing Decisions
 
-- Is Sentry the primary app monitor?
+- Is PostHog the primary app monitor?
 - Who receives alerts?
 - What alert thresholds matter?
 - Is there an uptime monitor?
 - Are cron/outbox failures monitored?
 - Do payment webhooks have stale-state alerts?
 - How long are logs retained?
-- Do logs drain to Sentry, Better Stack, Datadog, S3, or another sink?
+- Do logs drain to Better Stack, Datadog, S3, or another sink?
 
 ### Recommended Default
 
-Use Sentry for application error monitoring and alerts.
+Use PostHog for application error monitoring and alerts.
 
 Add a lightweight uptime/incident tool if needed. Better Stack is a pragmatic contender for uptime checks, status page, and incident notifications. Datadog/New Relic are probably too heavy unless DFN already uses them.
 
@@ -523,8 +523,8 @@ Use Vercel and Supabase native logs for debugging, but do not rely on native log
 
 ### Candidate Tools And Features
 
-- Sentry Next.js: <https://docs.sentry.io/platforms/javascript/guides/nextjs/>
-- Sentry alerts: <https://docs.sentry.io/product/alerts/>
+- PostHog error tracking: <https://posthog.com/docs/error-tracking>
+- PostHog alerts: <https://posthog.com/docs/alerts>
 - Vercel runtime logs: <https://vercel.com/docs/logs/runtime>
 - Vercel log drains: <https://vercel.com/docs/drains>
 - Supabase logs: <https://supabase.com/docs/guides/platform/logs>
