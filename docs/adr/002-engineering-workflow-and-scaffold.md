@@ -6,7 +6,7 @@ Accepted
 
 ## Context
 
-ADR 001 chooses the website platform: Next.js App Router on Vercel, Sanity for Authored Content, Supabase for Operational State, Stripe, Postmark, and Plausible.
+ADR 001 accepts the core website platform: Next.js App Router on Vercel with Sanity for Authored Content. ADR 003 accepts the Authored Content and Operational State ownership boundary. Supabase, Stripe, Postmark, and Plausible remain undecided research recommendations.
 
 The repo also needs a development and release foundation before implementation slices begin. This decision covers the initial scaffold only. It does not add Sanity, Supabase, payments, Playwright, Vercel config, or release automation yet.
 

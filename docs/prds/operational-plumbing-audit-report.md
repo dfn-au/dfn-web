@@ -4,9 +4,9 @@
 
 This report explains the operational plumbing decisions still needed before DFN starts implementing payment, event registration, preview, admin, email, and analytics workflows.
 
-It is not a new architecture decision and does not replace [ADR 001](../adr/001-website-technical-architecture.md). Treat it as a guide for follow-up agent sessions and GitHub decision issues.
+It is not a new architecture decision and does not replace [ADR 001](../adr/001-website-technical-architecture.md), [ADR 003](../adr/003-authored-content-and-operational-state-ownership.md), or the preserved [Website Technical Architecture Research](../architecture/website-technical-architecture-research/README.md). Treat it as a guide for follow-up agent sessions and GitHub decision issues.
 
-The current preferred architecture remains:
+The accepted core platform and undecided workflow-specific research recommendations remain:
 
 - Next.js App Router on Vercel
 - Sanity for `Authored Content`
@@ -23,6 +23,7 @@ Work through the modules one at a time. For each module, give an agent:
 - [AGENTS.md](../../AGENTS.md)
 - [PRD README](README.md)
 - [ADR 001](../adr/001-website-technical-architecture.md)
+- [Website Technical Architecture Research](../architecture/website-technical-architecture-research/README.md)
 - the PRD specs listed in the module
 - the module's "Agent prompt"
 
@@ -30,7 +31,7 @@ Ask the agent to produce one of:
 
 - a decision issue
 - a small implementation issue
-- a proposed ADR addendum
+- an ADR after a decision is made
 - a narrower question list for a human decision
 
 Do not ask one agent to solve the whole report at once. The point is to keep each operational category small enough to reason about.
@@ -168,7 +169,7 @@ Without this ledger, DFN can have silent mismatches between Stripe, Supabase, em
 
 ### Current Coverage
 
-ADR 001 says Stripe webhooks update Supabase records idempotently and that notification outbox triggers email/staff notifications. See [ADR 001](../adr/001-website-technical-architecture.md).
+The preserved research recommends idempotent Stripe webhook processing in Supabase and a notification outbox for email/staff notifications. See [Operational Data, Authentication, and Admin Research](../architecture/website-technical-architecture-research/03-operational-data-auth-and-admin-research.md), [Payment Research](../architecture/website-technical-architecture-research/04-payment-research.md), and [Transactional Notification Research](../architecture/website-technical-architecture-research/05-transactional-notification-research.md).
 
 The PRDs require site attribution, reporting/exporting, internal notifications, and payment/event/supporter activity to remain attributable. See:
 
@@ -233,7 +234,7 @@ Read:
 - AGENTS.md
 - CONTEXT.md
 - docs/prds/operational-plumbing-audit-report.md Module 1
-- docs/adr/001-website-technical-architecture.md
+- docs/architecture/website-technical-architecture-research/README.md
 - docs/prds/specs/001-overview.md
 - docs/prds/specs/003-giving.md
 - docs/prds/specs/005-events.md
@@ -277,7 +278,7 @@ If webhook handling is weak:
 
 ### Current Coverage
 
-ADR 001 correctly says Stripe webhooks are payment truth and should update Supabase records idempotently.
+The payment research recommends treating Stripe webhooks as payment truth; the operational-data research recommends updating website-owned Operational State idempotently. These remain undecided.
 
 ### Missing Decisions
 
@@ -337,7 +338,7 @@ Design the webhook reliability decision for DFN's first payment/event/admin slic
 
 Read:
 - docs/prds/operational-plumbing-audit-report.md Module 2
-- docs/adr/001-website-technical-architecture.md
+- docs/architecture/website-technical-architecture-research/README.md
 - docs/prds/specs/003-giving.md
 - docs/prds/specs/004-sponsorship.md
 - docs/prds/specs/005-events.md
@@ -383,7 +384,7 @@ DFN should not lose a payment registration because email sending failed, nor sho
 
 ### Current Coverage
 
-ADR 001 mentions a notification outbox, but does not choose the mechanism.
+The transactional-notification research mentions a notification outbox, but does not choose the mechanism.
 
 ### Missing Decisions
 
@@ -443,7 +444,7 @@ Decide the launch queue/outbox shape for DFN.
 
 Read:
 - docs/prds/operational-plumbing-audit-report.md Module 3
-- docs/adr/001-website-technical-architecture.md
+- docs/architecture/website-technical-architecture-research/README.md
 - docs/prds/specs/003-giving.md
 - docs/prds/specs/004-sponsorship.md
 - docs/prds/specs/005-events.md
@@ -487,7 +488,7 @@ Payment, event registration, and admin workflows can fail in ways that do not sh
 
 ### Current Coverage
 
-ADR 001 names Vercel, Supabase, Stripe, Postmark, Plausible, and later Sentry as an operational gap, but does not define a monitoring baseline.
+The architecture ADR set and preserved evaluation name Vercel, Supabase, Stripe, Postmark, Plausible, and later Sentry as an operational gap, but do not define a monitoring baseline.
 
 ### Missing Decisions
 
@@ -537,7 +538,7 @@ Define DFN's launch observability and incident baseline.
 
 Read:
 - docs/prds/operational-plumbing-audit-report.md Module 4
-- docs/adr/001-website-technical-architecture.md
+- docs/architecture/website-technical-architecture-research/README.md
 - docs/prds/specs/001-overview.md
 - docs/prds/specs/003-giving.md
 - docs/prds/specs/005-events.md
@@ -617,7 +618,7 @@ Read:
 - docs/prds/operational-plumbing-audit-report.md Module 5
 - docs/prds/specs/005-events.md
 - docs/prds/specs/007-crm-dms-ems.md
-- docs/adr/001-website-technical-architecture.md
+- docs/architecture/website-technical-architecture-research/README.md
 
 Deliver:
 - audited action list
@@ -714,7 +715,7 @@ Read:
 - docs/prds/specs/003-giving.md
 - docs/prds/specs/005-events.md
 - docs/prds/specs/006-engagement.md
-- docs/adr/001-website-technical-architecture.md
+- docs/architecture/website-technical-architecture-research/README.md
 
 Deliver:
 - endpoint list
@@ -761,7 +762,7 @@ Donation, sponsorship, event, prayer, and dietary/allergy workflows involve sens
 
 ### Current Coverage
 
-ADR 001 chooses privacy-aware analytics via an event abstraction and defaults to Plausible. It explicitly says not to send PII, dietary/allergy details, donor identifiers, or payment identifiers to analytics.
+The analytics research recommends privacy-aware analytics via an event abstraction and ranks Plausible highest. It explicitly says not to send PII, dietary/allergy details, donor identifiers, or payment identifiers to analytics.
 
 ### Missing Decisions
 
@@ -826,7 +827,7 @@ Read:
 - docs/prds/specs/003-giving.md
 - docs/prds/specs/005-events.md
 - docs/prds/specs/006-engagement.md
-- docs/adr/001-website-technical-architecture.md
+- docs/architecture/website-technical-architecture-research/README.md
 
 Deliver:
 - Plausible launch taxonomy
@@ -862,7 +863,7 @@ A wrong secret can send NZ donations through the AU Stripe account, leak preview
 
 ### Current Coverage
 
-ADR 001 chooses separate payment accounts and country-specific transactional email sender configuration. It does not define secret governance.
+The payment research recommends separate Country Payment Accounts, and the transactional-notification research recommends country-specific sender configuration. Neither defines secret governance.
 
 ### Missing Decisions
 
@@ -904,7 +905,7 @@ Create DFN's secrets and environment matrix.
 
 Read:
 - docs/prds/operational-plumbing-audit-report.md Module 8
-- docs/adr/001-website-technical-architecture.md
+- docs/architecture/website-technical-architecture-research/README.md
 - docs/prds/specs/001-overview.md
 - docs/prds/specs/003-giving.md
 - docs/prds/specs/005-events.md
@@ -993,7 +994,7 @@ Read:
 - docs/prds/specs/005-events.md
 - docs/prds/specs/006-engagement.md
 - docs/prds/specs/007-crm-dms-ems.md
-- docs/adr/001-website-technical-architecture.md
+- docs/architecture/website-technical-architecture-research/README.md
 
 Deliver:
 - retention matrix
@@ -1027,7 +1028,7 @@ Payments and registrations create real operational obligations. If the database 
 
 ### Current Coverage
 
-ADR 001 names managed services but not incident response or restore drills.
+The architecture ADR set names managed services but not incident response or restore drills.
 
 ### Missing Decisions
 
@@ -1067,7 +1068,7 @@ Define DFN's launch backup/restore/incident runbook.
 
 Read:
 - docs/prds/operational-plumbing-audit-report.md Module 10
-- docs/adr/001-website-technical-architecture.md
+- docs/architecture/website-technical-architecture-research/README.md
 - docs/prds/specs/001-overview.md
 - docs/prds/specs/003-giving.md
 - docs/prds/specs/005-events.md
@@ -1105,7 +1106,7 @@ The PRDs allow a simple trusted `admin` role at launch, but future AU-only/NZ-on
 
 ### Current Coverage
 
-ADR 001 chooses Supabase Auth for operational/admin routes and Sanity's own auth for CMS access.
+The operational-data research recommends Supabase Auth for operational/admin routes. Accepted ADR 001 uses Sanity's own auth for CMS access.
 
 ### Missing Decisions
 
@@ -1144,7 +1145,7 @@ Define DFN's launch admin and preview operational controls.
 
 Read:
 - docs/prds/operational-plumbing-audit-report.md Module 11
-- docs/adr/001-website-technical-architecture.md
+- docs/architecture/website-technical-architecture-research/README.md
 - docs/prds/specs/001-overview.md
 - docs/prds/specs/002-content.md
 - docs/prds/specs/005-events.md
@@ -1172,7 +1173,7 @@ Donors and event attendees need confirmation. Staff need reliable notifications.
 
 ### Current Coverage
 
-ADR 001 recommends Postmark and says templates/sends should sit behind an app-level notification adapter.
+The transactional-notification research ranks Postmark highest and recommends keeping templates/sends behind an app-level notification adapter.
 
 The CRM/DMS/EMS PRD says transactional email and marketing/supporter email are separate concerns.
 
@@ -1219,7 +1220,7 @@ Define DFN's launch transactional email reliability decision.
 
 Read:
 - docs/prds/operational-plumbing-audit-report.md Module 12
-- docs/adr/001-website-technical-architecture.md
+- docs/architecture/website-technical-architecture-research/README.md
 - docs/prds/specs/003-giving.md
 - docs/prds/specs/005-events.md
 - docs/prds/specs/006-engagement.md
@@ -1297,7 +1298,7 @@ Read:
 - docs/prds/specs/005-events.md
 - docs/prds/specs/006-engagement.md
 - docs/prds/specs/007-crm-dms-ems.md
-- docs/adr/001-website-technical-architecture.md
+- docs/architecture/website-technical-architecture-research/README.md
 
 Deliver:
 - source-of-truth matrix for launch
@@ -1311,7 +1312,7 @@ Do not choose the full CRM/DMS/EMS vendor.
 
 ## Suggested Minimal ADR Additions
 
-Do not edit ADR 001 until the team agrees. If agreed, the ADR could add a short section like this:
+Do not add this operational baseline to accepted ADR 001 without team agreement. If the team makes a decision, record that decision in a separate ADR:
 
 ```text
 ## Operational Plumbing Baseline
