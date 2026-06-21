@@ -21,6 +21,7 @@
 		"next": "16.2.9",
 		"next-sanity": "^13.1.1",
 		"posthog-js": "^1.391.2",
+		"posthog-node": "^5.38.2",
 		"react": "19.2.7",
 		"react-dom": "19.2.7",
 		"sanity": "^6.1.0",
