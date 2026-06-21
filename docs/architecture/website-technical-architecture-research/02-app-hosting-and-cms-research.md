@@ -1,8 +1,6 @@
 # Application, Hosting, and CMS Research
 
-This file preserves the original scored application-framework, hosting, and CMS comparisons and their coverage-audit findings.
-
-<!-- original-adr-001-lines: 141-171 -->
+This file contains scored application-framework, hosting, and CMS comparisons and additional coverage findings.
 
 ### App Framework and Hosting
 
@@ -36,8 +34,6 @@ Primary sources checked: [Next.js App Router](https://nextjs.org/docs/app), [Nex
 Primary sources checked: [Sanity schema types](https://www.sanity.io/docs/schema-types), [Sanity arrays](https://www.sanity.io/docs/studio/array-type), [Sanity block content](https://www.sanity.io/docs/studio/block-content), [Sanity references](https://www.sanity.io/docs/studio/reference-type), [Sanity assets](https://www.sanity.io/docs/assets), [Sanity image URL](https://www.sanity.io/docs/image-url), [Sanity Presentation Tool](https://www.sanity.io/docs/configuring-the-presentation-tool), [DatoCMS modular content](https://www.datocms.com/docs/content-modelling/modular-content), [DatoCMS structured text](https://www.datocms.com/docs/content-modelling/structured-text), [DatoCMS visual editing](https://www.datocms.com/docs/visual-editing), [Storyblok blocks](https://www.storyblok.com/docs/concepts/blocks), [Storyblok references](https://www.storyblok.com/docs/concepts/references.html), [Storyblok image service](https://www.storyblok.com/docs/image-service/), [Storyblok Visual Editor](https://www.storyblok.com/docs/manuals/visual-editor/), [Contentful content modelling](https://www.contentful.com/help/content-modelling-basics/), [Contentful links](https://www.contentful.com/developers/docs/concepts/links/), [Contentful Images API](https://www.contentful.com/developers/docs/references/images-api/), [Contentful Preview API](https://www.contentful.com/developers/docs/references/content-preview-api/), [Payload admin](https://payloadcms.com/docs/admin/overview), [Payload Postgres](https://payloadcms.com/docs/database/postgres), [Payload migrations](https://payloadcms.com/docs/database/migrations), [Payload relationship fields](https://payloadcms.com/docs/fields/relationship/), [Payload blocks](https://payloadcms.com/docs/fields/blocks), [Payload uploads](https://payloadcms.com/docs/upload/overview), [Payload drafts](https://payloadcms.com/docs/versions/drafts), [Directus data model](https://docs.directus.io/app/data-model), [Directus files](https://docs.directus.io/reference/files), [Strapi content-type builder](https://docs.strapi.io/cms/features/content-type-builder), [Strapi media library](https://docs.strapi.io/cms/features/media-library), [Strapi draft and publish](https://docs.strapi.io/cms/features/draft-and-publish), [Prismic custom types](https://prismic.io/docs/custom-types), [Prismic preview](https://prismic.io/docs/preview), [WordPress block editor](https://wordpress.org/documentation/article/wordpress-block-editor/), [WooCommerce REST API](https://developer.woocommerce.com/docs/apis/rest-api/).
 
 
-<!-- original-adr-001-lines: 232-264 -->
-
 ### App Framework Coverage
 
 | Contender | Coverage note |
@@ -70,4 +66,3 @@ Primary sources checked: [Sanity schema types](https://www.sanity.io/docs/schema
 | Drupal / Craft CMS / Umbraco Heartcore | Traditional/headless CMS baselines, but likely excluded because they pull the rebuild away from the TypeScript-first managed app direction. |
 | TinaCMS / Decap CMS | Git-backed CMS checks, but likely excluded for staff-managed campaigns, events, giving configuration, and media-heavy editorial work. |
 | Raisely / Givebutter / Funraise | Treat as cross-category fundraising/event platforms with campaign-page capabilities, not general editorial CMS replacements. |
-

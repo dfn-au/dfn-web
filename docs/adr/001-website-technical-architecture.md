@@ -8,7 +8,7 @@ Accepted
 
 DFN needs one TypeScript-first application serving the Australian and New Zealand Country Sites, with cached public routes, dynamic server workflows, protected content preview, branch deployments, and a structured editorial system.
 
-The complete cross-stack evaluation, evidence, candidate comparisons, scores, exclusions, coverage audit, risks, and follow-up work are preserved in the [Website Technical Architecture Research](../architecture/website-technical-architecture-research/README.md). The application, hosting, and CMS scoring that supports this accepted decision is in [Application, Hosting, and CMS Research](../architecture/website-technical-architecture-research/02-app-hosting-and-cms-research.md).
+Supporting evaluation, evidence, candidate comparisons, scores, exclusions, risks, and follow-up work are in [Website Technical Architecture Research](../architecture/website-technical-architecture-research/README.md). The application, hosting, and CMS scoring that supports this accepted decision is in [Application, Hosting, and CMS Research](../architecture/website-technical-architecture-research/02-app-hosting-and-cms-research.md).
 
 ## Decision
 

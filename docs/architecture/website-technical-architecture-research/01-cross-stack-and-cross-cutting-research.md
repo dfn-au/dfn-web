@@ -1,8 +1,6 @@
 # Cross-stack and Cross-cutting Architecture Research
 
-This file preserves the original cross-stack framing, combined recommendation, evidence, whole-stack comparison, coverage-audit introduction, adjacent categories, risks, stated conclusions, deliberate seams, follow-up work, and consequences. Statements labelled as decisions are historical research conclusions; only accepted ADRs are authoritative.
-
-<!-- original-adr-001-lines: 1-140 -->
+This file contains the cross-stack framing, combined recommendation, evidence, whole-stack comparison, adjacent categories, risks, stated conclusions, deliberate seams, follow-up work, and consequences. Statements labelled as decisions are historical research conclusions; only accepted ADRs are authoritative.
 
 # ADR 001: Website Technical Architecture
 
@@ -145,16 +143,12 @@ WordPress would be familiar to staff and WooCommerce can own orders/products, bu
 These layer-level alternatives were checked so the decision is not anchored only on whole-stack candidates. Scores are 1-10 against issue #17's drivers.
 
 
-<!-- original-adr-001-lines: 226-231 -->
-
 ## Coverage Audit Addendum
 
 The initial comparison covers the required issue #17 stack shapes, but the coverage audit found several major contenders and adjacent system-of-record categories that should be acknowledged before the decision is treated as final. This section does not change the selected architecture or rank these candidates; it records the broader comparison set and the areas needing follow-up research.
 
 Representative primary sources checked for this addendum include [TanStack Start](https://tanstack.com/start/latest/docs/framework/react/overview), [AWS Amplify Hosting](https://docs.aws.amazon.com/amplify/latest/userguide/welcome.html), [Firebase App Hosting](https://firebase.google.com/docs/app-hosting), [Hygraph](https://hygraph.com/docs/getting-started), [Keystone](https://keystonejs.com/docs), [Contentstack](https://www.contentstack.com/docs), [Prisma Postgres](https://www.prisma.io/docs/postgres), [Xata branching](https://xata.io/docs/platform/branch), [Nhost database](https://docs.nhost.io/products/database), [WorkOS](https://workos.com/docs), [Stytch B2B](https://stytch.com/docs/b2b), [Retool](https://docs.retool.com/), [Appsmith](https://docs.appsmith.com/), [Forest Admin](https://docs.forestadmin.com/), [Donorbox](https://donorbox.org/donation-forms), [Fundraise Up](https://fundraiseup.com/docs/), [GiveNow](https://about.givenow.com.au/), [Humanitix](https://help.humanitix.com/en/articles/8889188-payment-processing-options-for-your-humanitix-event), [TryBooking](https://www.trybooking.com/product), [Eventbrite](https://www.eventbrite.com/platform/docs), [Ticket Tailor](https://developers.tickettailor.com/), [Brevo transactional email](https://developers.brevo.com/docs/send-a-transactional-email), [Mailchimp Transactional](https://mailchimp.com/developer/transactional/api/), [Vercel Web Analytics](https://vercel.com/docs/analytics), [Cloudflare Web Analytics](https://developers.cloudflare.com/web-analytics/), [Mixpanel](https://docs.mixpanel.com/docs/what-is-mixpanel), [Amplitude](https://amplitude.com/docs), [Segment](https://www.twilio.com/docs/segment), [RudderStack](https://www.rudderstack.com/docs/), [Snowplow](https://docs.snowplow.io/docs/), [Inngest](https://www.inngest.com/docs), [Trigger.dev](https://trigger.dev/docs), [Upstash QStash](https://upstash.com/docs/qstash), [Sentry](https://docs.sentry.io/), [Cloudflare Turnstile](https://developers.cloudflare.com/turnstile/), and [Xero](https://developer.xero.com/documentation/).
 
-
-<!-- original-adr-001-lines: 311-414 -->
 
 ### Other Implied Stack Categories
 

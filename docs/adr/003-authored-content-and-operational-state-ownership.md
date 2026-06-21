@@ -8,7 +8,7 @@ Accepted
 
 The website needs a durable boundary between staff-published public material and factual workflow records. Without this boundary, payment, reservation, availability, reporting, and sensitive supporter data can drift into an editorial system that does not provide the required transactional guarantees.
 
-The complete cross-stack analysis, integrated-platform alternatives, evidence, risks, and coverage audit are preserved in [Website Technical Architecture Research](../architecture/website-technical-architecture-research/README.md).
+Supporting cross-stack analysis, integrated-platform alternatives, evidence, and risks are in [Website Technical Architecture Research](../architecture/website-technical-architecture-research/README.md).
 
 ## Decision
 

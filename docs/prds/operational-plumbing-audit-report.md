@@ -4,7 +4,7 @@
 
 This report explains the operational plumbing decisions still needed before DFN starts implementing payment, event registration, preview, admin, email, and analytics workflows.
 
-It is not a new architecture decision and does not replace [ADR 001](../adr/001-website-technical-architecture.md), [ADR 003](../adr/003-authored-content-and-operational-state-ownership.md), or the preserved [Website Technical Architecture Research](../architecture/website-technical-architecture-research/README.md). Treat it as a guide for follow-up agent sessions and GitHub decision issues.
+It is not a new architecture decision and does not replace [ADR 001](../adr/001-website-technical-architecture.md), [ADR 003](../adr/003-authored-content-and-operational-state-ownership.md), or [Website Technical Architecture Research](../architecture/website-technical-architecture-research/README.md). Treat it as a guide for follow-up agent sessions and GitHub decision issues.
 
 The accepted core platform and undecided workflow-specific research recommendations remain:
 
@@ -169,7 +169,7 @@ Without this ledger, DFN can have silent mismatches between Stripe, Supabase, em
 
 ### Current Coverage
 
-The preserved research recommends idempotent Stripe webhook processing in Supabase and a notification outbox for email/staff notifications. See [Operational Data, Authentication, and Admin Research](../architecture/website-technical-architecture-research/03-operational-data-auth-and-admin-research.md), [Payment Research](../architecture/website-technical-architecture-research/04-payment-research.md), and [Transactional Notification Research](../architecture/website-technical-architecture-research/05-transactional-notification-research.md).
+The research recommends idempotent Stripe webhook processing in Supabase and a notification outbox for email/staff notifications. See [Operational Data, Authentication, and Admin Research](../architecture/website-technical-architecture-research/03-operational-data-auth-and-admin-research.md), [Payment Research](../architecture/website-technical-architecture-research/04-payment-research.md), and [Transactional Notification Research](../architecture/website-technical-architecture-research/05-transactional-notification-research.md).
 
 The PRDs require site attribution, reporting/exporting, internal notifications, and payment/event/supporter activity to remain attributable. See:
 
@@ -488,7 +488,7 @@ Payment, event registration, and admin workflows can fail in ways that do not sh
 
 ### Current Coverage
 
-The architecture ADR set and preserved evaluation name Vercel, Supabase, Stripe, Postmark, Plausible, and later Sentry as an operational gap, but do not define a monitoring baseline.
+The architecture decisions and research name Vercel, Supabase, Stripe, Postmark, Plausible, and later Sentry as an operational gap, but do not define a monitoring baseline.
 
 ### Missing Decisions
 
