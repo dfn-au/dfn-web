@@ -3,6 +3,11 @@ packages:
 
 engineStrict: true
 
+# Sanity's @actions dependencies previously resolved vulnerable undici@6.26.0.
+# Remove this once pnpm resolves all transitive undici 6.x dependencies to >=6.27.0 without it.
+overrides:
+  "undici@>=6 <6.27.0": 6.27.0
+
 allowBuilds:
   '@sentry/cli': true
   esbuild: true
