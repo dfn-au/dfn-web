@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 
 type StudioState = {
 	Component: typeof import("next-sanity/studio/client-component").NextStudio;
+	Layout: typeof import("sanity").StudioLayout;
+	Provider: typeof import("sanity").StudioProvider;
 	config: typeof import("../../../../../../sanity.config").default;
 };
 
@@ -16,15 +18,18 @@ export function AdminStudioLoader() {
 
 		Promise.all([
 			import("next-sanity/studio/client-component"),
+			import("sanity"),
 			import("../../../../../../sanity.config"),
 		])
-			.then(([studioModule, configModule]) => {
+			.then(([studioModule, sanityModule, configModule]) => {
 				if (!isMounted) {
 					return;
 				}
 
 				setStudio({
 					Component: studioModule.NextStudio,
+					Layout: sanityModule.StudioLayout,
+					Provider: sanityModule.StudioProvider,
 					config: configModule.default,
 				});
 			})
@@ -61,7 +66,33 @@ export function AdminStudioLoader() {
 		);
 	}
 
-	const { Component, config } = studio;
+	const { Component, Layout, Provider, config } = studio;
 
-	return <Component config={config} />;
+	return (
+		<Component config={config}>
+			<Provider config={config}>
+				<div className="flex h-dvh flex-col bg-background text-foreground">
+					<header className="z-10 flex h-12 shrink-0 items-center justify-between border-border border-b bg-background px-4 text-sm">
+						<a
+							href="/admin"
+							className="font-semibold text-foreground transition hover:text-subtle focus:outline-none focus:ring-2 focus:ring-primary"
+						>
+							DFN admin
+						</a>
+						<span className="text-muted">Content Studio</span>
+						<a
+							href="/admin"
+							className="font-medium text-foreground transition hover:text-subtle focus:outline-none focus:ring-2 focus:ring-primary"
+						>
+							Back to admin
+						</a>
+					</header>
+
+					<div className="min-h-0 flex-1">
+						<Layout />
+					</div>
+				</div>
+			</Provider>
+		</Component>
+	);
 }
