@@ -4,6 +4,7 @@ import {
 	type PortableTextComponents,
 } from "next-sanity";
 
+import { ExternalLink } from "@/components/external-link";
 import { SanityImage } from "@/components/sanity-image";
 
 const components: PortableTextComponents = {
@@ -63,13 +64,22 @@ const components: PortableTextComponents = {
 			if (!href) return <>{children}</>;
 
 			const isExternal = !href.startsWith("/");
+			if (isExternal) {
+				return (
+					<ExternalLink
+						href={href}
+						className="text-foreground underline underline-offset-4 transition hover:text-subtle"
+						rel="noreferrer noopener"
+						target="_blank"
+					>
+						{children}
+					</ExternalLink>
+				);
+			}
 			return (
 				<a
 					href={href}
 					className="text-foreground underline underline-offset-4 transition hover:text-subtle"
-					{...(isExternal
-						? { rel: "noreferrer noopener", target: "_blank" }
-						: {})}
 				>
 					{children}
 				</a>

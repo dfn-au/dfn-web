@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import type { PortableTextBlock } from "next-sanity";
-
+import { PageViewTracker } from "@/components/page-view-tracker";
 import { PageBody } from "@/components/portable-text";
 import { sanityFetch } from "@/sanity/lib/live";
 import { HOME_PAGE_QUERY, type HomePage } from "@/sanity/lib/queries";
@@ -31,6 +31,10 @@ export default async function HomePageRoute() {
 
 	return (
 		<main className="mx-auto flex min-h-screen w-full max-w-3xl flex-col px-6 py-16">
+			<PageViewTracker
+				event="home_page_viewed"
+				properties={{ title: homePage.title }}
+			/>
 			<article>
 				<header>
 					<h1 className="text-4xl font-semibold text-foreground sm:text-5xl">

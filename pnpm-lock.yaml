@@ -13,6 +13,9 @@ importers:
 
   apps/web:
     dependencies:
+      '@posthog/nextjs-config':
+        specifier: ^1.9.68
+        version: 1.9.68(next@16.2.9(@babel/core@7.29.7)(@opentelemetry/api@1.9.1)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(webpack@5.107.2(esbuild@0.28.0))
       '@sanity/icons':
         specifier: ^3.7.4
         version: 3.7.4(react@19.2.7)
@@ -31,6 +34,9 @@ importers:
       next-sanity:
         specifier: ^13.1.1
         version: 13.1.1(@emotion/is-prop-valid@1.4.0)(@sanity/client@7.23.0)(@sanity/types@6.1.0(@types/react@19.2.17))(next@16.2.9(@babel/core@7.29.7)(@opentelemetry/api@1.9.1)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react-dom@19.2.7(react@19.2.7))(react-is@19.2.7)(react@19.2.7)(sanity@6.1.0(@babel/core@7.29.7)(@babel/runtime@7.29.7)(@emotion/is-prop-valid@1.4.0)(@noble/hashes@2.2.0)(@oclif/core@4.11.4)(@sanity/cli-core@2.0.1(@noble/hashes@2.2.0)(@types/node@24.13.2)(esbuild@0.28.0)(terser@5.48.0)(yaml@2.9.0))(@types/node@24.13.2)(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(esbuild@0.28.0)(immer@11.1.8)(jiti@2.7.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(rolldown@1.0.3)(styled-components@6.4.2(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(supports-color@8.1.1)(terser@5.48.0)(typescript@6.0.3))(styled-components@6.4.2(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(typescript@6.0.3)
+      posthog-js:
+        specifier: ^1.391.2
+        version: 1.391.2
       react:
         specifier: 19.2.7
         version: 19.2.7
@@ -1949,6 +1955,31 @@ packages:
     resolution: {integrity: sha512-djfIGU9n6DRrunlvj2nIDAp17URo/nA4jSXGvf+Gupx8NLLy9fmJBZ3GL8yhqn9lSVc+cKCharjOa3aOBnWbRw==}
     engines: {node: '>=20.19 <22 || >=22.12'}
 
+  '@posthog/cli@0.7.29':
+    resolution: {integrity: sha512-4cQZmnZL6wYXxhZpKHH2DzEduF7aedwIgpA7Jw/K5hS/iS59/a3Q8MJ0VJVBzpEljp+J8lLm3gJbu7RWrRv3Cw==}
+    engines: {node: '>=14.14', npm: '>=6'}
+    hasBin: true
+
+  '@posthog/core@1.35.3':
+    resolution: {integrity: sha512-EsGPbSLl39Jgo2KZ+kI9UAxFnh5nddaN5bNm2rXvUwF+vGmam9eN1EXeNbxhRU7ulEeIiGdm7XjoU7pzavkgIQ==}
+
+  '@posthog/nextjs-config@1.9.68':
+    resolution: {integrity: sha512-MmzSrompIThnnrDArCKIOBZuD/b3RErH48ZJyzAuX+WfJTiHBjjTMvGWzr+qlIn8jCyJoglSygAwYVG8lJXybg==}
+    engines: {node: ^20.20.0 || >=22.22.0}
+    peerDependencies:
+      next: '>12.1.0'
+
+  '@posthog/plugin-utils@1.1.2':
+    resolution: {integrity: sha512-CS/14cMmny9NN/LHAb4QZdW3TfxhbKzsfyVYMCjsRdE0IKMTrXMr0cPRZxwczsN6VnWvVoy2Dd5wcG6RrIjlYA==}
+
+  '@posthog/types@1.390.2':
+    resolution: {integrity: sha512-WcfKz2GNn2vfDX8vXmJYbKxegPxVWHuDQ/pHdAn0HoZDXDFnEp/+x3qBQA+fEvtbPjjtjgAt2wIgJMlM7asx7g==}
+
+  '@posthog/webpack-plugin@1.5.24':
+    resolution: {integrity: sha512-sdqedI8V/Iafy4+pT2g8glEMEhFSnE8PqW5rbE2qZH4TR57Xx3qfFrKFw6A9IJ29y9L0/kCdgmIWkxdTndY1+g==}
+    peerDependencies:
+      webpack: ^5
+
   '@reduxjs/toolkit@2.12.0':
     resolution: {integrity: sha512-KiT+RzZbp6mQET+Mg+h2c97+9j1sNflUxQkIHI7Yuzf6Peu+OYpmkn6nbHWmLLWj+1ZODUJFwGZ7gx3L9R9EOw==}
     peerDependencies:
@@ -3478,6 +3509,9 @@ packages:
   core-js-compat@3.49.0:
     resolution: {integrity: sha512-VQXt1jr9cBz03b331DFDCCP90b3fanciLkgiOoy8SBHy06gNf+vQ1A3WFLqG7I8TipYIKeYK9wxd0tUrvHcOZA==}
 
+  core-js@3.49.0:
+    resolution: {integrity: sha512-es1U2+YTtzpwkxVLwAFdSpaIMyQaq0PBgm3YD1W3Qpsn1NAmO3KSgZfu+oGSWVu6NvLHoHCV/aYcsE5wiB7ALg==}
+
   core-util-is@1.0.3:
     resolution: {integrity: sha512-ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ==}
 
@@ -3821,6 +3855,9 @@ packages:
     peerDependenciesMeta:
       picomatch:
         optional: true
+
+  fflate@0.4.8:
+    resolution: {integrity: sha512-FJqqoDBR00Mdj9ppamLa/Y7vxm+PRmNWA67N846RvsoYVMKB4q3y/de5PA7gUmRMYK/8CMz2GDZQmCRN1wBcWA==}
 
   figures@6.1.0:
     resolution: {integrity: sha512-d+l3qxjSesT4V7v2fh+QnmFnUWv9lSpjarhShNTgBOfA0ttejbQUAlHLitbjkoRiDulW0OPoQPYIGhIC8ohejg==}
@@ -4879,9 +4916,15 @@ packages:
     resolution: {integrity: sha512-FfR8sjd4em2T6fb3I2MwAJU7HWVMr9zba+enmQeeWFfCbm+UOC/0X4DS8XtpUTMwWMGbjKYP7xjfNekzyGmB3A==}
     engines: {node: ^10 || ^12 || >=14}
 
+  posthog-js@1.391.2:
+    resolution: {integrity: sha512-q0DZN6ljchSnAFJIXf+sQFTPlsLjTlRa+TvrL+QRb6413BGtib/MNiQy1bnwLKt8KR+f6xJYvkqdLyty9s4Aww==}
+
   powershell-utils@0.1.0:
     resolution: {integrity: sha512-dM0jVuXJPsDN6DvRpea484tCUaMiXWjuCn++HGTqUWzGDjv5tZkEZldAJ/UMlqRYGFrD/etByo4/xOuC/snX2A==}
     engines: {node: '>=20'}
+
+  preact@10.29.2:
+    resolution: {integrity: sha512-7tNmwg/7mzzAoB/8kSg6Hl37JraAZw3Z3A0JSY7VXlZwo82Xn0G7wKbNNs2qoF4ZEEsQGTwDAroNdqKs1ofJxQ==}
 
   prettier@3.8.3:
     resolution: {integrity: sha512-7igPTM53cGHMW8xWuVTydi2KO233VFiTNyF5hLJqpilHfmn8C8gPf+PS7dUT64YcXFbiMGZxS9pCSxL/Dxm/Jw==}
@@ -4931,6 +4974,9 @@ packages:
   punycode@2.3.1:
     resolution: {integrity: sha512-vYt7UD1U9Wg6138shLtLOvdAu+8DsC/ilFtEVHcH+wydcSpNE20AfSOduf6MkRFahL5FY7X1oU7nKVZFtfq8Fg==}
     engines: {node: '>=6'}
+
+  query-selector-shadow-dom@1.0.1:
+    resolution: {integrity: sha512-lT5yCqEBgfoMYpf3F2xQRK7zEr1rhIIZuceDK6+xRkJQ4NMbHTwXqk4NkwDwQMNqXgG9r9fyHnzwNVs6zV5KRw==}
 
   queue-microtask@1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
@@ -8058,6 +8104,37 @@ snapshots:
 
   '@portabletext/types@4.0.2': {}
 
+  '@posthog/cli@0.7.29':
+    dependencies:
+      detect-libc: 2.1.2
+
+  '@posthog/core@1.35.3':
+    dependencies:
+      '@posthog/types': 1.390.2
+
+  '@posthog/nextjs-config@1.9.68(next@16.2.9(@babel/core@7.29.7)(@opentelemetry/api@1.9.1)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(webpack@5.107.2(esbuild@0.28.0))':
+    dependencies:
+      '@posthog/cli': 0.7.29
+      '@posthog/plugin-utils': 1.1.2
+      '@posthog/webpack-plugin': 1.5.24(webpack@5.107.2(esbuild@0.28.0))
+      next: 16.2.9(@babel/core@7.29.7)(@opentelemetry/api@1.9.1)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
+      semver: 7.8.5
+    transitivePeerDependencies:
+      - webpack
+
+  '@posthog/plugin-utils@1.1.2':
+    dependencies:
+      cross-spawn: 7.0.6
+
+  '@posthog/types@1.390.2': {}
+
+  '@posthog/webpack-plugin@1.5.24(webpack@5.107.2(esbuild@0.28.0))':
+    dependencies:
+      '@posthog/cli': 0.7.29
+      '@posthog/core': 1.35.3
+      '@posthog/plugin-utils': 1.1.2
+      webpack: 5.107.2(esbuild@0.28.0)
+
   '@reduxjs/toolkit@2.12.0(react-redux@9.3.0(@types/react@19.2.17)(react@19.2.7)(redux@5.0.1))(react@19.2.7)':
     dependencies:
       '@standard-schema/spec': 1.1.0
@@ -9801,6 +9878,8 @@ snapshots:
     dependencies:
       browserslist: 4.28.2
 
+  core-js@3.49.0: {}
+
   core-util-is@1.0.3: {}
 
   cosmiconfig@7.1.0:
@@ -10152,6 +10231,8 @@ snapshots:
   fdir@6.5.0(picomatch@4.0.4):
     optionalDependencies:
       picomatch: 4.0.4
+
+  fflate@0.4.8: {}
 
   figures@6.1.0:
     dependencies:
@@ -11172,7 +11253,20 @@ snapshots:
       picocolors: 1.1.1
       source-map-js: 1.2.1
 
+  posthog-js@1.391.2:
+    dependencies:
+      '@posthog/core': 1.35.3
+      '@posthog/types': 1.390.2
+      core-js: 3.49.0
+      dompurify: 3.4.8
+      fflate: 0.4.8
+      preact: 10.29.2
+      query-selector-shadow-dom: 1.0.1
+      web-vitals: 5.3.0
+
   powershell-utils@0.1.0: {}
+
+  preact@10.29.2: {}
 
   prettier@3.8.3: {}
 
@@ -11219,6 +11313,8 @@ snapshots:
   punycode.js@2.3.1: {}
 
   punycode@2.3.1: {}
+
+  query-selector-shadow-dom@1.0.1: {}
 
   queue-microtask@1.2.3: {}
 

@@ -1,6 +1,7 @@
 "use client";
 
 import * as Sentry from "@sentry/nextjs";
+import posthog from "posthog-js";
 import { useEffect } from "react";
 
 // biome-ignore lint/suspicious/noShadowRestrictedNames: Next.js requires this export name
@@ -13,6 +14,7 @@ export default function Error({
 }) {
 	useEffect(() => {
 		Sentry.captureException(error);
+		posthog.captureException(error);
 	}, [error]);
 
 	return (

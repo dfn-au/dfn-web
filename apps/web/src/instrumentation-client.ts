@@ -1,4 +1,5 @@
 import * as Sentry from "@sentry/nextjs";
+import posthog from "posthog-js";
 
 const isDev = process.env.NODE_ENV === "development";
 const spotlightEnabled = process.env.NEXT_PUBLIC_SENTRY_SPOTLIGHT === "1";
@@ -20,3 +21,15 @@ Sentry.init({
 });
 
 export const onRouterTransitionStart = Sentry.captureRouterTransitionStart;
+
+const projectToken = process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN;
+
+if (projectToken) {
+	posthog.init(projectToken, {
+		api_host: "/ingest",
+		ui_host: "https://eu.posthog.com",
+		defaults: "2026-01-30",
+		capture_exceptions: true,
+		debug: process.env.NODE_ENV === "development",
+	});
+}

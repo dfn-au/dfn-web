@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import type { PortableTextBlock } from "next-sanity";
-
+import { PageViewTracker } from "@/components/page-view-tracker";
 import { PageBody } from "@/components/portable-text";
 import { client } from "@/sanity/lib/client";
 import { sanityFetch } from "@/sanity/lib/live";
@@ -49,6 +49,10 @@ export default async function PageRoute({ params }: RouteProps) {
 
 	return (
 		<main className="mx-auto flex min-h-screen w-full max-w-3xl flex-col px-6 py-16">
+			<PageViewTracker
+				event="content_page_viewed"
+				properties={{ slug, title: page.title }}
+			/>
 			<article>
 				<header>
 					<p className="text-sm font-medium uppercase tracking-[0.16em] text-muted">

@@ -9,7 +9,9 @@ overrides:
   "undici@>=6 <6.27.0": 6.27.0
 
 allowBuilds:
+  '@posthog/cli': true
   '@sentry/cli': true
+  core-js: true
   esbuild: true
   sharp: false
   unrs-resolver: false
