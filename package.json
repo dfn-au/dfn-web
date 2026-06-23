@@ -1,7 +1,7 @@
 {
   "name": "dfn-web",
   "private": true,
-  "packageManager": "pnpm@11.6.0",
+  "packageManager": "pnpm@11.8.0",
   "engines": {
     "node": ">=24 <26",
     "pnpm": ">=11.6.0 <12"
