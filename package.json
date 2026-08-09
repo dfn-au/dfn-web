@@ -15,7 +15,12 @@
     "check": "pnpm --filter web check",
     "typecheck": "pnpm --filter web typecheck",
     "test": "pnpm --filter web test",
+    "test:parity": "node --test scripts/style-parity/*.test.mjs",
     "test:watch": "pnpm --filter web test:watch",
-    "reference:serve": "node docs/references/legacy-site/serve.mjs"
+    "reference:serve": "node docs/references/legacy-site/serve.mjs",
+    "reference:parity": "node scripts/style-parity/cli.mjs"
+  },
+  "devDependencies": {
+    "playwright-core": "^1.62.1"
   }
 }

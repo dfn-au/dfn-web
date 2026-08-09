@@ -15,6 +15,8 @@ as implementation-independent design references.
 - Open `http://127.0.0.1:3011/` or `http://127.0.0.1:3011/about/`.
 - Treat the archive as frozen. Do not regenerate it from the current production
   site as part of unrelated implementation work.
+- Use `pnpm reference:parity` to compare this archive with the editable Tailwind
+  migration overlay in `../tailwind-migration/`.
 
 ## Capture Notes
 
