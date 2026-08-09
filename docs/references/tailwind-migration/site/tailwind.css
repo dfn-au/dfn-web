@@ -23,8 +23,14 @@
 .\[height\:1px\] {
   height: 1px;
 }
+.h-auto {
+  height: auto;
+}
 .\[width\:1px\] {
   width: 1px;
+}
+.\[max-width\:100\%\] {
+  max-width: 100%;
 }
 .overflow-hidden {
   overflow: hidden;
@@ -107,6 +113,9 @@
 .text-\[\#303030\] {
   color: #303030;
 }
+.text-\[\#de6026\] {
+  color: #de6026;
+}
 .text-white {
   color: #fff;
 }
@@ -115,6 +124,9 @@
 }
 .not-italic {
   font-style: normal;
+}
+.no-underline {
+  text-decoration-line: none;
 }
 .\[box-shadow\:none\] {
   box-shadow: none;
@@ -137,6 +149,13 @@
     }
   }
 }
+.hover\:text-\[\#de6026\] {
+  &:hover {
+    @media (hover: hover) {
+      color: #de6026;
+    }
+  }
+}
 .hover\:text-white {
   &:hover {
     @media (hover: hover) {
@@ -148,6 +167,13 @@
   &:hover {
     @media (hover: hover) {
       text-decoration-line: none;
+    }
+  }
+}
+.hover\:underline {
+  &:hover {
+    @media (hover: hover) {
+      text-decoration-line: underline;
     }
   }
 }
@@ -186,6 +212,11 @@
 .focus\:bg-\[\#de6026\] {
   &:focus {
     background-color: #de6026;
+  }
+}
+.focus\:text-\[\#de6026\] {
+  &:focus {
+    color: #de6026;
   }
 }
 .focus\:text-white {
@@ -459,5 +490,19 @@
 .legacy-page-button-child-hover\:text-\[\#de6026\] {
   .fl-page a:hover & {
     color: #de6026;
+  }
+}
+.legacy-heading-link\:text-\[\#333\] {
+  :is(h1, h2, h3, h4, h5, h6) &:is(a) {
+    color: #333;
+  }
+}
+.legacy-heading-link\:hover\:no-underline {
+  :is(h1, h2, h3, h4, h5, h6) &:is(a) {
+    &:hover {
+      @media (hover: hover) {
+        text-decoration-line: none;
+      }
+    }
   }
 }
