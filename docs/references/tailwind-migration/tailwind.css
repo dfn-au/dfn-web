@@ -1,0 +1,15 @@
+/*
+ * Preflight stays disabled while legacy base rules own the frozen rendering.
+ * Utilities are deliberately unlayered and loaded after legacy styles so an
+ * equal-specificity utility can replace an ablated declaration predictably.
+ */
+@import "tailwindcss/utilities.css" source(none);
+
+@theme inline {
+	--color-white: #fff;
+	--font-andada: "Andada", sans-serif;
+}
+
+@custom-variant legacy-tablet (@media (max-width: 991px));
+
+@source inline("bg-white text-[#303030] font-andada text-[16px] [font-weight:400] [line-height:1.6] not-italic [padding:0] [overflow-wrap:break-word] legacy-tablet:text-[14px] legacy-tablet:[line-height:1.45]");

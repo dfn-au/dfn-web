@@ -18,9 +18,13 @@
     "test:parity": "node --test scripts/style-parity/*.test.mjs",
     "test:watch": "pnpm --filter web test:watch",
     "reference:serve": "node docs/references/legacy-site/serve.mjs",
-    "reference:parity": "node scripts/style-parity/cli.mjs"
+    "reference:tailwind": "node scripts/style-parity/build-tailwind.mjs",
+    "reference:parity": "pnpm reference:tailwind && node scripts/style-parity/cli.mjs"
   },
   "devDependencies": {
-    "playwright-core": "^1.62.1"
+    "@tailwindcss/postcss": "^4.3.1",
+    "playwright-core": "^1.62.1",
+    "postcss": "^8.5.15",
+    "tailwindcss": "^4.3.1"
   }
 }

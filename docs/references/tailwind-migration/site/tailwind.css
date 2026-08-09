@@ -1,0 +1,38 @@
+/*! tailwindcss v4.3.1 | MIT License | https://tailwindcss.com */
+.bg-white {
+  background-color: #fff;
+}
+.\[padding\:0\] {
+  padding: 0;
+}
+.font-andada {
+  font-family: "Andada", sans-serif;
+}
+.text-\[16px\] {
+  font-size: 16px;
+}
+.\[line-height\:1\.6\] {
+  line-height: 1.6;
+}
+.\[font-weight\:400\] {
+  font-weight: 400;
+}
+.\[overflow-wrap\:break-word\] {
+  overflow-wrap: break-word;
+}
+.text-\[\#303030\] {
+  color: #303030;
+}
+.not-italic {
+  font-style: normal;
+}
+.legacy-tablet\:text-\[14px\] {
+  @media (max-width: 991px) {
+    font-size: 14px;
+  }
+}
+.legacy-tablet\:\[line-height\:1\.45\] {
+  @media (max-width: 991px) {
+    line-height: 1.45;
+  }
+}
