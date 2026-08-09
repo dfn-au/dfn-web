@@ -10,6 +10,9 @@ export async function capturePageSnapshot(page, { selector = "html" } = {}) {
 			),
 			new Promise((resolve) => setTimeout(resolve, 5000)),
 		]);
+		await new Promise((resolve) =>
+			requestAnimationFrame(() => requestAnimationFrame(resolve)),
+		);
 	});
 
 	return page.evaluate((rootSelector) => {
