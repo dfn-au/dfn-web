@@ -1,4 +1,10 @@
 /*! tailwindcss v4.3.1 | MIT License | https://tailwindcss.com */
+.relative {
+  position: relative;
+}
+.\[margin\:0_auto\] {
+  margin: 0 auto;
+}
 .bg-white {
   background-color: #fff;
 }
@@ -8,8 +14,26 @@
 .font-andada {
   font-family: "Andada", sans-serif;
 }
+.font-vinyl {
+  font-family: "vinyl", Verdana, Arial, sans-serif;
+}
+.\[font-size\:22px\] {
+  font-size: 22px;
+}
+.\[font-size\:28px\] {
+  font-size: 28px;
+}
+.\[font-size\:32px\] {
+  font-size: 32px;
+}
+.\[font-size\:42px\] {
+  font-size: 42px;
+}
 .text-\[16px\] {
   font-size: 16px;
+}
+.\[line-height\:1\.4\] {
+  line-height: 1.4;
 }
 .\[line-height\:1\.6\] {
   line-height: 1.6;
@@ -17,14 +41,49 @@
 .\[font-weight\:400\] {
   font-weight: 400;
 }
+.\[letter-spacing\:0\] {
+  letter-spacing: 0;
+}
+.\[letter-spacing\:1px\] {
+  letter-spacing: 1px;
+}
 .\[overflow-wrap\:break-word\] {
   overflow-wrap: break-word;
+}
+.text-\[\#333\] {
+  color: #333;
 }
 .text-\[\#303030\] {
   color: #303030;
 }
+.uppercase {
+  text-transform: uppercase;
+}
 .not-italic {
   font-style: normal;
+}
+.\[box-shadow\:none\] {
+  box-shadow: none;
+}
+.legacy-tablet\:\[font-size\:18px\] {
+  @media (max-width: 991px) {
+    font-size: 18px;
+  }
+}
+.legacy-tablet\:\[font-size\:24px\] {
+  @media (max-width: 991px) {
+    font-size: 24px;
+  }
+}
+.legacy-tablet\:\[font-size\:30px\] {
+  @media (max-width: 991px) {
+    font-size: 30px;
+  }
+}
+.legacy-tablet\:\[font-size\:36px\] {
+  @media (max-width: 991px) {
+    font-size: 36px;
+  }
 }
 .legacy-tablet\:text-\[14px\] {
   @media (max-width: 991px) {
@@ -34,5 +93,10 @@
 .legacy-tablet\:\[line-height\:1\.45\] {
   @media (max-width: 991px) {
     line-height: 1.45;
+  }
+}
+.legacy-tablet\:\[letter-spacing\:0\] {
+  @media (max-width: 991px) {
+    letter-spacing: 0;
   }
 }
