@@ -1,9 +1,33 @@
 /*! tailwindcss v4.3.1 | MIT License | https://tailwindcss.com */
+.absolute {
+  position: absolute;
+}
 .relative {
   position: relative;
 }
+.top-auto {
+  top: auto;
+}
+.left-\[-10000px\] {
+  left: -10000px;
+}
 .\[margin\:0_auto\] {
   margin: 0 auto;
+}
+.\[margin\:20px_0\] {
+  margin: 20px 0;
+}
+.\[margin-bottom\:40px\] {
+  margin-bottom: 40px;
+}
+.\[height\:1px\] {
+  height: 1px;
+}
+.\[width\:1px\] {
+  width: 1px;
+}
+.overflow-hidden {
+  overflow: hidden;
 }
 .\[border-radius\:4px\] {
   border-radius: 4px;
@@ -14,11 +38,23 @@
 .bg-white {
   background-color: #fff;
 }
+.bg-white\! {
+  background-color: #fff !important;
+}
 .\[padding\:0\] {
   padding: 0;
 }
 .\[padding\:6px_12px\] {
   padding: 6px 12px;
+}
+.\[padding\:10px_15px\] {
+  padding: 10px 15px;
+}
+.\[padding-right\:20px\] {
+  padding-right: 20px;
+}
+.\[padding-left\:20px\] {
+  padding-left: 20px;
 }
 .font-andada {
   font-family: "Andada", sans-serif;
@@ -89,6 +125,11 @@
 .\[text-shadow\:none\] {
   text-shadow: none;
 }
+.last\:\[margin-bottom\:0\] {
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
 .hover\:bg-\[\#de6026\] {
   &:hover {
     @media (hover: hover) {
@@ -117,9 +158,29 @@
     }
   }
 }
+.focus\:fixed {
+  &:focus {
+    position: fixed;
+  }
+}
 .focus\:relative {
   &:focus {
     position: relative;
+  }
+}
+.focus\:z-\[99999\] {
+  &:focus {
+    z-index: 99999;
+  }
+}
+.focus\:\[height\:auto\] {
+  &:focus {
+    height: auto;
+  }
+}
+.focus\:\[width\:auto\] {
+  &:focus {
+    width: auto;
   }
 }
 .focus\:bg-\[\#de6026\] {
