@@ -37,7 +37,7 @@ export async function capturePageSnapshot(page, { selector = "html" } = {}) {
 					after: readPseudoElement(element, "::after", origin),
 					before: readPseudoElement(element, "::before", origin),
 				},
-				style: readStyle(getComputedStyle(element), origin),
+				style: readElementStyle(element, origin),
 				tagName: element.tagName.toLowerCase(),
 				textNodes: readTextNodes(element),
 			})),
@@ -69,6 +69,28 @@ export async function capturePageSnapshot(page, { selector = "html" } = {}) {
 							.getPropertyValue(property)
 							.replaceAll(documentOrigin, "<origin>"),
 					]),
+			);
+		}
+
+		function readElementStyle(element, documentOrigin) {
+			const style = getComputedStyle(element);
+			const styleMap = element.computedStyleMap?.();
+			return Object.fromEntries(
+				Array.from(style)
+					.sort()
+					.map((property) => {
+						const typedValue = property.startsWith("margin-")
+							? styleMap?.get(property)?.toString()
+							: undefined;
+						return [
+							property,
+							typedValue === "auto"
+								? typedValue
+								: style
+									.getPropertyValue(property)
+									.replaceAll(documentOrigin, "<origin>"),
+						];
+					}),
 			);
 		}
 
