@@ -5,17 +5,29 @@
 .\[margin\:0_auto\] {
   margin: 0 auto;
 }
+.\[border-radius\:4px\] {
+  border-radius: 4px;
+}
+.bg-\[\#de6026\] {
+  background-color: #de6026;
+}
 .bg-white {
   background-color: #fff;
 }
 .\[padding\:0\] {
   padding: 0;
 }
+.\[padding\:6px_12px\] {
+  padding: 6px 12px;
+}
 .font-andada {
   font-family: "Andada", sans-serif;
 }
 .font-vinyl {
   font-family: "vinyl", Verdana, Arial, sans-serif;
+}
+.\[font-size\:18px\] {
+  font-size: 18px;
 }
 .\[font-size\:22px\] {
   font-size: 22px;
@@ -31,6 +43,9 @@
 }
 .text-\[16px\] {
   font-size: 16px;
+}
+.\[line-height\:1\.2\] {
+  line-height: 1.2;
 }
 .\[line-height\:1\.4\] {
   line-height: 1.4;
@@ -56,6 +71,9 @@
 .text-\[\#303030\] {
   color: #303030;
 }
+.text-white {
+  color: #fff;
+}
 .uppercase {
   text-transform: uppercase;
 }
@@ -64,6 +82,95 @@
 }
 .\[box-shadow\:none\] {
   box-shadow: none;
+}
+.\[border\:1px_solid_\#ad481a\] {
+  border: 1px solid #ad481a;
+}
+.\[text-shadow\:none\] {
+  text-shadow: none;
+}
+.hover\:bg-\[\#de6026\] {
+  &:hover {
+    @media (hover: hover) {
+      background-color: #de6026;
+    }
+  }
+}
+.hover\:text-white {
+  &:hover {
+    @media (hover: hover) {
+      color: #fff;
+    }
+  }
+}
+.hover\:no-underline {
+  &:hover {
+    @media (hover: hover) {
+      text-decoration-line: none;
+    }
+  }
+}
+.hover\:\[border\:1px_solid_\#ad481a\] {
+  &:hover {
+    @media (hover: hover) {
+      border: 1px solid #ad481a;
+    }
+  }
+}
+.focus\:relative {
+  &:focus {
+    position: relative;
+  }
+}
+.focus\:bg-\[\#de6026\] {
+  &:focus {
+    background-color: #de6026;
+  }
+}
+.focus\:text-white {
+  &:focus {
+    color: #fff;
+  }
+}
+.focus\:\[outline\:none\] {
+  &:focus {
+    outline: none;
+  }
+}
+.focus\:\[border\:1px_solid_\#ad481a\] {
+  &:focus {
+    border: 1px solid #ad481a;
+  }
+}
+.active\:relative {
+  &:active {
+    position: relative;
+  }
+}
+.active\:bg-\[\#de6026\] {
+  &:active {
+    background-color: #de6026;
+  }
+}
+.active\:text-white {
+  &:active {
+    color: #fff;
+  }
+}
+.active\:\[outline\:none\] {
+  &:active {
+    outline: none;
+  }
+}
+.active\:\[border\:1px_solid_\#ad481a\] {
+  &:active {
+    border: 1px solid #ad481a;
+  }
+}
+.legacy-tablet\:\[font-size\:16px\] {
+  @media (max-width: 991px) {
+    font-size: 16px;
+  }
 }
 .legacy-tablet\:\[font-size\:18px\] {
   @media (max-width: 991px) {
@@ -98,5 +205,198 @@
 .legacy-tablet\:\[letter-spacing\:0\] {
   @media (max-width: 991px) {
     letter-spacing: 0;
+  }
+}
+.legacy-input\:block {
+  &:is(input) {
+    display: block;
+  }
+}
+.legacy-input\:w-full {
+  &:is(input) {
+    width: 100%;
+  }
+}
+.legacy-input\:\[border-radius\:4px\] {
+  &:is(input) {
+    border-radius: 4px;
+  }
+}
+.legacy-input\:bg-\[\#fcfcfc\] {
+  &:is(input) {
+    background-color: #fcfcfc;
+  }
+}
+.legacy-input\:\[background-image\:none\] {
+  &:is(input) {
+    background-image: none;
+  }
+}
+.legacy-input\:\[padding\:6px_12px\] {
+  &:is(input) {
+    padding: 6px 12px;
+  }
+}
+.legacy-input\:\[font-size\:14px\] {
+  &:is(input) {
+    font-size: 14px;
+  }
+}
+.legacy-input\:\[line-height\:1\.428571429\] {
+  &:is(input) {
+    line-height: 1.428571429;
+  }
+}
+.legacy-input\:text-\[\#303030\] {
+  &:is(input) {
+    color: #303030;
+  }
+}
+.legacy-input\:\[box-shadow\:none\] {
+  &:is(input) {
+    box-shadow: none;
+  }
+}
+.legacy-input\:\[border\:1px_solid_\#e6e6e6\] {
+  &:is(input) {
+    border: 1px solid #e6e6e6;
+  }
+}
+.legacy-input\:\[transition\:all_ease-in-out_\.15s\] {
+  &:is(input) {
+    transition: all ease-in-out .15s;
+  }
+}
+.legacy-input\:placeholder\:text-\[rgba\(48\,48\,48\,0\.4\)\] {
+  &:is(input) {
+    &::placeholder {
+      color: rgba(48,48,48,0.4);
+    }
+  }
+}
+.legacy-input\:focus\:\[border-color\:\#ccc\] {
+  &:is(input) {
+    &:focus {
+      border-color: #ccc;
+    }
+  }
+}
+.legacy-input\:focus\:bg-\[\#fcfcfc\] {
+  &:is(input) {
+    &:focus {
+      background-color: #fcfcfc;
+    }
+  }
+}
+.legacy-input\:focus\:\[box-shadow\:none\] {
+  &:is(input) {
+    &:focus {
+      box-shadow: none;
+    }
+  }
+}
+.legacy-input\:focus\:\[outline\:0\] {
+  &:is(input) {
+    &:focus {
+      outline: 0;
+    }
+  }
+}
+.legacy-page-button\:\[border-radius\:3px\] {
+  .fl-page &:is(a) {
+    border-radius: 3px;
+  }
+}
+.legacy-page-button\:bg-\[\#de6026\] {
+  .fl-page &:is(a) {
+    background-color: #de6026;
+  }
+}
+.legacy-page-button\:font-vinyl {
+  .fl-page &:is(a) {
+    font-family: "vinyl", Verdana, Arial, sans-serif;
+  }
+}
+.legacy-page-button\:\[font-size\:18px\] {
+  .fl-page &:is(a) {
+    font-size: 18px;
+  }
+}
+.legacy-page-button\:\[line-height\:1\.2\] {
+  .fl-page &:is(a) {
+    line-height: 1.2;
+  }
+}
+.legacy-page-button\:\[font-weight\:400\] {
+  .fl-page &:is(a) {
+    font-weight: 400;
+  }
+}
+.legacy-page-button\:text-white {
+  .fl-page &:is(a) {
+    color: #fff;
+  }
+}
+.legacy-page-button\:uppercase {
+  .fl-page &:is(a) {
+    text-transform: uppercase;
+  }
+}
+.legacy-page-button\:\[border\:1px_solid_\#d2541a\] {
+  .fl-page &:is(a) {
+    border: 1px solid #d2541a;
+  }
+}
+.legacy-page-button\:hover\:\[border-radius\:3px\] {
+  .fl-page &:is(a) {
+    &:hover {
+      @media (hover: hover) {
+        border-radius: 3px;
+      }
+    }
+  }
+}
+.legacy-page-button\:hover\:\[border-color\:\#cc4405\] {
+  .fl-page &:is(a) {
+    &:hover {
+      @media (hover: hover) {
+        border-color: #cc4405;
+      }
+    }
+  }
+}
+.legacy-page-button\:hover\:bg-\[\#d85011\] {
+  .fl-page &:is(a) {
+    &:hover {
+      @media (hover: hover) {
+        background-color: #d85011;
+      }
+    }
+  }
+}
+.legacy-page-button\:hover\:text-\[\#de6026\] {
+  .fl-page &:is(a) {
+    &:hover {
+      @media (hover: hover) {
+        color: #de6026;
+      }
+    }
+  }
+}
+.legacy-page-button\:legacy-tablet\:\[font-size\:16px\] {
+  .fl-page &:is(a) {
+    @media (max-width: 991px) {
+      font-size: 16px;
+    }
+  }
+}
+.legacy-page-button-child\:text-white {
+  .fl-page a & {
+    color: #fff;
+  }
+}
+.legacy-page-button-child-hover\:text-\[\#de6026\] {
+  .fl-page a:hover & {
+    color: #de6026;
   }
 }
