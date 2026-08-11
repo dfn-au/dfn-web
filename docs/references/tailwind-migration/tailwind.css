@@ -27,3 +27,4 @@
 @source inline("text-[#de6026] no-underline hover:text-[#de6026] hover:underline focus:text-[#de6026] legacy-heading-link:text-[#333] legacy-heading-link:hover:no-underline [max-width:100%] h-auto");
 @source inline("[width:auto] [max-width:none] [margin:0] [padding:0]");
 @source inline("[font-family:sans-serif] [font-size:10px] [text-size-adjust:100%] [-webkit-tap-highlight-color:rgba(0,0,0,0)] [box-sizing:border-box] [&_*]:[box-sizing:border-box] [&::before]:[box-sizing:border-box] [&::after]:[box-sizing:border-box] [&_*::before]:[box-sizing:border-box] [&_*::after]:[box-sizing:border-box]");
+@source inline("[margin:0_0_10px] [border:0] [vertical-align:middle] [font-family:inherit] [overflow:visible] [text-transform:none] [appearance:button] [cursor:pointer]");
