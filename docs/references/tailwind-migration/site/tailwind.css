@@ -23,11 +23,20 @@
 .\[margin\:0_auto\] {
   margin: 0 auto;
 }
+.\[margin-bottom\:5px\] {
+  margin-bottom: 5px;
+}
 .\[margin-bottom\:40px\] {
   margin-bottom: 40px;
 }
 .\[box-sizing\:border-box\] {
   box-sizing: border-box;
+}
+.hidden\! {
+  display: none !important;
+}
+.inline-block {
+  display: inline-block;
 }
 .\[height\:1px\] {
   height: 1px;
@@ -131,6 +140,9 @@
 .\[font-weight\:400\] {
   font-weight: 400;
 }
+.\[font-weight\:700\] {
+  font-weight: 700;
+}
 .\[letter-spacing\:0\] {
   letter-spacing: 0;
 }
@@ -201,6 +213,13 @@
     }
   }
 }
+.hover\:\[outline\:0\] {
+  &:hover {
+    @media (hover: hover) {
+      outline: 0;
+    }
+  }
+}
 .focus\:fixed {
   &:focus {
     position: fixed;
@@ -234,6 +253,26 @@
 .focus\:text-\[\#de6026\] {
   &:focus {
     color: #de6026;
+  }
+}
+.focus\:underline {
+  &:focus {
+    text-decoration-line: underline;
+  }
+}
+.focus\:\[outline\:5px_auto_-webkit-focus-ring-color\] {
+  &:focus {
+    outline: 5px auto -webkit-focus-ring-color;
+  }
+}
+.focus\:\[outline-offset\:-2px\] {
+  &:focus {
+    outline-offset: -2px;
+  }
+}
+.active\:\[outline\:0\] {
+  &:active {
+    outline: 0;
   }
 }
 .legacy-tablet\:\[font-size\:16px\] {
