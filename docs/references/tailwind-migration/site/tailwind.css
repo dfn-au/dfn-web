@@ -142,31 +142,10 @@
     margin-bottom: 0;
   }
 }
-.hover\:bg-\[\#de6026\] {
-  &:hover {
-    @media (hover: hover) {
-      background-color: #de6026;
-    }
-  }
-}
 .hover\:text-\[\#de6026\] {
   &:hover {
     @media (hover: hover) {
       color: #de6026;
-    }
-  }
-}
-.hover\:text-white {
-  &:hover {
-    @media (hover: hover) {
-      color: #fff;
-    }
-  }
-}
-.hover\:no-underline {
-  &:hover {
-    @media (hover: hover) {
-      text-decoration-line: none;
     }
   }
 }
@@ -177,21 +156,19 @@
     }
   }
 }
-.hover\:\[border\:1px_solid_\#ad481a\] {
-  &:hover {
-    @media (hover: hover) {
-      border: 1px solid #ad481a;
-    }
-  }
-}
 .focus\:fixed {
   &:focus {
     position: fixed;
   }
 }
-.focus\:relative {
+.focus\:\[top\:0\] {
   &:focus {
-    position: relative;
+    top: 0;
+  }
+}
+.focus\:\[left\:0\] {
+  &:focus {
+    left: 0;
   }
 }
 .focus\:z-\[99999\] {
@@ -209,54 +186,9 @@
     width: auto;
   }
 }
-.focus\:bg-\[\#de6026\] {
-  &:focus {
-    background-color: #de6026;
-  }
-}
 .focus\:text-\[\#de6026\] {
   &:focus {
     color: #de6026;
-  }
-}
-.focus\:text-white {
-  &:focus {
-    color: #fff;
-  }
-}
-.focus\:\[outline\:none\] {
-  &:focus {
-    outline: none;
-  }
-}
-.focus\:\[border\:1px_solid_\#ad481a\] {
-  &:focus {
-    border: 1px solid #ad481a;
-  }
-}
-.active\:relative {
-  &:active {
-    position: relative;
-  }
-}
-.active\:bg-\[\#de6026\] {
-  &:active {
-    background-color: #de6026;
-  }
-}
-.active\:text-white {
-  &:active {
-    color: #fff;
-  }
-}
-.active\:\[outline\:none\] {
-  &:active {
-    outline: none;
-  }
-}
-.active\:\[border\:1px_solid_\#ad481a\] {
-  &:active {
-    border: 1px solid #ad481a;
   }
 }
 .legacy-tablet\:\[font-size\:16px\] {
