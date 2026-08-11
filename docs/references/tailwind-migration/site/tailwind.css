@@ -1,4 +1,7 @@
 /*! tailwindcss v4.3.1 | MIT License | https://tailwindcss.com */
+.\[position\:relative\] {
+  position: relative;
+}
 .absolute {
   position: absolute;
 }
@@ -31,6 +34,9 @@
 }
 .h-auto {
   height: auto;
+}
+.\[min-height\:1px\] {
+  min-height: 1px;
 }
 .\[width\:1px\] {
   width: 1px;
@@ -268,6 +274,41 @@
 .legacy-tablet\:\[letter-spacing\:0\] {
   @media (max-width: 991px) {
     letter-spacing: 0;
+  }
+}
+.legacy-desktop\:\[float\:left\] {
+  @media (min-width: 992px) {
+    float: left;
+  }
+}
+.legacy-desktop\:\[width\:100\%\] {
+  @media (min-width: 992px) {
+    width: 100%;
+  }
+}
+.legacy-before\:\[display\:table\] {
+  &::before {
+    display: table;
+  }
+}
+.legacy-before\:\[content\:\'_\'\] {
+  &::before {
+    content: ' ';
+  }
+}
+.legacy-after\:\[clear\:both\] {
+  &::after {
+    clear: both;
+  }
+}
+.legacy-after\:\[display\:table\] {
+  &::after {
+    display: table;
+  }
+}
+.legacy-after\:\[content\:\'_\'\] {
+  &::after {
+    content: ' ';
   }
 }
 .legacy-input\:block {
