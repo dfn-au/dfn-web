@@ -59,6 +59,9 @@
 .\[margin-bottom\:5px\] {
   margin-bottom: 5px;
 }
+.\[margin-bottom\:10px\]\! {
+  margin-bottom: 10px !important;
+}
 .\[margin-bottom\:40px\] {
   margin-bottom: 40px;
 }
@@ -103,6 +106,9 @@
 }
 .\[min-height\:1px\] {
   min-height: 1px;
+}
+.\[min-height\:500px\]\! {
+  min-height: 500px !important;
 }
 .\[width\:1px\] {
   width: 1px;
@@ -242,6 +248,9 @@
 .\[background-image\:url\(\'\/wp-content\/uploads\/2020\/07\/BG-Bar\.jpg\'\)\] {
   background-image: url('/wp-content/uploads/2020/07/BG-Bar.jpg');
 }
+.\[background-image\:url\(\'\/wp-content\/uploads\/2020\/10\/DFN-PageHero-Images-About3\.jpg\'\)\] {
+  background-image: url('/wp-content/uploads/2020/10/DFN-PageHero-Images-About3.jpg');
+}
 .\[background-size\:cover\] {
   background-size: cover;
 }
@@ -281,8 +290,14 @@
 .\[padding-bottom\:40px\] {
   padding-bottom: 40px;
 }
+.\[padding-bottom\:50px\]\! {
+  padding-bottom: 50px !important;
+}
 .\[padding-left\:0\] {
   padding-left: 0;
+}
+.\[padding-left\:100px\]\! {
+  padding-left: 100px !important;
 }
 .text-center {
   text-align: center;
@@ -341,6 +356,9 @@
 .\[font-size\:42px\] {
   font-size: 42px;
 }
+.\[font-size\:48px\] {
+  font-size: 48px;
+}
 .text-\[16px\] {
   font-size: 16px;
 }
@@ -361,6 +379,9 @@
 }
 .\[line-height\:30px\] {
   line-height: 30px;
+}
+.\[font-weight\:100\] {
+  font-weight: 100;
 }
 .\[font-weight\:400\] {
   font-weight: 400;
@@ -668,6 +689,11 @@
     margin-right: 20px;
   }
 }
+.legacy-max-768\:\[margin-bottom\:0\]\! {
+  @media (max-width: 768px) {
+    margin-bottom: 0 !important;
+  }
+}
 .legacy-max-768\:\[margin-bottom\:5px\] {
   @media (max-width: 768px) {
     margin-bottom: 5px;
@@ -676,6 +702,11 @@
 .legacy-max-768\:\[margin-left\:15px\]\! {
   @media (max-width: 768px) {
     margin-left: 15px !important;
+  }
+}
+.legacy-max-768\:\[min-height\:400px\]\! {
+  @media (max-width: 768px) {
+    min-height: 400px !important;
   }
 }
 .legacy-max-768\:\[width\:20\%\]\! {
@@ -711,6 +742,11 @@
 .legacy-max-768\:justify-center {
   @media (max-width: 768px) {
     justify-content: center;
+  }
+}
+.legacy-max-768\:\[padding-left\:0\]\! {
+  @media (max-width: 768px) {
+    padding-left: 0 !important;
   }
 }
 .legacy-max-768\:text-center {
