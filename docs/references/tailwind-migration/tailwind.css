@@ -87,3 +87,4 @@
 @source inline("[background-image:url('/wp-content/uploads/2020/08/DFN-PageHero-Images-igd.jpg')] [padding:8%]");
 @source inline("[width:100%] legacy-max-992:[width:100%]! legacy-max-992:[max-width:none]! legacy-max-992:[flex:0_1_auto]! legacy-max-768:[width:100%]! legacy-max-768:[max-width:none]! legacy-max-768:[clear:none] legacy-max-768:[float:left]");
 @source inline("[min-width:0] [font-size:17px] [border-top-width:2px] [max-width:30%] [margin:auto] [border-top-color:#efefef] [border-top-style:solid]");
+@source inline("[width:74.95%] [width:25.05%] legacy-max-992:[width:70%]! legacy-max-992:[width:30%]! [line-height:1.5] [cursor:pointer] [padding:15px_30px]! [font-weight:100]! [font-size:18px]! [transition:none] [&_*]:[transition:none] focus:[border-color:#cc4405]! legacy-max-768:text-center!");

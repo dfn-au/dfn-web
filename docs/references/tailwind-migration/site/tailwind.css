@@ -137,6 +137,9 @@
 .\[width\:25\%\] {
   width: 25%;
 }
+.\[width\:25\.05\%\] {
+  width: 25.05%;
+}
 .\[width\:29\.07\%\] {
   width: 29.07%;
 }
@@ -160,6 +163,9 @@
 }
 .\[width\:70\.09\%\] {
   width: 70.09%;
+}
+.\[width\:74\.95\%\] {
+  width: 74.95%;
 }
 .\[width\:80\%\]\! {
   width: 80% !important;
@@ -311,6 +317,9 @@
 .\[padding\:10px_15px\] {
   padding: 10px 15px;
 }
+.\[padding\:15px_30px\]\! {
+  padding: 15px 30px !important;
+}
 .\[padding\:60px_40px\] {
   padding: 60px 40px;
 }
@@ -380,6 +389,9 @@
 .\[font-size\:18px\] {
   font-size: 18px;
 }
+.\[font-size\:18px\]\! {
+  font-size: 18px !important;
+}
 .\[font-size\:20px\] {
   font-size: 20px;
 }
@@ -413,6 +425,9 @@
 .\[line-height\:1\.4\] {
   line-height: 1.4;
 }
+.\[line-height\:1\.5\] {
+  line-height: 1.5;
+}
 .\[line-height\:1\.6\] {
   line-height: 1.6;
 }
@@ -424,6 +439,9 @@
 }
 .\[font-weight\:100\] {
   font-weight: 100;
+}
+.\[font-weight\:100\]\! {
+  font-weight: 100 !important;
 }
 .\[font-weight\:400\] {
   font-weight: 400;
@@ -518,6 +536,9 @@
 .\[text-size-adjust\:100\%\] {
   text-size-adjust: 100%;
 }
+.\[transition\:none\] {
+  transition: none;
+}
 .last\:\[margin-right\:0\]\! {
   &:last-child {
     margin-right: 0 !important;
@@ -584,6 +605,11 @@
 .focus\:\[width\:auto\] {
   &:focus {
     width: auto;
+  }
+}
+.focus\:\[border-color\:\#cc4405\]\! {
+  &:focus {
+    border-color: #cc4405 !important;
   }
 }
 .focus\:text-\[\#de6026\] {
@@ -694,6 +720,11 @@
 .legacy-max-992\:\[width\:30\%\]\! {
   @media (max-width: 992px) {
     width: 30% !important;
+  }
+}
+.legacy-max-992\:\[width\:70\%\]\! {
+  @media (max-width: 992px) {
+    width: 70% !important;
   }
 }
 .legacy-max-992\:\[width\:100\%\]\! {
@@ -839,6 +870,11 @@
 .legacy-max-768\:text-center {
   @media (max-width: 768px) {
     text-align: center;
+  }
+}
+.legacy-max-768\:text-center\! {
+  @media (max-width: 768px) {
+    text-align: center !important;
   }
 }
 .legacy-max-1200\:justify-center {
@@ -1181,6 +1217,11 @@
 .\[\&_\*\]\:text-\[rgba\(255\,255\,255\,0\.75\)\]\! {
   & * {
     color: rgba(255,255,255,0.75) !important;
+  }
+}
+.\[\&_\*\]\:\[transition\:none\] {
+  & * {
+    transition: none;
   }
 }
 .\[\&_\*\:\:after\]\:\[box-sizing\:border-box\] {
