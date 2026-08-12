@@ -19,6 +19,22 @@
 	src: url("/wp-content/uploads/2024/10/vinyl.ttf") format("truetype");
 }
 
+@font-face {
+	font-family: "Font Awesome 5 Brands";
+	font-style: normal;
+	font-weight: 400;
+	font-display: block;
+	src: url("/wp-content/plugins/bb-plugin/fonts/fontawesome/5.15.4/webfonts/fa-brands-400.woff2") format("woff2");
+}
+
+@font-face {
+	font-family: "Font Awesome 5 Free";
+	font-style: normal;
+	font-weight: 900;
+	font-display: block;
+	src: url("/wp-content/plugins/bb-plugin/fonts/fontawesome/5.15.4/webfonts/fa-solid-900.woff2") format("woff2");
+}
+
 @theme inline {
 	--color-white: #fff;
 	--font-andada: "Andada", sans-serif;
@@ -134,6 +150,53 @@
 @source inline("legacy-wordpress-root");
 
 @utility legacy-beaver-foundation {
+	& :is(.fa, .fas, .fab) {
+		-webkit-font-smoothing: antialiased;
+		display: inline-block;
+		font-style: normal;
+		font-variant: normal;
+		text-rendering: auto;
+		line-height: 1;
+	}
+
+	& :is(.fa, .fas) {
+		font-family: "Font Awesome 5 Free";
+		font-weight: 900;
+	}
+
+	& .fab {
+		font-family: "Font Awesome 5 Brands";
+		font-weight: 400;
+	}
+
+	& .fa-school::before {
+		content: "\f549";
+	}
+
+	& .fa-stethoscope::before {
+		content: "\f0f1";
+	}
+
+	& .fa-hand-holding-usd::before {
+		content: "\f4c0";
+	}
+
+	& .fa-link::before {
+		content: "\f0c1";
+	}
+
+	& .fa-plus::before {
+		content: "\f067";
+	}
+
+	& .fa-minus::before {
+		content: "\f068";
+	}
+
+	& .fa-facebook::before {
+		content: "\f09a";
+	}
+
 	& img:is([sizes="auto" i], [sizes^="auto," i]) {
 		contain-intrinsic-size: 3000px 1500px;
 	}
