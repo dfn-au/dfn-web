@@ -146,6 +146,12 @@
 .\[width\:35\%\] {
   width: 35%;
 }
+.\[width\:40\.99\%\] {
+  width: 40.99%;
+}
+.\[width\:59\.01\%\] {
+  width: 59.01%;
+}
 .\[width\:65\%\] {
   width: 65%;
 }
@@ -254,6 +260,9 @@
 .\[background-image\:url\(\'\/wp-content\/uploads\/2020\/07\/BG-Bar\.jpg\'\)\] {
   background-image: url('/wp-content/uploads/2020/07/BG-Bar.jpg');
 }
+.\[background-image\:url\(\'\/wp-content\/uploads\/2020\/08\/DFN-PageHero-Images-igd\.jpg\'\)\] {
+  background-image: url('/wp-content/uploads/2020/08/DFN-PageHero-Images-igd.jpg');
+}
 .\[background-image\:url\(\'\/wp-content\/uploads\/2020\/10\/DFN-PageHero-Images-About3\.jpg\'\)\] {
   background-image: url('/wp-content/uploads/2020/10/DFN-PageHero-Images-About3.jpg');
 }
@@ -277,6 +286,9 @@
 }
 .\[padding\:6px_12px\] {
   padding: 6px 12px;
+}
+.\[padding\:8\%\] {
+  padding: 8%;
 }
 .\[padding\:8px\]\! {
   padding: 8px !important;
@@ -666,6 +678,11 @@
     width: 30% !important;
   }
 }
+.legacy-max-992\:\[width\:100\%\]\! {
+  @media (max-width: 992px) {
+    width: 100% !important;
+  }
+}
 .legacy-max-992\:\[max-width\:none\]\! {
   @media (max-width: 992px) {
     max-width: none !important;
@@ -674,6 +691,11 @@
 .legacy-max-992\:\[flex\:0_1_auto\] {
   @media (max-width: 992px) {
     flex: 0 1 auto;
+  }
+}
+.legacy-max-992\:\[flex\:0_1_auto\]\! {
+  @media (max-width: 992px) {
+    flex: 0 1 auto !important;
   }
 }
 .legacy-max-992\:\[padding-top\:20px\] {
