@@ -1038,6 +1038,11 @@
     margin: 5px 10px !important;
   }
 }
+.legacy-max-768\:\[margin\:10px\]\! {
+  @media (max-width: 768px) {
+    margin: 10px !important;
+  }
+}
 .legacy-max-768\:\[margin-top\:0\] {
   @media (max-width: 768px) {
     margin-top: 0;
