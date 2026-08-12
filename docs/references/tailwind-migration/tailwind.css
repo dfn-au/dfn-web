@@ -13,6 +13,8 @@
 
 @custom-variant legacy-tablet (@media (max-width: 991px));
 @custom-variant legacy-desktop (@media (min-width: 992px));
+@custom-variant legacy-max-992 (@media (max-width: 992px));
+@custom-variant legacy-max-768 (@media (max-width: 768px));
 @custom-variant legacy-before (&::before);
 @custom-variant legacy-after (&::after);
 @custom-variant legacy-input (&:is(input));
@@ -33,3 +35,7 @@
 @source inline("[margin:0_0_10px] [border:0] [vertical-align:middle] [font-family:inherit] [overflow:visible] [text-transform:none] [appearance:button] [cursor:pointer]");
 @source inline("legacy-before:[display:table] legacy-before:[content:'_'] legacy-after:[display:table] legacy-after:[content:'_'] legacy-after:[clear:both] [position:relative] [min-height:1px] legacy-desktop:[float:left] legacy-desktop:[width:100%]");
 @source inline("inline-block [max-width:100%] [margin-bottom:5px] [font-weight:700] hidden!");
+@source inline("[background-image:url('/wp-content/uploads/2020/07/BG-Bar.jpg')] [background-repeat:no-repeat] [background-position:center_center] [background-attachment:scroll] [background-size:cover] [border-top-width:1px] [border-right-width:0] [border-bottom-width:1px] [border-left-width:0] [margin-top:10px] [margin-bottom:0] [padding-top:40px] [padding-bottom:40px] [min-width:0]");
+@source inline("[width:25%] [width:16%] [width:29.07%] [width:14.96%] [width:14.97%] [width:70.09%] [width:29.91%] [border-width:1px]");
+@source inline("legacy-max-992:[width:30%]! legacy-max-992:[width:20%]! legacy-max-992:[width:25%]! legacy-max-992:[max-width:none]! legacy-max-992:[flex:0_1_auto]");
+@source inline("legacy-max-768:[width:100%]! legacy-max-768:[width:50%]! legacy-max-768:[max-width:none]! legacy-max-768:[clear:none] legacy-max-768:[float:left] legacy-max-768:[margin-left:15px]!");

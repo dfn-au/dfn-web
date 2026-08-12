@@ -23,6 +23,12 @@
 .\[margin\:0_auto\] {
   margin: 0 auto;
 }
+.\[margin-top\:10px\] {
+  margin-top: 10px;
+}
+.\[margin-bottom\:0\] {
+  margin-bottom: 0;
+}
 .\[margin-bottom\:5px\] {
   margin-bottom: 5px;
 }
@@ -50,6 +56,27 @@
 .\[width\:1px\] {
   width: 1px;
 }
+.\[width\:14\.96\%\] {
+  width: 14.96%;
+}
+.\[width\:14\.97\%\] {
+  width: 14.97%;
+}
+.\[width\:16\%\] {
+  width: 16%;
+}
+.\[width\:25\%\] {
+  width: 25%;
+}
+.\[width\:29\.07\%\] {
+  width: 29.07%;
+}
+.\[width\:29\.91\%\] {
+  width: 29.91%;
+}
+.\[width\:70\.09\%\] {
+  width: 70.09%;
+}
 .\[width\:auto\] {
   width: auto;
 }
@@ -58,6 +85,9 @@
 }
 .\[max-width\:none\] {
   max-width: none;
+}
+.\[min-width\:0\] {
+  min-width: 0;
 }
 .\[cursor\:pointer\] {
   cursor: pointer;
@@ -74,6 +104,21 @@
 .\[border-radius\:4px\] {
   border-radius: 4px;
 }
+.\[border-width\:1px\] {
+  border-width: 1px;
+}
+.\[border-top-width\:1px\] {
+  border-top-width: 1px;
+}
+.\[border-right-width\:0\] {
+  border-right-width: 0;
+}
+.\[border-bottom-width\:1px\] {
+  border-bottom-width: 1px;
+}
+.\[border-left-width\:0\] {
+  border-left-width: 0;
+}
 .bg-\[\#de6026\] {
   background-color: #de6026;
 }
@@ -83,6 +128,21 @@
 .bg-white\! {
   background-color: #fff !important;
 }
+.\[background-image\:url\(\'\/wp-content\/uploads\/2020\/07\/BG-Bar\.jpg\'\)\] {
+  background-image: url('/wp-content/uploads/2020/07/BG-Bar.jpg');
+}
+.\[background-size\:cover\] {
+  background-size: cover;
+}
+.\[background-attachment\:scroll\] {
+  background-attachment: scroll;
+}
+.\[background-position\:center_center\] {
+  background-position: center center;
+}
+.\[background-repeat\:no-repeat\] {
+  background-repeat: no-repeat;
+}
 .\[padding\:0\] {
   padding: 0;
 }
@@ -91,6 +151,12 @@
 }
 .\[padding\:10px_15px\] {
   padding: 10px 15px;
+}
+.\[padding-top\:40px\] {
+  padding-top: 40px;
+}
+.\[padding-bottom\:40px\] {
+  padding-bottom: 40px;
 }
 .\[vertical-align\:middle\] {
   vertical-align: middle;
@@ -323,6 +389,61 @@
 .legacy-desktop\:\[width\:100\%\] {
   @media (min-width: 992px) {
     width: 100%;
+  }
+}
+.legacy-max-992\:\[width\:20\%\]\! {
+  @media (max-width: 992px) {
+    width: 20% !important;
+  }
+}
+.legacy-max-992\:\[width\:25\%\]\! {
+  @media (max-width: 992px) {
+    width: 25% !important;
+  }
+}
+.legacy-max-992\:\[width\:30\%\]\! {
+  @media (max-width: 992px) {
+    width: 30% !important;
+  }
+}
+.legacy-max-992\:\[max-width\:none\]\! {
+  @media (max-width: 992px) {
+    max-width: none !important;
+  }
+}
+.legacy-max-992\:\[flex\:0_1_auto\] {
+  @media (max-width: 992px) {
+    flex: 0 1 auto;
+  }
+}
+.legacy-max-768\:\[float\:left\] {
+  @media (max-width: 768px) {
+    float: left;
+  }
+}
+.legacy-max-768\:\[clear\:none\] {
+  @media (max-width: 768px) {
+    clear: none;
+  }
+}
+.legacy-max-768\:\[margin-left\:15px\]\! {
+  @media (max-width: 768px) {
+    margin-left: 15px !important;
+  }
+}
+.legacy-max-768\:\[width\:50\%\]\! {
+  @media (max-width: 768px) {
+    width: 50% !important;
+  }
+}
+.legacy-max-768\:\[width\:100\%\]\! {
+  @media (max-width: 768px) {
+    width: 100% !important;
+  }
+}
+.legacy-max-768\:\[max-width\:none\]\! {
+  @media (max-width: 768px) {
+    max-width: none !important;
   }
 }
 .legacy-before\:\[display\:table\] {
