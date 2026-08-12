@@ -578,6 +578,9 @@
 .\[width\:40\.99\%\] {
   width: 40.99%;
 }
+.\[width\:50\%\] {
+  width: 50%;
+}
 .\[width\:59\.01\%\] {
   width: 59.01%;
 }
@@ -650,6 +653,9 @@
 .\[border-radius\:0\]\! {
   border-radius: 0 !important;
 }
+.\[border-radius\:3px\]\! {
+  border-radius: 3px !important;
+}
 .\[border-radius\:4px\] {
   border-radius: 4px;
 }
@@ -679,6 +685,9 @@
 }
 .\[border-top-color\:\#efefef\] {
   border-top-color: #efefef;
+}
+.\[background-color\:\#de6026\]\! {
+  background-color: #de6026 !important;
 }
 .\[background-color\:transparent\] {
   background-color: transparent;
@@ -730,6 +739,9 @@
 }
 .\[padding\:0\] {
   padding: 0;
+}
+.\[padding\:6\%\] {
+  padding: 6%;
 }
 .\[padding\:6px_12px\] {
   padding: 6px 12px;
@@ -884,6 +896,9 @@
 .\[letter-spacing\:1px\] {
   letter-spacing: 1px;
 }
+.\[letter-spacing\:1px\]\! {
+  letter-spacing: 1px !important;
+}
 .\[overflow-wrap\:break-word\] {
   overflow-wrap: break-word;
 }
@@ -978,10 +993,31 @@
     margin-bottom: 0;
   }
 }
+.hover\:\[border-color\:\#cc4405\]\! {
+  &:hover {
+    @media (hover: hover) {
+      border-color: #cc4405 !important;
+    }
+  }
+}
+.hover\:\[background-color\:\#b24d1e\]\! {
+  &:hover {
+    @media (hover: hover) {
+      background-color: #b24d1e !important;
+    }
+  }
+}
 .hover\:text-\[\#de6026\] {
   &:hover {
     @media (hover: hover) {
       color: #de6026;
+    }
+  }
+}
+.hover\:text-white\! {
+  &:hover {
+    @media (hover: hover) {
+      color: #fff !important;
     }
   }
 }
@@ -1176,6 +1212,16 @@
     flex: 0 1 auto !important;
   }
 }
+.legacy-max-992\:\[padding\:2\%\]\! {
+  @media (max-width: 992px) {
+    padding: 2% !important;
+  }
+}
+.legacy-max-992\:\[padding\:3\%\]\! {
+  @media (max-width: 992px) {
+    padding: 3% !important;
+  }
+}
 .legacy-max-992\:\[padding-top\:20px\] {
   @media (max-width: 992px) {
     padding-top: 20px;
@@ -1294,6 +1340,11 @@
 .legacy-max-768\:\[padding\:20px_0\] {
   @media (max-width: 768px) {
     padding: 20px 0;
+  }
+}
+.legacy-max-768\:\[padding\:20px_0\]\! {
+  @media (max-width: 768px) {
+    padding: 20px 0 !important;
   }
 }
 .legacy-max-768\:\[padding-left\:0\]\! {
@@ -1658,9 +1709,23 @@
     color: rgba(255,255,255,0.75) !important;
   }
 }
+.\[\&_\*\]\:text-white\! {
+  & * {
+    color: #fff !important;
+  }
+}
 .\[\&_\*\]\:\[transition\:none\] {
   & * {
     transition: none;
+  }
+}
+.hover\:\[\&_\*\]\:text-white\! {
+  &:hover {
+    @media (hover: hover) {
+      & * {
+        color: #fff !important;
+      }
+    }
   }
 }
 .\[\&_\*\:\:after\]\:\[box-sizing\:border-box\] {
