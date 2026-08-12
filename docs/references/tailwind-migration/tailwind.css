@@ -26,6 +26,10 @@
 @custom-variant legacy-heading-link (:is(h1, h2, h3, h4, h5, h6) &:is(a));
 
 @utility legacy-beaver-foundation {
+	& img:is([sizes="auto" i], [sizes^="auto," i]) {
+		contain-intrinsic-size: 3000px 1500px;
+	}
+
 	& :where(.fl-row, .fl-row-content) {
 		margin-left: auto;
 		margin-right: auto;
