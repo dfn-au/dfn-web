@@ -168,7 +168,7 @@
     }
   }
 }
-.legacy-about-beaver-foundation {
+.legacy-beaver-foundation {
   & :where(.fl-row, .fl-row-content) {
     margin-left: auto;
     margin-right: auto;
@@ -178,6 +178,21 @@
     position: relative;
     margin: 20px;
     padding: 20px;
+  }
+  & :where(.fl-row-bg-overlay) :where(.fl-row-content-wrap)::after {
+    border-radius: inherit;
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+  }
+  & :where(.fl-row-bg-overlay) :where(.fl-row-content) {
+    position: relative;
+    z-index: 2;
   }
   &
 		:where(
@@ -377,6 +392,11 @@
 			) {
       display: flex;
     }
+    & :where(.fl-col-group.fl-col-group-responsive-reversed) {
+      display: flex;
+      flex-wrap: wrap-reverse;
+      flex-direction: row-reverse;
+    }
     & :where(.fl-col) {
       clear: both;
       float: none;
@@ -417,6 +437,47 @@
     & :where(.fl-visible-desktop:not(.fl-visible-mobile)) {
       display: none;
     }
+  }
+}
+.legacy-home-subscribe-foundation {
+  & .fl-form-field {
+    margin-bottom: 15px;
+  }
+  & .fl-form-field input,
+	& .fl-form-field input[type="text"],
+	& .fl-form-field input[type="email"] {
+    height: auto;
+    width: 100%;
+    font-size: 16px;
+    line-height: 1;
+    padding: 12px 24px;
+    border-radius: 4px;
+  }
+  & .fl-form-field .hidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  & .fl-form-error-message {
+    clear: both;
+    color: #dd6420;
+    display: none;
+    padding-top: 8px;
+    font-size: 12px;
+    font-weight: lighter;
+  }
+  & .fl-button-width-full .fl-button {
+    width: 100%;
+    display: block;
+    text-align: center;
+  }
+  & .fl-button:is(a, button) {
+    cursor: pointer;
   }
 }
 .\[position\:absolute\] {
