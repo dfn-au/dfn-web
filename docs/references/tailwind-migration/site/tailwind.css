@@ -1,4 +1,255 @@
 /*! tailwindcss v4.3.1 | MIT License | https://tailwindcss.com */
+.legacy-about-beaver-foundation {
+  & :where(.fl-row, .fl-row-content) {
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 0;
+  }
+  & :where(.fl-row-content-wrap) {
+    position: relative;
+    margin: 20px;
+    padding: 20px;
+  }
+  &
+		:where(
+			.fl-row,
+			.fl-row-content,
+			.fl-col-group,
+			.fl-col,
+			.fl-module,
+			.fl-module-content
+		)::before,
+	&
+		:where(
+			.fl-row,
+			.fl-row-content,
+			.fl-col-group,
+			.fl-col,
+			.fl-module,
+			.fl-module-content
+		)::after {
+    display: table;
+    content: " ";
+  }
+  &
+		:where(
+			.fl-row,
+			.fl-row-content,
+			.fl-col-group,
+			.fl-col,
+			.fl-module,
+			.fl-module-content
+		)::after {
+    clear: both;
+  }
+  & :where(.fl-row-default-height, .fl-row-custom-height)
+		:where(.fl-row-content-wrap) {
+    display: flex;
+    min-height: 0;
+  }
+  &
+		:where(
+			.fl-row-default-height,
+			.fl-row-full-height,
+			.fl-row-custom-height
+		)
+		:where(.fl-row-content) {
+    flex: 1 1 auto;
+  }
+  &
+		:where(
+			.fl-row-default-height,
+			.fl-row-full-height,
+			.fl-row-custom-height
+		)
+		:where(.fl-row-full-width.fl-row-content) {
+    max-width: 100%;
+    width: 100%;
+  }
+  &
+		:where(
+			.fl-row-default-height.fl-row-align-center,
+			.fl-row-full-height.fl-row-align-center,
+			.fl-row-custom-height.fl-row-align-center
+		)
+		:where(.fl-row-content-wrap) {
+    -webkit-box-align: center;
+    -webkit-box-pack: center;
+    align-items: center;
+    justify-content: center;
+  }
+  &
+		:where(
+			.fl-row-default-height.fl-row-align-bottom,
+			.fl-row-full-height.fl-row-align-bottom,
+			.fl-row-custom-height.fl-row-align-bottom
+		)
+		:where(.fl-row-content-wrap) {
+    -webkit-box-align: end;
+    -webkit-box-pack: end;
+    align-items: flex-end;
+    justify-content: flex-end;
+  }
+  & :where(.fl-col-group-equal-height) {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  & :where(.fl-col-group-equal-height) :where(.fl-col),
+	& :where(.fl-col-group-equal-height) :where(.fl-col-content) {
+    display: flex;
+    flex: 1 1 auto;
+  }
+  & :where(.fl-col-group-equal-height) :where(.fl-col-content) {
+    flex-direction: column;
+    flex-shrink: 1;
+    min-width: 1px;
+    max-width: 100%;
+    width: 100%;
+  }
+  & :where(.fl-col-group-equal-height)::before,
+	& :where(.fl-col-group-equal-height)::after,
+	& :where(.fl-col-group-equal-height) :where(.fl-col)::before,
+	& :where(.fl-col-group-equal-height) :where(.fl-col)::after,
+	& :where(.fl-col-group-equal-height) :where(.fl-col-content)::before,
+	& :where(.fl-col-group-equal-height) :where(.fl-col-content)::after {
+    content: none;
+  }
+  & :where(.fl-col-group-equal-height.fl-col-group-align-center)
+		:where(.fl-col-content) {
+    justify-content: center;
+  }
+  & :where(.fl-col) {
+    float: left;
+    min-height: 1px;
+  }
+  & :where(.fl-col-content) {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+  }
+  & :where(.fl-clearfix)::before,
+	& :where(.fl-clearfix)::after {
+    display: table;
+    content: " ";
+  }
+  & :where(.fl-clearfix)::after {
+    clear: both;
+  }
+  & .fl-button:is(a, button),
+	& a.fl-button:visited {
+    border-radius: 4px;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 18px;
+    padding: 12px 24px;
+    text-decoration: none;
+    text-shadow: none;
+  }
+  & .fl-button:hover {
+    text-decoration: none;
+  }
+  & .fl-button:active {
+    position: relative;
+    top: 1px;
+  }
+  & .fl-button-left {
+    text-align: left;
+  }
+  & :where(.fl-module img) {
+    max-width: 100%;
+  }
+  & :where(.fl-photo) {
+    line-height: 0;
+    position: relative;
+  }
+  & :where(.fl-photo-align-left) {
+    text-align: left;
+  }
+  & :where(.fl-photo-content) {
+    display: inline-block;
+    line-height: 0;
+    position: relative;
+    max-width: 100%;
+  }
+  & :where(.fl-photo-content img) {
+    display: inline;
+    height: auto;
+    max-width: 100%;
+  }
+  & :where(.fl-row-fixed-width) {
+    max-width: 1100px;
+  }
+  & :where(.fl-module-content) {
+    margin: 20px;
+  }
+  & :where(.fl-module-heading .fl-heading) {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  & :where(.fl-rich-text strong) {
+    font-weight: bold;
+  }
+  & :where(.fl-module.fl-rich-text p:last-child) {
+    margin-bottom: 0;
+  }
+  @media (max-width: 768px) {
+    & :where(.fl-row-content-wrap) {
+      background-attachment: scroll !important;
+    }
+    & :where(.fl-col-group.fl-col-group-equal-height) {
+      display: block;
+    }
+    &
+			:where(
+				.fl-col-group.fl-col-group-equal-height.fl-col-group-custom-width
+			) {
+      display: flex;
+    }
+    & :where(.fl-col) {
+      clear: both;
+      float: none;
+      margin-left: auto;
+      margin-right: auto;
+      width: auto !important;
+    }
+    & :where(.fl-col-small:not(.fl-col-small-full-width)) {
+      max-width: 400px;
+    }
+    & .fl-row[data-node] .fl-row-content-wrap {
+      margin: 0;
+      padding-left: 0;
+      padding-right: 0;
+    }
+    & .fl-col[data-node] .fl-col-content {
+      margin: 0;
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+  @media (min-width: 1201px) {
+    & :where(.fl-visible-medium:not(.fl-visible-desktop)) {
+      display: none;
+    }
+  }
+  @media (min-width: 993px) and (max-width: 1200px) {
+    & :where(.fl-visible-medium:not(.fl-visible-large)) {
+      display: none;
+    }
+  }
+  @media (min-width: 769px) and (max-width: 992px) {
+    & :where(.fl-visible-desktop:not(.fl-visible-medium)) {
+      display: none;
+    }
+  }
+  @media (max-width: 768px) {
+    & :where(.fl-visible-desktop:not(.fl-visible-mobile)) {
+      display: none;
+    }
+  }
+}
 .\[position\:absolute\] {
   position: absolute;
 }
