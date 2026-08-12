@@ -3411,3 +3411,15 @@
     box-sizing: border-box;
   }
 }
+@font-face {
+  font-family: "andada";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/wp-content/uploads/2024/10/Andada-Regular.otf") format("OpenType");
+}
+@font-face {
+  font-family: "vinyl";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/wp-content/uploads/2024/10/vinyl.ttf") format("truetype");
+}
