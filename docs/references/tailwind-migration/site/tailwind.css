@@ -1,4 +1,60 @@
 /*! tailwindcss v4.3.1 | MIT License | https://tailwindcss.com */
+.legacy-smart-slider-static {
+  & #n2-ss-2 .n2-ss-slider-2,
+	& #n2-ss-2 .n2-ss-slider-3,
+	& #n2-ss-2 .n2-ss-slider-4,
+	& #n2-ss-2 .n2-ss-layers-container {
+    min-height: 400px;
+  }
+  & #n2-ss-2 {
+    background: linear-gradient(rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05)),
+			url("/wp-content/uploads/2023/08/DFN-HomepageHeroImages-Motherresized.jpg") 47% 19% / cover no-repeat !important;
+    min-height: 400px;
+    overflow: hidden;
+    position: relative;
+  }
+  & #n2-ss-2 ss3-loader {
+    display: none !important;
+  }
+  & #n2-ss-2 .n2-ss-slide-backgrounds,
+	& #n2-ss-2 .n2-ss-slide-background,
+	& #n2-ss-2 .n2-ss-slide-background-image,
+	& #n2-ss-2 .n2-ss-slide-background-image picture,
+	& #n2-ss-2 .n2-ss-slide-background-image img {
+    inset: 0;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+  }
+  & #n2-ss-2 .n2-ss-slide-background {
+    transform: none !important;
+  }
+  & #n2-ss-2 .n2-ss-slide-backgrounds {
+    position: relative;
+  }
+  & #n2-ss-2 .n2-ss-slide-background:not(:first-child),
+	& #n2-ss-2 .n2-ss-slide:not([data-first="1"]) {
+    display: none !important;
+  }
+  & #n2-ss-2 .n2-ss-slide,
+	& #n2-ss-2 .n2-ss-layers-container {
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
+  }
+  & #n2-ss-2 .n2-ss-slider-controls {
+    display: none !important;
+  }
+  @media (min-width: 769px) {
+    & #n2-ss-2,
+		& #n2-ss-2 .n2-ss-slider-2,
+		& #n2-ss-2 .n2-ss-slider-3,
+		& #n2-ss-2 .n2-ss-slider-4,
+		& #n2-ss-2 .n2-ss-layers-container {
+      min-height: 640px;
+    }
+  }
+}
 .legacy-home-hover-cards {
   & .pp-clearfix::before,
 	& .pp-clearfix::after {
