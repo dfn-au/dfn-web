@@ -104,6 +104,8 @@ export async function capturePageSnapshot(page, { selector = "html" } = {}) {
 		}
 
 		function readTextNodes(element) {
+			if (element.matches("style, script, template, noscript")) return [];
+
 			return Array.from(element.childNodes)
 				.filter(
 					(node) =>
