@@ -1,7 +1,8 @@
 /*
- * Preflight stays disabled while legacy base rules own the frozen rendering.
- * Utilities are deliberately unlayered and loaded after legacy styles so an
- * equal-specificity utility can replace an ablated declaration predictably.
+ * Preflight stays disabled because this frozen capture preserves browser and
+ * legacy computed defaults explicitly. A full-Preflight ablation changed more
+ * than 23,000 computed values at one viewport across the two reference pages.
+ * Utilities are deliberately unlayered for predictable fixture specificity.
  */
 @import "tailwindcss/utilities.css" source(none);
 

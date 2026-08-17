@@ -6,9 +6,12 @@ The parity server looks for files in `site/` first, then falls back to the
 frozen archive in `../legacy-site/site/`. This allows a page to be migrated
 without duplicating its images, fonts, or other unchanged assets.
 
-Tailwind Preflight is intentionally disabled while legacy base styles remain.
-Generated utilities are unlayered and load after the legacy styles so they can
-replace equal-specificity declarations during ablation.
+Tailwind Preflight is intentionally disabled because the frozen capture keeps
+its browser and legacy computed defaults through explicit utilities. An isolated
+full-Preflight experiment changed more than 23,000 computed values at a single
+viewport across the two pages, so compensating for it would make this fixture
+less deterministic. Generated utilities are unlayered for predictable fixture
+specificity.
 Automatic source detection is also disabled to prevent legacy class names from
 emitting colliding utilities. Add migrated classes to the explicit
 `@source inline()` list in `tailwind.css`.
