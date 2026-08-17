@@ -1515,6 +1515,7 @@
 }
 
 @source inline("legacy-smart-slider-generated");
+@source inline("opacity-95 [--ss-o-pos-x:47%]! [--ss-o-pos-y:19%]! [--ss-o-pos-x:51%]! [--ss-o-pos-y:53%]! [background-color:#000] block [--widget-offset:10px] invisible");
 
 @keyframes n2-ss-loader-spin {
   0% {
