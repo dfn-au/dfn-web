@@ -12,9 +12,10 @@ full-Preflight experiment changed more than 23,000 computed values at a single
 viewport across the two pages, so compensating for it would make this fixture
 less deterministic. Generated utilities are unlayered for predictable fixture
 specificity.
-Automatic source detection is also disabled to prevent legacy class names from
-emitting colliding utilities. Add migrated classes to the explicit
-`@source inline()` list in `tailwind.css`.
+Automatic source detection is also disabled to keep unrelated project files out
+of the fixture build. HTML below `site/` is registered explicitly, while legacy
+class names that collide with Tailwind utilities are excluded with
+`@source not inline()` in `tailwind.css`.
 
 To start migrating a page, copy its HTML from the frozen archive into the same
 relative path below `site/`, then edit only the overlay copy:
