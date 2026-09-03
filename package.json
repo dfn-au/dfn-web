@@ -15,6 +15,16 @@
     "check": "pnpm --filter web check",
     "typecheck": "pnpm --filter web typecheck",
     "test": "pnpm --filter web test",
-    "test:watch": "pnpm --filter web test:watch"
+    "test:parity": "node --test scripts/style-parity/*.test.mjs",
+    "test:watch": "pnpm --filter web test:watch",
+    "reference:serve": "node docs/references/legacy-site/serve.mjs",
+    "reference:tailwind": "node scripts/style-parity/build-tailwind.mjs",
+    "reference:parity": "pnpm reference:tailwind && node scripts/style-parity/cli.mjs"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.1",
+    "playwright-core": "^1.62.1",
+    "postcss": "^8.5.15",
+    "tailwindcss": "^4.3.1"
   }
 }
