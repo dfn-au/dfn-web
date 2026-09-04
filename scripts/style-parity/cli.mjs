@@ -30,6 +30,8 @@ const defaultCandidateRoot = path.join(
 const { values } = parseArgs({
 	allowPositionals: false,
 	options: {
+		"candidate-asset-prefix": { type: "string" },
+		"candidate-path-prefix": { type: "string" },
 		"candidate-root": { type: "string" },
 		"candidate-url": { type: "string" },
 		"chrome-path": { type: "string" },
@@ -87,8 +89,13 @@ try {
 				]);
 				const referencePageUrl = new URL(pageDefinition.path, referenceUrl)
 					.href;
-				const candidatePageUrl = new URL(pageDefinition.path, candidateUrl)
-					.href;
+				const candidatePageUrl = new URL(
+					prefixPath(
+						pageDefinition.path,
+						values["candidate-path-prefix"] ?? "",
+					),
+					candidateUrl,
+				).href;
 
 				await Promise.all([
 					referencePage.goto(referencePageUrl, { waitUntil: "load" }),
@@ -97,7 +104,10 @@ try {
 
 				const [referenceSnapshot, candidateSnapshot] = await Promise.all([
 					capturePageSnapshot(referencePage, { selector }),
-					capturePageSnapshot(candidatePage, { selector }),
+					capturePageSnapshot(candidatePage, {
+						selector,
+						urlPathPrefix: values["candidate-asset-prefix"] ?? "",
+					}),
 				]);
 				const differences = compareSnapshots(
 					referenceSnapshot,
@@ -195,6 +205,15 @@ function parseNonNegativeNumber(rawValue, name) {
 	return value;
 }
 
+function prefixPath(pagePath, prefix) {
+	if (!prefix) return pagePath;
+
+	const normalizedPrefix = `/${prefix}`
+		.replaceAll(/\/{2,}/g, "/")
+		.replace(/\/$/, "");
+	return `${normalizedPrefix}${pagePath}`;
+}
+
 async function findChrome(explicitPath) {
 	const candidates = [
 		explicitPath,
@@ -256,6 +275,10 @@ Options:
   -s, --selector <selector>  Limit comparison to a DOM subtree
       --candidate-root <dir> Editable HTML overlay directory
       --candidate-url <url>  Compare with an already-running candidate
+      --candidate-path-prefix <path>
+                            Prefix candidate paths (for example /tailwind-migration)
+      --candidate-asset-prefix <path>
+                            Ignore a candidate-only asset URL prefix
       --reference-url <url>  Compare with an already-running reference
       --chrome-path <path>   Chrome executable path
       --layout-tolerance <n> Numeric layout tolerance (default: 0.05)
