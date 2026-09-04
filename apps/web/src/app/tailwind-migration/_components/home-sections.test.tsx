@@ -11,6 +11,7 @@ describe("Tailwind migration home sections", () => {
 				description="A concise focus-area description."
 				href="/focus-area"
 				image={{ alt: "Example", src: "/example.jpg", title: "Example" }}
+				layout="image-left"
 				title="Education"
 			/>,
 		);
@@ -28,6 +29,7 @@ describe("Tailwind migration home sections", () => {
 				description="Description"
 				href="/focus-area"
 				image={{ alt: "Example", src: "/example.jpg", title: "Example" }}
+				layout="image-left"
 				title="Education"
 			/>,
 		);
@@ -35,5 +37,22 @@ describe("Tailwind migration home sections", () => {
 		expect(markup).not.toMatch(/fl-node-/);
 		expect(markup).not.toContain("fl-module-rich-text");
 		expect(markup).not.toMatch(/wp-image-/);
+	});
+
+	it("places the image after the content for right-image sections", () => {
+		const markup = renderToStaticMarkup(
+			<FocusAreaSection
+				ctaLabel="Learn more"
+				description="Description"
+				href="/focus-area"
+				image={{ alt: "Example", src: "/example.jpg", title: "Example" }}
+				layout="image-right"
+				title="Healthcare"
+			/>,
+		);
+
+		expect(markup.indexOf("Healthcare")).toBeLessThan(
+			markup.indexOf("/example.jpg"),
+		);
 	});
 });

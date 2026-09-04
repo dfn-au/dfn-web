@@ -171,149 +171,34 @@ export function HomeTailwindReference() {
 	description="Opens doors and opportunities. Education empowers children and gives them a reason to dream. Our schools provide quality, English-medium education to children from poor and marginalised communities including health care, sports and the Arts; emphasising respect for others, self-worth, dignity, freedom and equality."
 	href="https://dfn.org.au/education/"
 	image={{ alt: "DFN-HomepageHeroImages-KidsClass-landscape-resized", src: "/tailwind-migration/reference/wp-content/uploads/bb-plugin/cache/DFN-HomepageHeroImages-KidsClass-landscape-resized-landscape-ded82d0737bfa22840482d215ee09a8a-5f1a30ba14b55.jpg", title: "DFN-HomepageHeroImages-KidsClass-landscape-resized" }}
+	layout="image-left"
+	startsFlush
 	title="Education"
 />
-<div className="fl-row fl-row-full-width fl-row-bg-color fl-node-5f1a243249453 fl-row-default-height fl-row-align-center" data-node="5f1a243249453">
-	<div className="mt-[10px] mb-[10px] p-[0] legacy-max-768:m-[10px]! legacy-max-768:p-[20px_0]! fl-row-content-wrap">
-						<div className="fl-row-content fl-row-full-width fl-node-content">
-
-<div className="fl-col-group fl-node-5f1a243249445 fl-col-group-equal-height fl-col-group-align-center fl-col-group-custom-width" data-node="5f1a243249445">
-			<div className="w-1/2 legacy-max-768:w-full! legacy-max-768:max-w-none! legacy-max-768:clear-none legacy-max-768:float-left fl-col fl-node-5f1a24324944b fl-col-bg-color fl-col-small fl-col-small-custom-width" data-node="5f1a24324944b">
-	<div className="p-[6%] legacy-max-992:p-[2%]! fl-col-content fl-node-content"><div className="fl-module fl-module-heading fl-node-5f1a24324944d" data-node="5f1a24324944d">
-	<div className="mb-[5px] fl-module-content fl-node-content">
-		<h2 className="font-vinyl text-[#333] [font-weight:400] uppercase not-italic text-[32px] [line-height:1.2] text-left [letter-spacing:1px] legacy-tablet:text-[30px] legacy-max-992:text-[24px] legacy-tablet:[letter-spacing:0] fl-heading">
-		<span className="fl-heading-text">Healthcare</span>
-	</h2>
-	</div>
-</div>
-<div className="fl-module fl-module-rich-text fl-node-5f1a24324944e" data-node="5f1a24324944e">
-	<div className="mt-[5px] mb-[10px] legacy-max-768:mt-[0] fl-module-content fl-node-content">
-		<div className="[line-height:1.8] legacy-max-992:text-[16px] legacy-max-992:[line-height:1.5] fl-rich-text">
-	<p className="m-[0_0_10px] p1">Healthcare is essential to break the poverty cycle. Community Health Workers, primary clinics and HIV/AIDS centres help prevent sickness and disease – a cause and consequence of poverty and inequality. Currently our focus is mitigating the impact of COVID-19.</p>
-</div>
-	</div>
-</div>
-<div className="fl-module fl-module-button fl-node-5f1a2ad2ef214" data-node="5f1a2ad2ef214">
-	<div className="mt-[10px] fl-module-content fl-node-content">
-		<div className="fl-button-wrap fl-button-width-auto fl-button-left">
-			<a href="https://dfn.org.au/give/healthcare/" target="_self" className="legacy-link legacy-home-cta fl-button">
-							<span className="fl-button-text">Healthcare</span>
-					</a>
-</div>
-	</div>
-</div>
-</div>
-</div>
-			<div className="w-1/2 legacy-max-768:w-full! legacy-max-768:max-w-none! legacy-max-768:clear-none legacy-max-768:float-left fl-col fl-node-5f1a24324944a fl-col-bg-color fl-col-small fl-col-small-custom-width" data-node="5f1a24324944a">
-	<div className="fl-col-content fl-node-content"><div className="text-center fl-module fl-module-photo fl-node-5f1a24324944c" data-node="5f1a24324944c">
-	<div className="m-[0] fl-module-content fl-node-content">
-		<div role="figure" className="fl-photo fl-photo-align-center fl-photo-crop-landscape" itemScope itemType="https://schema.org/ImageObject">
-	<div className="fl-photo-content fl-photo-img-jpg">
-				<img loading="lazy" decoding="async" className="max-w-full h-auto [border:0] align-middle fl-photo-img wp-image-4263 size-full" src="/tailwind-migration/reference/wp-content/uploads/bb-plugin/cache/Health-Workers-2-web-resized-landscape-8d7c8d75f5aa5b877a975a71e0d63469-5f1a24324944c.jpg" alt="Health-Workers-2-web-resized" height="672" width="960" title="Health-Workers-2-web-resized" itemProp="image" />
-					</div>
-	</div>
-	</div>
-</div>
-</div>
-</div>
-	</div>
-		</div>
-	</div>
-</div>
-<div className="fl-row fl-row-full-width fl-row-bg-color fl-node-5f1a414f12f8e fl-row-default-height fl-row-align-center" data-node="5f1a414f12f8e">
-	<div className="mt-[10px] mb-[10px] p-[0] legacy-max-992:mt-[0] legacy-max-768:m-[10px]! legacy-max-768:p-[20px_0]! fl-row-content-wrap">
-						<div className="fl-row-content fl-row-full-width fl-node-content">
-
-<div className="fl-col-group fl-node-5f1a414f1304d fl-col-group-equal-height fl-col-group-align-center fl-col-group-custom-width" data-node="5f1a414f1304d">
-			<div className="w-1/2 legacy-max-768:w-full! legacy-max-768:max-w-none! legacy-max-768:clear-none legacy-max-768:float-left fl-col fl-node-5f1a414f1304f fl-col-bg-color fl-col-small fl-col-small-custom-width" data-node="5f1a414f1304f">
-	<div className="fl-col-content fl-node-content"><div className="text-center fl-module fl-module-photo fl-node-5f1a414f13050" data-node="5f1a414f13050">
-	<div className="m-[0] fl-module-content fl-node-content">
-		<div role="figure" className="fl-photo fl-photo-align-center fl-photo-crop-landscape" itemScope itemType="https://schema.org/ImageObject">
-	<div className="fl-photo-content fl-photo-img-jpg">
-				<img loading="lazy" decoding="async" className="max-w-full h-auto [border:0] align-middle fl-photo-img wp-image-4264 size-full" src="/tailwind-migration/reference/wp-content/uploads/bb-plugin/cache/EconomicEmpower-resized-landscape-72dbc3c7dab2c48fa69b2e82a9742faf-5f1a414f13050.jpg" alt="EconomicEmpower-resized" height="672" width="960" title="EconomicEmpower-resized" itemProp="image" />
-					</div>
-	</div>
-	</div>
-</div>
-</div>
-</div>
-			<div className="w-1/2 legacy-max-768:w-full! legacy-max-768:max-w-none! legacy-max-768:clear-none legacy-max-768:float-left fl-col fl-node-5f1a414f13051 fl-col-bg-color fl-col-small fl-col-small-custom-width" data-node="5f1a414f13051">
-	<div className="p-[6%] legacy-max-992:p-[3%]! fl-col-content fl-node-content"><div className="fl-module fl-module-heading fl-node-5f1a414f13052" data-node="5f1a414f13052">
-	<div className="mb-[5px] fl-module-content fl-node-content">
-		<h2 className="font-vinyl text-[#333] [font-weight:400] uppercase not-italic text-[32px] [line-height:1.2] text-left [letter-spacing:1px] legacy-tablet:text-[30px] legacy-max-992:text-[24px] legacy-tablet:[letter-spacing:0] fl-heading">
-		<span className="fl-heading-text">ECONOMIC EMPOWERMENT</span>
-	</h2>
-	</div>
-</div>
-<div className="fl-module fl-module-rich-text fl-node-5f1a414f13053" data-node="5f1a414f13053">
-	<div className="mt-[5px] mb-[10px] legacy-max-768:mt-[0] fl-module-content fl-node-content">
-		<div className="[line-height:1.8] legacy-max-992:text-[16px] legacy-max-992:[line-height:1.5] fl-rich-text">
-	<p className="m-[0_0_10px] p1">Economic Empowerment restores the potential for earned dignity. Business start-up grants, self-help groups and vocational training enable the poor and vulnerable to earn a livelihood, become self-sufficient and hold their heads up high.</p>
-</div>
-	</div>
-</div>
-<div className="fl-module fl-module-button fl-node-5f1a414f13054" data-node="5f1a414f13054">
-	<div className="mt-[10px] fl-module-content fl-node-content">
-		<div className="fl-button-wrap fl-button-width-auto fl-button-left">
-			<a href="https://dfn.org.au/give/economic-empowerment/" target="_self" className="legacy-link legacy-home-cta fl-button">
-							<span className="fl-button-text">ECONOMIC EMPOWERMENT</span>
-					</a>
-</div>
-	</div>
-</div>
-</div>
-</div>
-	</div>
-		</div>
-	</div>
-</div>
-<div className="fl-row fl-row-full-width fl-row-bg-color fl-node-5f8e4586498ad fl-row-default-height fl-row-align-center" data-node="5f8e4586498ad">
-	<div className="mt-[10px] mb-[10px] p-[0] legacy-max-768:m-[10px]! legacy-max-768:p-[20px_0]! fl-row-content-wrap">
-						<div className="fl-row-content fl-row-full-width fl-node-content">
-
-<div className="fl-col-group fl-node-5f8e4586499a3 fl-col-group-equal-height fl-col-group-align-center fl-col-group-custom-width" data-node="5f8e4586499a3">
-			<div className="w-1/2 legacy-max-768:w-full! legacy-max-768:max-w-none! legacy-max-768:clear-none legacy-max-768:float-left fl-col fl-node-5f8e4586499a5 fl-col-bg-color fl-col-small fl-col-small-custom-width" data-node="5f8e4586499a5">
-	<div className="p-[6%] legacy-max-992:p-[2%]! fl-col-content fl-node-content"><div className="fl-module fl-module-heading fl-node-5f8e4586499a6" data-node="5f8e4586499a6">
-	<div className="mb-[5px] fl-module-content fl-node-content">
-		<h2 className="font-vinyl text-[#333] [font-weight:400] uppercase not-italic text-[32px] [line-height:1.2] text-left [letter-spacing:1px] legacy-tablet:text-[30px] legacy-max-992:text-[24px] legacy-tablet:[letter-spacing:0] fl-heading">
-		<span className="fl-heading-text">Vulnerable women and girls</span>
-	</h2>
-	</div>
-</div>
-<div className="fl-module fl-module-rich-text fl-node-5f8e4586499a7" data-node="5f8e4586499a7">
-	<div className="mt-[5px] mb-[10px] legacy-max-768:mt-[0] fl-module-content fl-node-content">
-		<div className="[line-height:1.8] legacy-max-992:text-[16px] legacy-max-992:[line-height:1.5] fl-rich-text">
-	<p className="m-[0_0_10px] p1">Prevention and awareness programmes among at-risk women and girls and their local community. Our teams protect vulnerable girls wherever possible and rescue abused women and girls. We provide these empower these women and girls to find a new future with health, dignity and hope.</p>
-</div>
-	</div>
-</div>
-<div className="fl-module fl-module-button fl-node-5f8e4586499a8" data-node="5f8e4586499a8">
-	<div className="mt-[10px] fl-module-content fl-node-content">
-		<div className="fl-button-wrap fl-button-width-auto fl-button-left">
-			<a href="https://dfn.org.au/anti-human-trafficking/" target="_self" className="legacy-link legacy-home-cta fl-button">
-							<span className="fl-button-text">Vulnerable women and girls</span>
-					</a>
-</div>
-	</div>
-</div>
-</div>
-</div>
-			<div className="w-1/2 legacy-max-768:w-full! legacy-max-768:max-w-none! legacy-max-768:clear-none legacy-max-768:float-left fl-col fl-node-5f8e4586499a9 fl-col-bg-color fl-col-small fl-col-small-custom-width" data-node="5f8e4586499a9">
-	<div className="fl-col-content fl-node-content"><div className="text-center fl-module fl-module-photo fl-node-5f8e4586499aa" data-node="5f8e4586499aa">
-	<div className="m-[0] fl-module-content fl-node-content">
-		<div role="figure" className="fl-photo fl-photo-align-center fl-photo-crop-landscape" itemScope itemType="https://schema.org/ImageObject">
-	<div className="fl-photo-content fl-photo-img-jpg">
-				<img loading="lazy" decoding="async" className="max-w-full h-auto [border:0] align-middle fl-photo-img wp-image-4265 size-full" src="/tailwind-migration/reference/wp-content/uploads/bb-plugin/cache/IMG_6118resized-landscape-52579888afcf441cd45e06a5eae7cee9-5f8e4586499aa.jpg" alt="IMG_6118resized" height="672" width="960" title="IMG_6118resized" itemProp="image" />
-					</div>
-	</div>
-	</div>
-</div>
-</div>
-</div>
-	</div>
-		</div>
-	</div>
-</div>
+<FocusAreaSection
+	ctaLabel="Healthcare"
+	description="Healthcare is essential to break the poverty cycle. Community Health Workers, primary clinics and HIV/AIDS centres help prevent sickness and disease – a cause and consequence of poverty and inequality. Currently our focus is mitigating the impact of COVID-19."
+	href="https://dfn.org.au/give/healthcare/"
+	image={{ alt: "Health-Workers-2-web-resized", src: "/tailwind-migration/reference/wp-content/uploads/bb-plugin/cache/Health-Workers-2-web-resized-landscape-8d7c8d75f5aa5b877a975a71e0d63469-5f1a24324944c.jpg", title: "Health-Workers-2-web-resized" }}
+	layout="image-right"
+	title="Healthcare"
+/>
+<FocusAreaSection
+	ctaLabel="ECONOMIC EMPOWERMENT"
+	description="Economic Empowerment restores the potential for earned dignity. Business start-up grants, self-help groups and vocational training enable the poor and vulnerable to earn a livelihood, become self-sufficient and hold their heads up high."
+	href="https://dfn.org.au/give/economic-empowerment/"
+	image={{ alt: "EconomicEmpower-resized", src: "/tailwind-migration/reference/wp-content/uploads/bb-plugin/cache/EconomicEmpower-resized-landscape-72dbc3c7dab2c48fa69b2e82a9742faf-5f1a414f13050.jpg", title: "EconomicEmpower-resized" }}
+	layout="image-left-mobile-first"
+	title="ECONOMIC EMPOWERMENT"
+/>
+<FocusAreaSection
+	ctaLabel="Vulnerable women and girls"
+	description="Prevention and awareness programmes among at-risk women and girls and their local community. Our teams protect vulnerable girls wherever possible and rescue abused women and girls. We provide these empower these women and girls to find a new future with health, dignity and hope."
+	href="https://dfn.org.au/anti-human-trafficking/"
+	image={{ alt: "IMG_6118resized", src: "/tailwind-migration/reference/wp-content/uploads/bb-plugin/cache/IMG_6118resized-landscape-52579888afcf441cd45e06a5eae7cee9-5f8e4586499aa.jpg", title: "IMG_6118resized" }}
+	layout="image-right"
+	title="Vulnerable women and girls"
+/>
 <div className="fl-row fl-row-full-width fl-row-bg-color fl-node-5f1a322819f47 fl-row-default-height fl-row-align-center" data-node="5f1a322819f47">
 	<div className="bg-[#efefef] mt-[10px] mb-[10px] p-[0] legacy-max-768:m-[10px]! legacy-max-768:p-[20px_0]! fl-row-content-wrap">
 						<div className="fl-row-content fl-row-full-width fl-node-content">

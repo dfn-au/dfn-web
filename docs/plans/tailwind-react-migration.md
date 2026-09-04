@@ -17,7 +17,7 @@ The overlay's `fl-*`, `pp-*`, `n2-*`, and `wp-*` classes are temporary migration
 
 1. **Mechanical JSX checkpoint — complete.** Render the exact home and About overlay DOM as server-rendered JSX, serve its archived assets, and compare the `.fl-page` subtree against the frozen reference.
 2. **Extract shared chrome — complete.** Create semantic header, navigation, and footer components; remove inert builder-instance classes while retaining only the structural compatibility hooks still proven necessary by parity.
-3. **Extract page sections — in progress.** The home Education focus area now renders through a typed `FocusAreaSection`; continue replacing the remaining page-specific sections one at a time.
+3. **Extract page sections — in progress.** All four home focus areas now render through a typed `FocusAreaSection`; continue replacing the remaining page-specific sections one at a time.
 4. **Retire the compatibility stylesheet.** Move surviving Tailwind utilities into the normal application build and delete obsolete class families and rules.
 5. **Connect content and cut over.** Map the components to Sanity content, repeat visual/regression checks, then replace the production routes.
 

@@ -167,16 +167,62 @@ function renderComponent(pageDefinition, documentSnapshot) {
 }
 
 function replaceHomeFocusArea(html) {
-	const educationSection = extractElementByDataNode(html, "5f1a30ba14a95");
-	const component = `<FocusAreaSection
+	const focusAreas = [
+		{
+			component: `<FocusAreaSection
 	ctaLabel="Education"
 	description="Opens doors and opportunities. Education empowers children and gives them a reason to dream. Our schools provide quality, English-medium education to children from poor and marginalised communities including health care, sports and the Arts; emphasising respect for others, self-worth, dignity, freedom and equality."
 	href="https://dfn.org.au/education/"
 	image={{ alt: "DFN-HomepageHeroImages-KidsClass-landscape-resized", src: "${assetBasePath}/wp-content/uploads/bb-plugin/cache/DFN-HomepageHeroImages-KidsClass-landscape-resized-landscape-ded82d0737bfa22840482d215ee09a8a-5f1a30ba14b55.jpg", title: "DFN-HomepageHeroImages-KidsClass-landscape-resized" }}
+	layout="image-left"
+	startsFlush
 	title="Education"
-/>`;
+/>`,
+			nodeId: "5f1a30ba14a95",
+		},
+		{
+			component: `<FocusAreaSection
+	ctaLabel="Healthcare"
+	description="Healthcare is essential to break the poverty cycle. Community Health Workers, primary clinics and HIV/AIDS centres help prevent sickness and disease – a cause and consequence of poverty and inequality. Currently our focus is mitigating the impact of COVID-19."
+	href="https://dfn.org.au/give/healthcare/"
+	image={{ alt: "Health-Workers-2-web-resized", src: "${assetBasePath}/wp-content/uploads/bb-plugin/cache/Health-Workers-2-web-resized-landscape-8d7c8d75f5aa5b877a975a71e0d63469-5f1a24324944c.jpg", title: "Health-Workers-2-web-resized" }}
+	layout="image-right"
+	title="Healthcare"
+/>`,
+			nodeId: "5f1a243249453",
+		},
+		{
+			component: `<FocusAreaSection
+	ctaLabel="ECONOMIC EMPOWERMENT"
+	description="Economic Empowerment restores the potential for earned dignity. Business start-up grants, self-help groups and vocational training enable the poor and vulnerable to earn a livelihood, become self-sufficient and hold their heads up high."
+	href="https://dfn.org.au/give/economic-empowerment/"
+	image={{ alt: "EconomicEmpower-resized", src: "${assetBasePath}/wp-content/uploads/bb-plugin/cache/EconomicEmpower-resized-landscape-72dbc3c7dab2c48fa69b2e82a9742faf-5f1a414f13050.jpg", title: "EconomicEmpower-resized" }}
+	layout="image-left-mobile-first"
+	title="ECONOMIC EMPOWERMENT"
+/>`,
+			nodeId: "5f1a414f12f8e",
+		},
+		{
+			component: `<FocusAreaSection
+	ctaLabel="Vulnerable women and girls"
+	description="Prevention and awareness programmes among at-risk women and girls and their local community. Our teams protect vulnerable girls wherever possible and rescue abused women and girls. We provide these empower these women and girls to find a new future with health, dignity and hope."
+	href="https://dfn.org.au/anti-human-trafficking/"
+	image={{ alt: "IMG_6118resized", src: "${assetBasePath}/wp-content/uploads/bb-plugin/cache/IMG_6118resized-landscape-52579888afcf441cd45e06a5eae7cee9-5f8e4586499aa.jpg", title: "IMG_6118resized" }}
+	layout="image-right"
+	title="Vulnerable women and girls"
+/>`,
+			nodeId: "5f8e4586498ad",
+		},
+	];
 
-	return html.replace(educationSection, component);
+	return focusAreas.reduce(
+		(result, focusArea) =>
+			result.replace(
+				extractElementByDataNode(result, focusArea.nodeId),
+				focusArea.component,
+			),
+		html,
+	);
 }
 
 function extractElementByDataNode(html, nodeId) {
