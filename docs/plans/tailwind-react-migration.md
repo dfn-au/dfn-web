@@ -16,7 +16,7 @@ The overlay's `fl-*`, `pp-*`, `n2-*`, and `wp-*` classes are temporary migration
 ## Sequence
 
 1. **Mechanical JSX checkpoint — complete.** Render the exact home and About overlay DOM as server-rendered JSX, serve its archived assets, and compare the `.fl-page` subtree against the frozen reference.
-2. **Extract shared chrome.** Create semantic header, navigation, and footer components; remove the corresponding legacy classes while keeping parity.
+2. **Extract shared chrome — complete.** Create semantic header, navigation, and footer components; remove inert builder-instance classes while retaining only the structural compatibility hooks still proven necessary by parity.
 3. **Extract page sections.** Replace one legacy section at a time with named React components and typed content props.
 4. **Retire the compatibility stylesheet.** Move surviving Tailwind utilities into the normal application build and delete obsolete class families and rules.
 5. **Connect content and cut over.** Map the components to Sanity content, repeat visual/regression checks, then replace the production routes.
