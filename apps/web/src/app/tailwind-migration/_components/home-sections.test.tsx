@@ -1,0 +1,39 @@
+import { renderToStaticMarkup } from "react-dom/server";
+import { describe, expect, it } from "vitest";
+
+import { FocusAreaSection } from "./home-sections";
+
+describe("Tailwind migration home sections", () => {
+	it("renders focus-area content through typed props", () => {
+		const markup = renderToStaticMarkup(
+			<FocusAreaSection
+				ctaLabel="Learn more"
+				description="A concise focus-area description."
+				href="/focus-area"
+				image={{ alt: "Example", src: "/example.jpg", title: "Example" }}
+				title="Education"
+			/>,
+		);
+
+		expect(markup).toContain("Education");
+		expect(markup).toContain("A concise focus-area description.");
+		expect(markup).toContain('href="/focus-area"');
+		expect(markup).toContain('src="/example.jpg"');
+	});
+
+	it("does not expose builder instance or module-type classes", () => {
+		const markup = renderToStaticMarkup(
+			<FocusAreaSection
+				ctaLabel="Learn more"
+				description="Description"
+				href="/focus-area"
+				image={{ alt: "Example", src: "/example.jpg", title: "Example" }}
+				title="Education"
+			/>,
+		);
+
+		expect(markup).not.toMatch(/fl-node-/);
+		expect(markup).not.toContain("fl-module-rich-text");
+		expect(markup).not.toMatch(/wp-image-/);
+	});
+});
