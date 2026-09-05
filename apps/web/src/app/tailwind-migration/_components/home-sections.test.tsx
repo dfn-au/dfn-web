@@ -34,9 +34,8 @@ describe("Tailwind migration home sections", () => {
 			/>,
 		);
 
-		expect(markup).not.toMatch(/fl-node-/);
-		expect(markup).not.toContain("fl-module-rich-text");
-		expect(markup).not.toMatch(/wp-image-/);
+		expect(markup).not.toMatch(/\b(?:fl-|pp-|wp-|legacy-(?:home-cta|link))/);
+		expect(markup).not.toContain("data-node");
 	});
 
 	it("places the image after the content for right-image sections", () => {

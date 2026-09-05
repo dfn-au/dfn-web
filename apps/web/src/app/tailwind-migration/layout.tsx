@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import "./components.css";
 
 const assetBasePath = "/tailwind-migration/reference";
 const htmlClassName =
