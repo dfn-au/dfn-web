@@ -37,10 +37,17 @@ try {
 
 	async function compareState(name, prepare, selector) {
 		await Promise.all(
-			pages.map(async (page) => {
+			pages.map(async (page, index) => {
 				await page.mouse.move(0, 0);
 				await page.evaluate(() => document.activeElement?.blur());
-				await prepare(page);
+				await page.locator(".pp-hover-card.focus").evaluateAll((elements) => {
+					for (const element of elements) element.classList.remove("focus");
+				});
+				await page.locator("[data-component-state]").evaluateAll((elements) => {
+					for (const element of elements)
+						element.removeAttribute("data-component-state");
+				});
+				await prepare(page, index);
 			}),
 		);
 		const snapshots = await Promise.all(
@@ -95,23 +102,89 @@ try {
 			await compareState(
 				`${name} CTA ${state}`,
 				async (page) => {
-					await page
-						.locator("[data-component-state]")
-						.evaluateAll((elements) => {
-							for (const element of elements)
-								element.removeAttribute("data-component-state");
-						});
 					const link = page
 						.locator("#fl-main-content")
 						.getByRole("link", { name, exact: true });
-					await link.evaluate((element) =>
-						element.setAttribute("data-component-state", ""),
-					);
+					await mark(link);
 					await link[state]();
 				},
 				"[data-component-state]",
 			);
 		}
+	}
+
+	async function mark(locator) {
+		await locator.evaluate((element) =>
+			element.setAttribute("data-component-state", ""),
+		);
+	}
+
+	for (const state of ["hover", "focus"]) {
+		await compareState(
+			`Hero CTA ${state}`,
+			async (page) => {
+				const link = page
+					.getByRole("region", { name: "Slider" })
+					.getByRole("link", { name: "Learn More", exact: true });
+				await mark(link);
+				await link[state]();
+			},
+			"[data-component-state]",
+		);
+	}
+
+	for (const name of [
+		"Education",
+		"Healthcare",
+		"Economic Empowerment",
+		"VULNERABLE COMMUNITIES",
+	]) {
+		for (const state of ["hover", "focus", "link focus"]) {
+			await compareState(
+				`${name} introduction card ${state}`,
+				async (page, index) => {
+					const card = page
+						.getByRole("heading", { level: 3, name, exact: true })
+						.locator("xpath=ancestor::div[@tabindex='0'][1]");
+					await mark(card);
+					if (state === "hover") await card.hover();
+					else {
+						await (state === "link focus" ? card.locator("a") : card).focus();
+						// The archived card runtime exposed focus styling through .focus.
+						// The React presentation uses CSS :focus-within for the same state.
+						if (index === 0)
+							await card.evaluate((element) => element.classList.add("focus"));
+					}
+				},
+				"[data-component-state]",
+			);
+		}
+	}
+
+	for (const name of ["Name", "Email"]) {
+		await compareState(
+			`Signup ${name} field focus`,
+			async (page) => {
+				const input = page.getByRole("textbox", { name, exact: true });
+				await mark(input);
+				await input.focus();
+			},
+			"[data-component-state]",
+		);
+	}
+	for (const state of ["hover", "focus"]) {
+		await compareState(
+			`Signup CTA ${state}`,
+			async (page) => {
+				const button = page.getByRole("button", {
+					name: "Sign Up",
+					exact: true,
+				});
+				await mark(button);
+				await button[state]();
+			},
+			"[data-component-state]",
+		);
 	}
 } finally {
 	await browser?.close();

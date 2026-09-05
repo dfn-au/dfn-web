@@ -14,5 +14,20 @@
 @custom-variant legacy-max-768 (@media (max-width: 768px));
 @custom-variant legacy-max-1200 (@media (max-width: 1200px));
 @custom-variant legacy-min-993 (@media (min-width: 993px));
+@custom-variant legacy-min-769 (@media (min-width: 769px));
+@custom-variant hero-mobile {
+	@media (orientation: landscape) and (max-width: 900px),
+		(orientation: portrait) and (max-width: 700px) {
+		@slot;
+	}
+}
+@custom-variant hero-tablet {
+	@media (orientation: landscape) and (max-width: 1199px) and (
+			min-width: 901px
+		),
+		(orientation: portrait) and (max-width: 1199px) and (min-width: 701px) {
+		@slot;
+	}
+}
 @custom-variant legacy-before (&::before);
 @custom-variant legacy-after (&::after);

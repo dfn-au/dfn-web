@@ -83,6 +83,16 @@ function renderComponent(pageDefinition, documentSnapshot) {
 	);
 	if (pageDefinition.referencePath === "index.html") {
 		rewrittenHtml = replaceHomeFocusArea(rewrittenHtml);
+		for (const [nodeId, component] of [
+			["5f18c3dbcbbf6", "HomeHero"],
+			["5f8e5d5c8fbd1", "HomeIntroduction"],
+			["5f1a322819f47", "HomeSignup"],
+		]) {
+			rewrittenHtml = rewrittenHtml.replace(
+				extractElementByDataNode(rewrittenHtml, nodeId),
+				`<${component} />`,
+			);
+		}
 	}
 	const usesCustomElement = rewrittenHtml.includes("<ss3-loader");
 	const currentPage =
@@ -105,7 +115,7 @@ function renderComponent(pageDefinition, documentSnapshot) {
 		'import { SiteFooter, SiteHeader } from "../_components/site-chrome";\n\n';
 	const pageSectionImport =
 		pageDefinition.referencePath === "index.html"
-			? 'import { FocusAreaSection } from "../_components/home-sections";\n'
+			? '\nimport { HomeHero } from "../_components/home-hero";\nimport { HomeIntroduction } from "../_components/home-introduction";\nimport { FocusAreaSection } from "../_components/home-sections";\nimport { HomeSignup } from "../_components/home-signup";\n'
 			: "";
 	const bodyItemType = documentSnapshot.bodyItemType
 		? ` itemType=${JSON.stringify(documentSnapshot.bodyItemType)}`
