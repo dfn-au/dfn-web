@@ -6,29 +6,32 @@ Replace the legacy WordPress/Beaver Builder reference with maintainable React pa
 
 ## Current hand-off — 2026-09-05
 
-Continue on `ah/react-tailwind-preview`. Latest implementation commit: `ae48ae6` (`refactor: migrate shared chrome and focus areas to Tailwind utilities`). The implementation was committed with a clean worktree; no push was performed in that batch.
+Continue on `ah/react-tailwind-preview`. Latest implementation commit: `2d8c444` (`refactor: migrate remaining home presentation to Tailwind`). No push was performed in this batch.
 
 This document is the migration's rolling status and hand-off. Update this section after each batch and append a short entry to the update log below, including the implementation commit, validation, and remaining work. The log was added on 2026-09-05; earlier entries are reconstructed from commits.
 
 ### Next batch
 
-Migrate the remaining **home-page sections together**: the static hero, introduction/hover cards, and newsletter signup presentation. Extract maintained, typed React components, replace their builder styling hooks with explicit Tailwind utilities, and update the JSX generator to insert those components. Preserve existing hover/focus styling and add coverage for newly extracted sections. Run focused checks while implementing, then one full acceptance gate for the completed batch—the user prefers larger coherent batches to amortize test time.
+Migrate the **About-page sections together** on the preview route: extract maintained, typed React components, replace builder styling hooks with explicit Tailwind utilities, and update the JSX generator to insert those components. Preserve the current tab presentation and wrapper topology, add coverage for extracted content and existing states, then run one full acceptance gate for the completed batch. The user prefers larger coherent batches to amortize test time.
 
-Keep this batch on the preview routes. Slider playback, mobile-menu behaviour, signup submission, About tabs, Sanity integration, and production cutover are separate work; do not imply that extracting their markup implements those behaviours. After the remaining home sections, migrate About sections as the next styling batch.
+All home sections now have maintained presentation components. Slider playback, mobile-menu behaviour, signup submission, About tab switching, Sanity integration, and production cutover remain separate work. Do not imply that extracting markup implements those behaviours.
 
 ### Where to work
 
-- `apps/web/src/app/tailwind-migration/_components/`: maintained components and their tests. `site-chrome.tsx` owns header/navigation/footer; `home-sections.tsx` owns all four focus areas.
+- `apps/web/src/app/tailwind-migration/_components/`: maintained components and their tests. `site-chrome.tsx` owns header/navigation/footer; `home-sections.tsx` owns all four focus areas; `home-hero.tsx`, `home-introduction.tsx`, and `home-signup.tsx` own the remaining home presentation and typed content defaults.
 - `apps/web/src/app/tailwind-migration/components.css`: utilities compiled by Next.js for maintained components, with Preflight disabled.
 - `apps/web/src/app/tailwind-migration/_generated/`: remaining mechanical JSX snapshots; do not hand-edit without updating the generator.
 - `scripts/react-migration/generate-reference-jsx.mjs`: generates only the two `_generated/` pages. It must never overwrite maintained components.
-- `scripts/react-migration/check-component-states.mjs`: desktop dropdown and focus-area CTA hover/focus comparisons.
+- `scripts/react-migration/check-component-states.mjs`: 29 desktop dropdown, focus-area CTA, hero CTA, introduction-card, and signup hover/focus comparisons.
 - `scripts/style-parity/`: frozen-reference DOM/computed-style/layout comparator.
 
 ### Constraints and known limits
 
-- Extracted chrome and focus areas no longer use builder classes or `data-node` attributes. Remaining generated sections still do; migration is not finished.
+- Shared chrome and all home section components no longer use builder classes or `data-node` attributes. Generated page shells and About sections still do; migration is not finished.
 - `legacy-max-768:`, `legacy-min-993:`, `legacy-before:`, and similar names in maintained components are Tailwind custom variants for the original breakpoints/pseudo-elements, not Beaver Builder classes.
+- The static hero retains its hidden slide/control DOM, inert `ss3-loader` tag, and scalar CSS custom-property names to preserve the checkpoint. Its image content is supplied through typed props; playback remains unimplemented.
+- Introduction cards use CSS `:focus-within` for the archived card focus appearance. State checks emulate the original runtime’s `.focus` class on the reference only, testing both the card and its link as keyboard targets.
+- The comparator normalizes only omitted leading zeroes in standalone decimal custom-property values (`0.8` versus `.8`), which Next.js CSS optimization serializes differently. Tests still reject different values, units, missing properties, and token lists; DOM checks and layout tolerances are unchanged.
 - Keep the archived stylesheet and asset routes for now: unmigrated sections, fonts, and inherited page defaults still depend on them. Do not enable Preflight yet.
 - The current parity gate compares DOM order/tags/text as well as styles and geometry. Preserve wrapper topology during this phase. That is a test constraint, not a permanent requirement to retain the original DOM; deliberate structural simplification needs suitable replacement coverage, not silently weakened assertions.
 - Passing computed-style/layout comparisons is not screenshot pixel-diff certification or proof that interactive features work.
@@ -36,7 +39,7 @@ Keep this batch on the preview routes. Slider playback, mobile-menu behaviour, s
 
 ### Last verified implementation
 
-For `ae48ae6`: lint, typecheck, all 5 component tests, all 4 parity-comparator tests, and production build passed. Production `.fl-page` parity reported zero differences for home and About at 390, 768, 1024, and 1440 pixels (8 cases). All 11 desktop hover/focus state comparisons passed against both development and production. Generator reproducibility and `git diff --check` passed.
+For `2d8c444`: lint, typecheck, all 11 component tests, all 5 parity-comparator tests, and production build passed. Development and production `.fl-page` parity reported zero differences for home and About at 390, 768, 1024, and 1440 pixels (8 cases each). All 29 desktop hover/focus state comparisons passed against both development and production. Generator reproducibility, maintained-component hash checks, and `git diff --check` passed. The sandbox initially blocked Turbopack’s local worker port; the elevated production build passed.
 
 No server process should be assumed to survive a hand-off. Start or check the dev server before opening the previews.
 
@@ -53,7 +56,7 @@ The overlay's `fl-*`, `pp-*`, `n2-*`, and `wp-*` classes are temporary migration
 
 1. **Mechanical JSX checkpoint — complete.** Render the exact home and About overlay DOM as server-rendered JSX, serve its archived assets, and compare the `.fl-page` subtree against the frozen reference.
 2. **Extract shared chrome — styling complete.** Header, navigation, and footer are maintained React components with explicit Tailwind utilities. Their builder classes, instance attributes, and custom overlay styling hooks have been removed. Current-page styling uses `aria-current`. Mobile menu behaviour remains a separate implementation task.
-3. **Extract page sections — in progress.** All four home focus areas render through a typed `FocusAreaSection` with explicit Tailwind utilities and no builder styling hooks. The hero, introduction/cards, signup form, and About sections still need migration.
+3. **Extract page sections — in progress.** All home sections render through typed components with explicit Tailwind utilities and no builder styling hooks: focus areas, static hero, introduction/cards, and signup presentation. About sections are next.
 4. **Retire the compatibility stylesheet — in progress.** `apps/web/src/app/tailwind-migration/components.css` compiles the extracted components through Next.js/PostCSS. The archived stylesheet still supplies fonts, inherited page defaults, and the remaining sections. Keep Preflight disabled until those sections are migrated; do not delete the archived rules yet.
 5. **Connect content and cut over.** Map the components to Sanity content, repeat visual/regression checks, then replace the production routes.
 
@@ -66,7 +69,7 @@ Group related component changes before running the full gate. Use focused checks
 - `pnpm test`
 - `pnpm test:parity`
 - visual/computed-style parity for the affected preview subtree at 390, 768, 1024, and 1440 pixels
-- `pnpm reference:react-states` for desktop navigation and focus-area CTA hover/focus styles
+- `pnpm reference:react-states` for desktop navigation, focus-area and hero CTAs, introduction cards, and signup hover/focus styles
 
 The remaining generated page snapshots intentionally keep legacy class names. The generator writes only `_generated/`; it must not overwrite maintained components. Direct React rendering and removal of builder styling dependencies are separate milestones.
 
@@ -119,7 +122,8 @@ Browser checks use installed Google Chrome; set `STYLE_PARITY_CHROME_PATH` if it
 
 ## Update log
 
-- **2026-09-05 — `ae48ae6`:** Migrated shared chrome and all four focus areas to explicit Tailwind utilities; removed their builder styling hooks. Added Next.js component utility compilation and 11 state comparisons. Restricted the generator to `_generated/`. Full validation recorded above passed. Remaining: home hero/introduction/cards/signup, About sections, interactive behaviour, stylesheet retirement, content integration, and cutover.
+- **2026-09-05 — `2d8c444`:** Migrated the remaining home hero, introduction/cards, and signup presentation as one batch. Added typed slides/cards/signup content, generator insertion, six component tests, and 18 additional state checks (29 total). Cards preserve the archived focus appearance through CSS `:focus-within`. Added tested decimal custom-property spelling normalization for optimized CSS. Full validation recorded above passed against development and production. Remaining: About sections, slider/mobile-menu/signup/tab behaviour, stylesheet retirement, content integration, and production cutover.
+- **2026-09-05 — `ae48ae6`:** Migrated shared chrome and all four focus areas to explicit Tailwind utilities; removed their builder styling hooks. Added Next.js component utility compilation and 11 state comparisons. Restricted the generator to `_generated/`. Full validation passed (5 component tests, 4 comparator tests, 8 production parity cases, and 11 states). Remaining at that point: home hero/introduction/cards/signup, About sections, interactive behaviour, stylesheet retirement, content integration, and cutover.
 - **2026-09-04 — `41423ee`, `2f5f42c`:** Extracted the first home focus-area section and reused it across the four focus areas. Styling-hook removal followed in `ae48ae6`.
 - **2026-09-04 — `8309644`:** Extracted shared header/navigation/footer into React components; final styling-hook removal followed in `ae48ae6`.
 - **2026-09-04 — `b369414`:** Added home and About React parity previews as mechanical JSX checkpoints, separate from production routes.
