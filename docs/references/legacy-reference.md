@@ -1,26 +1,26 @@
 # Frozen legacy website reference
 
-`dfn-web-legacy-reference` is a standalone local Git repository containing the
+`dfn-web-legacy-reference` is a standalone Git repository containing the
 frozen WordPress homepage, About page, assets, capture notes, and preview server.
 Use it for design reference and migration comparisons; it is not a maintained
 website or a complete WordPress backup. The capture date is 28 June 2026.
 
-Archive commit: `e211bf7c2e84518237f102e3e95059a97722f3d9`.
+Archive commit: `0a9dc0f89f553678929a0db0bc5f082f903d5614`.
 
 The original local checkout is `/Users/extremeandy/Projects/dfn-web-legacy-reference`.
-No remote is configured. To create another checkout on this machine:
+The private [GitHub repository](https://github.com/dfn-au/dfn-web-legacy-reference)
+is hosted under `dfn-au`. With repository access, create another checkout:
 
 ```sh
-git clone /Users/extremeandy/Projects/dfn-web-legacy-reference /absolute/path/to/dfn-web-legacy-reference
-git -C /absolute/path/to/dfn-web-legacy-reference checkout e211bf7c2e84518237f102e3e95059a97722f3d9
+git clone git@github.com:dfn-au/dfn-web-legacy-reference.git /absolute/path/to/dfn-web-legacy-reference
+git -C /absolute/path/to/dfn-web-legacy-reference checkout 0a9dc0f89f553678929a0db0bc5f082f903d5614
 cd /absolute/path/to/dfn-web-legacy-reference
 shasum -a 256 -c SHA256SUMS
 node serve.mjs
 ```
 
 Open `http://127.0.0.1:3011/` and `http://127.0.0.1:3011/about/`.
-On another machine, obtain a copy of this Git repository first; there is no
-published remote to clone. Preserve the pinned commit and verify `SHA256SUMS`.
+Preserve the pinned commit and verify `SHA256SUMS` on each checkout.
 The archive README records the source repository, full source commit, original
 path, approximate commissioning date, capture command, and static behavior.
 
