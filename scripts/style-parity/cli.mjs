@@ -7,10 +7,7 @@ import { parseArgs } from "node:util";
 
 import { chromium } from "playwright-core";
 
-import {
-	defaultReferenceRoot,
-	startReferenceServer,
-} from "../../docs/references/legacy-site/serve.mjs";
+import { loadLegacyReference } from "../legacy-reference/load.mjs";
 import { compareSnapshots } from "./compare.mjs";
 import {
 	defaultLayoutTolerance,
@@ -141,6 +138,8 @@ try {
 }
 
 async function startLocalReference() {
+	const { defaultReferenceRoot, startReferenceServer } =
+		await loadLegacyReference();
 	const started = await startReferenceServer({
 		port: 0,
 		referenceRoot: defaultReferenceRoot,
@@ -153,6 +152,8 @@ async function startLocalCandidate() {
 	const candidateRoot = path.resolve(
 		values["candidate-root"] ?? defaultCandidateRoot,
 	);
+	const { defaultReferenceRoot, startReferenceServer } =
+		await loadLegacyReference();
 	const started = await startReferenceServer({
 		fallbackRoot: defaultReferenceRoot,
 		port: 0,
@@ -268,6 +269,8 @@ function printHelp() {
 	console.log(`Usage: pnpm reference:parity [options]
 
 Compare the frozen legacy pages with the editable Tailwind overlay.
+Set DFN_LEGACY_REFERENCE_REPO to the absolute archive checkout path.
+LEGACY_SITE_REFERENCE_ROOT optionally overrides its site/ directory.
 
 Options:
   -p, --page <home|about>    Page to compare; may be repeated

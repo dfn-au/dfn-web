@@ -2,7 +2,7 @@
 
 import { parseArgs } from "node:util";
 import { chromium } from "playwright-core";
-import { startReferenceServer } from "../../docs/references/legacy-site/serve.mjs";
+import { loadLegacyReference } from "../legacy-reference/load.mjs";
 import { compareSnapshots } from "../style-parity/compare.mjs";
 import { capturePageSnapshot } from "../style-parity/snapshot.mjs";
 
@@ -12,10 +12,16 @@ const { values } = parseArgs({
 		"chrome-path": { type: "string" },
 	},
 });
-const reference = await startReferenceServer({ port: 0 });
+let reference;
 let browser;
 
 try {
+	const { defaultReferenceRoot, startReferenceServer } =
+		await loadLegacyReference();
+	reference = await startReferenceServer({
+		port: 0,
+		referenceRoot: defaultReferenceRoot,
+	});
 	browser = await chromium.launch({
 		executablePath:
 			values["chrome-path"] ??
@@ -186,9 +192,14 @@ try {
 			"[data-component-state]",
 		);
 	}
+} catch (error) {
+	console.error(error instanceof Error ? error.message : error);
+	process.exitCode = 1;
 } finally {
 	await browser?.close();
-	await new Promise((resolve, reject) =>
-		reference.server.close((error) => (error ? reject(error) : resolve())),
-	);
+	if (reference) {
+		await new Promise((resolve, reject) =>
+			reference.server.close((error) => (error ? reject(error) : resolve())),
+		);
+	}
 }

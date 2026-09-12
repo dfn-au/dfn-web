@@ -1,14 +1,11 @@
 import { readFile, stat } from "node:fs/promises";
 import path from "node:path";
+import { getLegacyReferenceConfig } from "@/lib/legacy-reference-config.mjs";
 
 type RouteOptions = {
 	head?: boolean;
 };
 
-const referenceRoot = path.join(
-	process.cwd(),
-	"../../docs/references/legacy-site/site",
-);
 const overlayStylesheetPath = path.join(
 	process.cwd(),
 	"../../docs/references/tailwind-migration/site/tailwind.css",
@@ -32,12 +29,25 @@ export async function serveReferenceAsset(
 	referencePath: string[],
 	options: RouteOptions = {},
 ) {
-	const filePath = resolveReferencePath(referencePath.map(decodePathSegment));
+	let referenceRoot: string;
+	try {
+		({ referenceRoot } = getLegacyReferenceConfig());
+	} catch {
+		return new Response(
+			"Legacy reference unavailable. Configure DFN_LEGACY_REFERENCE_REPO; see docs/references/legacy-reference.md.",
+			{ status: 503 },
+		);
+	}
+	const filePath = resolveReferencePath(
+		referenceRoot,
+		referencePath.map(decodePathSegment),
+	);
 
 	if (!filePath) return new Response("Forbidden", { status: 403 });
 
 	try {
-		const fileStats = await stat(filePath);
+		// External reference files are runtime-only and must never enter build traces.
+		const fileStats = await stat(/* turbopackIgnore: true */ filePath);
 
 		if (!fileStats.isFile()) {
 			return new Response("Not found", { status: 404 });
@@ -51,7 +61,9 @@ export async function serveReferenceAsset(
 
 		if (options.head) return new Response(null, { headers });
 
-		return new Response(await readFile(filePath), { headers });
+		return new Response(await readFile(/* turbopackIgnore: true */ filePath), {
+			headers,
+		});
 	} catch (error) {
 		return fileErrorResponse(error);
 	}
@@ -76,7 +88,7 @@ export async function serveOverlayStylesheet(options: RouteOptions = {}) {
 	}
 }
 
-function resolveReferencePath(referencePath: string[]) {
+function resolveReferencePath(referenceRoot: string, referencePath: string[]) {
 	if (referencePath.length === 0) return null;
 
 	const normalizedPath = path.normalize(referencePath.join("/"));

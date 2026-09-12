@@ -3,7 +3,8 @@
 This directory is the editable overlay used by `pnpm reference:parity`.
 
 The parity server looks for files in `site/` first, then falls back to the
-frozen archive in `../legacy-site/site/`. This allows a page to be migrated
+frozen archive configured through `DFN_LEGACY_REFERENCE_REPO`
+(and optionally `LEGACY_SITE_REFERENCE_ROOT`). This allows a page to be migrated
 without duplicating its images, fonts, or other unchanged assets.
 
 Tailwind Preflight is intentionally disabled because the frozen capture keeps
@@ -23,7 +24,8 @@ relative path below `site/`, then edit only the overlay copy:
 - Homepage: `site/index.html`
 - About: `site/about/index.html`
 
-Keep `../legacy-site/` unchanged. The parity command starts both local servers
+Configure the [external frozen archive](../legacy-reference.md) and keep it
+unchanged. The parity command starts both local servers
 and Chrome automatically:
 
 ```sh

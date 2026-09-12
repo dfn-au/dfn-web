@@ -4,7 +4,12 @@
 
 Replace the legacy WordPress/Beaver Builder reference with maintainable React pages and components without losing the verified visual match.
 
-## Current hand-off — 2026-09-05
+> Archive setup update — 2026-09-12: the former in-repository archive
+> location and setup instructions in earlier handoffs are superseded. Configure
+> the [external legacy reference](../references/legacy-reference.md) in both
+> the Next.js and reference-command shells before running the acceptance gate.
+
+## Migration hand-off — 2026-09-05
 
 Continue on `ah/react-tailwind-preview`. Latest implementation commit: `2d8c444` (`refactor: migrate remaining home presentation to Tailwind`). No push was performed in this batch.
 
@@ -45,7 +50,7 @@ No server process should be assumed to survive a hand-off. Start or check the de
 
 ## Sources of truth
 
-- `docs/references/legacy-site/site/` is the frozen original.
+- `site/` in the external `dfn-web-legacy-reference` checkout is the frozen original; see [configuration and pinned commit](../references/legacy-reference.md).
 - `docs/references/tailwind-migration/site/` is the editable, zero-difference Tailwind overlay.
 - `/tailwind-migration` and `/tailwind-migration/about` are the React parity checkpoints.
 - The production `/` and `/about` routes remain untouched until a later cutover.
