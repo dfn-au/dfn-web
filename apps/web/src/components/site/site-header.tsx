@@ -70,7 +70,7 @@ export function SiteHeader({
 								<NavigationLink
 									homepagePath={homepagePath}
 									key={link._key}
-									href={link.href}
+									href={link.href ?? "#"}
 									activePage={activePage}
 									className="py-3 aria-[current=page]:text-accent aria-[current=page]:underline aria-[current=page]:underline-offset-8"
 								>
@@ -105,7 +105,7 @@ export function SiteHeader({
 						<NavigationLink
 							homepagePath={homepagePath}
 							key={link._key}
-							href={link.href}
+							href={link.href ?? "#"}
 							activePage={activePage}
 							onClick={() => setMenuOpen(false)}
 							className="py-3 text-intro leading-normal"

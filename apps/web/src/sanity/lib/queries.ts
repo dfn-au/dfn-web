@@ -30,6 +30,13 @@ const HOMEPAGE_IMAGE_PROJECTION = `{
   _type, alt, crop, hotspot, asset->{_id, url}
 }`;
 
+const HEADER_PROJECTION = `header {
+  navigation[]{_key, label, href, headline, description, mobileOnly,
+    children[]{_key, label, href, groupLabel}
+  },
+  utilityLinks[]{_key, label, href}, menuHeading, give, giveHref
+}`;
+
 export const HOME_PAGE_QUERY = defineQuery(
 	`*[_id == "${HOME_PAGE_DOCUMENT_ID}"][0]{
     _id, title, description,
@@ -42,7 +49,7 @@ export const HOME_PAGE_QUERY = defineQuery(
     featuredExample { eyebrow, headline, body[]{_key, _type, style, children[]{_key, _type, text, marks}, markDefs[]}, actionLabel },
     involvement { eyebrow, headline, actionLabel, opportunities[] { _key, title, description, actionLabel } },
     signup { eyebrow, headline, description, actionLabel },
-    header { navigation[]{_key, label, href, mobileOnly}, give },
+    ${HEADER_PROJECTION},
     footer { summary, navigationTitle, navigation[]{_key, label, href}, legalNavigation[]{_key, label, href}, copyright,
       offices[] { _key, country, address[]{_key, _type, style, children[]{_key, _type, text, marks}, markDefs[]}, phone, tel, email }
     }
@@ -53,7 +60,7 @@ export const HOME_PAGE_QUERY = defineQuery(
 // in Home Page. Pages do not contain copies of navigation or office details.
 export const SITE_CHROME_QUERY =
 	defineQuery(`*[_id == "${HOME_PAGE_DOCUMENT_ID}"][0]{
-    header { navigation[]{_key, label, href, mobileOnly}, give },
+    ${HEADER_PROJECTION},
     footer { summary, navigationTitle, navigation[]{_key, label, href}, legalNavigation[]{_key, label, href}, copyright,
       offices[]{_key, country, address[]{_key, _type, style, children[]{_key, _type, text, marks}, markDefs[]}, phone, tel, email}
     }

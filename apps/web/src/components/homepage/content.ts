@@ -33,8 +33,24 @@ export type NavigationItem = {
 };
 
 export type HeaderContent = {
-	navigation: (NavigationItem & { mobileOnly?: boolean })[];
+	navigation: HeaderNavigationItem[];
+	utilityLinks?: NavigationItem[];
+	menuHeading?: string;
 	give: string;
+	giveHref?: string;
+};
+
+export type HeaderChildLink = NavigationItem & { groupLabel?: string };
+
+export type HeaderNavigationItem = {
+	_key: string;
+	label: string;
+	href?: string;
+	headline?: string;
+	description?: string;
+	children?: HeaderChildLink[];
+	/** Existing content is retained; the public header shows links on every device. */
+	mobileOnly?: boolean;
 };
 
 export type FooterContent = {

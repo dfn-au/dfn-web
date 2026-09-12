@@ -14,8 +14,11 @@ produce intentional line breaks. Programme and featured-example Body fields use
 a single rich-text editor with paragraphs, bold and italic. Photographs support
 alternative text, crop and hotspot editing. Office addresses use plain rich text
 with no formatting controls; Shift+Enter adds an address line. Header, footer
-and legal navigation are ordered lists of labels and destinations. Header links
-can be marked mobile-only. New destinations default to `#`.
+and legal navigation are ordered lists. Header items have either a destination
+or one level of child links; optional introductions and text group labels support
+the grouped panels. Utility links and the Give destination are shared across
+desktop and mobile. Existing mobile-only flags no longer hide public links.
+Unfinished link destinations can use `#`.
 
 The content objects are separately named schema types so they can later be used
 in a section builder. The current homepage composition remains fixed.

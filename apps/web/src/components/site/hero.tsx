@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import type { HomepageContent } from "@/components/homepage/content";
 import { ButtonLink, Eyebrow, Headline, Photo } from "./primitives";
 import { SiteHeader } from "./site-header";
@@ -5,13 +6,15 @@ import { SiteHeader } from "./site-header";
 export function Hero({
 	content,
 	header,
+	headerElement,
 }: {
 	content: HomepageContent["hero"];
 	header?: HomepageContent["header"];
+	headerElement?: ReactNode;
 }) {
 	return (
 		<div className="relative mx-auto max-w-[1920px] px-2.5 @desktop:px-frame @desktop:pt-frame">
-			<SiteHeader overlay content={header} />
+			{headerElement ?? <SiteHeader overlay content={header} />}
 			<section
 				className="relative bg-paper @desktop:flex @desktop:min-h-[clamp(580px,34cqi,640px)] @desktop:items-end @desktop:px-hero @desktop:pt-[170px] @desktop:pb-12"
 				aria-labelledby="hero-title"
