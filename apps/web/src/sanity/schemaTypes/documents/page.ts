@@ -33,7 +33,7 @@ export const page = defineType({
 					if (!slug?.current) return true;
 					if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug.current))
 						return "Use a single path such as privacy or our-story.";
-					if (["admin", "api", "tailwind-migration"].includes(slug.current))
+					if (["admin", "api"].includes(slug.current))
 						return "This path is reserved by the website.";
 					return true;
 				}),

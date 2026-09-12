@@ -40,9 +40,8 @@ pnpm test
 
 Root scripts currently target `apps/web`.
 
-Optional legacy design and migration comparisons use the standalone
-[`dfn-web-legacy-reference` archive](docs/references/legacy-reference.md).
-It is not required for ordinary development, CI, or production builds.
+The frozen legacy website is preserved in
+[dfn-au/dfn-web-legacy-reference](https://github.com/dfn-au/dfn-web-legacy-reference).
 
 ## Current Scaffold
 
