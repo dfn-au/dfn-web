@@ -82,31 +82,32 @@ function contentWithImages() {
 }
 
 describe("Sanity homepage", () => {
-	it.each([
-		3, 4, 5,
-	])("keeps navigation, sections and numbering in sync with %i reordered areas", (count) => {
-		const content = contentWithImages();
-		content.areas.push({
-			...content.areas[0],
-			_key: "new-area",
-			label: "A fifth area",
-		});
-		content.areas = content.areas.slice(0, count).reverse();
-		const markup = renderToStaticMarkup(<Homepage content={content} />);
-		const sections = [...markup.matchAll(/<section id="dh-area-([^"]+)"/g)].map(
-			(match) => match[1],
-		);
-		const links = [...markup.matchAll(/href="#dh-area-([^"]+)"/g)].map(
-			(match) => match[1],
-		);
-		expect(sections).toEqual(content.areas.map((area) => area._key));
-		expect(links).toEqual(sections);
-		for (const [index, area] of content.areas.entries()) {
-			expect(markup).toContain(
-				`${String(index + 1).padStart(2, "0")} / ${area.label}`,
+	it.each([3, 4, 5])(
+		"keeps navigation, sections and numbering in sync with %i reordered areas",
+		(count) => {
+			const content = contentWithImages();
+			content.areas.push({
+				...content.areas[0],
+				_key: "new-area",
+				label: "A fifth area",
+			});
+			content.areas = content.areas.slice(0, count).reverse();
+			const markup = renderToStaticMarkup(<Homepage content={content} />);
+			const sections = [
+				...markup.matchAll(/<section id="dh-area-([^"]+)"/g),
+			].map((match) => match[1]);
+			const links = [...markup.matchAll(/href="#dh-area-([^"]+)"/g)].map(
+				(match) => match[1],
 			);
-		}
-	});
+			expect(sections).toEqual(content.areas.map((area) => area._key));
+			expect(links).toEqual(sections);
+			for (const [index, area] of content.areas.entries()) {
+				expect(markup).toContain(
+					`${String(index + 1).padStart(2, "0")} / ${area.label}`,
+				);
+			}
+		},
+	);
 
 	it("renders authored content and photographs, preserving heading line breaks", () => {
 		const content = contentWithImages();

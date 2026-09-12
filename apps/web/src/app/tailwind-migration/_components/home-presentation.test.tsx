@@ -109,13 +109,16 @@ describe("Home presentation migration", () => {
 		["hero", <HomeHero key="hero" />],
 		["introduction", <HomeIntroduction key="introduction" />],
 		["signup", <HomeSignup key="signup" />],
-	])("removes builder styling hooks from the %s presentation", (_name, component) => {
-		const markup = renderToStaticMarkup(component);
-		for (const [, classes] of markup.matchAll(/class="([^"]*)"/g)) {
-			expect(classes).not.toMatch(
-				/(?:^|\s)(?:fl-|pp-|wp-|n2-|n-uc-|legacy-(?:home|smart|signup|link))/,
-			);
-		}
-		expect(markup).not.toMatch(/data-(?:node|ssid|sstype|pm|n2click)=/);
-	});
+	])(
+		"removes builder styling hooks from the %s presentation",
+		(_name, component) => {
+			const markup = renderToStaticMarkup(component);
+			for (const [, classes] of markup.matchAll(/class="([^"]*)"/g)) {
+				expect(classes).not.toMatch(
+					/(?:^|\s)(?:fl-|pp-|wp-|n2-|n-uc-|legacy-(?:home|smart|signup|link))/,
+				);
+			}
+			expect(markup).not.toMatch(/data-(?:node|ssid|sstype|pm|n2click)=/);
+		},
+	);
 });

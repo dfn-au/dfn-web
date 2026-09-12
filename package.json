@@ -1,10 +1,10 @@
 {
   "name": "dfn-web",
   "private": true,
-  "packageManager": "pnpm@11.8.0",
+  "packageManager": "pnpm@12.4.1",
   "engines": {
-    "node": ">=24 <26",
-    "pnpm": ">=11.6.0 <12"
+    "node": "24.x",
+    "pnpm": ">=12.4.1 <13"
   },
   "scripts": {
     "dev": "pnpm --filter web dev",
@@ -25,9 +25,9 @@
     "reference:react-states": "node scripts/react-migration/check-component-states.mjs"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4.3.1",
-    "playwright-core": "^1.62.1",
-    "postcss": "^8.5.15",
-    "tailwindcss": "^4.3.1"
+    "@tailwindcss/postcss": "^4.3.3",
+    "playwright-core": "^1.63.0",
+    "postcss": "^8.5.28",
+    "tailwindcss": "^4.3.3"
   }
 }
