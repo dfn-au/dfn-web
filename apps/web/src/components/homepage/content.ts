@@ -34,7 +34,6 @@ export type NavigationItem = {
 
 export type HeaderContent = {
 	navigation: HeaderNavigationItem[];
-	utilityLinks?: NavigationItem[];
 	menuHeading?: string;
 	give: string;
 	giveHref?: string;
@@ -49,8 +48,6 @@ export type HeaderNavigationItem = {
 	headline?: string;
 	description?: string;
 	children?: HeaderChildLink[];
-	/** Existing content is retained; the public header shows links on every device. */
-	mobileOnly?: boolean;
 };
 
 export type FooterContent = {

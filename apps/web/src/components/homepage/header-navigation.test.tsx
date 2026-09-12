@@ -76,8 +76,8 @@ describe("grouped public navigation", () => {
 					children,
 				},
 				{ _key: "about", label: "About DFN", href: "/about" },
+				{ _key: "contact", label: "Contact", href: "/contact" },
 			],
-			utilityLinks: [{ _key: "contact", label: "Contact", href: "/contact" }],
 		};
 		const markup = renderToStaticMarkup(
 			<SiteHeader content={content} activePage="about" />,
@@ -88,6 +88,13 @@ describe("grouped public navigation", () => {
 		expect(markup).toContain('aria-label="Close Get involved"');
 		expect(markup).toContain('href="/about" aria-current="page"');
 		expect(markup).toContain('href="/donate"');
+		for (const label of ["Main navigation", "Mobile navigation"]) {
+			const navigation = markup.match(
+				new RegExp(`<nav aria-label="${label}"[^>]*>(.*?)</nav>`),
+			)?.[1];
+			expect(navigation).toContain('href="/about"');
+			expect(navigation).toContain('href="/contact"');
+		}
 		expect(markup).not.toContain('role="menu"');
 		expect(markup).not.toContain("/design-refresh/");
 		for (const child of children)
@@ -95,23 +102,22 @@ describe("grouped public navigation", () => {
 				markup.match(new RegExp(`href="${child.href}"`, "g")),
 			).toHaveLength(2);
 	});
-	it("keeps legacy flat links available on desktop and mobile, including mobileOnly entries", () => {
+	it("renders a flat navigation list on desktop and mobile without disclosure panels", () => {
 		const markup = renderToStaticMarkup(
 			<SiteHeader
 				content={{
 					give: "Give",
 					navigation: [
 						{
-							_key: "updates",
-							label: "Updates",
-							href: "#dh-signup",
-							mobileOnly: true,
+							_key: "contact",
+							label: "Contact",
+							href: "/contact",
 						},
 					],
 				}}
 			/>,
 		);
-		expect(markup.match(/href="#dh-signup"/g)).toHaveLength(2);
+		expect(markup.match(/href="\/contact"/g)).toHaveLength(2);
 		expect(markup).not.toContain("data-navigation-panel");
 	});
 });

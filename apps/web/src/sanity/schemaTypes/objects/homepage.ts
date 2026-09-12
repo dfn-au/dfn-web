@@ -135,17 +135,6 @@ export const homepageObjects = [
 				of: [defineArrayMember({ type: "homepageHeaderChildLink" })],
 				validation: (rule) => rule.min(1),
 			}),
-			defineField({
-				name: "mobileOnly",
-				title: "Show only in the mobile menu",
-				type: "boolean",
-				deprecated: {
-					reason:
-						"Navigation is now shared across desktop and mobile. Move secondary links to Utility links instead.",
-				},
-				readOnly: true,
-				hidden: ({ value }) => value === undefined,
-			}),
 		],
 		validation: (rule) =>
 			rule.custom((item) => {
@@ -329,7 +318,6 @@ export const homepageObjects = [
 		icon: DocumentTextIcon,
 		fields: [
 			navigation("navigation", "Navigation links", "homepageHeaderLink"),
-			navigation("utilityLinks", "Utility links"),
 			defineField({
 				name: "menuHeading",
 				title: "Mobile menu heading",

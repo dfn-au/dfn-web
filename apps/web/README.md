@@ -21,9 +21,9 @@ reference routes have been removed.
   contain another submenu.
 - Submenu headlines and introductions are optional. Consecutive child links with
   the same group label are grouped visually, without adding a navigation level.
-- Utility links and the Give destination are shared across devices. Existing flat
-  links still work; the deprecated `mobileOnly` field no longer hides public links
-  from desktop visitors.
+- Direct links such as About DFN and Contact belong in the same navigation list
+  as categories with children. Navigation and the Give destination are shared
+  across devices.
 
 Schema changes do not populate or publish menu content. Review and publish the
 header through Sanity separately from deploying the application.

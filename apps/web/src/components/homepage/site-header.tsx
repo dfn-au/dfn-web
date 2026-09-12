@@ -150,7 +150,6 @@ export function SiteHeader({
 	const [drawerOpen, setDrawerOpen] = useState(false);
 	const [panelHeight, setPanelHeight] = useState<number>();
 	const navigation = content?.navigation ?? [];
-	const utilityLinks = content?.utilityLinks ?? [];
 	const giveHref = content?.giveHref ?? "https://dfn.org.au/donate/";
 
 	function closeDrawer() {
@@ -375,18 +374,6 @@ export function SiteHeader({
 							))}
 						</ul>
 					</nav>
-					<div className="hidden items-center gap-5 @wide:flex">
-						{utilityLinks.map((link) => (
-							<HeaderLink
-								key={link._key}
-								href={link.href}
-								activePage={activePage}
-								className="flex min-h-[46px] items-center text-sm text-white"
-							>
-								{link.label}
-							</HeaderLink>
-						))}
-					</div>
 					<button
 						ref={menuButton}
 						type="button"
@@ -509,27 +496,6 @@ export function SiteHeader({
 							))}
 						</ul>
 					</nav>
-					{utilityLinks.length > 0 && (
-						<nav
-							aria-label="Contact and updates"
-							className="mt-7 border-t border-rule pt-5"
-						>
-							<ul>
-								{utilityLinks.map((link) => (
-									<li key={link._key}>
-										<HeaderLink
-											href={link.href}
-											activePage={activePage}
-											onClick={navigateFromDrawer}
-											className="flex min-h-[46px] items-center text-sm text-accent"
-										>
-											{link.label}
-										</HeaderLink>
-									</li>
-								))}
-							</ul>
-						</nav>
-					)}
 				</div>
 			</dialog>
 		</>
