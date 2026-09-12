@@ -1,7 +1,8 @@
 # Reviewed homepage in React and Tailwind
 
 Run `pnpm dev` and open `/design-refresh?variant=charcoal`. Add `&clean=1`
-to hide the development palette selector. Controls are omitted in production.
+to hide the palette selector. The floating selector is available locally and on
+the published preview, with a colour swatch and arrows to cycle through palettes.
 
 Reuses the components from `ah/refreshed-homepage-tailwind`, updated to match the
 reviewed `prototypes/homepage-design/palette-prototype.html`: capped hero, separate

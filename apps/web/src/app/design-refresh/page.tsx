@@ -20,7 +20,7 @@ export default async function DesignRefreshPage({
 	return (
 		<PalettePreview
 			initialPalette={resolvePalette(variant)}
-			showControls={process.env.NODE_ENV !== "production" && clean !== "1"}
+			showControls={clean !== "1"}
 		>
 			<Hero />
 			<main>

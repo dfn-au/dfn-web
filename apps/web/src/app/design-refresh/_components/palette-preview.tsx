@@ -22,11 +22,14 @@ export function PalettePreview({
 	children: ReactNode;
 }) {
 	const [palette, setPalette] = useState(initialPalette);
+	const [controlsVisible, setControlsVisible] = useState(showControls);
 	useEffect(() => {
-		const sync = () =>
-			setPalette(
-				resolvePalette(new URLSearchParams(location.search).get("variant")),
-			);
+		const sync = () => {
+			const params = new URLSearchParams(location.search);
+			setPalette(resolvePalette(params.get("variant")));
+			setControlsVisible(params.get("clean") !== "1");
+		};
+		sync();
 		addEventListener("popstate", sync);
 		return () => removeEventListener("popstate", sync);
 	}, []);
@@ -37,6 +40,14 @@ export function PalettePreview({
 		url.searchParams.set("variant", next);
 		history.replaceState(null, "", url);
 	}
+	function cyclePalette(direction: number) {
+		changePalette(
+			palettes[
+				(palettes.indexOf(palette) + direction + palettes.length) %
+					palettes.length
+			],
+		);
+	}
 	return (
 		<div
 			id="dfn-home"
@@ -44,17 +55,28 @@ export function PalettePreview({
 			className="@container min-h-screen bg-page font-body font-normal text-ink [color-scheme:dark] [&_a:hover]:underline [&_a:hover]:underline-offset-4 [&_:focus-visible]:outline-2 [&_:focus-visible]:outline-offset-4 [&_:focus-visible]:outline-ink"
 		>
 			<div id="dh-top">{children}</div>
-			{showControls && (
+			{controlsVisible && (
 				<nav
-					aria-label="Design comparison"
-					className="fixed bottom-4 left-1/2 z-50 flex max-w-[calc(100%-16px)] -translate-x-1/2 flex-wrap items-center justify-center gap-x-3 gap-y-1 rounded-3xl border border-stone-300 bg-stone-100 px-4 py-2 font-body text-xs leading-normal text-stone-900 shadow-xl [color-scheme:light]"
+					aria-label="Colour scheme"
+					className="fixed bottom-[max(16px,env(safe-area-inset-bottom))] left-1/2 z-50 flex max-w-[calc(100%-16px)] -translate-x-1/2 items-center gap-[3px] rounded-full border border-[#ccc4b9] bg-[#f4f0e9] p-[5px] font-sans text-sm leading-normal font-medium text-[#272522] shadow-[0_4px_24px_#0005] [color-scheme:light] [&_:focus-visible]:outline-[#272522]"
 				>
-					<span className="font-semibold">React + Tailwind</span>
+					<button
+						type="button"
+						aria-label="Previous colour palette"
+						onClick={() => cyclePalette(-1)}
+						className="size-11 shrink-0 cursor-pointer rounded-full hover:bg-black/5 max-[360px]:w-8"
+					>
+						←
+					</button>
+					<span
+						aria-hidden="true"
+						className="size-[15px] shrink-0 rounded-full border border-black/20 bg-page"
+					/>
 					<select
 						aria-label="Colour palette"
 						value={palette}
 						onChange={(event) => changePalette(event.target.value)}
-						className="min-h-8 cursor-pointer bg-transparent"
+						className="min-h-11 w-[145px] min-w-0 cursor-pointer bg-transparent pr-1 pl-1.5 max-[360px]:w-[120px] max-[360px]:text-xs"
 					>
 						{palettes.map((value) => (
 							<option key={value} value={value}>
@@ -62,8 +84,20 @@ export function PalettePreview({
 							</option>
 						))}
 					</select>
-					<a href={`?variant=${palette}&clean=1`} className="py-1">
-						Hide controls
+					<button
+						type="button"
+						aria-label="Next colour palette"
+						onClick={() => cyclePalette(1)}
+						className="size-11 shrink-0 cursor-pointer rounded-full hover:bg-black/5 max-[360px]:w-8"
+					>
+						→
+					</button>
+					<a
+						aria-label="Hide controls"
+						href={`?variant=${palette}&clean=1`}
+						className="flex min-h-11 shrink-0 items-center border-l border-[#cfc7bb] px-2 text-[13px] max-[360px]:px-1 max-[360px]:text-xs"
+					>
+						Hide<span className="max-[360px]:hidden">&nbsp;controls</span>
 					</a>
 				</nav>
 			)}
