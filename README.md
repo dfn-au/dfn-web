@@ -40,6 +40,9 @@ pnpm test
 
 Root scripts currently target `apps/web`.
 
+The frozen legacy website is preserved in
+[dfn-au/dfn-web-legacy-reference](https://github.com/dfn-au/dfn-web-legacy-reference).
+
 ## Current Scaffold
 
 - `apps/web`: Next.js App Router app

@@ -21,6 +21,6 @@ Recorded 12 September 2026. Resume the publishing interview for [#21](https://gi
 2. Should updated statistics change historical appeals? Andrew’s earlier “yes” was ambiguous.
 3. How should intentional cross-country links and shared content becoming separate versions work?
 
-The UI sketches were examples, not final schema decisions. No publishing implementation was done. The React migration can proceed independently.
+The UI sketches were examples, not final schema decisions. No publishing implementation was done.
 
 Consult the [research report](../architecture/sanity-country-site-publishing-research.md) only when technical detail is needed.
