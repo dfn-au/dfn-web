@@ -1,4 +1,4 @@
-import { DocumentTextIcon } from "@sanity/icons";
+import { DocumentTextIcon } from "@sanity/icons/DocumentText";
 import type { StructureBuilder, StructureResolver } from "sanity/structure";
 
 function createSingleton(S: StructureBuilder, typeName: string, title: string) {

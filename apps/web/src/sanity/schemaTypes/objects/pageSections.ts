@@ -1,9 +1,7 @@
-import {
-	BlockContentIcon,
-	DocumentTextIcon,
-	ImageIcon,
-	LinkIcon,
-} from "@sanity/icons";
+import { BlockContentIcon } from "@sanity/icons/BlockContent";
+import { DocumentTextIcon } from "@sanity/icons/DocumentText";
+import { ImageIcon } from "@sanity/icons/Image";
+import { LinkIcon } from "@sanity/icons/Link";
 import { defineArrayMember, defineField, defineType } from "sanity";
 
 const text = (name: string, title: string) =>

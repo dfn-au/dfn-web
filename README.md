@@ -2,16 +2,19 @@
 
 [![CI](https://github.com/dfn-au/dfn-web/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/dfn-au/dfn-web/actions/workflows/ci.yml)
 ![Node](https://img.shields.io/badge/node-24_LTS-339933?logo=node.js&logoColor=white)
-![pnpm](https://img.shields.io/badge/pnpm-11.5.2-F69220?logo=pnpm&logoColor=white)
+![pnpm](https://img.shields.io/badge/pnpm-12.4.1-F69220?logo=pnpm&logoColor=white)
 
 Website rebuild workspace for the DFN Australia and New Zealand Country Sites.
 
 ## Requirements
 
 - Node 24 LTS
-- pnpm 11.5.2
+- pnpm 12.4.1
 
 The repo enforces Node and pnpm versions through `.nvmrc`, `package.json`, and `pnpm-workspace.yaml`.
+
+Node 24 is pinned in both workspace and app manifests so Vercel uses the supported runtime when the project root is `apps/web`.
+On Vercel, set `ENABLE_EXPERIMENTAL_COREPACK=1` so builds use the pinned pnpm version; see [Vercel's Corepack configuration](https://vercel.com/docs/builds/configure-a-build#corepack).
 
 ## Setup
 
