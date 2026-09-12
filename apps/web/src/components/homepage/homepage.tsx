@@ -11,6 +11,7 @@ import {
 } from "@/components/site/programmes";
 import { Signup } from "@/components/site/signup";
 import { areaAnchor, type HomepageContent } from "./content";
+import { SiteHeader } from "./site-header";
 
 export function Homepage({ content }: { content: HomepageContent }) {
 	const areas = content.areas ?? [];
@@ -18,7 +19,10 @@ export function Homepage({ content }: { content: HomepageContent }) {
 	return (
 		<>
 			{content.hero && (
-				<Hero content={content.hero} header={content.header ?? undefined} />
+				<Hero
+					content={content.hero}
+					headerElement={<SiteHeader content={content.header} overlay />}
+				/>
 			)}
 			<main id="dh-main">
 				{content.introduction && (

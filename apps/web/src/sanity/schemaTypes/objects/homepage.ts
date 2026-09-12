@@ -83,19 +83,81 @@ export const homepageObjects = [
 		preview: { select: { title: "label", subtitle: "href" } },
 	}),
 	defineType({
-		name: "homepageHeaderLink",
-		title: "Link",
+		name: "homepageHeaderChildLink",
+		title: "Submenu link",
 		type: "object",
 		icon: LinkIcon,
 		fields: [
 			...navigationFields,
 			defineField({
+				name: "groupLabel",
+				title: "Group label",
+				type: "string",
+				description:
+					"Optional text such as Events or Ongoing support. Use the same label on consecutive links to group them visually; it does not create another submenu.",
+			}),
+		],
+		preview: { select: { title: "label", subtitle: "href" } },
+	}),
+	defineType({
+		name: "homepageHeaderLink",
+		title: "Navigation item",
+		type: "object",
+		icon: LinkIcon,
+		fields: [
+			text("label", "Label"),
+			defineField({
+				name: "href",
+				title: "Destination",
+				type: "url",
+				description:
+					"For a direct link only. To make this item open a submenu, clear this destination and add child links below. Add any overview page as the first child link.",
+				validation: (rule) =>
+					rule.uri({ allowRelative: true, scheme: ["http", "https"] }),
+			}),
+			defineField({
+				name: "headline",
+				title: "Submenu headline",
+				type: "string",
+			}),
+			defineField({
+				name: "description",
+				title: "Submenu introduction",
+				type: "text",
+				rows: 3,
+			}),
+			defineField({
+				name: "children",
+				title: "Child links",
+				type: "array",
+				description:
+					"The category label opens these links on desktop and mobile. Child links cannot contain further submenus.",
+				of: [defineArrayMember({ type: "homepageHeaderChildLink" })],
+				validation: (rule) => rule.min(1),
+			}),
+			defineField({
 				name: "mobileOnly",
 				title: "Show only in the mobile menu",
 				type: "boolean",
-				initialValue: false,
+				deprecated: {
+					reason:
+						"Navigation is now shared across desktop and mobile. Move secondary links to Utility links instead.",
+				},
+				readOnly: true,
+				hidden: ({ value }) => value === undefined,
 			}),
 		],
+		validation: (rule) =>
+			rule.custom((item) => {
+				if (!item) return true;
+				const hasChildren =
+					Array.isArray(item.children) && item.children.length > 0;
+				if (hasChildren && item.href)
+					return "Clear the category destination and include its overview page as a child link.";
+				if (!hasChildren && !item.href)
+					return "Add a destination or at least one child link.";
+				return true;
+			}),
 		preview: { select: { title: "label", subtitle: "href" } },
 	}),
 	defineType({
@@ -267,7 +329,23 @@ export const homepageObjects = [
 		icon: DocumentTextIcon,
 		fields: [
 			navigation("navigation", "Navigation links", "homepageHeaderLink"),
+			navigation("utilityLinks", "Utility links"),
+			defineField({
+				name: "menuHeading",
+				title: "Mobile menu heading",
+				type: "string",
+			}),
 			text("give", "Give label"),
+			defineField({
+				name: "giveHref",
+				title: "Give destination",
+				type: "url",
+				initialValue: "https://dfn.org.au/donate/",
+				description:
+					"The direct donation flow. Existing headers without this field continue to use https://dfn.org.au/donate/.",
+				validation: (rule) =>
+					rule.uri({ allowRelative: true, scheme: ["http", "https"] }),
+			}),
 		],
 	}),
 	defineType({

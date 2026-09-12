@@ -144,7 +144,7 @@ describe("Sanity homepage", () => {
 		expect(markup).not.toContain("Content goes here.");
 	});
 
-	it("keeps page destinations as placeholders and preserves the reviewed arrows", () => {
+	it("keeps content placeholders while Give links directly to the donation flow", () => {
 		const markup = renderToStaticMarkup(
 			<Homepage content={contentWithImages()} />,
 		);
@@ -153,10 +153,15 @@ describe("Sanity homepage", () => {
 		);
 		expect(links.length).toBeGreaterThan(0);
 		expect(
-			links.every((href) => /^(#|tel:|mailto:|\/privacy$)/.test(href)),
+			links.every((href) =>
+				/^(#|tel:|mailto:|\/privacy$|https:\/\/dfn\.org\.au\/donate\/$)/.test(
+					href,
+				),
+			),
 		).toBe(true);
 		expect(markup).toMatch(/href="#"[^>]*>Explore education<span[^>]*>→/);
 		expect(markup).toMatch(/href="#dh-work"[^>]*>Explore our work<span[^>]*>↓/);
+		expect(markup).toContain('href="https://dfn.org.au/donate/"');
 		expect(markup).toContain("Details are not sent or saved.");
 	});
 });

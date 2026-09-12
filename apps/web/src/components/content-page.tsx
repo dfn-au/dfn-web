@@ -1,6 +1,6 @@
 import { Footer } from "@/components/site/footer";
-import { SiteHeader } from "@/components/site/site-header";
 import type { Page, SiteChrome } from "@/sanity/lib/queries";
+import { SiteHeader } from "./homepage/site-header";
 import { RenderSections } from "./page-sections/render-sections";
 
 export function ContentPage({
@@ -13,11 +13,7 @@ export function ContentPage({
 	return (
 		<>
 			<div className="mx-auto max-w-[1920px] px-2.5 @desktop:px-frame">
-				<SiteHeader
-					content={chrome?.header}
-					activePage={page.slug.current}
-					homepagePath="/"
-				/>
+				<SiteHeader content={chrome?.header} activePage={page.slug.current} />
 			</div>
 			<main id="dh-main">
 				<RenderSections title={page.title} sections={page.sections ?? []} />
