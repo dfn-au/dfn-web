@@ -42,14 +42,16 @@ export function SiteHeader({
 			<header
 				className={`relative z-10 -mx-2.5 flex min-h-[88px] flex-wrap items-center justify-between gap-2 py-3 pr-4 @max-[381px]:pr-3 @desktop:mx-0 @desktop:min-h-0 @desktop:flex-nowrap @desktop:gap-5 @desktop:pr-[max(28px,calc((min(100cqi,1920px)-1120px)/2-16px))] ${overlay ? "@desktop:absolute @desktop:inset-x-0 @desktop:top-[46px] @desktop:right-frame @desktop:py-0" : "@desktop:py-5"}`}
 			>
-				<PreviewLink page="home" hash="dh-top" aria-label="DFN home">
+				<PreviewLink page="home" hash="dh-top" aria-label="DFN home"
+					className="relative block aspect-[600/269] w-40 shrink-0 bg-brand @max-[381px]:w-[140px] @desktop:w-[216px]">
+					{/* Preserve the artwork position within the original padded logo. */}
 					<Image
-						src="/design-refresh/logo.png"
+						src="/logos/dfn-logo-transparent.svg"
 						alt="Dignity Freedom Network"
-						width={600}
-						height={269}
+						width={1345.677}
+						height={586.551}
 						unoptimized
-						className="h-auto w-40 @max-[381px]:w-[140px] @desktop:w-[216px]"
+						className="absolute top-[16.144%] left-[19.7566%] h-auto w-[67.2839%]"
 					/>
 				</PreviewLink>
 				<div className="ml-auto flex items-center gap-2 @desktop:gap-[26px]">

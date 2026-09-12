@@ -29,9 +29,9 @@ export function Footer() {
 			<div className="mx-2.5 grid grid-cols-2 bg-paper @max-[381px]:grid-cols-1 @tablet:mx-frame @desktop:grid-cols-[1.1fr_.85fr_1fr_1fr] @wide:px-footer">
 				<div className="col-span-full grid grid-cols-2 items-center gap-[23px] bg-brand px-[23px] py-[25px] text-brand-ink @max-[351px]:grid-cols-1 @max-[351px]:gap-[18px] @tablet:col-span-1 @tablet:block @tablet:p-7 @nav:px-[25px] @nav:py-[31px]">
 					<Image
-						src="/design-refresh/reverse.png"
-						width={300}
-						height={131}
+						src="/logos/dfn-logo-transparent.svg"
+						width={1345.677}
+						height={586.551}
 						alt="Dignity Freedom Network"
 						unoptimized
 						className="h-auto w-[135px] @tablet:mb-[23px] @tablet:w-[153px]"

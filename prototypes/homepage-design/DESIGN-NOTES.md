@@ -10,6 +10,10 @@ These are local design prototypes. Do not publish without Andrew asking again.
 - Warm charcoal is the applied senior-review recommendation; alternative palettes remain available. `palette-prototype.html` offers `?variant=olive`, `charcoal`, `ink`, or `umber`. Add `&clean=1` to remove comparison controls.
 - All four palette options deliberately use dark surfaces, independently of the system theme. They keep the existing logo assets and orange call-to-action buttons.
 
+## Design variations to try
+
+- **Header logo without the orange background:** Andrew would like to revisit placing the transparent SVG directly on the page or hero background. Compare it with the current orange panel at desktop and mobile sizes, preserving the header layout and checking that the dark chain remains visible across palettes and photographs. This is a future option; the orange panel remains the current design.
+
 ## Colour provenance
 
 The green/olive palette was an exploratory design proposal, not a supplied or verified DFN brand standard. The legacy WordPress CSS snapshot mainly uses orange, white and grey. Examples include orange `#de6026` and `#cc4405`, white, and dark grey `#303030` / `#383838`.
