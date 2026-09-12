@@ -1,28 +1,38 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
+import "../design-refresh/theme.css";
 import { draftMode } from "next/headers";
 import { VisualEditing } from "next-sanity/visual-editing";
-
 import { SanityLive } from "@/sanity/lib/live";
-import "../globals.css";
 
 export const metadata: Metadata = {
-	title: "DFN",
-	description: "DFN website rebuild",
+	title: "Dignity Freedom Network",
 };
 
 export default async function PublicLayout({
 	children,
-}: Readonly<{
-	children: React.ReactNode;
-}>) {
-	const { isEnabled: isDraftMode } = await draftMode();
-
+}: {
+	children: ReactNode;
+}) {
+	const { isEnabled } = await draftMode();
 	return (
-		<html lang="en" className="h-full antialiased">
-			<body className="flex min-h-full flex-col bg-background text-foreground">
+		<html lang="en-AU" className="[color-scheme:dark]">
+			<head>
+				<link rel="preconnect" href="https://fonts.googleapis.com" />
+				<link
+					rel="preconnect"
+					href="https://fonts.gstatic.com"
+					crossOrigin="anonymous"
+				/>
+				<link
+					rel="stylesheet"
+					href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Oswald:wght@400;500&display=swap"
+				/>
+			</head>
+			<body className="m-0 bg-[#1b1a19]">
 				{children}
-				<SanityLive includeDrafts={isDraftMode} />
-				{isDraftMode ? <VisualEditing /> : null}
+				<SanityLive includeDrafts={isEnabled} />
+				{isEnabled && <VisualEditing />}
 			</body>
 		</html>
 	);

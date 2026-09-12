@@ -1,25 +1,17 @@
-import { Arrow, ButtonLink, DesignLink, Eyebrow } from "./primitives";
+import type { HomepageContent } from "@/components/homepage/content";
+import { Arrow, ButtonLink, DesignLink, Eyebrow, Headline } from "./primitives";
 
-export function Involvement() {
-	const ways = [
-		{
-			title: "Give in your own way.",
-			body: "Discover ways to support DFN’s work across our four areas of focus.",
-			href: "https://dfn.org.au/give/",
-			link: "Ways to give",
-		},
-		{
-			title: "Bring people together.",
-			body: "Join a DFN event or organise an event of your own.",
-			href: "https://dfn.org.au/events/upcoming-events/dinners/",
-			link: "Explore events",
-		},
-		{
-			title: "Use your voice.",
-			body: "Help others learn about the work and the communities behind it.",
-			href: "https://dfn.org.au/help/advocate/",
-			link: "Become an advocate",
-		},
+export function Involvement({
+	content,
+	placeholderLinks = false,
+}: {
+	content: HomepageContent["involvement"];
+	placeholderLinks?: boolean;
+}) {
+	const destinations = [
+		"https://dfn.org.au/give/",
+		"https://dfn.org.au/events/upcoming-events/dinners/",
+		"https://dfn.org.au/help/advocate/",
 	];
 	return (
 		<section
@@ -28,36 +20,35 @@ export function Involvement() {
 		>
 			<div className="mb-10 flex flex-col items-start gap-6">
 				<div>
-					<Eyebrow className="mb-3.5 text-accent">
-						Be part of the change
-					</Eyebrow>
+					<Eyebrow className="mb-3.5 text-accent">{content.eyebrow}</Eyebrow>
 					<h2 className="font-display text-[36px] leading-[1.1] font-normal tracking-[-1px] @tablet:text-[42px]">
-						There’s a place
-						<br />
-						for you in this work.
+						<Headline text={content.headline} />
 					</h2>
 				</div>
-				<ButtonLink light href="https://dfn.org.au/donate/">
-					Make a donation
+				<ButtonLink
+					light
+					href={placeholderLinks ? "#" : "https://dfn.org.au/donate/"}
+				>
+					{content.actionLabel}
 				</ButtonLink>
 			</div>
 			<div className="grid gap-6 @desktop:grid-cols-3 @desktop:gap-[30px] @wide:gap-[38px]">
-				{ways.map((way) => (
+				{(content.opportunities ?? []).map((way, index) => (
 					<div
-						key={way.title}
+						key={way._key}
 						className="border-t border-rule pt-[19px] @tablet:pt-5"
 					>
 						<h3 className="mb-2.5 text-[17px] leading-[1.4] font-medium">
 							{way.title}
 						</h3>
 						<p className="mb-2.5 text-copy leading-[1.65] text-muted">
-							{way.body}
+							{way.description}
 						</p>
 						<DesignLink
-							href={way.href}
+							href={placeholderLinks ? "#" : (destinations[index] ?? "#")}
 							className="inline-flex min-h-11 items-center gap-[18px] py-2.5 text-label leading-normal font-medium text-accent"
 						>
-							{way.link}
+							{way.actionLabel}
 							<Arrow />
 						</DesignLink>
 					</div>

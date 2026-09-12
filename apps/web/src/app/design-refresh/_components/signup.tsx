@@ -1,9 +1,17 @@
 "use client";
 
 import { useState } from "react";
-import { Arrow, buttonClasses, DesignLink, Eyebrow } from "./primitives";
+import type { HomepageContent } from "@/components/homepage/content";
+import { NavigationLink } from "./preview-link";
+import { Arrow, buttonClasses, Eyebrow, Headline } from "./primitives";
 
-export function Signup() {
+export function Signup({
+	content,
+	placeholderLinks = false,
+}: {
+	content: HomepageContent["signup"];
+	placeholderLinks?: boolean;
+}) {
 	const [submitted, setSubmitted] = useState(false);
 	return (
 		<section
@@ -11,16 +19,12 @@ export function Signup() {
 			className="grid gap-7 px-stack py-12 @desktop:grid-cols-[1fr_1.1fr] @desktop:gap-[58px] @desktop:px-content @desktop:py-section"
 		>
 			<div>
-				<Eyebrow className="mb-[15px] text-accent">
-					Receive updates from DFN
-				</Eyebrow>
+				<Eyebrow className="mb-[15px] text-accent">{content.eyebrow}</Eyebrow>
 				<h2 className="mb-4 font-display text-[33px] leading-[1.15] font-normal tracking-[-.6px] @tablet:text-[36px]">
-					Stay close
-					<br />
-					to the work.
+					<Headline text={content.headline} />
 				</h2>
 				<p className="max-w-[350px] text-copy leading-[1.65] text-muted">
-					Hear about DFN’s programmes, events and ways to get involved.
+					{content.description}
 				</p>
 			</div>
 			<form
@@ -54,15 +58,20 @@ export function Signup() {
 						type="submit"
 						className={`${buttonClasses} bg-action text-white`}
 					>
-						Sign up
+						{content.actionLabel}
 						<Arrow />
 					</button>
-					<DesignLink
-						href="https://dfn.org.au/privacy-policy/"
+					<NavigationLink
+						placeholderLinks={placeholderLinks}
+						href={
+							placeholderLinks
+								? "/privacy"
+								: "https://dfn.org.au/privacy-policy/"
+						}
 						className="inline-flex min-h-11 items-center text-sm leading-normal text-muted underline"
 					>
 						Privacy policy
-					</DesignLink>
+					</NavigationLink>
 				</div>
 				<p className="col-span-full text-[13px] leading-[1.6] text-muted">
 					Design preview only. Details are not sent or saved.

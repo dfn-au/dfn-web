@@ -2,22 +2,24 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import { PreviewLink } from "./preview-link";
+import type { HeaderContent } from "@/components/homepage/content";
+import { NavigationLink, PreviewLink } from "./preview-link";
 import { DesignLink } from "./primitives";
-
-const navigation = [
-	{ page: "home", hash: "dh-work", label: "Our work" },
-	{ page: "about", label: "About DFN" },
-	{ page: "home", hash: "dh-involved", label: "Get involved" },
-];
 
 export function SiteHeader({
 	overlay = false,
 	activePage = "home",
+	content,
+	placeholderLinks = false,
+	homepagePath = "",
 }: {
 	overlay?: boolean;
 	activePage?: string;
+	content?: HeaderContent;
+	placeholderLinks?: boolean;
+	homepagePath?: string;
 }) {
+	const navigation = content?.navigation ?? [];
 	const [menuOpen, setMenuOpen] = useState(false);
 	const menuButton = useRef<HTMLButtonElement>(null);
 	useEffect(() => {
@@ -31,6 +33,7 @@ export function SiteHeader({
 		document.addEventListener("keydown", closeOnEscape);
 		return () => document.removeEventListener("keydown", closeOnEscape);
 	}, [menuOpen]);
+	if (!content) return null;
 	return (
 		<>
 			<a
@@ -42,8 +45,14 @@ export function SiteHeader({
 			<header
 				className={`relative z-10 -mx-2.5 flex min-h-[88px] flex-wrap items-center justify-between gap-2 py-3 pr-4 @max-[381px]:pr-3 @desktop:mx-0 @desktop:min-h-0 @desktop:flex-nowrap @desktop:gap-5 @desktop:pr-[max(28px,calc((min(100cqi,1920px)-1120px)/2-16px))] ${overlay ? "@desktop:absolute @desktop:inset-x-0 @desktop:top-[46px] @desktop:right-frame @desktop:py-0" : "@desktop:py-5"}`}
 			>
-				<PreviewLink page="home" hash="dh-top" aria-label="DFN home"
-					className="relative block aspect-[600/269] w-40 shrink-0 bg-brand @max-[381px]:w-[140px] @desktop:w-[216px]">
+				<PreviewLink
+					placeholderLinks={placeholderLinks}
+					homepagePath={homepagePath}
+					page="home"
+					hash="dh-top"
+					aria-label="DFN home"
+					className="relative block aspect-[600/269] w-40 shrink-0 bg-brand @max-[381px]:w-[140px] @desktop:w-[216px]"
+				>
 					{/* Preserve the artwork position within the original padded logo. */}
 					<Image
 						src="/logos/dfn-logo-transparent.svg"
@@ -54,24 +63,25 @@ export function SiteHeader({
 						className="absolute top-[16.144%] left-[19.7566%] h-auto w-[67.2839%]"
 					/>
 				</PreviewLink>
-				<div className="ml-auto flex items-center gap-2 @desktop:gap-[26px]">
+				<div className="ml-auto flex min-w-0 items-center gap-2 @desktop:gap-[26px]">
 					<nav
 						aria-label="Main navigation"
-						className="hidden items-center gap-[25px] font-nav text-base leading-[1.4] tracking-[.25px] text-white uppercase @desktop:flex"
+						className="hidden flex-wrap items-center justify-end gap-x-[25px] font-nav text-base leading-[1.4] tracking-[.25px] text-white uppercase @desktop:flex"
 					>
-						{navigation.map((link) => (
-							<PreviewLink
-								key={link.label}
-								page={link.page}
-								hash={link.hash}
-								aria-current={
-									link.page === activePage && !link.hash ? "page" : undefined
-								}
-								className="py-3 aria-[current=page]:text-accent aria-[current=page]:underline aria-[current=page]:underline-offset-8"
-							>
-								{link.label}
-							</PreviewLink>
-						))}
+						{navigation
+							.filter((link) => !link.mobileOnly)
+							.map((link) => (
+								<NavigationLink
+									placeholderLinks={placeholderLinks}
+									homepagePath={homepagePath}
+									key={link._key}
+									href={link.href}
+									activePage={activePage}
+									className="py-3 aria-[current=page]:text-accent aria-[current=page]:underline aria-[current=page]:underline-offset-8"
+								>
+									{link.label}
+								</NavigationLink>
+							))}
 					</nav>
 					<button
 						ref={menuButton}
@@ -84,10 +94,10 @@ export function SiteHeader({
 						{menuOpen ? "Close" : "Menu"}
 					</button>
 					<DesignLink
-						href="https://dfn.org.au/donate/"
+						href={placeholderLinks ? "#" : "https://dfn.org.au/donate/"}
 						className="inline-flex min-h-[46px] min-w-[60px] items-center justify-center border border-action bg-action px-3.5 py-2.5 font-nav text-base leading-[1.4] text-white uppercase @desktop:min-w-[72px] @desktop:px-[22px] @desktop:py-[11px]"
 					>
-						Give
+						{content.give}
 					</DesignLink>
 				</div>
 				<nav
@@ -96,23 +106,18 @@ export function SiteHeader({
 					hidden={!menuOpen}
 					className="absolute inset-x-2.5 top-full grid bg-involved px-5 py-3 text-white shadow-lg @desktop:hidden"
 				>
-					{[
-						...navigation,
-						{ page: "home", hash: "dh-signup", label: "Receive updates" },
-						{ page: activePage, hash: "dh-contact", label: "Contact DFN" },
-					].map((link) => (
-						<PreviewLink
-							key={link.label}
-							page={link.page}
-							hash={link.hash}
-							aria-current={
-								link.page === activePage && !link.hash ? "page" : undefined
-							}
+					{navigation.map((link) => (
+						<NavigationLink
+							placeholderLinks={placeholderLinks}
+							homepagePath={homepagePath}
+							key={link._key}
+							href={link.href}
+							activePage={activePage}
 							onClick={() => setMenuOpen(false)}
 							className="py-3 text-intro leading-normal"
 						>
 							{link.label}
-						</PreviewLink>
+						</NavigationLink>
 					))}
 				</nav>
 			</header>

@@ -12,6 +12,7 @@ import {
 } from "../_components/primitives";
 import { SiteHeader } from "../_components/site-header";
 import { resolvePalette } from "../palettes";
+import { previewHomepage } from "../preview-content";
 
 export const metadata: Metadata = {
 	title: "About DFN — Dignity Freedom Network",
@@ -85,7 +86,7 @@ export default async function AboutPage({
 			showControls={clean !== "1"}
 		>
 			<div className="mx-auto max-w-[1920px] px-2.5 @desktop:px-frame">
-				<SiteHeader activePage="about" />
+				<SiteHeader activePage="about" content={previewHomepage.header} />
 			</div>
 			<main id="dh-main">
 				<section
@@ -360,7 +361,7 @@ export default async function AboutPage({
 					</div>
 				</section>
 			</main>
-			<Footer />
+			<Footer content={previewHomepage.footer} />
 		</PalettePreview>
 	);
 }

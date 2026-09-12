@@ -7,7 +7,9 @@ the published preview, with a colour swatch and arrows to cycle through palettes
 Reuses the components from `ah/refreshed-homepage-tailwind`, updated to match the
 reviewed `prototypes/homepage-design/palette-prototype.html`: capped hero, separate
 mobile photo/copy, stacking at 900px, larger text, clearer actions and the sourced
-LAMP example. The existing CMS homepage remains independent of this preview.
+LAMP example. The public homepage uses these shared components with content from Sanity.
+Static copy lives in `preview-content.ts` and is passed explicitly by the reference
+routes; shared components do not use it as fallback content.
 
 - `page.tsx` composes static content through shared React components.
 - `theme.css` contains Tailwind imports, tokens and palette variables only;
@@ -20,10 +22,6 @@ LAMP example. The existing CMS homepage remains independent of this preview.
 
 Content provenance and design decisions remain in
 [the prototype notes](../../../../../prototypes/homepage-design/DESIGN-NOTES.md).
-
-Verified with the production build, TypeScript, Biome and the existing 11 tests.
-Browser checks cover 320, 390, 768, 900, 901, 1920 and 2560px content widths,
-programme image dimensions, hero caps, menu dismissal and the signup demo.
 
 ## About page
 

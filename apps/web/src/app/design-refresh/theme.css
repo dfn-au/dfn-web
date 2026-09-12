@@ -1,4 +1,6 @@
 @import "tailwindcss" source(".");
+@source "../../components/homepage";
+@source "../(public)";
 
 /* Tokens only: component layout and presentation live in Tailwind utilities. */
 @theme {
