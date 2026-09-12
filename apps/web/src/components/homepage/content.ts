@@ -34,7 +34,6 @@ export type NavigationItem = {
 
 export type HeaderContent = {
 	navigation: HeaderNavigationItem[];
-	utilityLinks?: NavigationItem[];
 	menuHeading?: string;
 	give: string;
 	giveHref?: string;

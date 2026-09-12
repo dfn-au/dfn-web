@@ -140,8 +140,7 @@ export const homepageObjects = [
 				title: "Show only in the mobile menu",
 				type: "boolean",
 				deprecated: {
-					reason:
-						"Navigation is now shared across desktop and mobile. Move secondary links to Utility links instead.",
+					reason: "Navigation is now shared across desktop and mobile.",
 				},
 				readOnly: true,
 				hidden: ({ value }) => value === undefined,
@@ -329,7 +328,6 @@ export const homepageObjects = [
 		icon: DocumentTextIcon,
 		fields: [
 			navigation("navigation", "Navigation links", "homepageHeaderLink"),
-			navigation("utilityLinks", "Utility links"),
 			defineField({
 				name: "menuHeading",
 				title: "Mobile menu heading",

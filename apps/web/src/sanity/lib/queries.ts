@@ -34,7 +34,7 @@ const HEADER_PROJECTION = `header {
   navigation[]{_key, label, href, headline, description, mobileOnly,
     children[]{_key, label, href, groupLabel}
   },
-  utilityLinks[]{_key, label, href}, menuHeading, give, giveHref
+  menuHeading, give, giveHref
 }`;
 
 export const HOME_PAGE_QUERY = defineQuery(
