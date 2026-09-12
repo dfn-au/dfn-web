@@ -381,7 +381,7 @@ export function SiteHeader({
 								key={link._key}
 								href={link.href}
 								activePage={activePage}
-								className="flex min-h-[46px] items-center text-sm text-white"
+								className={topLinkClass}
 							>
 								{link.label}
 							</HeaderLink>
@@ -511,7 +511,7 @@ export function SiteHeader({
 					</nav>
 					{utilityLinks.length > 0 && (
 						<nav
-							aria-label="Contact and updates"
+							aria-label="Secondary navigation"
 							className="mt-7 border-t border-rule pt-5"
 						>
 							<ul>
