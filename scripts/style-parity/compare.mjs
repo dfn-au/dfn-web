@@ -196,6 +196,14 @@ function compareStringObject(
 	]);
 	for (const property of properties) {
 		if (ignored.has(property)) continue;
+		// CSS optimizers can omit a number's leading zero in unregistered custom
+		// properties. Compare that spelling equally, without rounding values,
+		// coercing units, or normalizing arbitrary custom-property token streams.
+		if (
+			property.startsWith("--") &&
+			isEquivalentDecimal(expected[property], actual[property])
+		)
+			continue;
 		compareScalar(
 			differences,
 			node,
@@ -205,6 +213,17 @@ function compareStringObject(
 			actual[property],
 		);
 	}
+}
+
+function isEquivalentDecimal(expected, actual) {
+	const decimal = /^-?(?:0?\.\d+)$/;
+	return (
+		typeof expected === "string" &&
+		typeof actual === "string" &&
+		decimal.test(expected) &&
+		decimal.test(actual) &&
+		expected.replace(/^(-?)0\./, "$1.") === actual.replace(/^(-?)0\./, "$1.")
+	);
 }
 
 function compareNumericObject(

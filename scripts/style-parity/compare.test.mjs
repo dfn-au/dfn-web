@@ -25,6 +25,34 @@ test("equivalent snapshots have no differences", () => {
 	assert.deepEqual(compareSnapshots(snapshot(), snapshot()), []);
 });
 
+test("accepts omitted leading zeroes in decimal custom properties only", () => {
+	const reference = snapshot();
+	const candidate = snapshot();
+	reference.nodes[0].style["--scale"] = "0.8";
+	candidate.nodes[0].style["--scale"] = ".8";
+	reference.nodes[0].style["--offset"] = "-0.5";
+	candidate.nodes[0].style["--offset"] = "-.5";
+	assert.deepEqual(compareSnapshots(reference, candidate), []);
+
+	for (const [expected, actual] of [
+		["0.8", ".7"],
+		["0.8px", ".8px"],
+		["0.8 1", ".8 1"],
+		["0.80000000000000001", ".8"],
+		["0.8", undefined],
+	]) {
+		reference.nodes[0].style["--scale"] = expected;
+		candidate.nodes[0].style["--scale"] = actual;
+		assert.equal(compareSnapshots(reference, candidate).length, 1);
+	}
+
+	delete reference.nodes[0].style["--scale"];
+	delete candidate.nodes[0].style["--scale"];
+	reference.nodes[0].style.opacity = "0.8";
+	candidate.nodes[0].style.opacity = ".8";
+	assert.equal(compareSnapshots(reference, candidate).length, 1);
+});
+
 test("reports computed-style and layout differences", () => {
 	const candidate = snapshot();
 	candidate.nodes[0].style.color = "rgb(255, 255, 255)";

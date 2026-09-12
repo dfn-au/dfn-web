@@ -1,0 +1,70 @@
+# Homepage hero and content widths
+
+Research date: 12 September 2026. Status: research and recommendation, not an accepted design decision. Sources are official design systems, browser documentation, and W3C accessibility guidance. This note does not establish which design converts better.
+
+## Finding
+
+A full-width photographic hero can coexist with a capped content grid. The image canvas, the arrangement of content, and the width of an individual text block are separate design decisions. For DFN, keeping readable content contained while allowing the hero image more breadth is a reasonable direction to test. It does not require returning to oversized section images and widely separated columns.
+
+## What the sources support
+
+| Question | Evidence | Implication for DFN |
+| --- | --- | --- |
+| Should a marketing layout keep expanding on wide screens? | Carbon's current guidance gives marketing pages a centered editorial model that maintains a maximum width. It reserves its browser-wide model for dense interfaces where extra space can expose more information. [Carbon style models](https://carbondesignsystem.com/elements/2x-grid/usage/#style-models). | A larger monitor does not require proportionally larger gaps or body content. Let outer margins absorb extra width. |
+| Can the background extend farther than the grid? | Carbon's official v10 implementation guide explicitly puts edge-to-edge images or backgrounds on an outer wrapper around its capped grid. This is an older implementation example, not a dependency recommendation. [Carbon full-bleed content](https://v10.carbondesignsystem.com/guidelines/2x-grid/implementation/#full-bleed-content). | It is valid to let the hero photo span the viewport while keeping its heading, buttons, navigation, and later sections aligned to a shared inner grid. |
+| Is there a universal maximum width? | GOV.UK currently uses a 1020px default and explicitly permits wider layouts when content needs them. Carbon's largest standard breakpoint is 1584px. They serve different purposes. [GOV.UK layout](https://design-system.service.gov.uk/styles/layout/), [Carbon grid](https://carbondesignsystem.com/elements/2x-grid/overview/#breakpoints). | Neither value is a universal target for a charity homepage. Choose widths using DFN's text, photographs, and composition. |
+| What should be limited for readability? | USWDS recommends roughly 45–90 characters for most lines, with 66 a useful target for long passages; short passages and large display type may use different measures. GOV.UK generally keeps text within 75 characters. [USWDS typography](https://designsystem.digital.gov/components/typography/#measure-line-length), [GOV.UK layout](https://design-system.service.gov.uk/styles/layout/). | Limit paragraph measure separately from the section width. An image and short heading do not need the same width as running text. These are design-system recommendations, not WCAG AA character limits. |
+| How should wide-screen breakpoints be chosen? | Google's responsive design guide says to let content determine breakpoints. Its worked example changes layout when growing whitespace starts to look wrong and eventually limits component width on large screens. [web.dev responsive design](https://web.dev/articles/responsive-web-design-basics#how_to_choose_breakpoints). | Inspect the actual composition continuously as the viewport grows; do not treat “desktop” as one size. Excessive internal gaps are a reason to constrain or rearrange content. |
+| What happens to the photo when the frame changes shape? | `object-fit: cover` preserves image proportions and crops excess content; `object-position` controls its placement. `<picture>` supports different crops or compositions for different screen conditions. `srcset`/`sizes` address image resolution, a separate problem. [MDN object-fit](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/object-fit), [MDN responsive images](https://developer.mozilla.org/en-US/docs/Web/HTML/Guides/Responsive_images). | Choose a focal point and inspect the crop on narrow and ultrawide screens. A full-bleed hero is not simply an uncapped `<img>` retaining one aspect ratio at every size. |
+| What must remain readable over a photograph? | WCAG AA requires at least 4.5:1 contrast for ordinary text and 3:1 for large text. W3C identifies insufficient contrast over background images as a failure. [WCAG contrast](https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html), [W3C background-image failure](https://www.w3.org/WAI/WCAG22/Techniques/failures/F83). | Check the background immediately behind the text at each crop. A stable dark overlay, gradient, or solid text panel can help; the actual result must meet contrast requirements. |
+| What about zoom and small viewports? | WCAG reflow requires vertically scrolling content to work at a width equivalent to 320 CSS pixels without loss of information or functionality or unnecessary scrolling in two dimensions, subject to defined exceptions. [WCAG reflow](https://www.w3.org/WAI/WCAG22/Understanding/reflow.html). | Hero height limits must allow text and controls to reflow. Device screen resolution alone is not the browser's usable CSS width. |
+
+## Current nonprofit examples
+
+The following are observations of live homepages on 12 September 2026, using first-party pages and browser screenshots at a wide desktop viewport. They are a small illustrative sample, not evidence of a sector-wide trend or of conversion performance. Campaigns, geographic variants, cookie notices, and layouts can change. No precise CSS breakpoint or maximum-width claim is inferred from a screenshot.
+
+| Site | Observed treatment | Useful distinction |
+| --- | --- | --- |
+| [ActionAid UK](https://www.actionaid.org.uk/) | The current appeal uses a photograph extending across the browser, with a bounded heading/donation area over it and a centered card grid below. A cookie dialog partly covered the inspected view, but the hero edges and content alignment were visible. | A broad image does not require equally broad text or form controls. |
+| [International Rescue Committee](https://www.rescue.org/) | The opening is split between a light text area on the left and a photograph reaching the right edge; the navigation sits in a centered bar above. | The image and copy can have different width behavior while remaining part of one hero. |
+| [charity: water](https://www.charitywater.org/) | The current Day One campaign uses a broad cream artwork/background composition, a bounded campaign message and donation area, and photographic decoration toward the right. | Background composition can carry the extra width while the actionable content remains contained. |
+| [WaterAid UK](https://www.wateraid.org/uk) | A wide appeal photograph sits behind a solid blue heading/donation panel. | A solid text panel separates legibility from the changing photograph behind it. |
+
+These examples demonstrate multiple valid treatments rather than one mandatory contemporary hero style. They support comparing a full-bleed image with the framed DFN treatment; they do not prove either is better for DFN.
+
+## Recommendation to compare locally
+
+The following is design judgment informed by the sources, not a proven outcome:
+
+1. Keep DFN's current 1120px content grid as the comparison baseline. Keep normal paragraphs narrower within it.
+2. Compare the current 1440px framed hero with a full-bleed photo using the same inner content alignment. Keep the chosen edge-attached logo treatment consistent so the image-width decision is easy to judge.
+3. For the full-bleed option, control the desktop hero's height independently of viewport width. Avoid simply preserving one wide-screen image ratio forever: on an ultrawide screen that can produce either a giant image or an excessively shallow crop, depending on the chosen rule. Let text determine the minimum space it needs.
+4. Choose a suitable wide crop and a separate mobile crop where necessary. If the current photograph cannot preserve its subject and provide a readable text area at the widest sizes, prefer a framed image or change the crop/image. Expanding an unsuitable photograph is not a quality improvement.
+5. Compare around 1440px, 1920px, and 2560px CSS viewport widths, plus narrow widths and zoom; resize between these points too. These are useful test samples, not proposed universal breakpoints. Judge subject visibility, text contrast, hero-to-body balance, and the relationship between the logo and image.
+
+No source reviewed establishes that a full-bleed hero universally looks better or increases donations. Live examples can establish that a pattern is used; DFN-specific visual comparison and, later, user or outcome testing establish whether it works here.
+
+## Product site references
+
+Public HTML and linked CSS were inspected on 12 September 2026. These are observed source rules, not measurements of every rendered state or an assertion that either site is objectively best. Homepages may change by campaign, region, or experiment.
+
+**Apple:** the current homepage's feature-tile wrapper uses `width:100%`, with centered copy and separate image containers. Its first two phone sections cap supporting copy at 580px and 640px on desktop. The first phone image wrapper changes from 568px to 462px to 256px tall across its desktop, medium, and small rules; its HTML provides small, medium, and large picture sources. These source facts show image composition and text width being controlled separately within a broad canvas. [Apple homepage](https://www.apple.com/), [linked campaign stylesheet](https://www.apple.com/v/homepage/a/styles/september-event2026.built.css).
+
+**Stripe:** the AU homepage's section container is centered and capped by a 1264px content token plus a 2px border allowance. Its English hero heading has a separate `32ch` maximum. The hero background sits outside that content container, while the wave visual's inner layout also has a maximum width; the decoration can overflow beyond it. The visual is therefore not simply scaled to occupy any possible screen width. Its static fallback also supplies different mobile, tablet, and desktop images. [Stripe AU homepage](https://stripe.com/au), [container rules](https://b.stripecdn.com/mkt-ssr-statics/assets/_next/static/css/3194942a3bd6eca4.css), [hero rules](https://b.stripecdn.com/mkt-ssr-statics/assets/_next/static/css/f5d7a0708b41b5bf.css), [layout tokens](https://b.stripecdn.com/mkt-ssr-statics/assets/_next/static/css/c3ca6e08b62a6ac3.css).
+
+**Design interpretation for DFN:** borrow the separation of canvas, focal image, and readable content. A full-width background can create presence while the person in the photograph, headline, and buttons retain deliberate scale and proximity. Stripe also supports keeping the central visual composition capped inside a wider background as a legitimate alternative to a literal edge-to-edge photograph. The transferable lesson is control over composition, not copying a particular brand's maximum width, animation, or aesthetic.
+
+## Broader photography and editorial references
+
+The user clarified that inspiration should come from any strong websites, without an industry restriction. The following first-party homepages were inspected visually on 12 September 2026. Selection is a design judgment about useful composition, not an objective ranking or a claim about measured business results. Site and campaign content can change. These observations do not assert exact CSS maximum widths.
+
+| Reference | Observed composition | Transferable idea for DFN |
+| --- | --- | --- |
+| [Patagonia](https://www.patagonia.com/home/) | The current campaign opens with a broad surfing video, a short centered message and a single primary action. Photography also anchors subsequent shopping and story sections. | Give the photograph a clear role; keep the message short enough to coexist with it. Full-width media can feel purposeful when the content is tightly composed. Video is not required to borrow this principle. |
+| [Aesop](https://www.aesop.com/) | The current campaign uses a broad video backdrop, restrained typography and a bounded action; the rest of the page alternates imagery, products and short editorial copy. | Restraint and consistent typography can produce a strong identity without making every element large. The carousel and video are not recommendations for DFN. |
+| [Aman](https://www.aman.com/) | A quiet masthead sits above an inset video opening with a visible page-coloured border. The page then presents photographs and short experience descriptions. | A visible frame can be an intentional visual choice. Framing and maximum width are separate decisions: DFN could test small consistent outer gutters without retaining the 1440px hero cap. This latter behavior is a proposal, not a claim about Aman's CSS at every width. |
+| [The Modern House](https://themodernhouse.com/) | The inspected opening pairs a large property photograph on the left with a narrower, warm-neutral text panel on the right. Serif headline, small uppercase label and outlined action form a restrained hierarchy. | A split composition gives a photograph its own space and keeps typography legible independently of the crop. Its editorial approach is relevant to DFN's selected serif-and-photography direction. |
+
+### Refined recommendation after broadening the references
+
+Keep the 1120px content grid as a baseline. Compare three hero treatments without changing the copy or the rest of the page: the current 1440px framed hero, an edge-to-edge image, and an image with small consistent outer gutters that can expand beyond 1440px. The latter is a useful first alternative for DFN because the existing orange logo tab can retain a visible relationship with the image edge. Keep the hero text constrained and control photo height, focal point and resolution independently. This is a recommendation for a local comparison only; no design change or publication is authorized by the research request.
