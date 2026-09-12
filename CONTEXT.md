@@ -13,7 +13,7 @@ The set of Country Sites where a piece of Authored Content is intended to appear
 _Avoid_: Locale, market, audience segment
 
 **Shared Content**:
-Authored Content intended to appear on more than one Country Site as the same public item. A shared item can be published to all included Country Sites in one editorial action.
+Authored Content intended to appear on more than one Country Site as the same public item, with some content optionally differing by Country Site. A shared item can be published to all included Country Sites in one editorial action.
 _Avoid_: Duplicate content, mirrored page
 
 **Site-Specific Content**:

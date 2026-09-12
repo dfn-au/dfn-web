@@ -26,7 +26,7 @@ Supporting evaluation, evidence, candidate comparisons, scores, exclusions, risk
 This ADR does not decide:
 
 - Exact Sanity schemas, block library, desk structure, content migration inventory, or redirect map.
-- Exact modelling for Shared Content, Site-Specific Content, linked counterparts, field-level site variation, or editor-safe publishing controls. This is owned by [issue #21](https://github.com/dfn-au/dfn-web/issues/21).
+- Exact modelling for Shared Content, Site-Specific Content, linked counterparts, field-level site variation, or editor-safe publishing controls. The subsequent [ADR 004](004-country-site-publishing.md) records the publishing model and v1 boundaries for [issue #21](https://github.com/dfn-au/dfn-web/issues/21).
 - Whether Sanity Studio remains embedded in the Next.js application or moves to a separate application. This is owned by [issue #18](https://github.com/dfn-au/dfn-web/issues/18).
 - Operational persistence, operational staff authentication, payments, transactional notifications, or analytics vendors. Those choices remain undecided and are documented as research rather than ADRs.
 
