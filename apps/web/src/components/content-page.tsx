@@ -1,5 +1,5 @@
-import { Footer } from "@/app/design-refresh/_components/footer";
-import { SiteHeader } from "@/app/design-refresh/_components/site-header";
+import { Footer } from "@/components/site/footer";
+import { SiteHeader } from "@/components/site/site-header";
 import type { Page, SiteChrome } from "@/sanity/lib/queries";
 import { RenderSections } from "./page-sections/render-sections";
 
@@ -17,15 +17,12 @@ export function ContentPage({
 					content={chrome?.header}
 					activePage={page.slug.current}
 					homepagePath="/"
-					placeholderLinks
 				/>
 			</div>
 			<main id="dh-main">
 				<RenderSections title={page.title} sections={page.sections ?? []} />
 			</main>
-			{chrome?.footer && (
-				<Footer content={chrome.footer} homepagePath="/" placeholderLinks />
-			)}
+			{chrome?.footer && <Footer content={chrome.footer} homepagePath="/" />}
 		</>
 	);
 }

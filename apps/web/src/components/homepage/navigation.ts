@@ -1,4 +1,4 @@
-import type { Palette } from "@/app/design-refresh/palettes";
+import type { Palette } from "@/components/site/palettes";
 
 // Carry the reviewed palette between public pages without changing placeholders,
 // local anchors, phone/email links or external destinations.

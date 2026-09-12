@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { PalettePreview } from "@/app/design-refresh/_components/palette-preview";
-import { resolvePalette } from "@/app/design-refresh/palettes";
 import { ContentPage } from "@/components/content-page";
 import { PageViewTracker } from "@/components/page-view-tracker";
+import { PalettePreview } from "@/components/site/palette-preview";
+import { resolvePalette } from "@/components/site/palettes";
 import { sanityFetch } from "@/sanity/lib/live";
 import {
 	PAGE_QUERY,

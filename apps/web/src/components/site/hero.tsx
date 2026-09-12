@@ -5,27 +5,18 @@ import { SiteHeader } from "./site-header";
 export function Hero({
 	content,
 	header,
-	image,
-	placeholderLinks = false,
 }: {
 	content: HomepageContent["hero"];
 	header?: HomepageContent["header"];
-	image?: string;
-	placeholderLinks?: boolean;
 }) {
 	return (
 		<div className="relative mx-auto max-w-[1920px] px-2.5 @desktop:px-frame @desktop:pt-frame">
-			<SiteHeader
-				overlay
-				content={header}
-				placeholderLinks={placeholderLinks}
-			/>
+			<SiteHeader overlay content={header} />
 			<section
 				className="relative bg-paper @desktop:flex @desktop:min-h-[clamp(580px,34cqi,640px)] @desktop:items-end @desktop:px-hero @desktop:pt-[170px] @desktop:pb-12"
 				aria-labelledby="hero-title"
 			>
 				<Photo
-					name={image}
 					image={content.photograph}
 					alt={content.photograph?.alt ?? ""}
 					priority

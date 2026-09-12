@@ -1,11 +1,9 @@
 # Homepage content
 
-`/` renders the `homePage` Sanity singleton with the reviewed design-refresh
-components and theme. Its public root layout and shared header/footer also serve general content
-pages such as `/privacy`. `/design-refresh` and `/design-refresh/about` retain their static
-preview content and links. Their static copy lives in
-`app/design-refresh/preview-content.ts`; the public components receive authored
-content explicitly and do not import preview defaults.
+`/` renders the `homePage` Sanity singleton with shared components and theme in
+`components/site`. Its public root layout and shared header/footer also serve
+general content pages such as `/privacy`. Public components receive authored
+content explicitly.
 
 In Studio, **Home Page** contains homepage content, header/footer copy and search
 appearance. **Areas of work** is an ordered array: add, remove or reorder items

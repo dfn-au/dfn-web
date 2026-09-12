@@ -71,7 +71,6 @@ type ProgrammeProps = {
 	label: string;
 	title: ReactNode;
 	body: PortableTextBlock[];
-	image?: string;
 	photograph?: HomepageImage;
 	alt: string;
 	href: string;
@@ -87,7 +86,6 @@ export function Programme({
 	label,
 	title,
 	body,
-	image,
 	photograph,
 	alt,
 	href,
@@ -105,7 +103,6 @@ export function Programme({
 			className={`grid items-center @desktop:grid-cols-2 ${surface}`}
 		>
 			<Photo
-				name={image}
 				image={photograph}
 				alt={alt}
 				className={`aspect-4/3 h-auto w-full object-cover ${crop} ${imageRight ? "@desktop:col-start-2 @desktop:row-start-1" : ""}`}

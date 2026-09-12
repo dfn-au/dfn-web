@@ -1,13 +1,13 @@
 import Image from "next/image";
 import { stegaClean } from "next-sanity";
 import type { ReactNode } from "react";
-import { NavigationLink } from "@/app/design-refresh/_components/preview-link";
+import { NavigationLink } from "@/components/site/navigation-link";
 import {
 	Arrow,
 	buttonClasses,
 	Eyebrow,
 	Headline,
-} from "@/app/design-refresh/_components/primitives";
+} from "@/components/site/primitives";
 import { urlFor } from "@/sanity/lib/image";
 import { PageBody } from "../portable-text";
 import type { PageSection, SectionImage, SectionLink } from "./types";
@@ -72,7 +72,6 @@ function Link({
 	return (
 		<NavigationLink
 			href={link.href ?? "#"}
-			placeholderLinks
 			className={
 				button
 					? `${buttonClasses} bg-action text-white`
@@ -97,11 +96,7 @@ function Breadcrumb({
 			aria-label="Breadcrumb"
 			className={`${wide ? "mb-8 @desktop:mb-10" : "mb-7"} flex items-center gap-3 text-sm text-muted`}
 		>
-			<NavigationLink
-				href="/"
-				placeholderLinks
-				className="inline-flex min-h-11 items-center"
-			>
+			<NavigationLink href="/" className="inline-flex min-h-11 items-center">
 				Home
 			</NavigationLink>
 			<span aria-hidden="true">/</span>

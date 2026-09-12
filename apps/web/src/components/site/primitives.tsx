@@ -107,23 +107,17 @@ export function ProgrammeTitle({ children }: { children: ReactNode }) {
 }
 
 export function Photo({
-	name,
 	alt,
 	className = "",
 	priority = false,
 	image,
 }: {
-	name?: string;
 	alt?: string;
 	className?: string;
 	priority?: boolean;
 	image?: HomepageImage;
 }) {
-	const src = image?.asset
-		? urlFor(image).url()
-		: name
-			? `/design-refresh/${name}.jpg`
-			: undefined;
+	const src = image?.asset ? urlFor(image).url() : undefined;
 	if (!src) return null;
 	return (
 		<Image

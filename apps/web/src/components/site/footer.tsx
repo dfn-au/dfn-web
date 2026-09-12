@@ -2,16 +2,14 @@ import Image from "next/image";
 import { stegaClean } from "next-sanity";
 import type { FooterContent } from "@/components/homepage/content";
 import { RichTextBody } from "@/components/homepage/rich-text-body";
-import { NavigationLink } from "./preview-link";
+import { NavigationLink } from "./navigation-link";
 import { DesignLink } from "./primitives";
 
 export function Footer({
 	content,
-	placeholderLinks = false,
 	homepagePath = "",
 }: {
 	content: FooterContent;
-	placeholderLinks?: boolean;
 	homepagePath?: string;
 }) {
 	const offices = content.offices ?? [];
@@ -41,7 +39,6 @@ export function Footer({
 							<NavigationLink
 								key={link._key}
 								href={link.href}
-								placeholderLinks={placeholderLinks}
 								homepagePath={homepagePath}
 								className="flex min-h-11 items-center py-1 text-sm leading-[1.65] wrap-anywhere"
 							>
@@ -86,7 +83,6 @@ export function Footer({
 						<NavigationLink
 							key={link._key}
 							href={link.href}
-							placeholderLinks={placeholderLinks}
 							homepagePath={homepagePath}
 						>
 							{link.label}

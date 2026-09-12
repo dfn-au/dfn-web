@@ -2,16 +2,10 @@
 
 import { useState } from "react";
 import type { HomepageContent } from "@/components/homepage/content";
-import { NavigationLink } from "./preview-link";
+import { NavigationLink } from "./navigation-link";
 import { Arrow, buttonClasses, Eyebrow, Headline } from "./primitives";
 
-export function Signup({
-	content,
-	placeholderLinks = false,
-}: {
-	content: HomepageContent["signup"];
-	placeholderLinks?: boolean;
-}) {
+export function Signup({ content }: { content: HomepageContent["signup"] }) {
 	const [submitted, setSubmitted] = useState(false);
 	return (
 		<section
@@ -62,12 +56,7 @@ export function Signup({
 						<Arrow />
 					</button>
 					<NavigationLink
-						placeholderLinks={placeholderLinks}
-						href={
-							placeholderLinks
-								? "/privacy"
-								: "https://dfn.org.au/privacy-policy/"
-						}
+						href="/privacy"
 						className="inline-flex min-h-11 items-center text-sm leading-normal text-muted underline"
 					>
 						Privacy policy

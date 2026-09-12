@@ -1,15 +1,15 @@
 import { stegaClean } from "next-sanity";
-import { Footer } from "@/app/design-refresh/_components/footer";
-import { Hero } from "@/app/design-refresh/_components/hero";
-import { Involvement } from "@/app/design-refresh/_components/involvement";
-import { Headline } from "@/app/design-refresh/_components/primitives";
+import { Footer } from "@/components/site/footer";
+import { Hero } from "@/components/site/hero";
+import { Involvement } from "@/components/site/involvement";
+import { Headline } from "@/components/site/primitives";
 import {
 	Enterprise,
 	Evidence,
 	Introduction,
 	Programme,
-} from "@/app/design-refresh/_components/programmes";
-import { Signup } from "@/app/design-refresh/_components/signup";
+} from "@/components/site/programmes";
+import { Signup } from "@/components/site/signup";
 import { areaAnchor, type HomepageContent } from "./content";
 
 export function Homepage({ content }: { content: HomepageContent }) {
@@ -18,11 +18,7 @@ export function Homepage({ content }: { content: HomepageContent }) {
 	return (
 		<>
 			{content.hero && (
-				<Hero
-					content={content.hero}
-					header={content.header ?? undefined}
-					placeholderLinks
-				/>
+				<Hero content={content.hero} header={content.header ?? undefined} />
 			)}
 			<main id="dh-main">
 				{content.introduction && (
@@ -75,12 +71,10 @@ export function Homepage({ content }: { content: HomepageContent }) {
 				{content.featuredExample && (
 					<Evidence content={content.featuredExample} href="#" />
 				)}
-				{content.involvement && (
-					<Involvement content={content.involvement} placeholderLinks />
-				)}
-				{content.signup && <Signup content={content.signup} placeholderLinks />}
+				{content.involvement && <Involvement content={content.involvement} />}
+				{content.signup && <Signup content={content.signup} />}
 			</main>
-			{content.footer && <Footer content={content.footer} placeholderLinks />}
+			{content.footer && <Footer content={content.footer} />}
 		</>
 	);
 }
