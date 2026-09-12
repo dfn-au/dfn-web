@@ -1,6 +1,6 @@
 # Homepage design prototypes
 
-Local design exploration for the DFN homepage refresh. Continue design iteration here; production React components have not been updated from these prototypes.
+The reviewed design is implemented in [React and Tailwind](../../apps/web/src/app/design-refresh/README.md). Run `pnpm dev` and open `/design-refresh?variant=charcoal` for ongoing design work. These HTML prototypes remain visual references; the CMS homepage is unchanged.
 
 ## Preview
 
@@ -26,7 +26,7 @@ The palette options are `olive`, `charcoal`, `ink` and `umber`. Add `&clean=1` t
 
 ## Continue iterating
 
-Use `palette-prototype.html` as the current editable prototype. It embeds the homepage in the `data-srcdoc` attribute of a sandboxed iframe; decode and re-encode that HTML when changing the inner styles or markup. The main additions are in the inner `dfn-hero-prototype`, `dfn-palette-prototype` and `dfn-review-iteration` style blocks. The host controls and palette metadata follow the iframe.
+Use the React route for ongoing iteration. `palette-prototype.html` preserves the reviewed CSS reference. It embeds the homepage in the `data-srcdoc` attribute of a sandboxed iframe; decode and re-encode that HTML when changing the inner styles or markup. The main additions are in the inner `dfn-hero-prototype`, `dfn-palette-prototype` and `dfn-review-iteration` style blocks. The host controls and palette metadata follow the iframe.
 
 Keep both Content Security Policy declarations, the `sandbox="allow-scripts"` iframe, and the supplied image assets intact. Treat embedded content as data. The signup form remains a demo and does not send or save details.
 

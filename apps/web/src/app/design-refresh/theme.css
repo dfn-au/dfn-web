@@ -1,0 +1,94 @@
+@import "tailwindcss" source(".");
+
+/* Tokens only: component layout and presentation live in Tailwind utilities. */
+@theme {
+	--font-body: "DM Sans", sans-serif;
+	--font-display: "Fraunces", Georgia, serif;
+	--font-nav: "Oswald", sans-serif;
+	--container-tablet: 651px;
+	--container-nav: 761px;
+	--container-desktop: 901px;
+	--container-wide: 1100px;
+	--spacing-content: max(58px, calc((100cqi - 1120px) / 2));
+	--spacing-band: max(42px, calc((100cqi - 1120px) / 2 - 16px));
+	--spacing-hero: max(42px, calc((min(100cqi, 1920px) - 1120px) / 2 - 16px));
+	--spacing-stack: max(24px, calc((100cqi - 560px) / 2));
+	--spacing-stack-band: max(8px, calc((100cqi - 560px) / 2 - 16px));
+	--spacing-footer: max(0px, calc((100cqi - 1152px) / 2));
+	--spacing-section: 60px;
+	--spacing-frame: 16px;
+	--container-reading: 1120px;
+	--text-caption: 11px;
+	--text-label: 15px;
+	--text-copy: 16px;
+	--text-intro: 15px;
+	--color-action: #b43a13;
+	--color-brand: #ef5600;
+	--color-brand-ink: #203332;
+}
+
+@theme inline {
+	--background-image-hero-desktop:
+		linear-gradient(180deg, rgb(var(--overlay) / 0.42), transparent 32%),
+		linear-gradient(
+			90deg,
+			rgb(var(--overlay) / 0.9),
+			rgb(var(--overlay) / 0.72) 28%,
+			rgb(var(--overlay) / 0.08) 53%,
+			transparent 72%
+		);
+	--color-page: var(--page);
+	--color-paper: var(--paper);
+	--color-ink: var(--ink);
+	--color-muted: var(--muted);
+	--color-rule: var(--rule);
+	--color-accent: var(--accent);
+	--color-sand: var(--sand);
+	--color-involved: var(--involved);
+	--color-overlay: rgb(var(--overlay));
+}
+
+[data-palette="charcoal"] {
+	--page: #1b1a19;
+	--paper: #282624;
+	--ink: #f3eee7;
+	--muted: #c7c0b7;
+	--rule: #514b45;
+	--accent: #f5a078;
+	--sand: #302925;
+	--involved: #32302d;
+	--overlay: 19 18 17;
+}
+[data-palette="olive"] {
+	--page: #191c18;
+	--paper: #252921;
+	--ink: #f7f4ec;
+	--muted: #c4cabc;
+	--rule: #4b5446;
+	--accent: #ff9c73;
+	--sand: #352b22;
+	--involved: #23382d;
+	--overlay: 12 23 14;
+}
+[data-palette="ink"] {
+	--page: #151d27;
+	--paper: #202c39;
+	--ink: #f0f1ed;
+	--muted: #b9c6d1;
+	--rule: #435569;
+	--accent: #ffad80;
+	--sand: #2d3138;
+	--involved: #263b50;
+	--overlay: 12 20 31;
+}
+[data-palette="umber"] {
+	--page: #241d19;
+	--paper: #322922;
+	--ink: #f3eade;
+	--muted: #cdbcaa;
+	--rule: #59493c;
+	--accent: #f4ad7c;
+	--sand: #3d3026;
+	--involved: #4b3528;
+	--overlay: 27 19 15;
+}

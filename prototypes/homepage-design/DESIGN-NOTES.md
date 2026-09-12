@@ -20,7 +20,7 @@ The first homepage prototype introduced green-tinted dark surfaces through `ligh
 
 From the repository root: `pnpm design:preview`. See [README.md](README.md) for preview URLs and source files.
 
-The original `index.html` export, sandboxed iframe and CSP remain preserved. No production application source has been changed.
+The original `index.html` export, sandboxed iframe and CSP remain preserved. The reviewed design also has a [React and Tailwind preview](../../apps/web/src/app/design-refresh/README.md); the CMS homepage is unchanged.
 
 ## Senior-review iteration
 
