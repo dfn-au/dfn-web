@@ -23,7 +23,7 @@ export default async function DesignRefreshPage({
 			showControls={clean !== "1"}
 		>
 			<Hero />
-			<main>
+			<main id="dh-main">
 				<Introduction />
 				<Programme
 					id="education"

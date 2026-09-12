@@ -1,9 +1,8 @@
 import Image from "next/image";
+import { PreviewLink } from "./preview-link";
 import { DesignLink } from "./primitives";
 
 const footerLinks = [
-	{ label: "Our work", href: "#dh-work" },
-	{ label: "About DFN", href: "https://dfn.org.au/about/" },
 	{ label: "Stories", href: "https://dfn.org.au/stories/" },
 	{ label: "Get involved", href: "https://dfn.org.au/help/" },
 	{ label: "Contact", href: "https://dfn.org.au/contact/" },
@@ -50,6 +49,18 @@ export function Footer() {
 						aria-label="Footer navigation"
 						className="flex flex-wrap gap-x-5 gap-y-2 @tablet:block"
 					>
+						<PreviewLink
+							hash="dh-work"
+							className="flex min-h-11 items-center py-1 text-sm leading-[1.65]"
+						>
+							Our work
+						</PreviewLink>
+						<PreviewLink
+							page="about"
+							className="flex min-h-11 items-center py-1 text-sm leading-[1.65]"
+						>
+							About DFN
+						</PreviewLink>
 						{footerLinks.map((link) => (
 							<DesignLink
 								key={link.href}

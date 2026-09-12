@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 import { useEffect, useState } from "react";
 
 import { type Palette, palettes, resolvePalette } from "../palettes";
+import { PreviewContext } from "./preview-link";
 
 const labels: Record<Palette, string> = {
 	charcoal: "Warm charcoal",
@@ -54,7 +55,9 @@ export function PalettePreview({
 			data-palette={palette}
 			className="@container min-h-screen bg-page font-body font-normal text-ink [color-scheme:dark] [&_a:hover]:underline [&_a:hover]:underline-offset-4 [&_:focus-visible]:outline-2 [&_:focus-visible]:outline-offset-4 [&_:focus-visible]:outline-ink"
 		>
-			<div id="dh-top">{children}</div>
+			<PreviewContext.Provider value={{ palette, controlsVisible }}>
+				<div id="dh-top">{children}</div>
+			</PreviewContext.Provider>
 			{controlsVisible && (
 				<nav
 					aria-label="Colour scheme"
