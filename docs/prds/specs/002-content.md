@@ -45,6 +45,7 @@ This PRD records current functional requirements while leaving final navigation 
 - Each site can have its own homepage, navigation, footer, contact details, charity/legal/tax snippets, and calls to action.
 - Staff should be able to publish shared content to both sites in one action where the public item is genuinely the same.
 - Content must support publishing scope: Australia only, New Zealand only, or both.
+- [ADR 004](../../adr/004-country-site-publishing.md) defines shared documents with optional explicit AU/NZ content differences, country-specific sections, Studio previews, reference safeguards, and v1 deferrals. Different wording does not require separate documents.
 - Site-specific content should return a 404 on the other domain unless an explicit redirect exists.
 - Bequests are content/trust requirements for launch, not a normal donation checkout workflow.
 - Preserve the current bequest journey: explanation, booklets/resources, Safewill link, memorial giving CTA, and contact prompts.
@@ -59,7 +60,7 @@ This PRD records current functional requirements while leaving final navigation 
 - Reusable impact facts and figures should be editorial content, not automatically generated infographics for launch.
 - The site should be indexable by search engines. Onsite search is not required for launch.
 - SEO requirements should include editable page titles, descriptions, social preview images, canonical URLs, sitemap support, and redirect management per domain. Social previews should be delivered via Open Graph meta tags (`og:title`, `og:description`, `og:image`, `og:url`) and equivalent Twitter Card tags, with per-domain URLs on `dfn.org.au` and `dfn.org.nz`.
-- Shared content should normally use the same path on both domains, with self-canonical URLs and alternate hints where appropriate.
+- Shared pages use one URL path on both domains in v1, with self-canonical URLs and alternate hints where appropriate.
 - New Zealand pages should not canonicalize to Australian pages, or vice versa.
 - Staff should be able to manage content using draft and published states.
 - Staff live preview is strongly desired.
@@ -87,7 +88,7 @@ This PRD records current functional requirements while leaving final navigation 
 ## Open Questions
 
 - Information architecture deep dive.
-- CMS modelling for shared content, site-specific content, linked counterparts, and any editor-safe field-level AU/NZ variation.
+- Detailed schema and form implementation for the publishing model accepted in [ADR 004](../../adr/004-country-site-publishing.md).
 - Approved evergreen content list.
 - Final URL redirect map per domain.
 - Whether stale historical campaigns become archive pages or redirect only.
