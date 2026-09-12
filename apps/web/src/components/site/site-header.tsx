@@ -64,19 +64,17 @@ export function SiteHeader({
 						aria-label="Main navigation"
 						className="hidden flex-wrap items-center justify-end gap-x-[25px] font-nav text-base leading-[1.4] tracking-[.25px] text-white uppercase @desktop:flex"
 					>
-						{navigation
-							.filter((link) => !link.mobileOnly)
-							.map((link) => (
-								<NavigationLink
-									homepagePath={homepagePath}
-									key={link._key}
-									href={link.href ?? "#"}
-									activePage={activePage}
-									className="py-3 aria-[current=page]:text-accent aria-[current=page]:underline aria-[current=page]:underline-offset-8"
-								>
-									{link.label}
-								</NavigationLink>
-							))}
+						{navigation.map((link) => (
+							<NavigationLink
+								homepagePath={homepagePath}
+								key={link._key}
+								href={link.href ?? "#"}
+								activePage={activePage}
+								className="py-3 aria-[current=page]:text-accent aria-[current=page]:underline aria-[current=page]:underline-offset-8"
+							>
+								{link.label}
+							</NavigationLink>
+						))}
 					</nav>
 					<button
 						ref={menuButton}

@@ -31,7 +31,7 @@ const HOMEPAGE_IMAGE_PROJECTION = `{
 }`;
 
 const HEADER_PROJECTION = `header {
-  navigation[]{_key, label, href, headline, description, mobileOnly,
+  navigation[]{_key, label, href, headline, description,
     children[]{_key, label, href, groupLabel}
   },
   menuHeading, give, giveHref

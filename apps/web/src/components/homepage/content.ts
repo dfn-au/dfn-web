@@ -48,8 +48,6 @@ export type HeaderNavigationItem = {
 	headline?: string;
 	description?: string;
 	children?: HeaderChildLink[];
-	/** Existing content is retained; the public header shows links on every device. */
-	mobileOnly?: boolean;
 };
 
 export type FooterContent = {

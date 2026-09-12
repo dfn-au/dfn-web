@@ -102,23 +102,22 @@ describe("grouped public navigation", () => {
 				markup.match(new RegExp(`href="${child.href}"`, "g")),
 			).toHaveLength(2);
 	});
-	it("keeps legacy flat links available on desktop and mobile, including mobileOnly entries", () => {
+	it("renders a flat navigation list on desktop and mobile without disclosure panels", () => {
 		const markup = renderToStaticMarkup(
 			<SiteHeader
 				content={{
 					give: "Give",
 					navigation: [
 						{
-							_key: "updates",
-							label: "Updates",
-							href: "#dh-signup",
-							mobileOnly: true,
+							_key: "contact",
+							label: "Contact",
+							href: "/contact",
 						},
 					],
 				}}
 			/>,
 		);
-		expect(markup.match(/href="#dh-signup"/g)).toHaveLength(2);
+		expect(markup.match(/href="\/contact"/g)).toHaveLength(2);
 		expect(markup).not.toContain("data-navigation-panel");
 	});
 });

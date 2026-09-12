@@ -18,7 +18,7 @@ and legal navigation are ordered lists. Header items have either a destination
 or one level of child links; optional introductions and text group labels support
 the grouped panels. Direct links such as About DFN and Contact belong in the same
 navigation list. Navigation and the Give destination are shared across desktop
-and mobile. Existing mobile-only flags no longer hide public links.
+and mobile.
 Unfinished link destinations can use `#`.
 
 The content objects are separately named schema types so they can later be used
