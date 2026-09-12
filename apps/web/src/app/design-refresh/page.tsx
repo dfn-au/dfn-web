@@ -2,6 +2,7 @@ import { Footer } from "./_components/footer";
 import { Hero } from "./_components/hero";
 import { Involvement } from "./_components/involvement";
 import { PalettePreview } from "./_components/palette-preview";
+import { Headline } from "./_components/primitives";
 import {
 	Enterprise,
 	Evidence,
@@ -10,6 +11,7 @@ import {
 } from "./_components/programmes";
 import { Signup } from "./_components/signup";
 import { resolvePalette } from "./palettes";
+import { previewHomepage } from "./preview-content";
 
 export default async function DesignRefreshPage({
 	searchParams,
@@ -22,78 +24,69 @@ export default async function DesignRefreshPage({
 			initialPalette={resolvePalette(variant)}
 			showControls={clean !== "1"}
 		>
-			<Hero />
+			<Hero
+				content={previewHomepage.hero}
+				header={previewHomepage.header}
+				image="hero"
+			/>
 			<main id="dh-main">
-				<Introduction />
-				<Programme
-					id="education"
-					number="01"
-					label="Education"
-					title={
-						<>
-							The freedom
-							<br />
-							to learn.
-						</>
-					}
-					paragraphs={[
-						"Education opens doors and gives children a reason to dream. Our schools provide quality, English-medium education for children from poor and marginalised communities, alongside healthcare, sport and the arts.",
-						"Respect, self-worth, dignity and equality are part of that education.",
-					]}
-					image="education"
-					alt="A teacher and pupils taking part in a classroom lesson"
-					href="https://dfn.org.au/education/"
-					linkLabel="Explore education"
-					framed
-					crop="object-[center_52%]"
+				<Introduction
+					content={previewHomepage.introduction}
+					areas={previewHomepage.areas.map((area) => ({
+						id: area._key,
+						label: area.label,
+					}))}
 				/>
-				<Programme
-					id="health"
-					number="02"
-					label="Healthcare"
-					title={
-						<>
-							Care that reaches
-							<br />
-							the community.
-						</>
-					}
-					paragraphs={[
-						"Good health is essential to breaking the poverty cycle. Community Health Workers, primary clinics and HIV/AIDS centres help prevent sickness and disease, bringing care closer to the people who need it.",
-					]}
-					image="health"
-					alt="A community health worker checking a woman's blood pressure"
-					href="https://dfn.org.au/give/healthcare/"
-					linkLabel="Explore healthcare"
-					imageRight
-					crop="object-[center_45%]"
+				{previewHomepage.areas.map((area, index) => {
+					const number = String(index + 1).padStart(2, "0");
+					if (area.contentType === "pathways")
+						return (
+							<Enterprise
+								key={area._key}
+								content={area}
+								id={area._key}
+								number={number}
+								href="https://dfn.org.au/give/economic-empowerment/"
+							/>
+						);
+					return (
+						<Programme
+							key={area._key}
+							id={area._key}
+							number={number}
+							label={area.label}
+							title={<Headline text={area.headline} />}
+							body={area.body}
+							image={area._key}
+							alt={area.photograph?.alt ?? ""}
+							href={
+								index === 0
+									? "https://dfn.org.au/education/"
+									: index === 1
+										? "https://dfn.org.au/give/healthcare/"
+										: "https://dfn.org.au/anti-human-trafficking/"
+							}
+							linkLabel={area.actionLabel}
+							framed={index === 0}
+							imageRight={index === 1}
+							crop={
+								index === 0
+									? "object-[center_52%]"
+									: index === 1
+										? "object-[center_45%]"
+										: "object-[42%_38%]"
+							}
+						/>
+					);
+				})}
+				<Evidence
+					content={previewHomepage.featuredExample}
+					href="https://dfn.org.au/self-help-groups/"
 				/>
-				<Enterprise />
-				<Programme
-					id="women"
-					number="04"
-					label="Vulnerable communities"
-					title={
-						<>
-							A future with
-							<br />
-							dignity and hope.
-						</>
-					}
-					paragraphs={[
-						"Prevention and awareness programmes support at-risk women and girls and their communities. Our teams work to protect vulnerable girls, rescue women and girls from abuse, and help them find a new future.",
-					]}
-					image="women"
-					alt="A girl photographed for DFN's work with vulnerable communities"
-					href="https://dfn.org.au/anti-human-trafficking/"
-					linkLabel="Explore this work"
-					crop="object-[42%_38%]"
-				/>
-				<Evidence />
-				<Involvement />
-				<Signup />
+				<Involvement content={previewHomepage.involvement} />
+				<Signup content={previewHomepage.signup} />
 			</main>
-			<Footer />
+			<Footer content={previewHomepage.footer} />
 		</PalettePreview>
 	);
 }

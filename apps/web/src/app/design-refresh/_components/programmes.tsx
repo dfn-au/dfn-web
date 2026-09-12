@@ -1,20 +1,28 @@
+import type { PortableTextBlock } from "next-sanity";
 import type { ReactNode } from "react";
+import type {
+	AreaContent,
+	HomepageContent,
+	HomepageImage,
+} from "@/components/homepage/content";
+import { RichTextBody } from "@/components/homepage/rich-text-body";
 import {
 	Arrow,
 	DesignLink,
 	Eyebrow,
+	Headline,
 	Photo,
 	ProgrammeTitle,
 	TextLink,
 } from "./primitives";
 
-export function Introduction() {
-	const areas = [
-		{ id: "education", label: "Education" },
-		{ id: "health", label: "Healthcare" },
-		{ id: "enterprise", label: "Economic empowerment" },
-		{ id: "women", label: "Vulnerable communities" },
-	];
+export function Introduction({
+	content,
+	areas,
+}: {
+	content: HomepageContent["introduction"];
+	areas: { id: string; label: string }[];
+}) {
 	return (
 		<section
 			id="dh-work"
@@ -22,25 +30,18 @@ export function Introduction() {
 		>
 			<div className="grid items-center gap-6 @desktop:grid-cols-[1fr_1.3fr] @desktop:gap-[50px] @wide:gap-14">
 				<div>
-					<Eyebrow className="mb-[13px] text-accent">
-						Four areas. One purpose.
-					</Eyebrow>
+					<Eyebrow className="mb-[13px] text-accent">{content.eyebrow}</Eyebrow>
 					<h2 className="font-display text-[32px] leading-[1.14] font-normal tracking-[-.8px] @tablet:text-[37px]">
-						Local people.
-						<br />
-						Lasting change.
+						<Headline text={content.headline} />
 					</h2>
 				</div>
 				<p className="max-w-[62ch] text-copy leading-[1.65] text-muted">
-					Our programmes are designed, led and staffed by local teams. Through
-					education, healthcare, economic empowerment and support for vulnerable
-					communities, we work towards a future where people can live with
-					dignity and freedom.
+					{content.description}
 				</p>
 			</div>
 			<nav
-				aria-label="Explore our four areas of work"
-				className="mt-7 grid grid-cols-2 gap-x-6 gap-y-2 @max-[381px]:grid-cols-1 @desktop:mt-9 @desktop:grid-cols-4 @desktop:gap-[22px]"
+				aria-label={`Explore our ${areas.length === 4 ? "four" : areas.length} areas of work`}
+				className={`mt-7 grid grid-cols-2 gap-x-6 gap-y-2 @max-[381px]:grid-cols-1 @desktop:mt-9 @desktop:gap-[22px] ${areas.length === 3 ? "@desktop:grid-cols-3" : areas.length === 5 ? "@desktop:grid-cols-5" : "@desktop:grid-cols-4"}`}
 			>
 				{areas.map((area, index) => (
 					<DesignLink
@@ -50,7 +51,7 @@ export function Introduction() {
 					>
 						<span>
 							<small className="mb-[9px] block text-caption leading-normal text-accent">
-								0{index + 1}
+								{String(index + 1).padStart(2, "0")}
 							</small>
 							{area.label}
 						</span>
@@ -69,8 +70,9 @@ type ProgrammeProps = {
 	number: string;
 	label: string;
 	title: ReactNode;
-	paragraphs: string[];
-	image: string;
+	body: PortableTextBlock[];
+	image?: string;
+	photograph?: HomepageImage;
 	alt: string;
 	href: string;
 	linkLabel: string;
@@ -84,8 +86,9 @@ export function Programme({
 	number,
 	label,
 	title,
-	paragraphs,
+	body,
 	image,
+	photograph,
 	alt,
 	href,
 	linkLabel,
@@ -103,6 +106,7 @@ export function Programme({
 		>
 			<Photo
 				name={image}
+				image={photograph}
 				alt={alt}
 				className={`aspect-4/3 h-auto w-full object-cover ${crop} ${imageRight ? "@desktop:col-start-2 @desktop:row-start-1" : ""}`}
 			/>
@@ -115,61 +119,44 @@ export function Programme({
 					{number} / {label}
 				</Eyebrow>
 				<ProgrammeTitle>{title}</ProgrammeTitle>
-				{paragraphs.map((paragraph) => (
-					<p
-						key={paragraph}
-						className="mb-[23px] max-w-[60ch] text-copy leading-[1.65] text-muted"
-					>
-						{paragraph}
-					</p>
-				))}
+				<RichTextBody value={body} variant="programme" />
 				<TextLink href={href}>{linkLabel}</TextLink>
 			</div>
 		</section>
 	);
 }
 
-export function Enterprise() {
-	const pathways = [
-		{
-			title: "Vocational training",
-			body: "Practical skills to help people earn a living.",
-		},
-		{
-			title: "Business start-up grants",
-			body: "Support to take the first step towards a livelihood.",
-		},
-		{
-			title: "Self-help groups",
-			body: "People supporting one another to move forward.",
-		},
-	];
+export function Enterprise({
+	content,
+	id,
+	number,
+	href,
+}: {
+	content: AreaContent;
+	id: string;
+	number: string;
+	href: string;
+}) {
+	const pathways = content.pathways ?? [];
 	return (
 		<section
-			id="dh-enterprise"
+			id={`dh-${id}`}
 			className="mx-frame grid gap-7 bg-sand px-stack-band py-10 @desktop:grid-cols-[1.08fr_1fr] @desktop:gap-9 @desktop:px-band @desktop:py-12 @wide:grid-cols-2 @wide:gap-16"
 		>
 			<div>
 				<Eyebrow className="mb-[18px] text-accent">
-					03 / Economic empowerment
+					{number} / {content.label}
 				</Eyebrow>
 				<h2 className="mb-[19px] max-w-[400px] font-display text-[34px] leading-[1.13] font-normal tracking-[-.8px] @tablet:text-[39px]">
-					Skills today.
-					<br />
-					Independence tomorrow.
+					<Headline text={content.headline} />
 				</h2>
-				<p className="mb-[17px] max-w-[380px] text-copy leading-[1.65] text-muted">
-					The opportunity to earn a livelihood helps people become
-					self-sufficient and hold their heads up high.
-				</p>
-				<TextLink href="https://dfn.org.au/give/economic-empowerment/">
-					Explore economic empowerment
-				</TextLink>
+				<RichTextBody value={content.body} variant="pathways" />
+				<TextLink href={href}>{content.actionLabel}</TextLink>
 			</div>
 			<div className="grid content-center gap-[19px] @tablet:gap-5">
 				{pathways.map((pathway, index) => (
 					<div
-						key={pathway.title}
+						key={pathway._key}
 						className="grid grid-cols-[26px_1fr] gap-3 border-b border-rule pb-[18px] last:border-0 last:pb-0"
 					>
 						<span
@@ -183,7 +170,7 @@ export function Enterprise() {
 								{pathway.title}
 							</h3>
 							<p className="text-copy leading-[1.65] text-muted">
-								{pathway.body}
+								{pathway.description}
 							</p>
 						</div>
 					</div>
@@ -193,7 +180,13 @@ export function Enterprise() {
 	);
 }
 
-export function Evidence() {
+export function Evidence({
+	content,
+	href,
+}: {
+	content: HomepageContent["featuredExample"];
+	href: string;
+}) {
 	return (
 		<section
 			id="dh-evidence"
@@ -201,31 +194,17 @@ export function Evidence() {
 			className="mx-auto mb-12 grid w-[calc(100%-48px)] max-w-[560px] gap-6 border-y border-rule py-8 @desktop:mb-section @desktop:w-[calc(100%-116px)] @desktop:max-w-reading @desktop:grid-cols-2 @desktop:gap-14 @desktop:py-10"
 		>
 			<div>
-				<Eyebrow className="text-accent">
-					From DFN’s work / LAMP self-help groups
-				</Eyebrow>
+				<Eyebrow className="text-accent">{content.eyebrow}</Eyebrow>
 				<h2
 					id="dh-evidence-title"
 					className="mt-3.5 font-display text-[36px] leading-[1.14] font-medium tracking-[-.7px] @desktop:text-[38px]"
 				>
-					Confidence grows
-					<br />
-					with community.
+					<Headline text={content.headline} />
 				</h2>
 			</div>
 			<div>
-				<p className="mb-[18px] max-w-[60ch] text-copy leading-[1.65] text-muted">
-					In DFN’s LAMP self-help groups, women build confidence through mutual
-					support. Local staff help members access government benefits, open a
-					bank account and learn to manage and save money.
-				</p>
-				<p className="mb-[18px] max-w-[60ch] text-copy leading-[1.65] text-muted">
-					Small business grants can also help members take the next step towards
-					earning a livelihood.
-				</p>
-				<TextLink href="https://dfn.org.au/self-help-groups/">
-					Read about LAMP groups
-				</TextLink>
+				<RichTextBody value={content.body} variant="example" />
+				<TextLink href={href}>{content.actionLabel}</TextLink>
 			</div>
 		</section>
 	);

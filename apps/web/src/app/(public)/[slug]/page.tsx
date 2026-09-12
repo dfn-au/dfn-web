@@ -1,74 +1,65 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import type { PortableTextBlock } from "next-sanity";
+import { PalettePreview } from "@/app/design-refresh/_components/palette-preview";
+import { resolvePalette } from "@/app/design-refresh/palettes";
+import { ContentPage } from "@/components/content-page";
 import { PageViewTracker } from "@/components/page-view-tracker";
-import { PageBody } from "@/components/portable-text";
-import { client } from "@/sanity/lib/client";
 import { sanityFetch } from "@/sanity/lib/live";
-import { PAGE_QUERY, PAGE_SLUGS_QUERY, type Page } from "@/sanity/lib/queries";
+import {
+	PAGE_QUERY,
+	type Page,
+	SITE_CHROME_QUERY,
+	type SiteChrome,
+} from "@/sanity/lib/queries";
 
 type RouteProps = {
 	params: Promise<{ slug: string }>;
+	searchParams: Promise<{
+		variant?: string | string[];
+		clean?: string | string[];
+	}>;
 };
 
-async function getPage(slug: string): Promise<Page | null> {
+async function getPage(slug: string, stega?: false): Promise<Page | null> {
 	const { data } = await sanityFetch({
 		query: PAGE_QUERY,
 		params: { slug },
+		stega,
 	});
-
 	return data as Page | null;
-}
-
-export async function generateStaticParams() {
-	const slugs = await client
-		.withConfig({ useCdn: false })
-		.fetch<{ slug: string }[]>(PAGE_SLUGS_QUERY);
-
-	return slugs.map(({ slug }) => ({ slug }));
 }
 
 export async function generateMetadata({
 	params,
 }: RouteProps): Promise<Metadata> {
 	const { slug } = await params;
-	const page = await getPage(slug);
-
-	if (!page) return {};
-
-	return {
-		title: page.title,
-	};
+	const page = await getPage(slug, false);
+	return page
+		? {
+				title: `${page.title} — Dignity Freedom Network`,
+				description: page.description ?? undefined,
+			}
+		: {};
 }
 
-export default async function PageRoute({ params }: RouteProps) {
+export default async function PageRoute({ params, searchParams }: RouteProps) {
 	const { slug } = await params;
-	const page = await getPage(slug);
-
+	const [page, { data: chrome }, { variant, clean }] = await Promise.all([
+		getPage(slug),
+		sanityFetch({ query: SITE_CHROME_QUERY }),
+		searchParams,
+	]);
 	if (!page) notFound();
-
 	return (
-		<main className="mx-auto flex min-h-screen w-full max-w-3xl flex-col px-6 py-16">
+		<PalettePreview
+			initialPalette={resolvePalette(variant)}
+			showControls={clean !== "1"}
+		>
 			<PageViewTracker
 				event="content_page_viewed"
 				properties={{ slug, title: page.title }}
 			/>
-			<article>
-				<header>
-					<p className="text-sm font-medium uppercase tracking-[0.16em] text-muted">
-						Page
-					</p>
-					<h1 className="mt-4 text-4xl font-semibold text-foreground sm:text-5xl">
-						{page.title}
-					</h1>
-				</header>
-
-				{Array.isArray(page.body) && page.body.length > 0 ? (
-					<div className="mt-8">
-						<PageBody value={page.body as PortableTextBlock[]} />
-					</div>
-				) : null}
-			</article>
-		</main>
+			<ContentPage page={page} chrome={chrome as SiteChrome | null} />
+		</PalettePreview>
 	);
 }

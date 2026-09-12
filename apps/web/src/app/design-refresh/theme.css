@@ -1,4 +1,9 @@
 @import "tailwindcss" source(".");
+@source "../../components/homepage";
+@source "../(public)";
+@source "../../components/content-page.tsx";
+@source "../../components/page-sections";
+@source "../../components/portable-text.tsx";
 
 /* Tokens only: component layout and presentation live in Tailwind utilities. */
 @theme {
