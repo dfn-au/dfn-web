@@ -8,7 +8,6 @@
   },
   "scripts": {
     "dev": "pnpm --filter web dev",
-    "design:preview": "python3 -m http.server 8768 --bind 127.0.0.1 --directory prototypes/homepage-design",
     "build": "pnpm --filter web build",
     "start": "pnpm --filter web start",
     "lint": "pnpm --filter web lint",

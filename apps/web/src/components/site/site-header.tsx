@@ -3,20 +3,18 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import type { HeaderContent } from "@/components/homepage/content";
-import { NavigationLink, PreviewLink } from "./preview-link";
+import { NavigationLink } from "./navigation-link";
 import { DesignLink } from "./primitives";
 
 export function SiteHeader({
 	overlay = false,
 	activePage = "home",
 	content,
-	placeholderLinks = false,
 	homepagePath = "",
 }: {
 	overlay?: boolean;
 	activePage?: string;
 	content?: HeaderContent;
-	placeholderLinks?: boolean;
 	homepagePath?: string;
 }) {
 	const navigation = content?.navigation ?? [];
@@ -45,11 +43,9 @@ export function SiteHeader({
 			<header
 				className={`relative z-10 -mx-2.5 flex min-h-[88px] flex-wrap items-center justify-between gap-2 py-3 pr-4 @max-[381px]:pr-3 @desktop:mx-0 @desktop:min-h-0 @desktop:flex-nowrap @desktop:gap-5 @desktop:pr-[max(28px,calc((min(100cqi,1920px)-1120px)/2-16px))] ${overlay ? "@desktop:absolute @desktop:inset-x-0 @desktop:top-[46px] @desktop:right-frame @desktop:py-0" : "@desktop:py-5"}`}
 			>
-				<PreviewLink
-					placeholderLinks={placeholderLinks}
+				<NavigationLink
 					homepagePath={homepagePath}
-					page="home"
-					hash="dh-top"
+					href={`${homepagePath}#dh-top`}
 					aria-label="DFN home"
 					className="relative block aspect-[600/269] w-40 shrink-0 bg-brand @max-[381px]:w-[140px] @desktop:w-[216px]"
 				>
@@ -62,7 +58,7 @@ export function SiteHeader({
 						unoptimized
 						className="absolute top-[16.144%] left-[19.7566%] h-auto w-[67.2839%]"
 					/>
-				</PreviewLink>
+				</NavigationLink>
 				<div className="ml-auto flex min-w-0 items-center gap-2 @desktop:gap-[26px]">
 					<nav
 						aria-label="Main navigation"
@@ -72,7 +68,6 @@ export function SiteHeader({
 							.filter((link) => !link.mobileOnly)
 							.map((link) => (
 								<NavigationLink
-									placeholderLinks={placeholderLinks}
 									homepagePath={homepagePath}
 									key={link._key}
 									href={link.href}
@@ -94,7 +89,7 @@ export function SiteHeader({
 						{menuOpen ? "Close" : "Menu"}
 					</button>
 					<DesignLink
-						href={placeholderLinks ? "#" : "https://dfn.org.au/donate/"}
+						href="#"
 						className="inline-flex min-h-[46px] min-w-[60px] items-center justify-center border border-action bg-action px-3.5 py-2.5 font-nav text-base leading-[1.4] text-white uppercase @desktop:min-w-[72px] @desktop:px-[22px] @desktop:py-[11px]"
 					>
 						{content.give}
@@ -108,7 +103,6 @@ export function SiteHeader({
 				>
 					{navigation.map((link) => (
 						<NavigationLink
-							placeholderLinks={placeholderLinks}
 							homepagePath={homepagePath}
 							key={link._key}
 							href={link.href}
