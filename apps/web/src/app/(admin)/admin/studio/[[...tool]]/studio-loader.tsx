@@ -2,7 +2,6 @@
 
 import { Box, Flex, Text } from "@sanity/ui";
 import { useEffect, useState } from "react";
-import { useAdminAppearance } from "@/components/admin-theme";
 import { AdminLoading, AdminStatus, AdminToolbar } from "@/components/admin-ui";
 
 type StudioState = {
@@ -13,7 +12,6 @@ type StudioState = {
 };
 
 export function AdminStudioLoader() {
-	const { scheme, setScheme } = useAdminAppearance();
 	const [studio, setStudio] = useState<StudioState | null>(null);
 	const [loadError, setLoadError] = useState<Error | null>(null);
 
@@ -67,7 +65,7 @@ export function AdminStudioLoader() {
 	const { Component, Layout, Provider, config } = studio;
 	return (
 		<Component config={config}>
-			<Provider config={config} scheme={scheme} onSchemeChange={setScheme}>
+			<Provider config={config} scheme="dark">
 				<Flex direction="column" style={{ height: "100dvh" }}>
 					<Box flex="none">
 						<AdminToolbar studio />

@@ -12,14 +12,10 @@ Use Sanity UI primitives for new admin components. The admin layout imports
 Sanity UI's stylesheet and a small CSS reset; the public site's Tailwind theme
 stays separate.
 
-`AdminTheme` shares a persisted System / Light / Dark preference across admin
-routes and browser tabs. It passes that preference through `StudioProvider`'s
-`scheme` and `onSchemeChange` props, so Studio's own appearance menu updates
-the same setting. This uses an application-owned storage key, without reading
-Studio's private storage. The initial preference follows the system. A blocking
-head script and system-aware CSS set the canvas before the first paint;
-theme-dependent content stays hidden until hydration resolves the browser's
-preference, preventing a flash of the server's light fallback.
+Admin pages and Studio always use dark mode. `AdminTheme` and both
+`StudioProvider` instances receive a fixed `scheme="dark"`, with no appearance
+picker or browser preference storage. Inline CSS paints the matching dark
+canvas before scripts load, and server-rendered content is dark immediately.
 
 ## Admin authentication
 

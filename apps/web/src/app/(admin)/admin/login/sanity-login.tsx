@@ -4,7 +4,6 @@ import { Button, Card, Flex, Spinner, Stack, Text } from "@sanity/ui";
 import { NextStudio } from "next-sanity/studio";
 import { useEffect, useState } from "react";
 import { defineConfig, StudioProvider, useClient, useWorkspace } from "sanity";
-import { useAdminAppearance } from "@/components/admin-theme";
 import { AdminStatus } from "@/components/admin-ui";
 import { dataset, projectId } from "@/sanity/env";
 
@@ -19,14 +18,9 @@ const config = defineConfig({
 });
 
 export default function AdminLogin({ returnTo }: { returnTo: string }) {
-	const { scheme, setScheme } = useAdminAppearance();
 	return (
 		<NextStudio config={config}>
-			<StudioProvider
-				config={config}
-				scheme={scheme}
-				onSchemeChange={setScheme}
-			>
+			<StudioProvider config={config} scheme="dark">
 				<CompleteLogin returnTo={returnTo} />
 			</StudioProvider>
 		</NextStudio>

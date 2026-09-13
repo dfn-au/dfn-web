@@ -9,17 +9,14 @@ import {
 	Flex,
 	Heading,
 	Label,
-	Select,
 	Spinner,
 	Stack,
 	Text,
 } from "@sanity/ui";
 import type { ReactNode } from "react";
 import { AdminSignOut } from "./admin-sign-out";
-import { useAdminAppearance } from "./admin-theme";
 
 export function AdminToolbar({ studio = false }: { studio?: boolean }) {
-	const { scheme, setScheme } = useAdminAppearance();
 	return (
 		<Card as="header" borderBottom padding={3}>
 			<Flex align="center" justify="space-between" gap={3} wrap="wrap">
@@ -36,29 +33,11 @@ export function AdminToolbar({ studio = false }: { studio?: boolean }) {
 						DFN admin
 					</Text>
 				)}
-				<Flex align="center" gap={3} flex="none">
+				{!studio && (
 					<Box flex="none">
-						<Select
-							aria-label="Appearance"
-							value={scheme}
-							onChange={(event) => {
-								const value = event.currentTarget.value;
-								if (value === "light" || value === "dark" || value === "system")
-									setScheme(value);
-							}}
-							fontSize={1}
-						>
-							<option value="system">System theme</option>
-							<option value="light">Light theme</option>
-							<option value="dark">Dark theme</option>
-						</Select>
+						<AdminSignOut />
 					</Box>
-					{!studio && (
-						<Box flex="none">
-							<AdminSignOut />
-						</Box>
-					)}
-				</Flex>
+				)}
 			</Flex>
 		</Card>
 	);
