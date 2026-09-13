@@ -24,9 +24,9 @@ Unfinished link destinations can use `#`.
 The content objects are separately named schema types so they can later be used
 in a section builder. The current homepage composition remains fixed.
 
-Unfinished page links are `#`; Privacy is connected to `/privacy`. In-page navigation and phone/email links work. Signup retains
-the local demo: native validation, cleared inputs and an explicit acknowledgement
-that no subscription was created. It makes no submission request.
+Unfinished page links are `#`; Privacy is connected to `/privacy`. In-page navigation and phone/email links work.
+Signup verifies Turnstile on the server and logs accepted details; it does not
+create a newsletter subscription yet. See [signup setup](../site/signup.md).
 
 See [general content pages](../page-sections/README.md) for section editing and
 content provenance. One-off development imports are not kept in the repository.

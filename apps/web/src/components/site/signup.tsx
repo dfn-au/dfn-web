@@ -1,16 +1,83 @@
 "use client";
 
-import { useState } from "react";
+import { type FormEvent, useCallback, useRef, useState } from "react";
 import type { HomepageContent } from "@/components/homepage/content";
 import { NavigationLink } from "./navigation-link";
 import { Arrow, buttonClasses, Eyebrow, Headline } from "./primitives";
+import { SignupVerification } from "./signup-verification";
 
 export function Signup({
 	content,
 }: {
 	content: NonNullable<HomepageContent["signup"]>;
 }) {
-	const [submitted, setSubmitted] = useState(false);
+	const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+	const form = useRef<HTMLFormElement>(null);
+	const pending = useRef<{ name: string; email: string } | null>(null);
+	const sending = useRef(false);
+	const [status, setStatus] = useState<
+		"idle" | "verifying" | "sending" | "success" | "error"
+	>("idle");
+	const [error, setError] = useState("");
+	const busy = status === "verifying" || status === "sending";
+
+	const verificationFailed = useCallback(() => {
+		if (sending.current) return;
+		pending.current = null;
+		setError(
+			"We couldn't verify your submission. Please try again. If this continues, refresh the page.",
+		);
+		setStatus("error");
+	}, []);
+
+	const submitVerified = useCallback(async (token: string) => {
+		if (!pending.current || sending.current) return;
+		sending.current = true;
+		setStatus("sending");
+		try {
+			const response = await fetch("/api/newsletter", {
+				method: "POST",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify({ ...pending.current, token }),
+				signal: AbortSignal.timeout(15_000),
+			});
+			const result = await response.json();
+			if (!response.ok || result.success !== true) {
+				setError(
+					typeof result.error === "string"
+						? result.error
+						: "We couldn't send your details. Please try again.",
+				);
+				setStatus("error");
+				return;
+			}
+			form.current?.reset();
+			setStatus("success");
+		} catch {
+			setError("We couldn't confirm your submission. Please try again.");
+			setStatus("error");
+		} finally {
+			pending.current = null;
+			sending.current = false;
+		}
+	}, []);
+
+	function submit(event: FormEvent<HTMLFormElement>) {
+		event.preventDefault();
+		if (pending.current || sending.current) return;
+		if (!siteKey) {
+			setError("Sign-up is temporarily unavailable. Please try again later.");
+			setStatus("error");
+			return;
+		}
+		const data = new FormData(event.currentTarget);
+		pending.current = {
+			name: String(data.get("name") ?? ""),
+			email: String(data.get("email") ?? ""),
+		};
+		setError("");
+		setStatus("verifying");
+	}
 	return (
 		<section
 			id="dh-signup"
@@ -26,12 +93,10 @@ export function Signup({
 				</p>
 			</div>
 			<form
+				ref={form}
 				className="grid content-start gap-[15px] @desktop:grid-cols-2"
-				onSubmit={(event) => {
-					event.preventDefault();
-					event.currentTarget.reset();
-					setSubmitted(true);
-				}}
+				onSubmit={submit}
+				aria-describedby="signup-status"
 			>
 				{[
 					{ name: "name", label: "Name", type: "text" },
@@ -45,18 +110,28 @@ export function Signup({
 						<input
 							name={field.name}
 							type={field.type}
-							autoComplete="off"
+							autoComplete={field.name}
+							maxLength={field.name === "name" ? 200 : 254}
+							readOnly={busy}
 							required
 							className="min-h-12 min-w-0 border border-[#94887b] bg-paper px-3 py-[13px] text-base font-normal text-ink [line-height:normal]"
 						/>
 					</label>
 				))}
+				{busy && siteKey && (
+					<SignupVerification
+						siteKey={siteKey}
+						onVerified={submitVerified}
+						onError={verificationFailed}
+					/>
+				)}
 				<div className="col-span-full flex flex-wrap items-center justify-between gap-5">
 					<button
 						type="submit"
-						className={`${buttonClasses} bg-action text-white`}
+						disabled={busy}
+						className={`${buttonClasses} bg-action text-white disabled:cursor-wait disabled:opacity-70`}
 					>
-						{content.actionLabel}
+						{busy ? "Submitting…" : content.actionLabel}
 						<Arrow />
 					</button>
 					<NavigationLink
@@ -66,19 +141,16 @@ export function Signup({
 						Privacy policy
 					</NavigationLink>
 				</div>
-				<p className="col-span-full text-[13px] leading-[1.6] text-muted">
-					Design preview only. Details are not sent or saved.
+				<p
+					id="signup-status"
+					role="status"
+					aria-live="polite"
+					className="col-span-full text-label leading-[1.6] font-medium"
+				>
+					{status === "success" && "Thanks — your details have been received."}
+					{status === "error" && error}
+					{busy && "Submitting your details…"}
 				</p>
-				{submitted && (
-					<p
-						role="status"
-						aria-live="polite"
-						className="col-span-full text-label leading-[1.6] font-medium"
-					>
-						Sign-up preview complete. No subscription was created and no details
-						were sent.
-					</p>
-				)}
 			</form>
 		</section>
 	);
