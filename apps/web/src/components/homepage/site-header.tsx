@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { stegaClean } from "next-sanity";
 import {
-	type ComponentProps,
 	type KeyboardEvent,
 	useContext,
 	useEffect,
@@ -11,7 +10,8 @@ import {
 	useRef,
 	useState,
 } from "react";
-import { PaletteContext } from "@/components/site/navigation-link";
+import { PaletteContext } from "@/components/site/link-context";
+import { SiteLink, type SiteLinkProps } from "@/components/site/site-link";
 import type {
 	HeaderChildLink,
 	HeaderContent,
@@ -22,7 +22,6 @@ import {
 	isCurrentHeaderLink,
 	navigationColumns,
 } from "./header-navigation";
-import { publicNavigationHref } from "./navigation";
 
 const topLinkClass =
 	"flex min-h-12 items-center gap-2.5 border-b-2 border-transparent bg-transparent font-nav text-[15px] leading-[1.4] tracking-[.25px] whitespace-nowrap text-white uppercase hover:border-accent hover:text-accent aria-expanded:border-accent aria-expanded:text-accent aria-[current=page]:border-accent aria-[current=page]:text-accent data-[active=true]:border-accent data-[active=true]:text-accent @min-[1200px]:text-base";
@@ -44,17 +43,13 @@ function HeaderLink({
 	href,
 	activePage,
 	...props
-}: ComponentProps<"a"> & { href: string; activePage: string }) {
-	const { palette, controlsVisible } = useContext(PaletteContext);
+}: SiteLinkProps & { activePage: string }) {
 	return (
-		<a
+		<SiteLink
 			{...props}
-			href={publicNavigationHref(
-				headerHref(href, activePage),
-				palette,
-				controlsVisible,
-			)}
-			aria-current={isCurrentHeaderLink(href, activePage) ? "page" : undefined}
+			href={headerHref(href, activePage)}
+			activePage={activePage}
+			markCurrent
 		/>
 	);
 }
@@ -140,7 +135,7 @@ export function SiteHeader({
 	activePage?: string;
 }) {
 	const id = useId();
-	const { controlsVisible } = useContext(PaletteContext);
+	const { controlsVisible, documentUrl } = useContext(PaletteContext);
 	const header = useRef<HTMLElement>(null);
 	const dialog = useRef<HTMLDialogElement>(null);
 	const menuButton = useRef<HTMLButtonElement>(null);
@@ -265,7 +260,7 @@ export function SiteHeader({
 
 	function currentGroup(item: HeaderNavigationItem) {
 		return item.children?.some((link) =>
-			isCurrentHeaderLink(link.href ?? "#", activePage),
+			isCurrentHeaderLink(link.href ?? "#", activePage, documentUrl),
 		);
 	}
 

@@ -1,45 +1,25 @@
 "use client";
 
 import { stegaClean } from "next-sanity";
-import { type ComponentProps, createContext, useContext } from "react";
-import { publicNavigationHref } from "@/components/homepage/navigation";
-import type { Palette } from "./palettes";
-
-export const PaletteContext = createContext<{
-	palette: Palette;
-	controlsVisible: boolean;
-}>({ palette: "charcoal", controlsVisible: true });
+import { SiteLink, type SiteLinkProps } from "./site-link";
 
 export function NavigationLink({
 	href,
-	activePage = "home",
 	homepagePath = "",
 	className,
 	...props
-}: ComponentProps<"a"> & {
-	href: string;
-	activePage?: string;
-	homepagePath?: string;
-}) {
-	const { palette, controlsVisible } = useContext(PaletteContext);
+}: SiteLinkProps & { homepagePath?: string }) {
 	const cleanHref = stegaClean(href ?? "#");
-	const destination = publicNavigationHref(
+	const destination =
 		homepagePath && cleanHref.startsWith("#dh-") && cleanHref !== "#dh-contact"
 			? `${homepagePath}${cleanHref}`
-			: cleanHref,
-		palette,
-		controlsVisible,
-	);
+			: cleanHref;
 	return (
-		<a
+		<SiteLink
 			{...props}
 			className={`hover:underline hover:underline-offset-4 ${className ?? ""}`}
 			href={destination}
-			aria-current={
-				cleanHref.split(/[?#]/)[0] === `/${stegaClean(activePage)}`
-					? "page"
-					: undefined
-			}
+			markCurrent
 		/>
 	);
 }

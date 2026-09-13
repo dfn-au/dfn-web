@@ -6,6 +6,7 @@ import {
 
 import { ExternalLink } from "@/components/external-link";
 import { SanityImage } from "@/components/sanity-image";
+import { SiteLink } from "@/components/site/site-link";
 
 import type { SectionBody } from "./page-sections/types";
 
@@ -80,12 +81,12 @@ const components: PortableTextComponents<SectionBody[number]> = {
 				);
 			}
 			return (
-				<a
+				<SiteLink
 					href={href}
 					className="text-ink underline underline-offset-4 transition hover:text-muted"
 				>
 					{children}
-				</a>
+				</SiteLink>
 			);
 		},
 	},

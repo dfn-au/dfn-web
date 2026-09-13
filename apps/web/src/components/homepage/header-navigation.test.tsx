@@ -102,7 +102,9 @@ describe("grouped public navigation", () => {
 		expect(markup).toContain("Authored introduction");
 		expect(markup).toContain('aria-expanded="false"');
 		expect(markup).toContain('aria-label="Close Get involved"');
-		expect(markup).toContain('href="/about" aria-current="page"');
+		expect(markup).toMatch(
+			/<a\b(?=[^>]*href="\/about")(?=[^>]*aria-current="page")/,
+		);
 		expect(markup).toContain('href="/donate"');
 		for (const label of ["Main navigation", "Mobile navigation"]) {
 			const navigation = markup.match(

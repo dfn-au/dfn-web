@@ -1,7 +1,8 @@
 import Image from "next/image";
-import { type ComponentProps, Fragment, type ReactNode } from "react";
+import { Fragment, type ReactNode } from "react";
 import type { HomepageImage } from "@/components/homepage/content";
 import { urlFor } from "@/sanity/lib/image";
+import { SiteLink, type SiteLinkProps } from "./site-link";
 
 export function Headline({ text }: { text?: string | null }) {
 	return text?.split("\n").map((line, index) => (
@@ -26,17 +27,17 @@ export function DesignLink({
 	children,
 	className,
 	...props
-}: ComponentProps<"a"> & { href: string }) {
+}: SiteLinkProps) {
 	const external = href.startsWith("https://");
 	return (
-		<a
+		<SiteLink
 			href={href}
 			rel={external ? "noopener noreferrer" : undefined}
 			{...props}
 			className={`hover:underline hover:underline-offset-4 ${className ?? ""}`}
 		>
 			{children}
-		</a>
+		</SiteLink>
 	);
 }
 

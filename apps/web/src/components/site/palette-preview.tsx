@@ -1,9 +1,20 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import type { ReactNode } from "react";
-import { PaletteContext } from "./navigation-link";
+import { type ReactNode, useSyncExternalStore } from "react";
+import { PaletteContext } from "./link-context";
 import { type Palette, palettes, resolvePalette } from "./palettes";
+
+function subscribeToDocumentUrl(onChange: () => void) {
+	addEventListener("popstate", onChange);
+	addEventListener("hashchange", onChange);
+	return () => {
+		removeEventListener("popstate", onChange);
+		removeEventListener("hashchange", onChange);
+	};
+}
+const getDocumentUrl = () => document.baseURI;
+const getServerDocumentUrl = () => undefined;
 
 const labels: Record<Palette, string> = {
 	charcoal: "Warm charcoal",
@@ -22,6 +33,11 @@ export function PalettePreview({
 	children: ReactNode;
 }) {
 	const searchParams = useSearchParams();
+	const documentUrl = useSyncExternalStore(
+		subscribeToDocumentUrl,
+		getDocumentUrl,
+		getServerDocumentUrl,
+	);
 	const palette = searchParams
 		? resolvePalette(searchParams.get("variant"))
 		: initialPalette;
@@ -48,7 +64,9 @@ export function PalettePreview({
 			data-palette={palette}
 			className="@container min-h-screen bg-page font-body font-normal text-ink [color-scheme:dark] [&_:focus-visible]:outline-2 [&_:focus-visible]:outline-offset-4 [&_:focus-visible]:outline-ink"
 		>
-			<PaletteContext.Provider value={{ palette, controlsVisible }}>
+			<PaletteContext.Provider
+				value={{ palette, controlsVisible, documentUrl }}
+			>
 				<div id="dh-top">{children}</div>
 			</PaletteContext.Provider>
 			{controlsVisible && (
