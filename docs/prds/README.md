@@ -88,6 +88,8 @@ Owner/date:
 ## Working Reports
 
 - [Operational Plumbing Audit Report](operational-plumbing-audit-report.md) - working guide for observability, webhooks, jobs, abuse protection, consent, secrets, retention, incident response, and related follow-up decisions before payment/event/admin implementation.
+- [Infoodle Current-State Investigation](../research/infoodle-current-state-2026-09-13.md) - observed data and workflows, coverage limits and remaining walkthroughs. Current practice is discovery evidence; it does not establish requirements or the preferred design for the new website.
+- [Infoodle Documentation Context](../research/infoodle-documentation-context.md) - official product behaviour and its relationship to the repository's open questions; separate from live observations.
 
 ## Adjacent Requirements
 
