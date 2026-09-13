@@ -57,6 +57,7 @@ const locations = {
 
 export default defineConfig({
 	basePath: "/admin/studio",
+	auth: { loginMethod: "token" },
 	projectId,
 	dataset,
 	// Add and edit the content schema in the './sanity/schemaTypes' folder.

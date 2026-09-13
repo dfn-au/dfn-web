@@ -6,6 +6,7 @@ import "../globals.css";
 export const metadata: Metadata = {
 	title: "DFN",
 	description: "DFN website rebuild",
+	robots: { index: false, follow: false },
 };
 
 export default function AdminLayout({ children }: { children: ReactNode }) {

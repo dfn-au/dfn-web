@@ -1,7 +1,12 @@
-export default function AdminHome() {
+import { AdminSignOut } from "@/components/admin-sign-out";
+import { requireAdminPage } from "@/lib/admin-auth";
+
+export default async function AdminHome() {
+	await requireAdminPage("/admin");
 	return (
 		<main className="mx-auto flex min-h-screen w-full max-w-5xl flex-col px-6 py-16">
 			<header className="py-10">
+				<AdminSignOut />
 				<p className="text-sm font-medium uppercase tracking-[0.16em] text-muted">
 					Admin
 				</p>

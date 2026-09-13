@@ -19,7 +19,20 @@ export function ErrorTestControls() {
 		try {
 			const response = await fetch("/admin/errors/server", {
 				method: "POST",
+				headers: { "x-dfn-admin": "1" },
 			});
+			if (response.status === 401) {
+				window.location.assign("/admin/login?returnTo=%2Fadmin%2Ferrors");
+				return;
+			}
+			if (response.status === 403 || response.status === 503) {
+				setServerResult(
+					response.status === 403
+						? "Administrator access is required."
+						: "Authentication is temporarily unavailable. Please try again.",
+				);
+				return;
+			}
 
 			setServerResult(
 				response.ok

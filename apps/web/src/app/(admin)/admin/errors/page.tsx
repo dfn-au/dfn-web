@@ -1,9 +1,13 @@
+import { AdminSignOut } from "@/components/admin-sign-out";
+import { requireAdminPage } from "@/lib/admin-auth";
 import { ErrorTestControls } from "./error-test-controls";
 
-export default function ErrorTestingPage() {
+export default async function ErrorTestingPage() {
+	await requireAdminPage("/admin/errors");
 	return (
 		<main className="mx-auto flex min-h-screen w-full max-w-5xl flex-col px-6 py-16">
 			<header className="py-10">
+				<AdminSignOut />
 				<a
 					href="/admin"
 					className="text-sm font-medium text-muted hover:text-foreground"
