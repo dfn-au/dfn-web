@@ -17,6 +17,11 @@ Admin pages and Studio always use dark mode. `AdminTheme` and both
 picker or browser preference storage. Inline CSS paints the matching dark
 canvas before scripts load, and server-rendered content is dark immediately.
 
+Both Studio and login import their browser modules inside the shared
+`SanityLoader` effect. Keep this manual boundary: it preserves the Studio
+loading fix from `2a805c4` and lets callback validation run before Sanity's
+module-level credential handling. Do not replace it with eager imports.
+
 ## Admin authentication
 
 See [ADR 005](../../docs/adr/005-operational-staff-authentication.md) for the decision.
@@ -26,6 +31,15 @@ Sanity project. They keep their own Next.js UI. `/admin/login` uses Sanity's
 `StudioProvider` for provider selection and callback handling, then sends the
 user credential to `/admin/auth/session`. Content editors can continue to use
 `/admin/studio` with their normal Sanity permissions.
+
+Both entry points wrap Sanity's normal provider-selection screen with a
+one-time login transaction. The return URL carries a random marker; this tab's
+`sessionStorage` records the marker, exact return path, and a 30-minute expiry.
+Before importing Sanity, the loader validates and consumes that transaction
+for credential-bearing callbacks. Unsolicited, expired, mismatched, or replayed
+callbacks are stripped and rejected with a retry action. Later same-document
+credential fragments are discarded before Studio handles navigation. Browser
+storage must be available, and sign-in must finish in the tab that started it.
 
 Both login and Studio use token authentication. Existing cookie-only Studio
 sessions may require a fresh login. Their shared origin must be registered in

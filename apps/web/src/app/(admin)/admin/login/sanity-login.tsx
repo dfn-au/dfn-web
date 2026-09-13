@@ -1,7 +1,7 @@
 "use client";
 
 import { Button, Card, Flex, Spinner, Stack, Text } from "@sanity/ui";
-import { NextStudio } from "next-sanity/studio";
+import { NextStudio } from "next-sanity/studio/client-component";
 import { useEffect, useState } from "react";
 import { defineConfig, StudioProvider, useClient, useWorkspace } from "sanity";
 import { AdminStatus } from "@/components/admin-ui";
@@ -12,6 +12,7 @@ import {
 	adminSignOutError,
 	SANITY_AUTH_API_VERSION,
 } from "@/lib/admin-auth-shared";
+import { createBoundSanityAuth } from "@/lib/sanity-auth";
 import { dataset, projectId } from "@/sanity/env";
 
 const config = defineConfig({
@@ -21,7 +22,7 @@ const config = defineConfig({
 	dataset,
 	basePath: "/admin/login",
 	schema: { types: [] },
-	auth: { loginMethod: "token" },
+	auth: createBoundSanityAuth(),
 });
 
 export default function AdminLogin({ returnTo }: { returnTo: string }) {
