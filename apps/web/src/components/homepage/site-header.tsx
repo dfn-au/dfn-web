@@ -121,7 +121,7 @@ function ChildLinks({
 					>
 						<span className="wrap-anywhere">{link.label}</span>
 						<span aria-hidden="true" className="shrink-0 text-muted">
-							↗
+							→
 						</span>
 					</HeaderLink>
 				</li>
@@ -489,7 +489,7 @@ export function SiteHeader({
 											className={`${categoryClass} hover:underline hover:underline-offset-4`}
 										>
 											{item.label}
-											<span aria-hidden="true">↗</span>
+											<span aria-hidden="true">→</span>
 										</HeaderLink>
 									)}
 								</li>

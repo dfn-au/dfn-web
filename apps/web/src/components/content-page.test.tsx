@@ -4,6 +4,7 @@ import { ContentPage } from "./content-page";
 import { publicNavigationHref } from "./homepage/navigation";
 import type { SectionBody } from "./page-sections/types";
 import { PageBody } from "./portable-text";
+import { DesignLink } from "./site/primitives";
 
 vi.mock("@/sanity/lib/image", () => ({ urlFor: () => ({ url: () => "" }) }));
 vi.mock("./external-link", () => ({
@@ -178,4 +179,34 @@ describe("general content pages", () => {
 			"mailto:info@dfn.org.au",
 		);
 	});
+});
+
+// Visitors choose a new tab through their browser, regardless of link placement.
+it.each([
+	"https://dfn.org.au/contact/",
+	"https://dfn.org.nz/contact/",
+	"http://example.org/",
+	"//example.org/",
+])("keeps rich-text and design links in the current tab: %s", (href) => {
+	const body: SectionBody = [
+		{
+			_type: "block",
+			_key: "body",
+			style: "normal",
+			markDefs: [{ _type: "link", _key: "link", href }],
+			children: [
+				{ _type: "span", _key: "text", text: "Visit", marks: ["link"] },
+			],
+		},
+	];
+	for (const element of [
+		<PageBody key="body" value={body} />,
+		<DesignLink key="design" href={href}>
+			Visit
+		</DesignLink>,
+	]) {
+		const markup = renderToStaticMarkup(element);
+		expect(markup).toContain(`href="${href}"`);
+		expect(markup).not.toContain("target=");
+	}
 });

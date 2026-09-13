@@ -74,7 +74,6 @@ const components: PortableTextComponents<SectionBody[number]> = {
 						href={href}
 						className="text-ink underline underline-offset-4 transition hover:text-muted"
 						rel="noreferrer noopener"
-						target="_blank"
 					>
 						{children}
 					</ExternalLink>

@@ -31,7 +31,6 @@ export function DesignLink({
 	return (
 		<a
 			href={href}
-			target={external ? "_blank" : undefined}
 			rel={external ? "noopener noreferrer" : undefined}
 			{...props}
 			className={`hover:underline hover:underline-offset-4 ${className ?? ""}`}
