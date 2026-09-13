@@ -1,7 +1,7 @@
 "use client";
 
+import { useSearchParams } from "next/navigation";
 import type { ReactNode } from "react";
-import { useEffect, useState } from "react";
 import { PaletteContext } from "./navigation-link";
 import { type Palette, palettes, resolvePalette } from "./palettes";
 
@@ -21,21 +21,15 @@ export function PalettePreview({
 	showControls: boolean;
 	children: ReactNode;
 }) {
-	const [palette, setPalette] = useState(initialPalette);
-	const [controlsVisible, setControlsVisible] = useState(showControls);
-	useEffect(() => {
-		const sync = () => {
-			const params = new URLSearchParams(location.search);
-			setPalette(resolvePalette(params.get("variant")));
-			setControlsVisible(params.get("clean") !== "1");
-		};
-		sync();
-		addEventListener("popstate", sync);
-		return () => removeEventListener("popstate", sync);
-	}, []);
+	const searchParams = useSearchParams();
+	const palette = searchParams
+		? resolvePalette(searchParams.get("variant"))
+		: initialPalette;
+	const controlsVisible = searchParams
+		? searchParams.get("clean") !== "1"
+		: showControls;
 	function changePalette(value: string) {
 		const next = resolvePalette(value);
-		setPalette(next);
 		const url = new URL(location.href);
 		url.searchParams.set("variant", next);
 		history.replaceState(null, "", url);
