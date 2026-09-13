@@ -7,6 +7,7 @@
     "pnpm": ">=12.4.1 <13"
   },
   "scripts": {
+    "workshop": "pnpm --dir docs/discovery/workshop dev",
     "dev": "pnpm --filter web dev",
     "build": "pnpm --filter web build",
     "start": "pnpm --filter web start",
