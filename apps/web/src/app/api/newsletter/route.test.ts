@@ -24,7 +24,6 @@ function request(body: unknown = submission, origin = "https://dfn.org.au") {
 describe("newsletter signup", () => {
 	beforeEach(() => {
 		vi.stubEnv("TURNSTILE_SECRET_KEY", "test-secret");
-		vi.stubEnv("TURNSTILE_ALLOWED_HOSTNAMES", "dfn.org.au, dfn.org.nz");
 		vi.stubGlobal("fetch", fetchMock);
 		fetchMock.mockResolvedValue(Response.json(verified));
 		vi.spyOn(console, "info").mockImplementation(() => {});
@@ -98,7 +97,6 @@ describe("newsletter signup", () => {
 	});
 
 	it("accepts the browser's host when Next.js normalises the internal URL", async () => {
-		vi.stubEnv("TURNSTILE_ALLOWED_HOSTNAMES", "127.0.0.1");
 		fetchMock.mockResolvedValue(
 			Response.json({ ...verified, hostname: "127.0.0.1" }),
 		);
@@ -140,20 +138,16 @@ describe("newsletter signup", () => {
 		},
 	);
 
-	it.each(["TURNSTILE_SECRET_KEY", "TURNSTILE_ALLOWED_HOSTNAMES"])(
-		"fails closed without %s",
-		async (key) => {
-			vi.stubEnv(key, "");
-			expect((await POST(request())).status).toBe(503);
-			expect(fetchMock).not.toHaveBeenCalled();
-			expect(console.info).not.toHaveBeenCalled();
-		},
-	);
+	it("fails closed without the Turnstile secret key", async () => {
+		vi.stubEnv("TURNSTILE_SECRET_KEY", "");
+		expect((await POST(request())).status).toBe(503);
+		expect(fetchMock).not.toHaveBeenCalled();
+		expect(console.info).not.toHaveBeenCalled();
+	});
 
 	it.each([
 		{ success: false, "error-codes": ["invalid-input-response"] },
 		{ success: false, "error-codes": ["timeout-or-duplicate"] },
-		{ ...verified, hostname: "other.example" },
 		{ ...verified, action: "login" },
 		{ ...verified, success: "true" },
 		{ success: true },
@@ -164,17 +158,18 @@ describe("newsletter signup", () => {
 		expect(console.info).not.toHaveBeenCalled();
 	});
 
-	it("accepts another explicitly configured hostname", async () => {
-		fetchMock.mockResolvedValue(
-			Response.json({ ...verified, hostname: "dfn.org.nz" }),
-		);
-		const nzRequest = new Request("https://dfn.org.nz/api/newsletter", {
-			method: "POST",
-			headers: { origin: "https://dfn.org.nz" },
-			body: JSON.stringify(submission),
-		});
-		expect((await POST(nzRequest)).status).toBe(200);
-	});
+	it.each(["dfn.org.nz", undefined])(
+		"accepts successful newsletter verification without a local hostname policy: %s",
+		async (hostname) => {
+			fetchMock.mockResolvedValue(Response.json({ ...verified, hostname }));
+			const nzRequest = new Request("https://dfn.org.nz/api/newsletter", {
+				method: "POST",
+				headers: { origin: "https://dfn.org.nz" },
+				body: JSON.stringify(submission),
+			});
+			expect((await POST(nzRequest)).status).toBe(200);
+		},
+	);
 
 	it("fails closed if Cloudflare is unavailable", async () => {
 		fetchMock.mockRejectedValue(new Error("Network unavailable"));
