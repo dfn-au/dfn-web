@@ -24,8 +24,9 @@ import {
 } from "./header-navigation";
 import { publicNavigationHref } from "./navigation";
 
+// Override PalettePreview's descendant link underline; the border marks hover.
 const topLinkClass =
-	"flex min-h-12 items-center gap-2.5 border-b-2 border-transparent bg-transparent font-nav text-[15px] leading-[1.4] tracking-[.25px] whitespace-nowrap text-white uppercase hover:border-accent hover:text-accent aria-expanded:border-accent aria-expanded:text-accent aria-[current=page]:border-accent aria-[current=page]:text-accent data-[active=true]:border-accent data-[active=true]:text-accent @min-[1200px]:text-base";
+	"flex min-h-12 items-center gap-2.5 border-b-2 border-transparent bg-transparent font-nav text-[15px] leading-[1.4] tracking-[.25px] whitespace-nowrap text-white uppercase hover:border-accent hover:text-accent hover:no-underline! aria-expanded:border-accent aria-expanded:text-accent aria-[current=page]:border-accent aria-[current=page]:text-accent data-[active=true]:border-accent data-[active=true]:text-accent @min-[1200px]:text-base";
 const categoryClass =
 	"flex min-h-[62px] w-full items-center justify-between gap-4 bg-transparent py-3 text-left text-[19px] leading-snug text-ink hover:text-accent aria-expanded:text-accent aria-[current=page]:text-accent aria-[current=page]:underline aria-[current=page]:underline-offset-8";
 const giveClass =
