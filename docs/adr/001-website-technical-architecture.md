@@ -4,6 +4,8 @@
 
 Accepted
 
+Amended 13 September 2026: use separate AU and NZ deployments with an explicitly configured Country Site.
+
 ## Context
 
 DFN needs one TypeScript-first application serving the Australian and New Zealand Country Sites, with cached public routes, dynamic server workflows, protected content preview, branch deployments, and a structured editorial system.
@@ -14,8 +16,9 @@ Supporting evaluation, evidence, candidate comparisons, scores, exclusions, risk
 
 - Use TypeScript throughout.
 - Use Next.js App Router for the public application and operational/admin application routes.
-- Use one Next.js application to serve `dfn.org.au` and `dfn.org.nz`.
-- Resolve the Country Site from the request domain; do not require a launch country-switching UX.
+- Use one Next.js codebase deployed separately for `dfn.org.au` and `dfn.org.nz`. Both deployments use the same Sanity content dataset.
+- Fix the Country Site per deployment using `COUNTRY_SITE=AU` or `COUNTRY_SITE=NZ`. This configuration selects country-specific content and payment configuration; request hostnames and visitor location do not select the Country Site. A launch country-switching UX is not required.
+- Local development and branch/PR preview deployments also explicitly configure their Country Site. Missing or invalid configuration must fail validation rather than silently select a country.
 - Filter public content by Publishing Scope, generate self-canonical URLs per domain, use alternate hints where appropriate, and return 404 for Site-Specific Content outside its Publishing Scope unless an explicit redirect exists.
 - Use Vercel for application hosting, branch/PR preview deployments, CDN delivery, functions, cache revalidation, and both public domains.
 - Use Sanity Content Lake and Sanity Studio for Authored Content, approved structured content blocks, launch-critical configuration, and staff editorial workflows across Shared Content and Site-Specific Content.
@@ -33,3 +36,5 @@ This ADR does not decide:
 ## Consequences
 
 The first platform slice can use a public Next.js route on Vercel, Sanity-managed draft and published content, protected preview, and publish-triggered revalidation without treating workflow-specific service recommendations as accepted decisions.
+
+Separate deployments keep Country Site selection fixed even on temporary preview domains. Shared documents retain one editorial publishing action; affected content must refresh in both deployments. Studio preview locations point to the corresponding AU and NZ deployments.

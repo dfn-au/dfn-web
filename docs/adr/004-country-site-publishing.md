@@ -19,7 +19,7 @@ Keep one document for a public item shared across the AU and NZ Country Sites. A
 
 ### Identity, links, and publishing
 
-- A shared page has one document identity and one URL path in v1. Its domain and rendered content depend on the current Country Site, resolved from the request domain rather than visitor location.
+- A shared page has one document identity and one URL path in v1. Its domain and rendered content depend on the Country Site fixed by deployment configuration (`COUNTRY_SITE=AU` or `COUNTRY_SITE=NZ`), as established in the amended [ADR 001](001-website-technical-architecture.md).
 - Internal links select the document once. For example, a shared Donate document resolves to the same path on either site while its content can differ. No counterpart substitution or separate route-level picker is required.
 - Publishing the shared document publishes its shared and country-specific content for both sites. There is no independent country publication lifecycle within that document.
 - Preserve ADR 001's public scope filtering, self-canonical URLs per domain, alternate hints where appropriate, and 404 outside Publishing Scope unless an explicit redirect exists. Do not infer counterparts for separate documents.
