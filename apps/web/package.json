@@ -15,6 +15,7 @@
 		"test:watch": "vitest"
 	},
 	"dependencies": {
+		"@marsidev/react-turnstile": "^1.6.1",
 		"@posthog/nextjs-config": "^1.11.1",
 		"@sanity/client": "^8.6.1",
 		"@sanity/icons": "^5.2.2",
@@ -30,7 +31,8 @@
 		"sanity": "^6.13.1",
 		"sanity-plugin-media": "^6.1.8",
 		"server-only": "0.0.1",
-		"styled-components": "^6.5.3"
+		"styled-components": "^6.5.3",
+		"zod": "^4.6.2"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "2.5.13",

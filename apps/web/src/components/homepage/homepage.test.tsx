@@ -221,6 +221,5 @@ describe("Sanity homepage", () => {
 		expect(markup).toMatch(/href="#"[^>]*>Explore education<span[^>]*>→/);
 		expect(markup).toMatch(/href="#dh-work"[^>]*>Explore our work<span[^>]*>↓/);
 		expect(markup).toContain('href="https://dfn.org.au/donate/"');
-		expect(markup).toContain("Details are not sent or saved.");
 	});
 });
