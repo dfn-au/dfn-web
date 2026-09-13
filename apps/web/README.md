@@ -1,6 +1,8 @@
 # Web App
 
-Next.js App Router application for the DFN public Country Sites, operational admin routes, future API routes, and future embedded Sanity Studio.
+Next.js App Router application for the DFN public Country Sites, admin routes,
+and embedded Sanity Studio at `/admin/studio`. Studio supports content editing
+and live preview of the public pages.
 
 Run commands from the repo root:
 
@@ -8,6 +10,7 @@ Run commands from the repo root:
 pnpm dev
 pnpm build
 pnpm lint
+pnpm typegen
 pnpm typecheck
 pnpm test
 ```
@@ -27,3 +30,16 @@ reference routes have been removed.
 
 Schema changes do not populate or publish menu content. Review and publish the
 header through Sanity separately from deploying the application.
+
+Sanity query results are inferred from the schemas and `defineQuery` calls in
+`src/sanity/lib/queries.ts`. After changing a schema or query, run `pnpm typegen`
+and commit both `schema.json` and `src/sanity/types.ts` with the change. The
+command uses the Sanity project and dataset from `.env.local`; it extracts the
+local schema and generates types without fetching or publishing content.
+
+Components derive their content types from the generated query results. Missing
+fields remain nullable so incomplete drafts can render, and homepage content
+also accepts the stega-branded strings used by live visual editing. Do not edit
+the generated files or cast fetch results to handwritten shapes. CI regenerates
+both files and fails if either differs from its committed version. Embedded Studio
+runs through Next.js, so `pnpm dev` does not run TypeGen automatically.

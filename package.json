@@ -14,6 +14,7 @@
     "format": "pnpm --filter web format",
     "check": "pnpm --filter web check",
     "typecheck": "pnpm --filter web typecheck",
+    "typegen": "pnpm --filter web typegen",
     "test": "pnpm --filter web test",
     "test:watch": "pnpm --filter web test:watch"
   }

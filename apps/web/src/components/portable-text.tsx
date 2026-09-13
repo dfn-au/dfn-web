@@ -1,6 +1,5 @@
 import {
 	PortableText,
-	type PortableTextBlock,
 	type PortableTextComponents,
 	stegaClean,
 } from "next-sanity";
@@ -8,7 +7,9 @@ import {
 import { ExternalLink } from "@/components/external-link";
 import { SanityImage } from "@/components/sanity-image";
 
-const components: PortableTextComponents = {
+import type { SectionBody } from "./page-sections/types";
+
+const components: PortableTextComponents<SectionBody[number]> = {
 	block: {
 		normal: ({ children }) => (
 			<p className="mt-4 text-copy leading-[1.8] text-muted">{children}</p>
@@ -91,6 +92,6 @@ const components: PortableTextComponents = {
 	},
 };
 
-export function PageBody({ value }: { value: PortableTextBlock[] }) {
+export function PageBody({ value }: { value: SectionBody }) {
 	return <PortableText value={value} components={components} />;
 }

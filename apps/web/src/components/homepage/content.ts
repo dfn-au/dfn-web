@@ -1,101 +1,19 @@
-import type { PortableTextBlock } from "next-sanity";
+import type { HomePage } from "@/sanity/lib/queries";
 
-export type HomepageImage = {
-	_type: "homepagePhotograph";
-	alt: string;
-	asset?: { _ref?: string; _id?: string; url?: string };
-	crop?: { top: number; bottom: number; left: number; right: number };
-	hotspot?: { x: number; y: number; width: number; height: number };
-};
-
-export type IntroductionContent = {
-	eyebrow: string;
-	headline: string;
-	description: string;
-};
-
-export type AreaContent = {
-	_key: string;
-	_type: "programmeFeature";
-	label: string;
-	headline: string;
-	body: PortableTextBlock[];
-	actionLabel: string;
-	contentType: "photograph" | "pathways";
-	photograph?: HomepageImage;
-	pathways?: { _key: string; title: string; description: string }[];
-};
-
-export type NavigationItem = {
-	_key: string;
-	label: string;
-	href: string;
-};
-
-export type HeaderContent = {
-	navigation: HeaderNavigationItem[];
-	menuHeading?: string;
-	give: string;
-	giveHref?: string;
-};
-
-export type HeaderChildLink = NavigationItem & { groupLabel?: string };
-
-export type HeaderNavigationItem = {
-	_key: string;
-	label: string;
-	href?: string;
-	headline?: string;
-	description?: string;
-	children?: HeaderChildLink[];
-};
-
-export type FooterContent = {
-	summary: string;
-	navigationTitle: string;
-	navigation: NavigationItem[];
-	legalNavigation: NavigationItem[];
-	copyright: string;
-	offices: {
-		_key: string;
-		country: string;
-		address: PortableTextBlock[];
-		phone: string;
-		tel: string;
-		email: string;
-	}[];
-};
-
-export type HomepageContent = {
-	title: string;
-	description: string;
-	hero: IntroductionContent & {
-		photograph: HomepageImage;
-		actionLabel: string;
-	};
-	introduction: IntroductionContent;
-	areas: AreaContent[];
-	featuredExample: {
-		eyebrow: string;
-		headline: string;
-		body: PortableTextBlock[];
-		actionLabel: string;
-	};
-	involvement: {
-		eyebrow: string;
-		headline: string;
-		actionLabel: string;
-		opportunities: {
-			_key: string;
-			title: string;
-			description: string;
-			actionLabel: string;
-		}[];
-	};
-	signup: IntroductionContent & { actionLabel: string };
-	header: HeaderContent;
-	footer: FooterContent;
-};
+export type HomepageContent = HomePage;
+export type AreaContent = NonNullable<HomepageContent["areas"]>[number];
+export type HomepageImage = NonNullable<
+	NonNullable<HomepageContent["hero"]>["photograph"]
+>;
+export type HeaderContent = NonNullable<HomepageContent["header"]>;
+export type HeaderNavigationItem = NonNullable<
+	HeaderContent["navigation"]
+>[number];
+export type HeaderChildLink = NonNullable<
+	HeaderNavigationItem["children"]
+>[number];
+export type FooterContent = NonNullable<HomepageContent["footer"]>;
+export type NavigationItem = NonNullable<FooterContent["navigation"]>[number];
 
 // Keep anchors stable when editors change labels or reorder areas. Sanity keys
 // are content identity; programme numbering is derived from the current order.

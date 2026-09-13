@@ -4,7 +4,7 @@ import { Arrow, ButtonLink, DesignLink, Eyebrow, Headline } from "./primitives";
 export function Involvement({
 	content,
 }: {
-	content: HomepageContent["involvement"];
+	content: NonNullable<HomepageContent["involvement"]>;
 }) {
 	return (
 		<section

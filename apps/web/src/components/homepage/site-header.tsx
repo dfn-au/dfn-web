@@ -113,7 +113,7 @@ function ChildLinks({
 							</span>
 						)}
 					<HeaderLink
-						href={link.href}
+						href={link.href ?? "#"}
 						activePage={activePage}
 						onClick={onNavigate}
 						data-overview={link._key === overviewKey}
@@ -135,7 +135,7 @@ export function SiteHeader({
 	overlay = false,
 	activePage = "home",
 }: {
-	content?: HeaderContent;
+	content?: HeaderContent | null;
 	overlay?: boolean;
 	activePage?: string;
 }) {
@@ -265,7 +265,7 @@ export function SiteHeader({
 
 	function currentGroup(item: HeaderNavigationItem) {
 		return item.children?.some((link) =>
-			isCurrentHeaderLink(link.href, activePage),
+			isCurrentHeaderLink(link.href ?? "#", activePage),
 		);
 	}
 

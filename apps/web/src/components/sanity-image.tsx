@@ -2,22 +2,9 @@ import Image from "next/image";
 
 import { urlFor } from "@/sanity/lib/image";
 
-type SanityImageValue = {
-	alt?: string | null;
-	hotspot?: unknown;
-	crop?: unknown;
-	asset?: {
-		_id?: string;
-		url?: string;
-		metadata?: {
-			lqip?: string;
-			dimensions?: {
-				width?: number;
-				height?: number;
-			};
-		};
-	} | null;
-};
+import type { SectionBody } from "./page-sections/types";
+
+type SanityImageValue = Extract<SectionBody[number], { _type: "image" }>;
 
 type SanityImageProps = {
 	value: SanityImageValue;
@@ -52,7 +39,7 @@ export function SanityImage({
 			height={height}
 			priority={priority}
 			placeholder={lqip ? "blur" : "empty"}
-			blurDataURL={lqip}
+			blurDataURL={lqip ?? undefined}
 		/>
 	);
 }

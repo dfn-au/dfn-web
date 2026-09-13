@@ -38,7 +38,7 @@ export function Footer({
 						{(content.navigation ?? []).map((link) => (
 							<NavigationLink
 								key={link._key}
-								href={link.href}
+								href={link.href ?? "#"}
 								homepagePath={homepagePath}
 								className="flex min-h-11 items-center py-1 text-sm leading-[1.65] wrap-anywhere"
 							>
@@ -82,7 +82,7 @@ export function Footer({
 					{(content.legalNavigation ?? []).map((link) => (
 						<NavigationLink
 							key={link._key}
-							href={link.href}
+							href={link.href ?? "#"}
 							homepagePath={homepagePath}
 						>
 							{link.label}

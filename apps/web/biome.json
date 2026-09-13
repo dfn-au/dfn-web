@@ -1,7 +1,14 @@
 {
 	"$schema": "https://biomejs.dev/schemas/2.5.13/schema.json",
 	"files": {
-		"includes": ["**", "!.next", "!node_modules", "!tmp"]
+		"includes": [
+			"**",
+			"!.next",
+			"!node_modules",
+			"!tmp",
+			"!schema.json",
+			"!src/sanity/types.ts"
+		]
 	},
 	"css": {
 		"parser": {

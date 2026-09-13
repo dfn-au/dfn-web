@@ -5,12 +5,7 @@ import { PageViewTracker } from "@/components/page-view-tracker";
 import { PalettePreview } from "@/components/site/palette-preview";
 import { resolvePalette } from "@/components/site/palettes";
 import { sanityFetch } from "@/sanity/lib/live";
-import {
-	PAGE_QUERY,
-	type Page,
-	SITE_CHROME_QUERY,
-	type SiteChrome,
-} from "@/sanity/lib/queries";
+import { PAGE_QUERY, type Page, SITE_CHROME_QUERY } from "@/sanity/lib/queries";
 
 type RouteProps = {
 	params: Promise<{ slug: string }>;
@@ -26,7 +21,7 @@ async function getPage(slug: string, stega?: false): Promise<Page | null> {
 		params: { slug },
 		stega,
 	});
-	return data as Page | null;
+	return data;
 }
 
 export async function generateMetadata({
@@ -57,9 +52,9 @@ export default async function PageRoute({ params, searchParams }: RouteProps) {
 		>
 			<PageViewTracker
 				event="content_page_viewed"
-				properties={{ slug, title: page.title }}
+				properties={{ slug, title: page.title ?? undefined }}
 			/>
-			<ContentPage page={page} chrome={chrome as SiteChrome | null} />
+			<ContentPage page={page} chrome={chrome} />
 		</PalettePreview>
 	);
 }

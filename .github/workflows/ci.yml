@@ -29,6 +29,11 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Check generated Sanity schema and types
+        run: |
+          pnpm typegen
+          git diff --exit-code -- apps/web/schema.json apps/web/src/sanity/types.ts
+
       - name: Lint
         run: pnpm lint
 

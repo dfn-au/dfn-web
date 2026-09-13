@@ -1,8 +1,8 @@
-import type { PortableTextBlock } from "next-sanity";
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it, vi } from "vitest";
 import { ContentPage } from "./content-page";
 import { publicNavigationHref } from "./homepage/navigation";
+import type { SectionBody } from "./page-sections/types";
 import { PageBody } from "./portable-text";
 
 vi.mock("@/sanity/lib/image", () => ({ urlFor: () => ({ url: () => "" }) }));
@@ -11,18 +11,41 @@ vi.mock("./external-link", () => ({
 }));
 
 describe("general content pages", () => {
+	it("renders an incomplete draft without a title, slug or sections", () => {
+		const markup = renderToStaticMarkup(
+			<ContentPage
+				page={{
+					_id: "draft",
+					title: null,
+					description: null,
+					slug: null,
+					sections: null,
+				}}
+				chrome={null}
+			/>,
+		);
+		expect(markup).toContain('<main id="dh-main"');
+		expect(markup).not.toContain("undefined");
+	});
 	it("renders authored sections with shared navigation, home anchors and rich text", () => {
 		const markup = renderToStaticMarkup(
 			<ContentPage
 				page={{
 					_id: "example-page",
 					title: "Example page",
-					slug: { current: "example" },
+					description: null,
+					slug: { _type: "slug", current: "example" },
 					sections: [
-						{ _key: "title", _type: "pageTitle" },
+						{
+							_key: "title",
+							_type: "pageTitle",
+							navigationLabel: null,
+							headline: null,
+						},
 						{
 							_key: "body",
 							_type: "richTextSection",
+							navigationLabel: null,
 							body: [
 								{
 									_type: "block",
@@ -45,10 +68,33 @@ describe("general content pages", () => {
 				chrome={{
 					header: {
 						give: "Give",
+						menuHeading: null,
+						giveHref: null,
 						navigation: [
-							{ _key: "work", label: "Our work", href: "#dh-work" },
-							{ _key: "signup", label: "Updates", href: "#dh-signup" },
-							{ _key: "contact", label: "Contact", href: "#dh-contact" },
+							{
+								_key: "work",
+								label: "Our work",
+								href: "#dh-work",
+								headline: null,
+								description: null,
+								children: null,
+							},
+							{
+								_key: "signup",
+								label: "Updates",
+								href: "#dh-signup",
+								headline: null,
+								description: null,
+								children: null,
+							},
+							{
+								_key: "contact",
+								label: "Contact",
+								href: "#dh-contact",
+								headline: null,
+								description: null,
+								children: null,
+							},
 						],
 					},
 					footer: {
@@ -77,8 +123,16 @@ describe("general content pages", () => {
 				page={{
 					_id: "page",
 					title: "Authored page",
-					slug: { current: "page" },
-					sections: [{ _key: "title", _type: "pageTitle" }],
+					description: null,
+					slug: { _type: "slug", current: "page" },
+					sections: [
+						{
+							_key: "title",
+							_type: "pageTitle",
+							navigationLabel: null,
+							headline: null,
+						},
+					],
 				}}
 				chrome={null}
 			/>,
@@ -88,11 +142,11 @@ describe("general content pages", () => {
 		expect(markup).not.toContain("<footer");
 	});
 	it("renders nested lists and annotated contact links without opening email in a new tab", () => {
-		const blocks: PortableTextBlock[] = [
-			"First item",
-			"Nested item",
-			"Email us",
-		].map((text, index) => ({
+		const blocks: (Extract<SectionBody[number], { _type: "block" }> & {
+			children: NonNullable<
+				Extract<SectionBody[number], { _type: "block" }>["children"]
+			>;
+		})[] = ["First item", "Nested item", "Email us"].map((text, index) => ({
 			_type: "block",
 			_key: `block-${index}`,
 			style: "normal",
