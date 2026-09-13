@@ -24,13 +24,12 @@ import {
 } from "./header-navigation";
 import { publicNavigationHref } from "./navigation";
 
-// Override PalettePreview's descendant link underline; the border marks hover.
 const topLinkClass =
-	"flex min-h-12 items-center gap-2.5 border-b-2 border-transparent bg-transparent font-nav text-[15px] leading-[1.4] tracking-[.25px] whitespace-nowrap text-white uppercase hover:border-accent hover:text-accent hover:no-underline! aria-expanded:border-accent aria-expanded:text-accent aria-[current=page]:border-accent aria-[current=page]:text-accent data-[active=true]:border-accent data-[active=true]:text-accent @min-[1200px]:text-base";
+	"flex min-h-12 items-center gap-2.5 border-b-2 border-transparent bg-transparent font-nav text-[15px] leading-[1.4] tracking-[.25px] whitespace-nowrap text-white uppercase hover:border-accent hover:text-accent aria-expanded:border-accent aria-expanded:text-accent aria-[current=page]:border-accent aria-[current=page]:text-accent data-[active=true]:border-accent data-[active=true]:text-accent @min-[1200px]:text-base";
 const categoryClass =
 	"flex min-h-[62px] w-full items-center justify-between gap-4 bg-transparent py-3 text-left text-[19px] leading-snug text-ink hover:text-accent aria-expanded:text-accent aria-[current=page]:text-accent aria-[current=page]:underline aria-[current=page]:underline-offset-8";
 const giveClass =
-	"inline-flex min-h-[46px] min-w-[60px] shrink-0 items-center justify-center bg-action px-3.5 py-2.5 font-nav text-base leading-[1.4] text-white uppercase hover:bg-[#9d3010] @wide:min-w-[72px] @wide:px-[22px] @wide:py-[11px]";
+	"inline-flex min-h-[46px] min-w-[60px] shrink-0 items-center justify-center bg-action px-3.5 py-2.5 font-nav text-base leading-[1.4] text-white uppercase hover:bg-[#9d3010] hover:underline hover:underline-offset-4 @wide:min-w-[72px] @wide:px-[22px] @wide:py-[11px]";
 
 function Chevron({ open }: { open: boolean }) {
 	return (
@@ -118,7 +117,7 @@ function ChildLinks({
 						activePage={activePage}
 						onClick={onNavigate}
 						data-overview={link._key === overviewKey}
-						className="flex min-h-12 items-center justify-between gap-[18px] border-b border-rule px-2 py-3 text-[15px] leading-[1.4] text-ink data-[overview=true]:text-accent hover:bg-involved hover:text-accent aria-[current=page]:text-accent aria-[current=page]:underline aria-[current=page]:underline-offset-4"
+						className="flex min-h-12 items-center justify-between gap-[18px] border-b border-rule px-2 py-3 text-[15px] leading-[1.4] text-ink data-[overview=true]:text-accent hover:bg-involved hover:text-accent hover:underline hover:underline-offset-4 aria-[current=page]:text-accent aria-[current=page]:underline aria-[current=page]:underline-offset-4"
 					>
 						<span className="wrap-anywhere">{link.label}</span>
 						<span aria-hidden="true" className="shrink-0 text-muted">
@@ -487,7 +486,7 @@ export function SiteHeader({
 											href={item.href ?? "#"}
 											activePage={activePage}
 											onClick={navigateFromDrawer}
-											className={categoryClass}
+											className={`${categoryClass} hover:underline hover:underline-offset-4`}
 										>
 											{item.label}
 											<span aria-hidden="true">↗</span>

@@ -209,7 +209,7 @@ export function RenderSections({
 									<a
 										key={target._key}
 										href={`#${stegaClean(target._key)}`}
-										className="flex min-h-11 flex-1 items-center justify-between gap-3 py-2 text-label"
+										className="flex min-h-11 flex-1 items-center justify-between gap-3 py-2 text-label hover:underline hover:underline-offset-4"
 									>
 										{target.navigationLabel}
 										<span className="text-accent">

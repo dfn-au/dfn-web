@@ -14,6 +14,7 @@ export function NavigationLink({
 	href,
 	activePage = "home",
 	homepagePath = "",
+	className,
 	...props
 }: ComponentProps<"a"> & {
 	href: string;
@@ -32,6 +33,7 @@ export function NavigationLink({
 	return (
 		<a
 			{...props}
+			className={`hover:underline hover:underline-offset-4 ${className ?? ""}`}
 			href={destination}
 			aria-current={
 				cleanHref.split(/[?#]/)[0] === `/${stegaClean(activePage)}`
