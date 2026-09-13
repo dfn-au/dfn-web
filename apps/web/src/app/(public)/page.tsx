@@ -9,7 +9,7 @@ import { HOME_PAGE_QUERY, type HomePage } from "@/sanity/lib/queries";
 
 async function getHomePage(stega?: false): Promise<HomePage | null> {
 	const { data } = await sanityFetch({ query: HOME_PAGE_QUERY, stega });
-	return data as HomePage | null;
+	return data;
 }
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -39,7 +39,7 @@ export default async function HomePageRoute({
 		>
 			<PageViewTracker
 				event="home_page_viewed"
-				properties={{ title: homePage.title }}
+				properties={{ title: homePage.title ?? undefined }}
 			/>
 			<Homepage content={homePage} />
 		</PalettePreview>

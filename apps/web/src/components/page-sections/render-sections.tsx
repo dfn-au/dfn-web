@@ -36,7 +36,7 @@ function SectionPhoto({
 	image,
 	className,
 }: {
-	image?: SectionImage;
+	image?: SectionImage | null;
 	className: string;
 }) {
 	const src = image?.asset ? urlFor(image).url() : undefined;
@@ -50,7 +50,7 @@ function SectionPhoto({
 			unoptimized
 			className={className}
 			style={
-				image?.hotspot
+				image?.hotspot?.x != null && image.hotspot.y != null
 					? {
 							objectPosition: `${image.hotspot.x * 100}% ${image.hotspot.y * 100}%`,
 						}
@@ -64,7 +64,7 @@ function Link({
 	className,
 	button = false,
 }: {
-	link?: SectionLink;
+	link?: SectionLink | null;
 	className?: string;
 	button?: boolean;
 }) {

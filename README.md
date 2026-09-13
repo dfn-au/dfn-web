@@ -34,6 +34,7 @@ pnpm build
 pnpm lint
 pnpm format
 pnpm check
+pnpm typegen
 pnpm typecheck
 pnpm test
 ```

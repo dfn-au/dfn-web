@@ -1,11 +1,19 @@
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it, vi } from "vitest";
-import type { HomepageContent, HomepageImage } from "./content";
+import type { HOME_PAGE_QUERY_RESULT } from "@/sanity/types";
+import type { AreaContent, HomepageImage } from "./content";
 import { Homepage } from "./homepage";
 
 vi.mock("@/sanity/lib/image", () => ({
 	urlFor: (image: HomepageImage) => ({ url: () => image.asset?.url ?? "" }),
 }));
+
+function emptyBody(): AreaContent["body"] {
+	return [];
+}
+function emptyPathways(): AreaContent["pathways"] {
+	return [];
+}
 
 function contentWithImages() {
 	const introduction = {
@@ -13,7 +21,8 @@ function contentWithImages() {
 		headline: "Test heading",
 		description: "Test description",
 	};
-	const content: HomepageContent = {
+	const content = {
+		_id: "homePage",
 		title: "Test homepage",
 		description: "Test description",
 		hero: {
@@ -22,7 +31,9 @@ function contentWithImages() {
 			photograph: {
 				_type: "homepagePhotograph",
 				alt: "Hero photo",
-				asset: { url: "https://cdn.sanity.io/hero.jpg" },
+				crop: null,
+				hotspot: null,
+				asset: { _id: "image-photo", url: "https://cdn.sanity.io/hero.jpg" },
 			},
 		},
 		introduction,
@@ -31,19 +42,22 @@ function contentWithImages() {
 			_type: "programmeFeature",
 			label: _key,
 			headline: `About ${_key}`,
-			body: [],
+			body: emptyBody(),
 			actionLabel: `Explore ${_key}`,
+			pathways: emptyPathways(),
 			contentType: _key === "enterprise" ? "pathways" : "photograph",
 			photograph: {
 				_type: "homepagePhotograph",
 				alt: `${_key} photo`,
-				asset: { url: `https://cdn.sanity.io/${_key}.jpg` },
+				crop: null,
+				hotspot: null,
+				asset: { _id: "image-photo", url: `https://cdn.sanity.io/${_key}.jpg` },
 			},
 		})),
 		featuredExample: {
 			eyebrow: "Example",
 			headline: "An example",
-			body: [],
+			body: emptyBody(),
 			actionLabel: "Read more",
 		},
 		involvement: {
@@ -55,9 +69,25 @@ function contentWithImages() {
 		signup: { ...introduction, actionLabel: "Sign up" },
 		header: {
 			give: "Give",
+			menuHeading: null,
+			giveHref: null,
 			navigation: [
-				{ _key: "work", label: "Our work", href: "#dh-work" },
-				{ _key: "about", label: "About", href: "#" },
+				{
+					_key: "work",
+					label: "Our work",
+					href: "#dh-work",
+					headline: null,
+					description: null,
+					children: null,
+				},
+				{
+					_key: "about",
+					label: "About",
+					href: "#",
+					headline: null,
+					description: null,
+					children: null,
+				},
 			],
 		},
 		footer: {
@@ -77,11 +107,40 @@ function contentWithImages() {
 				},
 			],
 		},
-	};
+	} satisfies NonNullable<HOME_PAGE_QUERY_RESULT>;
 	return content;
 }
 
 describe("Sanity homepage", () => {
+	it("renders an incomplete draft with missing sections and image hotspot coordinates", () => {
+		const content = contentWithImages();
+		const markup = renderToStaticMarkup(
+			<Homepage
+				content={{
+					...content,
+					header: null,
+					footer: null,
+					areas: null,
+					introduction: null,
+					featuredExample: null,
+					involvement: null,
+					signup: null,
+					hero: {
+						...content.hero,
+						headline: null,
+						photograph: {
+							...content.hero.photograph,
+							hotspot: { _type: "sanity.imageHotspot", x: 0.5 },
+						},
+					},
+				}}
+			/>,
+		);
+		expect(markup).toContain('src="https://cdn.sanity.io/hero.jpg"');
+		expect(markup).not.toContain("NaN");
+		expect(markup).not.toContain('aria-label="Main navigation"');
+		expect(markup).not.toContain("<footer");
+	});
 	it.each([3, 4, 5])(
 		"keeps navigation, sections and numbering in sync with %i reordered areas",
 		(count) => {
@@ -118,7 +177,7 @@ describe("Sanity homepage", () => {
 				_type: "block",
 				_key: "copy",
 				style: "normal",
-				markDefs: [],
+				markDefs: null,
 				children: [
 					{ _type: "span", _key: "text", text: "Changed in Sanity", marks: [] },
 				],

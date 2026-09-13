@@ -6,7 +6,7 @@ export function Hero({
 	content,
 	headerElement,
 }: {
-	content: HomepageContent["hero"];
+	content: NonNullable<HomepageContent["hero"]>;
 	headerElement: ReactNode;
 }) {
 	return (

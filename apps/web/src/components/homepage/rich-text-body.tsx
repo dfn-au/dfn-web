@@ -1,8 +1,10 @@
-import {
-	PortableText,
-	type PortableTextBlock,
-	type PortableTextComponents,
-} from "next-sanity";
+import { PortableText, type PortableTextComponents } from "next-sanity";
+
+import type { AreaContent, FooterContent } from "./content";
+
+type RichTextValue =
+	| AreaContent["body"]
+	| NonNullable<FooterContent["offices"]>[number]["address"];
 
 const components = {
 	address: {
@@ -39,13 +41,16 @@ const components = {
 			),
 		},
 	},
-} satisfies Record<string, PortableTextComponents>;
+} satisfies Record<
+	string,
+	PortableTextComponents<NonNullable<RichTextValue>[number]>
+>;
 
 export function RichTextBody({
 	value,
 	variant,
 }: {
-	value?: PortableTextBlock[];
+	value?: RichTextValue;
 	variant: keyof typeof components;
 }) {
 	return <PortableText value={value ?? []} components={components[variant]} />;

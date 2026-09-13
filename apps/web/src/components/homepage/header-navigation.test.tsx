@@ -1,6 +1,6 @@
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
-import type { HeaderChildLink, HeaderContent } from "./content";
+import type { HeaderContent } from "./content";
 import {
 	headerHref,
 	isCurrentHeaderLink,
@@ -8,7 +8,7 @@ import {
 } from "./header-navigation";
 import { SiteHeader } from "./site-header";
 
-const children: HeaderChildLink[] = [
+const children = [
 	{
 		_key: "overview",
 		label: "Get involved overview",
@@ -36,7 +36,7 @@ describe("grouped public navigation", () => {
 		expect(columns.flat()).toEqual(children);
 	});
 	it("balances an ungrouped list and keeps short lists in one column", () => {
-		const links = children.map(({ groupLabel: _groupLabel, ...link }) => link);
+		const links = children.map((link) => ({ ...link, groupLabel: null }));
 		expect(navigationColumns(links).map((column) => column.length)).toEqual([
 			5, 4,
 		]);
@@ -66,6 +66,7 @@ describe("grouped public navigation", () => {
 	it("renders authored groups as disclosures and their children as links on both devices", () => {
 		const content: HeaderContent = {
 			give: "Donate now",
+			menuHeading: null,
 			giveHref: "/donate",
 			navigation: [
 				{
@@ -74,9 +75,24 @@ describe("grouped public navigation", () => {
 					headline: "Join us",
 					description: "Authored introduction",
 					children,
+					href: null,
 				},
-				{ _key: "about", label: "About DFN", href: "/about" },
-				{ _key: "contact", label: "Contact", href: "/contact" },
+				{
+					_key: "about",
+					label: "About DFN",
+					href: "/about",
+					headline: null,
+					description: null,
+					children: null,
+				},
+				{
+					_key: "contact",
+					label: "Contact",
+					href: "/contact",
+					headline: null,
+					description: null,
+					children: null,
+				},
 			],
 		};
 		const markup = renderToStaticMarkup(
@@ -107,11 +123,16 @@ describe("grouped public navigation", () => {
 			<SiteHeader
 				content={{
 					give: "Give",
+					menuHeading: null,
+					giveHref: null,
 					navigation: [
 						{
 							_key: "contact",
 							label: "Contact",
 							href: "/contact",
+							headline: null,
+							description: null,
+							children: null,
 						},
 					],
 				}}

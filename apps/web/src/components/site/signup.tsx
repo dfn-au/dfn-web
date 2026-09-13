@@ -5,7 +5,11 @@ import type { HomepageContent } from "@/components/homepage/content";
 import { NavigationLink } from "./navigation-link";
 import { Arrow, buttonClasses, Eyebrow, Headline } from "./primitives";
 
-export function Signup({ content }: { content: HomepageContent["signup"] }) {
+export function Signup({
+	content,
+}: {
+	content: NonNullable<HomepageContent["signup"]>;
+}) {
 	const [submitted, setSubmitted] = useState(false);
 	return (
 		<section

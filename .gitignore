@@ -49,6 +49,9 @@ build/
 next-env.d.ts
 *.tsbuildinfo
 
+# Sanity TypeGen intermediate schema (types are committed)
+apps/web/schema.json
+
 # Testing
 coverage/
 

@@ -10,6 +10,7 @@ Run commands from the repo root:
 pnpm dev
 pnpm build
 pnpm lint
+pnpm typegen
 pnpm typecheck
 pnpm test
 ```
@@ -29,3 +30,16 @@ reference routes have been removed.
 
 Schema changes do not populate or publish menu content. Review and publish the
 header through Sanity separately from deploying the application.
+
+Sanity query results are inferred from the schemas and `defineQuery` calls in
+`src/sanity/lib/queries.ts`. After changing a schema or query, run `pnpm typegen`
+and commit `src/sanity/types.ts` with the change. The command uses the Sanity
+project and dataset from `.env.local`; it extracts the local schema to an ignored
+`schema.json` and generates types without fetching or publishing content.
+
+Components derive their content types from the generated query results. Missing
+fields remain nullable so incomplete drafts can render, and homepage content
+also accepts the stega-branded strings used by live visual editing. Do not edit
+the generated file or cast fetch results to handwritten shapes. CI regenerates
+the file and fails if it differs from the committed version. Embedded Studio
+runs through Next.js, so `pnpm dev` does not run TypeGen automatically.

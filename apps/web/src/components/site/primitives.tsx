@@ -3,7 +3,7 @@ import { type ComponentProps, Fragment, type ReactNode } from "react";
 import type { HomepageImage } from "@/components/homepage/content";
 import { urlFor } from "@/sanity/lib/image";
 
-export function Headline({ text }: { text?: string }) {
+export function Headline({ text }: { text?: string | null }) {
 	return text?.split("\n").map((line, index) => (
 		// biome-ignore lint/suspicious/noArrayIndexKey: Plain text lines have no component state or independent identity.
 		<Fragment key={`${index}-${line}`}>
@@ -115,7 +115,7 @@ export function Photo({
 	alt?: string;
 	className?: string;
 	priority?: boolean;
-	image?: HomepageImage;
+	image?: HomepageImage | null;
 }) {
 	const src = image?.asset ? urlFor(image).url() : undefined;
 	if (!src) return null;
@@ -129,7 +129,7 @@ export function Photo({
 			preload={priority}
 			className={className}
 			style={
-				image?.hotspot
+				image?.hotspot?.x != null && image.hotspot.y != null
 					? {
 							objectPosition: `${image.hotspot.x * 100}% ${image.hotspot.y * 100}%`,
 						}

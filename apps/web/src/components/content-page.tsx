@@ -13,10 +13,16 @@ export function ContentPage({
 	return (
 		<>
 			<div className="mx-auto max-w-[1920px] px-2.5 @desktop:px-frame">
-				<SiteHeader content={chrome?.header} activePage={page.slug.current} />
+				<SiteHeader
+					content={chrome?.header}
+					activePage={page.slug?.current ?? ""}
+				/>
 			</div>
 			<main id="dh-main">
-				<RenderSections title={page.title} sections={page.sections ?? []} />
+				<RenderSections
+					title={page.title ?? ""}
+					sections={page.sections ?? []}
+				/>
 			</main>
 			{chrome?.footer && <Footer content={chrome.footer} homepagePath="/" />}
 		</>

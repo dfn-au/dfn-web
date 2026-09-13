@@ -1,4 +1,3 @@
-import type { PortableTextBlock } from "next-sanity";
 import type { ReactNode } from "react";
 import type {
 	AreaContent,
@@ -20,8 +19,8 @@ export function Introduction({
 	content,
 	areas,
 }: {
-	content: HomepageContent["introduction"];
-	areas: { id: string; label: string }[];
+	content: NonNullable<HomepageContent["introduction"]>;
+	areas: { id: string; label: string | null }[];
 }) {
 	return (
 		<section
@@ -68,13 +67,13 @@ export function Introduction({
 type ProgrammeProps = {
 	id: string;
 	number: string;
-	label: string;
+	label: string | null;
 	title: ReactNode;
-	body: PortableTextBlock[];
-	photograph?: HomepageImage;
+	body: AreaContent["body"];
+	photograph?: HomepageImage | null;
 	alt: string;
 	href: string;
-	linkLabel: string;
+	linkLabel: string | null;
 	framed?: boolean;
 	imageRight?: boolean;
 	crop?: string;
@@ -181,7 +180,7 @@ export function Evidence({
 	content,
 	href,
 }: {
-	content: HomepageContent["featuredExample"];
+	content: NonNullable<HomepageContent["featuredExample"]>;
 	href: string;
 }) {
 	return (
