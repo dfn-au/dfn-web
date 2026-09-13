@@ -94,30 +94,50 @@ export function Signup({
 			</div>
 			<form
 				ref={form}
-				className="grid content-start gap-[15px] @desktop:grid-cols-2"
+				className="grid content-start gap-[15px]"
 				onSubmit={submit}
 				aria-describedby="signup-status"
 			>
-				{[
-					{ name: "name", label: "Name", type: "text" },
-					{ name: "email", label: "Email address", type: "email" },
-				].map((field) => (
-					<label
-						key={field.name}
-						className="grid gap-[7px] text-sm leading-normal font-medium"
-					>
-						{field.label}
-						<input
-							name={field.name}
-							type={field.type}
-							autoComplete={field.name}
-							maxLength={field.name === "name" ? 200 : 254}
-							readOnly={busy}
-							required
-							className="min-h-12 min-w-0 border border-[#94887b] bg-paper px-3 py-[13px] text-base font-normal text-ink [line-height:normal]"
-						/>
-					</label>
-				))}
+				<fieldset
+					disabled={busy}
+					aria-label="Newsletter signup"
+					className="grid min-w-0 gap-[15px] @desktop:grid-cols-2"
+				>
+					{[
+						{ name: "name", label: "Name", type: "text" },
+						{ name: "email", label: "Email address", type: "email" },
+					].map((field) => (
+						<label
+							key={field.name}
+							className="grid gap-[7px] text-sm leading-normal font-medium"
+						>
+							{field.label}
+							<input
+								name={field.name}
+								type={field.type}
+								autoComplete={field.name}
+								maxLength={field.name === "name" ? 200 : 254}
+								required
+								className="min-h-12 min-w-0 border border-[#94887b] bg-paper px-3 py-[13px] text-base font-normal text-ink [line-height:normal] disabled:cursor-wait disabled:opacity-70"
+							/>
+						</label>
+					))}
+					<div className="col-span-full flex flex-wrap items-center justify-between gap-5">
+						<button
+							type="submit"
+							className={`${buttonClasses} bg-action text-white disabled:cursor-wait disabled:opacity-70`}
+						>
+							{busy ? "Submitting…" : content.actionLabel}
+							<Arrow />
+						</button>
+						<NavigationLink
+							href="/privacy"
+							className="inline-flex min-h-11 items-center text-sm leading-normal text-muted underline"
+						>
+							Privacy policy
+						</NavigationLink>
+					</div>
+				</fieldset>
 				{busy && siteKey && (
 					<SignupVerification
 						siteKey={siteKey}
@@ -125,22 +145,6 @@ export function Signup({
 						onError={verificationFailed}
 					/>
 				)}
-				<div className="col-span-full flex flex-wrap items-center justify-between gap-5">
-					<button
-						type="submit"
-						disabled={busy}
-						className={`${buttonClasses} bg-action text-white disabled:cursor-wait disabled:opacity-70`}
-					>
-						{busy ? "Submitting…" : content.actionLabel}
-						<Arrow />
-					</button>
-					<NavigationLink
-						href="/privacy"
-						className="inline-flex min-h-11 items-center text-sm leading-normal text-muted underline"
-					>
-						Privacy policy
-					</NavigationLink>
-				</div>
 				<p
 					id="signup-status"
 					role="status"
