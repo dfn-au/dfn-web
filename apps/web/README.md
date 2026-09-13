@@ -1,6 +1,8 @@
 # Web App
 
-Next.js App Router application for the DFN public Country Sites, operational admin routes, future API routes, and future embedded Sanity Studio.
+Next.js App Router application for the DFN public Country Sites, admin routes,
+and embedded Sanity Studio at `/admin/studio`. Studio supports content editing
+and live preview of the public pages.
 
 Run commands from the repo root:
 

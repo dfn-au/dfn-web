@@ -48,13 +48,13 @@ The frozen legacy website is preserved in
 - `apps/web`: Next.js App Router app
 - Tailwind CSS
 - Route groups for public and admin surfaces
+- Embedded Sanity Studio at `/admin/studio`
 - Biome for linting and formatting
 - Vitest for unit tests
 - PostHog analytics and error monitoring
 
 Deferred slices:
 
-- Embedded Sanity Studio
 - Supabase local development and operational schema
 - Playwright end-to-end tests
 - Vercel-specific config
