@@ -43,7 +43,7 @@ describe("grouped public navigation", () => {
 		expect(navigationColumns(links.slice(0, 3))).toEqual([links.slice(0, 3)]);
 	});
 	it("distinguishes current pages from hashes, external links and other slugs", () => {
-		expect(isCurrentHeaderLink("/about/?variant=olive", "about")).toBe(true);
+		expect(isCurrentHeaderLink("/about/?topic=work", "about")).toBe(true);
 		expect(isCurrentHeaderLink("/", "home")).toBe(true);
 		for (const href of [
 			"/about#team",
@@ -102,7 +102,9 @@ describe("grouped public navigation", () => {
 		expect(markup).toContain("Authored introduction");
 		expect(markup).toContain('aria-expanded="false"');
 		expect(markup).toContain('aria-label="Close Get involved"');
-		expect(markup).toContain('href="/about" aria-current="page"');
+		expect(markup).toMatch(
+			/<a\b(?=[^>]*href="\/about")(?=[^>]*aria-current="page")/,
+		);
 		expect(markup).toContain('href="/donate"');
 		for (const label of ["Main navigation", "Mobile navigation"]) {
 			const navigation = markup.match(

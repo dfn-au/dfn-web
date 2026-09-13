@@ -1,9 +1,9 @@
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it, vi } from "vitest";
 import { ContentPage } from "./content-page";
-import { publicNavigationHref } from "./homepage/navigation";
 import type { SectionBody } from "./page-sections/types";
 import { PageBody } from "./portable-text";
+import { DesignLink } from "./site/primitives";
 
 vi.mock("@/sanity/lib/image", () => ({ urlFor: () => ({ url: () => "" }) }));
 vi.mock("./external-link", () => ({
@@ -166,16 +166,34 @@ describe("general content pages", () => {
 		expect(markup).toContain('href="mailto:info@dfn.org.au"');
 		expect(markup).not.toContain('target="_blank"');
 	});
-	it("keeps palettes and hidden controls across public page navigation", () => {
-		expect(publicNavigationHref("/privacy", "olive", false)).toBe(
-			"/privacy?variant=olive&clean=1",
-		);
-		expect(publicNavigationHref("/#dh-work", "ink", true)).toBe(
-			"/?variant=ink#dh-work",
-		);
-		expect(publicNavigationHref("#", "olive", true)).toBe("#");
-		expect(publicNavigationHref("mailto:info@dfn.org.au", "olive", true)).toBe(
-			"mailto:info@dfn.org.au",
-		);
-	});
+});
+
+// Visitors choose a new tab through their browser, regardless of link placement.
+it.each([
+	"https://dfn.org.au/contact/",
+	"https://dfn.org.nz/contact/",
+	"http://example.org/",
+	"//example.org/",
+])("keeps rich-text and design links in the current tab: %s", (href) => {
+	const body: SectionBody = [
+		{
+			_type: "block",
+			_key: "body",
+			style: "normal",
+			markDefs: [{ _type: "link", _key: "link", href }],
+			children: [
+				{ _type: "span", _key: "text", text: "Visit", marks: ["link"] },
+			],
+		},
+	];
+	for (const element of [
+		<PageBody key="body" value={body} />,
+		<DesignLink key="design" href={href}>
+			Visit
+		</DesignLink>,
+	]) {
+		const markup = renderToStaticMarkup(element);
+		expect(markup).toContain(`href="${href}"`);
+		expect(markup).not.toContain("target=");
+	}
 });
