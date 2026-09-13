@@ -24,6 +24,7 @@ export function Arrow({ down = false }: { down?: boolean }) {
 export function DesignLink({
 	href,
 	children,
+	className,
 	...props
 }: ComponentProps<"a"> & { href: string }) {
 	const external = href.startsWith("https://");
@@ -33,6 +34,7 @@ export function DesignLink({
 			target={external ? "_blank" : undefined}
 			rel={external ? "noopener noreferrer" : undefined}
 			{...props}
+			className={`hover:underline hover:underline-offset-4 ${className ?? ""}`}
 		>
 			{children}
 		</a>

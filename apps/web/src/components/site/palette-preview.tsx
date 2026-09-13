@@ -52,7 +52,7 @@ export function PalettePreview({
 		<div
 			id="dfn-home"
 			data-palette={palette}
-			className="@container min-h-screen bg-page font-body font-normal text-ink [color-scheme:dark] [&_a:hover]:underline [&_a:hover]:underline-offset-4 [&_:focus-visible]:outline-2 [&_:focus-visible]:outline-offset-4 [&_:focus-visible]:outline-ink"
+			className="@container min-h-screen bg-page font-body font-normal text-ink [color-scheme:dark] [&_:focus-visible]:outline-2 [&_:focus-visible]:outline-offset-4 [&_:focus-visible]:outline-ink"
 		>
 			<PaletteContext.Provider value={{ palette, controlsVisible }}>
 				<div id="dh-top">{children}</div>
@@ -97,7 +97,7 @@ export function PalettePreview({
 					<a
 						aria-label="Hide controls"
 						href={`?variant=${palette}&clean=1`}
-						className="flex min-h-11 shrink-0 items-center border-l border-[#cfc7bb] px-2 text-[13px] max-[360px]:px-1 max-[360px]:text-xs"
+						className="flex min-h-11 shrink-0 items-center border-l border-[#cfc7bb] px-2 text-[13px] hover:underline hover:underline-offset-4 max-[360px]:px-1 max-[360px]:text-xs"
 					>
 						Hide<span className="max-[360px]:hidden">&nbsp;controls</span>
 					</a>
