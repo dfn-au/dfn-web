@@ -1,5 +1,6 @@
 "use client";
 
+import { Button, Stack, Text } from "@sanity/ui";
 import { useState } from "react";
 
 export function AdminSignOut() {
@@ -21,16 +22,20 @@ export function AdminSignOut() {
 		}
 	}
 	return (
-		<div>
-			<button
+		<Stack gap={3}>
+			<Button
 				type="button"
 				onClick={signOut}
 				disabled={pending}
-				className="text-sm underline disabled:opacity-50"
-			>
-				{pending ? "Signing out…" : "Sign out"}
-			</button>
-			{error && <p role="alert">Couldn’t sign out. Please try again.</p>}
-		</div>
+				loading={pending}
+				mode="bleed"
+				text={pending ? "Signing out…" : "Sign out"}
+			/>
+			{error && (
+				<Text role="alert" size={1}>
+					Couldn’t sign out. Please try again.
+				</Text>
+			)}
+		</Stack>
 	);
 }

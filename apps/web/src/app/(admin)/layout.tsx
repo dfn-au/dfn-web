@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 
-import "../globals.css";
+import { AdminTheme } from "@/components/admin-theme";
+import "./admin.css";
 
 export const metadata: Metadata = {
 	title: "DFN",
@@ -11,9 +12,9 @@ export const metadata: Metadata = {
 
 export default function AdminLayout({ children }: { children: ReactNode }) {
 	return (
-		<html lang="en" className="h-full antialiased">
-			<body className="flex min-h-full flex-col bg-background text-foreground">
-				{children}
+		<html lang="en">
+			<body>
+				<AdminTheme>{children}</AdminTheme>
 			</body>
 		</html>
 	);

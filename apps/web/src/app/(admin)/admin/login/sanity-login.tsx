@@ -1,8 +1,11 @@
 "use client";
 
+import { Button, Card, Flex, Spinner, Stack, Text } from "@sanity/ui";
 import { NextStudio } from "next-sanity/studio";
 import { useEffect, useState } from "react";
 import { defineConfig, StudioProvider, useClient, useWorkspace } from "sanity";
+import { useAdminAppearance } from "@/components/admin-theme";
+import { AdminStatus } from "@/components/admin-ui";
 import { dataset, projectId } from "@/sanity/env";
 
 const config = defineConfig({
@@ -16,9 +19,14 @@ const config = defineConfig({
 });
 
 export default function AdminLogin({ returnTo }: { returnTo: string }) {
+	const { scheme, setScheme } = useAdminAppearance();
 	return (
 		<NextStudio config={config}>
-			<StudioProvider config={config}>
+			<StudioProvider
+				config={config}
+				scheme={scheme}
+				onSchemeChange={setScheme}
+			>
 				<CompleteLogin returnTo={returnTo} />
 			</StudioProvider>
 		</NextStudio>
@@ -88,28 +96,30 @@ function CompleteLogin({ returnTo }: { returnTo: string }) {
 	}
 
 	return (
-		<main className="mx-auto max-w-xl px-6 py-16">
-			<h1 className="text-3xl font-semibold">DFN admin</h1>
-			<p role="status" className="mt-4">
-				{message}
-			</p>
+		<AdminStatus title="DFN admin">
+			<Card padding={3} radius={2} tone={failed ? "caution" : "transparent"}>
+				<Flex align="center" gap={3} role="status">
+					{!failed && <Spinner muted />}
+					<Text as="p">{message}</Text>
+				</Flex>
+			</Card>
 			{failed && (
-				<div className="mt-6 flex gap-6">
-					<button
+				<Stack gap={3}>
+					<Button
 						type="button"
 						onClick={() => setAttempt(attempt + 1)}
-						className="underline"
-					>
-						Try again
-					</button>
-					<button type="button" onClick={switchAccount} className="underline">
-						Use another account
-					</button>
-					<a href="/admin/studio" className="underline">
-						Open Studio
-					</a>
-				</div>
+						text="Try again"
+						tone="primary"
+					/>
+					<Button
+						type="button"
+						onClick={switchAccount}
+						text="Use another account"
+						mode="ghost"
+					/>
+					<Button as="a" href="/admin/studio" text="Open Studio" mode="bleed" />
+				</Stack>
 			)}
-		</main>
+		</AdminStatus>
 	);
 }

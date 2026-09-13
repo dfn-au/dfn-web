@@ -1,5 +1,6 @@
 "use client";
 
+import { Box, Button, Card, Grid, Heading, Stack, Text } from "@sanity/ui";
 import { useState } from "react";
 
 const clientErrorMessage = "Admin test: unhandled client-side error";
@@ -47,54 +48,70 @@ export function ErrorTestControls() {
 	}
 
 	return (
-		<div className="grid gap-4 sm:grid-cols-2">
-			<section className="border border-border p-5">
-				<p className="text-sm font-medium text-muted">Browser</p>
-				<h2 className="mt-3 text-xl font-semibold text-foreground">
-					Client-side error
-				</h2>
-				<p className="mt-3 text-sm leading-6 text-subtle">
-					Throws an unhandled error in the browser. Check PostHog for the error
-					message below.
-				</p>
-				<code className="mt-4 block break-words text-xs text-muted">
-					{clientErrorMessage}
-				</code>
-				<button
-					type="button"
-					onClick={triggerClientError}
-					className="mt-6 rounded-full bg-primary px-4 py-2 text-sm font-medium text-primary-foreground"
-				>
-					Trigger client error
-				</button>
-			</section>
-
-			<section className="border border-border p-5">
-				<p className="text-sm font-medium text-muted">Node.js</p>
-				<h2 className="mt-3 text-xl font-semibold text-foreground">
-					Server-side error
-				</h2>
-				<p className="mt-3 text-sm leading-6 text-subtle">
-					Calls a route that throws an unhandled server error. Check the server
-					logs.
-				</p>
-				<code className="mt-4 block break-words text-xs text-muted">
-					Admin test: unhandled server-side error
-				</code>
-				<button
-					type="button"
-					onClick={triggerServerError}
-					className="mt-6 rounded-full bg-primary px-4 py-2 text-sm font-medium text-primary-foreground disabled:cursor-wait disabled:opacity-60"
-					disabled={serverResult === "Sending request..."}
-				>
-					Trigger server error
-				</button>
-				{serverResult ? (
-					<p aria-live="polite" className="mt-4 text-sm leading-6 text-subtle">
-						{serverResult}
-					</p>
-				) : null}
-			</section>
-		</div>
+		<Grid gridTemplateColumns={[1, 1, 2]} gap={4}>
+			<Card as="section" border radius={3} padding={4}>
+				<Stack gap={4}>
+					<Text size={1} muted>
+						Browser
+					</Text>
+					<Heading as="h2" size={2}>
+						Client-side error
+					</Heading>
+					<Text as="p" muted>
+						Throws an unhandled error in the browser. Check PostHog for the
+						error message below.
+					</Text>
+					<Card padding={3} radius={2} tone="transparent">
+						<Text as="code" size={1} style={{ overflowWrap: "anywhere" }}>
+							{clientErrorMessage}
+						</Text>
+					</Card>
+					<Box>
+						<Button
+							type="button"
+							onClick={triggerClientError}
+							text="Trigger client error"
+							tone="caution"
+							mode="ghost"
+						/>
+					</Box>
+				</Stack>
+			</Card>
+			<Card as="section" border radius={3} padding={4}>
+				<Stack gap={4}>
+					<Text size={1} muted>
+						Node.js
+					</Text>
+					<Heading as="h2" size={2}>
+						Server-side error
+					</Heading>
+					<Text as="p" muted>
+						Calls a route that throws an unhandled server error. Check the
+						server logs.
+					</Text>
+					<Card padding={3} radius={2} tone="transparent">
+						<Text as="code" size={1} style={{ overflowWrap: "anywhere" }}>
+							Admin test: unhandled server-side error
+						</Text>
+					</Card>
+					<Box>
+						<Button
+							type="button"
+							onClick={triggerServerError}
+							text="Trigger server error"
+							tone="caution"
+							mode="ghost"
+							disabled={serverResult === "Sending request..."}
+							loading={serverResult === "Sending request..."}
+						/>
+					</Box>
+					{serverResult && (
+						<Text as="p" aria-live="polite" size={1} muted>
+							{serverResult}
+						</Text>
+					)}
+				</Stack>
+			</Card>
+		</Grid>
 	);
 }

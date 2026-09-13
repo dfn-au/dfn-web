@@ -1,15 +1,12 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import { AdminLoading } from "@/components/admin-ui";
 
 // The provider uses browser APIs; keep it out of server rendering.
 const AdminLogin = dynamic(() => import("./sanity-login"), {
 	ssr: false,
-	loading: () => (
-		<p role="status" className="p-6">
-			Loading sign-in…
-		</p>
-	),
+	loading: () => <AdminLoading text="Loading sign-in…" />,
 });
 
 export function AdminLoginLoader({ returnTo }: { returnTo: string }) {

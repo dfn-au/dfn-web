@@ -4,6 +4,20 @@ Next.js App Router application for the DFN public Country Sites, admin routes,
 and embedded Sanity Studio at `/admin/studio`. Studio supports content editing
 and live preview of the public pages.
 
+## Admin appearance
+
+The admin dashboard, diagnostics, login states, and Studio navigation use
+`@sanity/ui`, matching Studio's installed version and default `buildTheme()`.
+Use Sanity UI primitives for new admin components. The admin layout imports
+Sanity UI's stylesheet and a small CSS reset; the public site's Tailwind theme
+stays separate.
+
+`AdminTheme` shares a persisted System / Light / Dark preference across admin
+routes and browser tabs. It passes that preference through `StudioProvider`'s
+`scheme` and `onSchemeChange` props, so Studio's own appearance menu updates
+the same setting. This uses an application-owned storage key, without reading
+Studio's private storage. The initial preference follows the system.
+
 ## Admin authentication
 
 `/admin` and `/admin/errors` require the **Administrator** role in the configured
@@ -55,8 +69,8 @@ and sign-out required fresh login for both surfaces. The temporary
 Repeat the flow on the deployment origin before release, including a
 non-administrator account. Automated tests cover denial, cookie issuance,
 CSRF, role changes, upstream errors and revocation failures with mocked Sanity
-responses. Presentation preview was not verified because the local build did
-not have a Sanity read token configured.
+responses. Presentation preview was also verified during the Sanity UI reskin
+after restoring the local environment file.
 
 Run commands from the repo root:
 

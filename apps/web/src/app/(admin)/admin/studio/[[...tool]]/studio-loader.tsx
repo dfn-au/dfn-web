@@ -1,6 +1,9 @@
 "use client";
 
+import { Box, Flex, Text } from "@sanity/ui";
 import { useEffect, useState } from "react";
+import { useAdminAppearance } from "@/components/admin-theme";
+import { AdminLoading, AdminStatus, AdminToolbar } from "@/components/admin-ui";
 
 type StudioState = {
 	Component: typeof import("next-sanity/studio/client-component").NextStudio;
@@ -10,6 +13,7 @@ type StudioState = {
 };
 
 export function AdminStudioLoader() {
+	const { scheme, setScheme } = useAdminAppearance();
 	const [studio, setStudio] = useState<StudioState | null>(null);
 	const [loadError, setLoadError] = useState<Error | null>(null);
 
@@ -51,47 +55,27 @@ export function AdminStudioLoader() {
 	}, []);
 
 	if (!studio) {
-		if (loadError) {
+		if (loadError)
 			return (
-				<div className="flex h-dvh items-center justify-center bg-background p-6 text-center text-foreground">
-					{loadError.message}
-				</div>
+				<AdminStatus title="Studio couldn’t load">
+					<Text role="alert">{loadError.message}</Text>
+				</AdminStatus>
 			);
-		}
-
-		return (
-			<div className="flex h-dvh items-center justify-center bg-background text-foreground">
-				Loading Studio...
-			</div>
-		);
+		return <AdminLoading text="Loading Studio…" />;
 	}
 
 	const { Component, Layout, Provider, config } = studio;
-
 	return (
 		<Component config={config}>
-			<Provider config={config}>
-				<div className="flex h-dvh flex-col bg-background text-foreground">
-					<header className="z-10 flex h-12 shrink-0 items-center justify-between border-border border-b bg-background px-4 text-sm">
-						<a
-							href="/admin"
-							className="font-semibold text-foreground transition hover:text-subtle focus:outline-none focus:ring-2 focus:ring-primary"
-						>
-							DFN admin
-						</a>
-						<span className="text-muted">Content Studio</span>
-						<a
-							href="/admin"
-							className="font-medium text-foreground transition hover:text-subtle focus:outline-none focus:ring-2 focus:ring-primary"
-						>
-							Back to admin
-						</a>
-					</header>
-
-					<div className="min-h-0 flex-1">
+			<Provider config={config} scheme={scheme} onSchemeChange={setScheme}>
+				<Flex direction="column" style={{ height: "100dvh" }}>
+					<Box flex="none">
+						<AdminToolbar studio />
+					</Box>
+					<Box flex={1} style={{ minHeight: 0 }}>
 						<Layout />
-					</div>
-				</div>
+					</Box>
+				</Flex>
 			</Provider>
 		</Component>
 	);
