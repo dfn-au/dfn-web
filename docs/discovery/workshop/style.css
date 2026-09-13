@@ -59,7 +59,10 @@
 .response-panel { align-self: start; min-width: 0; border: 1px solid var(--rule); border-top: 2px solid var(--action); background: var(--paper); }
 .response-heading { padding: 13px 16px; border-bottom: 1px solid var(--rule); font-size: 13px; }
 .save-status { color: var(--accent); font-size: 12px; }
-.response-editor { height: 365px; margin: 0 12px; }
+.response-editor { height: 365px; margin: 0 16px; }
+.response-editor .monaco-editor,
+.response-editor .monaco-editor-background,
+.response-editor .monaco-editor .margin { background-color: var(--paper); }
 .response-caption { color: var(--muted); border-top: 1px solid var(--rule); padding: 9px 16px; font-size: 11px; }
 .save-error { color: #ffb8a3; padding: 10px 16px; font-size: 12px; line-height: 1.35; }
 .save-error button { display: inline-block; margin-top: 5px; padding: 4px 8px; border: 1px solid var(--accent); color: var(--ink); cursor: pointer; }
