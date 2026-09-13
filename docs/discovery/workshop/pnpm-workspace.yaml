@@ -1,0 +1,11 @@
+# Keep presentation tooling independent of the website's dependencies.
+packages:
+  - .
+
+overrides:
+  # Slidev's tooltip styles and Twoslash integration expect the 5.2 API.
+  floating-vue: 5.2.2
+
+allowBuilds:
+  esbuild: true
+  vue-demi: true
