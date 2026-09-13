@@ -10,7 +10,6 @@ export const dynamic = "force-static";
 
 export const metadata: Metadata = {
 	referrer: "same-origin",
-	robots: "noindex",
 };
 
 export const viewport: Viewport = {

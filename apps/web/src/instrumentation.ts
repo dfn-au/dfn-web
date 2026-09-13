@@ -1,4 +1,5 @@
 import type { Instrumentation } from "next";
+import { isAdminPath } from "@/lib/analytics-policy";
 
 export function register() {}
 
@@ -7,7 +8,11 @@ export const onRequestError: Instrumentation.onRequestError = async (
 	request,
 	context,
 ) => {
-	if (process.env.NEXT_RUNTIME !== "nodejs") {
+	if (
+		process.env.NEXT_RUNTIME !== "nodejs" ||
+		isAdminPath(request.path) ||
+		isAdminPath(context.routePath)
+	) {
 		return;
 	}
 

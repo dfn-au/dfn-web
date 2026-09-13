@@ -2,6 +2,7 @@
 
 import posthog from "posthog-js";
 import { useEffect } from "react";
+import { isAdminPath } from "@/lib/analytics-policy";
 
 // biome-ignore lint/suspicious/noShadowRestrictedNames: Next.js requires this export name
 export default function Error({
@@ -12,7 +13,7 @@ export default function Error({
 	reset: () => void;
 }) {
 	useEffect(() => {
-		posthog.captureException(error);
+		if (!isAdminPath(window.location.pathname)) posthog.captureException(error);
 	}, [error]);
 
 	return (
@@ -24,8 +25,7 @@ export default function Error({
 				We hit an unexpected error
 			</h1>
 			<p className="mt-5 max-w-2xl text-lg leading-8 text-subtle">
-				The issue has been reported. You can try again, or go back to the home
-				page.
+				You can try again, or go back to the home page.
 			</p>
 			<div className="mt-8 flex gap-3">
 				<button
