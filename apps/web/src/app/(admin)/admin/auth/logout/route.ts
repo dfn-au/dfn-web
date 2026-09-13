@@ -3,7 +3,8 @@ import {
 	adminCookie,
 	authError,
 	isSameOriginMutation,
-	sanitySessionRequest,
+	noContent,
+	revokeSession,
 } from "@/lib/admin-auth";
 
 export async function POST(request: Request) {
@@ -12,7 +13,7 @@ export async function POST(request: Request) {
 	const token = cookieStore.get(adminCookie.name)?.value;
 	if (token) {
 		try {
-			const response = await sanitySessionRequest(token, true);
+			const response = await revokeSession(token);
 			// Don't claim a full sign-out if Sanity couldn't revoke the session.
 			if (!response.ok && response.status !== 401) return authError(503);
 		} catch {
@@ -20,8 +21,5 @@ export async function POST(request: Request) {
 		}
 	}
 	cookieStore.set({ ...adminCookie, value: "", maxAge: 0 });
-	return new Response(null, {
-		status: 204,
-		headers: { "Cache-Control": "no-store" },
-	});
+	return noContent();
 }

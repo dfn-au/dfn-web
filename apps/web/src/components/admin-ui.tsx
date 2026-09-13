@@ -122,7 +122,7 @@ export function AdminSignedOut() {
 	return (
 		<AdminStatus title="You’re signed out">
 			<Text as="p" muted>
-				Your admin and Studio session has ended.
+				Your admin session has ended.
 			</Text>
 			<Box>
 				<Button

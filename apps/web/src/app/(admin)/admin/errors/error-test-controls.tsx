@@ -2,6 +2,10 @@
 
 import { Box, Button, Card, Grid, Heading, Stack, Text } from "@sanity/ui";
 import { useState } from "react";
+import {
+	ADMIN_REQUEST_HEADER,
+	adminAuthMessages,
+} from "@/lib/admin-auth-shared";
 
 const clientErrorMessage = "Admin test: unhandled client-side error";
 
@@ -20,18 +24,14 @@ export function ErrorTestControls() {
 		try {
 			const response = await fetch("/admin/errors/server", {
 				method: "POST",
-				headers: { "x-dfn-admin": "1" },
+				headers: { [ADMIN_REQUEST_HEADER]: "1" },
 			});
 			if (response.status === 401) {
 				window.location.assign("/admin/login?returnTo=%2Fadmin%2Ferrors");
 				return;
 			}
 			if (response.status === 403 || response.status === 503) {
-				setServerResult(
-					response.status === 403
-						? "Administrator access is required."
-						: "Authentication is temporarily unavailable. Please try again.",
-				);
+				setServerResult(adminAuthMessages[response.status]);
 				return;
 			}
 
@@ -58,8 +58,8 @@ export function ErrorTestControls() {
 						Client-side error
 					</Heading>
 					<Text as="p" muted>
-						Throws an unhandled error in the browser. Check PostHog for the
-						error message below.
+						Throws an unhandled error in the browser. Check the browser console
+						for the error message below.
 					</Text>
 					<Card padding={3} radius={2} tone="transparent">
 						<Text as="code" size={1} style={{ overflowWrap: "anywhere" }}>

@@ -19,6 +19,8 @@ canvas before scripts load, and server-rendered content is dark immediately.
 
 ## Admin authentication
 
+See [ADR 005](../../docs/adr/005-operational-staff-authentication.md) for the decision.
+
 `/admin` and `/admin/errors` require the **Administrator** role in the configured
 Sanity project. They keep their own Next.js UI. `/admin/login` uses Sanity's
 `StudioProvider` for provider selection and callback handling, then sends the
@@ -43,14 +45,16 @@ Sanity controls the credential's actual lifetime and revocation.
 Sign-out revokes that session through Sanity before clearing the application
 cookie. If revocation fails, the UI reports failure and allows retry. An
 eight-hour cookie expiry may be renewed automatically through the existing
-Studio login. Other devices' independent Sanity sessions are unaffected.
+Studio login. A newer Studio session and other devices' independent Sanity
+sessions are unaffected.
 
 For new private pages, call `requireAdminPage()` before reading data or
 rendering private content. For mutation route handlers, call
 `requireAdminMutation(request)` before any side effect; same-origin browser
 requests must include `x-dfn-admin: 1`. A layout or client-side provider alone
 does not protect a server handler. Add a server authorization check to any
-future read endpoint or Server Action as well. Session creation and sign-out
+future read endpoint or Server Action as well. Register new private pages in
+`protectedAdminPaths` so login can return to them. Session creation and sign-out
 also require the exact Origin and custom header to prevent CSRF. Do not log
 Cookie or Authorization headers.
 
@@ -60,16 +64,16 @@ permissions. Draft-mode enablement retains Sanity's preview-secret flow.
 `StudioProvider` is documented for advanced composition but currently marked
 beta in Sanity's types; verify the login flow on dependency upgrades.
 
-Verified with a real administrator against a production build on
-`localhost:3000`: Google login returned to the custom admin page, diagnostics
-and its authenticated endpoint worked, Studio opened without another login,
-and sign-out required fresh login for both surfaces. The temporary
-`localhost:3101` origin did not complete the callback; use an allowed origin.
-Repeat the flow on the deployment origin before release, including a
-non-administrator account. Automated tests cover denial, cookie issuance,
-CSRF, role changes, upstream errors and revocation failures with mocked Sanity
-responses. Presentation preview was also verified during the Sanity UI reskin
-after restoring the local environment file.
+Before release, verify the login flow on the deployment origin with both an
+administrator and a non-administrator account.
+
+## Analytics boundary
+
+PostHog is disabled on `/admin` and all its descendants, including login,
+Studio, and diagnostics. The browser SDK does not initialize there, and server
+and client error reporting skip admin requests. The public and admin root
+layouts cause a full page load when crossing between those surfaces.
+Diagnostics write to the browser console and server logs, not PostHog.
 
 Run commands from the repo root:
 

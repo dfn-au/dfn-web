@@ -2,6 +2,8 @@
 
 import { Button, Stack, Text } from "@sanity/ui";
 import { useState } from "react";
+import { signOutAdmin } from "@/lib/admin-auth-client";
+import { adminSignOutError } from "@/lib/admin-auth-shared";
 
 export function AdminSignOut() {
 	const [pending, setPending] = useState(false);
@@ -10,11 +12,7 @@ export function AdminSignOut() {
 		setPending(true);
 		setError(false);
 		try {
-			const response = await fetch("/admin/auth/logout", {
-				method: "POST",
-				headers: { "x-dfn-admin": "1" },
-			});
-			if (!response.ok) throw new Error("Sign-out failed");
+			await signOutAdmin();
 			window.location.replace("/admin/login?signedOut=1");
 		} catch {
 			setError(true);
@@ -33,7 +31,7 @@ export function AdminSignOut() {
 			/>
 			{error && (
 				<Text role="alert" size={1}>
-					Couldn’t sign out. Please try again.
+					{adminSignOutError}
 				</Text>
 			)}
 		</Stack>

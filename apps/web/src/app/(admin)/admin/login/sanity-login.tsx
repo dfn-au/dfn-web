@@ -5,6 +5,13 @@ import { NextStudio } from "next-sanity/studio";
 import { useEffect, useState } from "react";
 import { defineConfig, StudioProvider, useClient, useWorkspace } from "sanity";
 import { AdminStatus } from "@/components/admin-ui";
+import { signOutAdmin } from "@/lib/admin-auth-client";
+import {
+	ADMIN_REQUEST_HEADER,
+	adminAuthMessages,
+	adminSignOutError,
+	SANITY_AUTH_API_VERSION,
+} from "@/lib/admin-auth-shared";
 import { dataset, projectId } from "@/sanity/env";
 
 const config = defineConfig({
@@ -28,7 +35,7 @@ export default function AdminLogin({ returnTo }: { returnTo: string }) {
 }
 
 function CompleteLogin({ returnTo }: { returnTo: string }) {
-	const client = useClient({ apiVersion: "2026-05-04" });
+	const client = useClient({ apiVersion: SANITY_AUTH_API_VERSION });
 	const { auth } = useWorkspace();
 	const token = client.config().token;
 	const [message, setMessage] = useState("Signing you in…");
@@ -49,7 +56,10 @@ function CompleteLogin({ returnTo }: { returnTo: string }) {
 			try {
 				const response = await fetch("/admin/auth/session", {
 					method: "POST",
-					headers: { Authorization: `Bearer ${token}`, "x-dfn-admin": "1" },
+					headers: {
+						Authorization: `Bearer ${token}`,
+						[ADMIN_REQUEST_HEADER]: "1",
+					},
 					redirect: "error",
 				});
 				if (cancelled) return;
@@ -58,8 +68,10 @@ function CompleteLogin({ returnTo }: { returnTo: string }) {
 					return;
 				}
 				setMessage(
-					response.status === 403
-						? "Your account can access Studio, but these admin tools require the Administrator role."
+					response.status === 401 ||
+						response.status === 403 ||
+						response.status === 503
+						? adminAuthMessages[response.status]
 						: "We couldn’t sign you in. Please try again.",
 				);
 			} catch {
@@ -77,15 +89,11 @@ function CompleteLogin({ returnTo }: { returnTo: string }) {
 	async function switchAccount() {
 		try {
 			// Clear the application cookie too, including a previous account's session.
-			const response = await fetch("/admin/auth/logout", {
-				method: "POST",
-				headers: { "x-dfn-admin": "1" },
-			});
-			if (!response.ok) throw new Error("Sign-out failed");
+			await signOutAdmin();
 			await auth.logout?.();
 			window.location.reload();
 		} catch {
-			setMessage("Couldn’t sign out. Please try again.");
+			setMessage(adminSignOutError);
 		}
 	}
 

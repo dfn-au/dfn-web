@@ -3,6 +3,7 @@ import {
 	adminCookie,
 	authError,
 	isSameOriginMutation,
+	noContent,
 	validateAdminToken,
 } from "@/lib/admin-auth";
 
@@ -12,12 +13,9 @@ export async function POST(request: Request) {
 	const token = authorization?.startsWith("Bearer ")
 		? authorization.slice(7)
 		: undefined;
+	if (!token) return authError(401);
 	const access = await validateAdminToken(token);
 	if (!access.ok) return authError(access.status);
-	if (!token) return authError(401);
 	(await cookies()).set({ ...adminCookie, value: token });
-	return new Response(null, {
-		status: 204,
-		headers: { "Cache-Control": "no-store" },
-	});
+	return noContent();
 }

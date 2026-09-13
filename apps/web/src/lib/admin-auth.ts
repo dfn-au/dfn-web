@@ -4,6 +4,11 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { cache } from "react";
 import { projectId } from "@/sanity/env";
+import {
+	ADMIN_REQUEST_HEADER,
+	type ProtectedAdminPath,
+	SANITY_AUTH_API_VERSION,
+} from "./admin-auth-shared";
 
 // Keep this credential off public requests, including the analytics proxy.
 export const adminCookie = {
@@ -21,20 +26,13 @@ type AdminAccess =
 	| { ok: false; status: 401 | 403 | 503 };
 
 export function authError(status: 401 | 403 | 503) {
-	return Response.json(
-		{
-			error:
-				status === 401
-					? "Please sign in again."
-					: status === 403
-						? "Administrator access is required."
-						: "Sign-in is temporarily unavailable. Please try again.",
-		},
-		{ status, headers: { "Cache-Control": "no-store" } },
-	);
+	return new Response(null, {
+		status,
+		headers: { "Cache-Control": "no-store" },
+	});
 }
 
-function validToken(token: unknown): token is string {
+function isValidToken(token: unknown): token is string {
 	return (
 		typeof token === "string" && /^[A-Za-z0-9._~+/-]{1,3000}={0,2}$/.test(token)
 	);
@@ -48,17 +46,36 @@ export function isSameOriginMutation(request: Request) {
 	// Custom header + exact Origin check protect login and cookie-authenticated mutations.
 	return (
 		request.headers.get("origin") === new URL(request.url).origin &&
-		request.headers.get("x-dfn-admin") === "1"
+		request.headers.get(ADMIN_REQUEST_HEADER) === "1"
 	);
 }
 
-export async function sanitySessionRequest(token: string, logout = false) {
+export function noContent() {
+	return new Response(null, {
+		status: 204,
+		headers: { "Cache-Control": "no-store" },
+	});
+}
+
+function fetchCurrentUser(token: string) {
+	return sanityAuthRequest(token, "users/me", "GET");
+}
+
+export function revokeSession(token: string) {
+	return sanityAuthRequest(token, "auth/logout", "POST");
+}
+
+async function sanityAuthRequest(
+	token: string,
+	endpoint: "users/me" | "auth/logout",
+	method: "GET" | "POST",
+) {
 	if (!/^[a-z0-9]+$/.test(projectId))
 		throw new Error("Invalid Sanity project configuration");
 	return fetch(
-		`https://${projectId}.api.sanity.io/v2026-05-04/${logout ? "auth/logout" : "users/me"}`,
+		`https://${projectId}.api.sanity.io/v${SANITY_AUTH_API_VERSION}/${endpoint}`,
 		{
-			method: logout ? "POST" : "GET",
+			method,
 			headers: { Authorization: `Bearer ${token}`, Accept: "application/json" },
 			cache: "no-store",
 			redirect: "error",
@@ -68,9 +85,9 @@ export async function sanitySessionRequest(token: string, logout = false) {
 }
 
 export async function validateAdminToken(token: unknown): Promise<AdminAccess> {
-	if (!validToken(token)) return { ok: false, status: 401 };
+	if (!isValidToken(token)) return { ok: false, status: 401 };
 	try {
-		const response = await sanitySessionRequest(token);
+		const response = await fetchCurrentUser(token);
 		if (response.status === 401 || response.status === 403)
 			return { ok: false, status: response.status };
 		if (!response.ok) return { ok: false, status: 503 };
@@ -104,9 +121,9 @@ export const getAdminAccess = cache(async () => {
 	return validateAdminToken((await cookies()).get(adminCookie.name)?.value);
 });
 
-export async function requireAdminPage(returnTo: string) {
+export async function requireAdminPage(returnTo: ProtectedAdminPath) {
 	const access = await getAdminAccess();
-	if (access.ok) return access;
+	if (access.ok) return;
 	if (access.status === 503)
 		throw new Error("Admin authentication is temporarily unavailable");
 	redirect(`/admin/login?returnTo=${encodeURIComponent(returnTo)}`);

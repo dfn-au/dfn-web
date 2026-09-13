@@ -8,7 +8,7 @@ export default async function ErrorTestingPage() {
 		<AdminPage
 			title="Error testing"
 			eyebrow="Diagnostics"
-			description="Verify that errors reach the configured monitoring services. Each action creates a real unhandled error."
+			description="Inspect errors in the browser console and server logs. Each action creates a real unhandled error."
 			back
 		>
 			<ErrorTestControls />
