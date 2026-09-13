@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onBeforeUnmount, onMounted, ref } from 'vue'
 import savedAnswers from 'virtual:workshop-answers'
-import { ANSWER_ENDPOINT, AUTOSAVE_DELAY, answerTemplate } from '../shared/answers'
+import { ANSWER_ENDPOINT, AUTOSAVE_DELAY } from '../shared/answers'
 
 const props = defineProps<{ questionId: string }>()
 const container = ref<HTMLElement>()
@@ -81,7 +81,7 @@ function onVisibilityChange() {
 onMounted(async () => {
   try {
     const initial = preview
-      ? { content: savedAnswers[props.questionId] ?? answerTemplate(props.questionId), revision: null, exists: props.questionId in savedAnswers }
+      ? { content: savedAnswers[props.questionId] ?? '', revision: null, exists: props.questionId in savedAnswers }
       : await fetch(endpoint).then(async response => {
           const result = await response.json()
           if (!response.ok) throw new Error(result.error || 'Could not load answer.')

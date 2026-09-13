@@ -19,7 +19,7 @@ defineProps<{
     </div>
     <footer class="question-footer">
       <a v-if="source" :href="source" target="_blank" rel="noopener noreferrer">{{ sourceLabel || 'Source question' }} ↗</a>
-      <span v-else>Practice only · excluded from project decisions</span>
+      <span v-else />
       <span>DFN Website Q&amp;A</span>
     </footer>
   </div>

@@ -4,7 +4,7 @@
 
 Use Slidev for the stakeholder workshop, run locally by Andrew while screen-sharing with Kat. Monaco editors autosave answers into local Markdown files after a 700 ms pause. Kat follows up with stakeholders on unresolved questions; further calls resolve what remains.
 
-The [deck](workshop/slides.md) currently contains a title slide and one practice question, `TEST-001`. Creating the project questions is a separate follow-up task.
+The [deck](workshop/slides.md) contains a title slide and `COM-001` about whether newsletter signups go directly to infoodle or by email to staff. Add further project questions as requested.
 
 ## Running the Workshop
 
@@ -15,9 +15,9 @@ pnpm --dir docs/discovery/workshop install --frozen-lockfile
 pnpm workshop
 ```
 
-Open <http://localhost:3030/TEST-001> to try the example, or <http://localhost:3030/> for the full deck. Edit the response and wait for **Saved**. Changes save after a 700 ms pause, or immediately when the editor loses focus. Cmd/Ctrl-S also saves immediately. Scroll within the response to reach its status and follow-up fields. Use the slide navigation controls after editing; arrow keys inside Monaco move the text cursor.
+Open <http://localhost:3030/> for the deck, or <http://localhost:3030/COM-001> for the newsletter question. Edit the response and wait for **Saved**. Changes save after a 700 ms pause, or immediately when the editor loses focus. Cmd/Ctrl-S also saves immediately. Use the slide navigation controls after editing; arrow keys inside Monaco move the text cursor.
 
-Responses save to `workshop/answers/<ID>.md`. An unanswered question shows an in-memory template; its file is created only after the first changed response saves. Missing files mean unanswered, not missing questions. `TEST-001` is practice only and must never be incorporated into requirements. Existing responses are preserved.
+Responses save to `workshop/answers/<ID>.md`. A new response is completely empty, with no prefilled headings, status, or example text. Its file is created only when the first edited response saves. Opening a question or saving an untouched empty response creates no file. Missing files mean unanswered, not missing questions. Existing responses are preserved.
 
 The editor shows pending, saving, saved, and failure states. Unsaved edits are also retained as browser drafts. A failed save can be retried; conflicting edits from another tab or external file change require review rather than silently overwriting the saved answer. Use one editor tab during capture and refresh after changing answer files elsewhere. Autosave does not create Git commits.
 
@@ -45,30 +45,10 @@ Keep question wording in the deck and responses in their answer files. The `ques
 
 1. Check the deck and linked PRDs/issues for an existing question or answer.
 2. Add a stable ID, a clear question, brief context explaining why it matters, and links to its sources. Include options only where they help the discussion. Copy an existing question slide and set both `questionId` and `routeAlias` to the new ID.
-3. Use `layout: question`. The editor supplies the template below in memory and creates the answer file on the first save. Do not pre-create placeholder files.
+3. Use `layout: question`. The editor starts completely blank and creates the answer file on the first saved edit. Do not prefill responses or pre-create placeholder files.
 4. Put it in the appropriate theme. If adding navigation links, use question aliases rather than slide numbers so reordering preserves navigation. Keep resolved material available for reference without making every call revisit it.
 
-```md
-# PAY-001
-
-## Response
-
-Awaiting discussion.
-
-## Follow-up
-
-None recorded.
-
-Status: Open
-Confirmed by/date: —
-Follow-up owner: —
-
-## Incorporated into
-
-Pending.
-```
-
-Use `Open`, `Follow-up`, or `Answered`. Mark `Answered` when the relevant stakeholder has confirmed the response; record attribution and any conditions. A working note is not automatically an approved requirement. Track incorporation separately with links to the affected PRDs, issues, or ADRs.
+Record confirmation, attribution, conditions, and follow-up details as needed during discussion. A working note is not automatically an approved requirement. Track incorporation with links to the affected PRDs, issues, or ADRs when answers are processed.
 
 ## Running a Call and Following Up
 
@@ -80,11 +60,11 @@ Git records saved snapshots, not every keystroke. No background monitoring is ne
 
 ## Incorporating Answers and Continuing Later
 
-Review confirmed answers and update the canonical [PRDs](../prds/README.md), relevant GitHub issues, and ADRs where an architecture decision warrants one. Use existing issue-tracker and domain-document conventions. Link the resulting changes in `Incorporated into`; unresolved questions remain visible.
+Review confirmed answers and update the canonical [PRDs](../prds/README.md), relevant GitHub issues, and ADRs where an architecture decision warrants one. Use existing issue-tracker and domain-document conventions. Add links to the resulting changes in the response when processing it; unresolved questions remain visible.
 
 When an incorporated answer changes, mark incorporation pending again and reconcile the affected requirements. Preserve the previous answer through Git history. Do not delete a question simply because it has been answered.
 
-To resume, read this workflow, inspect the current deck and answer files, and review Git changes since the last incorporation checkpoint. Prioritise unanswered questions and changed answers before adding new material. The current task is testing `TEST-001`; project questions will be added in a separate follow-up task.
+To resume, read this workflow, inspect the current deck and answer files, and review Git changes since the last incorporation checkpoint. Prioritise unanswered questions and changed answers before adding new material. Add further questions when requested.
 
 ## Checks
 

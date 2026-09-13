@@ -23,15 +23,14 @@ download: false
 
 ---
 layout: question
-questionId: TEST-001
-routeAlias: TEST-001
-section: Editor practice
+questionId: COM-001
+routeAlias: COM-001
+section: Newsletter subscribers
 ---
 
-# How should the website feel to visitors?
+# Where should newsletter signups go?
 
-This practice answer is separate from project decisions. You can freely change it to try autosave.
+When someone subscribes on the website, should we:
 
-- Click inside the response and add a sentence.
-- Pause briefly and wait for “Saved” to appear.
-- Move to another slide, then return or refresh.
+- Add their details directly to **infoodle**?
+- Email their details to **info@dfn.org.au** for staff to process?

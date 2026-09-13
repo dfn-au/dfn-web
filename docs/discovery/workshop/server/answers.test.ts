@@ -11,7 +11,7 @@ let origin: string
 const server = createServer()
 before(async () => {
   directory = await mkdtemp(path.join(tmpdir(), 'dfn-workshop-'))
-  await writeFile(path.join(directory, 'slides.md'), 'questionId: TEST-001\nquestionId: PAY-001\n')
+  await writeFile(path.join(directory, 'slides.md'), 'questionId: FIXTURE-001\nquestionId: PAY-001\n')
   const middleware = createAnswerMiddleware(directory)
   server.on('request', (req, res) => { void middleware(req, res, () => { res.writeHead(404); res.end() }) })
   await new Promise<void>(resolve => server.listen(0, '127.0.0.1', resolve))
@@ -27,23 +27,25 @@ const request = (id: string, content: string, revision: string | null, requestOr
   method: 'PUT', headers: { Origin: requestOrigin, 'Content-Type': 'application/json' }, body: JSON.stringify({ content, revision }),
 })
 
-test('reading or saving an untouched template creates no answer file', async () => {
-  const response = await fetch(`${origin}/__workshop/answers/TEST-001`)
+test('new responses are empty and an untouched save creates no answer file', async () => {
+  const response = await fetch(`${origin}/__workshop/answers/FIXTURE-001`)
   const draft = await response.json()
   assert.equal(draft.exists, false)
-  assert.equal((await request('TEST-001', draft.content, null)).status, 200)
+  assert.equal(draft.content, '')
+  assert.equal(draft.revision, null)
+  assert.equal((await request('FIXTURE-001', '', null)).status, 200)
   await assert.rejects(stat(path.join(directory, 'answers')), { code: 'ENOENT' })
 })
 
 test('first edit creates Markdown; reads and retries preserve its exact bytes', async () => {
-  const content = '# TEST-001\n\nAnswer: café — 日本語\n'
-  const saved = await request('TEST-001', content, null)
+  const content = '# FIXTURE-001\n\nAnswer: café — 日本語\n'
+  const saved = await request('FIXTURE-001', content, null)
   assert.equal(saved.status, 200)
   const record = await saved.json()
   assert.equal(record.exists, true)
-  assert.equal(await readFile(path.join(directory, 'answers/TEST-001.md'), 'utf8'), content)
-  assert.equal((await request('TEST-001', content, null)).status, 200)
-  const reloaded = await (await fetch(`${origin}/__workshop/answers/TEST-001`)).json()
+  assert.equal(await readFile(path.join(directory, 'answers/FIXTURE-001.md'), 'utf8'), content)
+  assert.equal((await request('FIXTURE-001', content, null)).status, 200)
+  const reloaded = await (await fetch(`${origin}/__workshop/answers/FIXTURE-001`)).json()
   assert.equal(reloaded.content, content)
   assert.equal(reloaded.revision, record.revision)
 })
@@ -55,6 +57,6 @@ test('simultaneous stale saves cannot silently overwrite one another', async () 
 
 test('only questions in the deck and same-origin writes are accepted', async () => {
   assert.equal((await request('UNKNOWN-001', 'No', null)).status, 404)
-  assert.equal((await request('TEST-001', 'No', null, 'https://example.com')).status, 403)
+  assert.equal((await request('FIXTURE-001', 'No', null, 'https://example.com')).status, 403)
   assert.equal((await fetch(`${origin}/__workshop/answers/%2e%2e%2fpackage.json`)).status, 404)
 })

@@ -16,7 +16,7 @@ for (const staleSetup of [false, true]) {
           contentType: 'application/javascript', body: 'export default []',
         }))
       }
-      await page.goto(`${process.env.WORKSHOP_URL || 'http://localhost:3030'}/TEST-001`)
+      await page.goto(`${process.env.WORKSHOP_URL || 'http://localhost:3030'}/COM-001`)
       const slide = page.locator('.slidev-page:visible')
       const status = slide.getByRole('status')
       await status.filter({ hasText: /^(Saved|No response yet|Unavailable)$/ }).waitFor({ timeout: 15_000 })

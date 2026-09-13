@@ -2,7 +2,7 @@ import { createHash, randomUUID } from 'node:crypto'
 import { mkdir, readFile, rename, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import type { IncomingMessage, ServerResponse } from 'node:http'
-import { ANSWER_ENDPOINT, answerTemplate } from '../shared/answers.ts'
+import { ANSWER_ENDPOINT } from '../shared/answers.ts'
 
 const revision = (content: string) => createHash('sha256').update(content).digest('hex')
 
@@ -28,7 +28,7 @@ export function createAnswerMiddleware(directory: string) {
           return { content, revision: revision(content), exists: true }
         } catch (error) {
           if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw error
-          return { content: answerTemplate(id), revision: null, exists: false }
+          return { content: '', revision: null, exists: false }
         }
       }
       if (req.method === 'GET') return send(200, await read())
@@ -57,7 +57,7 @@ export function createAnswerMiddleware(directory: string) {
           if (current.content === content && current.exists) return send(200, current)
           return send(409, { error: 'This answer changed elsewhere. Your draft is kept in this browser.' })
         }
-        if (!current.exists && content === answerTemplate(id)) return send(200, current)
+        if (!current.exists && content === '') return send(200, current)
         await mkdir(path.dirname(file), { recursive: true })
         const temporary = `${file}.${randomUUID()}.tmp`
         await writeFile(temporary, content, 'utf8')
