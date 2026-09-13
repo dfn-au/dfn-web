@@ -1,7 +1,6 @@
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it, vi } from "vitest";
 import { ContentPage } from "./content-page";
-import { publicNavigationHref } from "./homepage/navigation";
 import type { SectionBody } from "./page-sections/types";
 import { PageBody } from "./portable-text";
 import { DesignLink } from "./site/primitives";
@@ -166,18 +165,6 @@ describe("general content pages", () => {
 		expect([...markup.matchAll(/<ul\b/g)]).toHaveLength(2);
 		expect(markup).toContain('href="mailto:info@dfn.org.au"');
 		expect(markup).not.toContain('target="_blank"');
-	});
-	it("keeps palettes and hidden controls across public page navigation", () => {
-		expect(publicNavigationHref("/privacy", "olive", false)).toBe(
-			"/privacy?variant=olive&clean=1",
-		);
-		expect(publicNavigationHref("/#dh-work", "ink", true)).toBe(
-			"/?variant=ink#dh-work",
-		);
-		expect(publicNavigationHref("#", "olive", true)).toBe("#");
-		expect(publicNavigationHref("mailto:info@dfn.org.au", "olive", true)).toBe(
-			"mailto:info@dfn.org.au",
-		);
 	});
 });
 

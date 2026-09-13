@@ -3,8 +3,7 @@
 import NextLink from "next/link";
 import { stegaClean } from "next-sanity";
 import { type ComponentPropsWithRef, useContext } from "react";
-import { publicNavigationHref } from "@/components/homepage/navigation";
-import { PaletteContext } from "./link-context";
+import { LinkContext } from "./link-context";
 import { isCurrentPageLink, resolveLinkDestination } from "./link-destination";
 
 export type SiteLinkProps = Omit<
@@ -24,16 +23,13 @@ export function SiteLink({
 	activePage,
 	...props
 }: SiteLinkProps) {
-	const { palette, controlsVisible, documentUrl } = useContext(PaletteContext);
+	const { documentUrl } = useContext(LinkContext);
 	const authoredHref = stegaClean(href);
 	const destination = resolveLinkDestination(authoredHref, documentUrl);
 	const page =
 		destination.kind === "page" &&
 		navigation === "auto" &&
 		props.download == null;
-	const finalHref = page
-		? publicNavigationHref(authoredHref, palette, controlsVisible, documentUrl)
-		: authoredHref;
 	const current = markCurrent
 		? isCurrentPageLink(
 				authoredHref,
@@ -43,13 +39,13 @@ export function SiteLink({
 			? "page"
 			: undefined
 		: props["aria-current"];
-	if (page && resolveLinkDestination(finalHref, documentUrl).kind === "page") {
-		return <NextLink {...props} href={finalHref} aria-current={current} />;
+	if (page) {
+		return <NextLink {...props} href={authoredHref} aria-current={current} />;
 	}
 	return (
 		<a
 			{...props}
-			href={destination.kind === "invalid" ? undefined : finalHref}
+			href={destination.kind === "invalid" ? undefined : authoredHref}
 			aria-current={current}
 		/>
 	);

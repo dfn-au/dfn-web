@@ -43,7 +43,7 @@ describe("grouped public navigation", () => {
 		expect(navigationColumns(links.slice(0, 3))).toEqual([links.slice(0, 3)]);
 	});
 	it("distinguishes current pages from hashes, external links and other slugs", () => {
-		expect(isCurrentHeaderLink("/about/?variant=olive", "about")).toBe(true);
+		expect(isCurrentHeaderLink("/about/?topic=work", "about")).toBe(true);
 		expect(isCurrentHeaderLink("/", "home")).toBe(true);
 		for (const href of [
 			"/about#team",

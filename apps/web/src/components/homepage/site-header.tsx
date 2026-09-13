@@ -10,7 +10,7 @@ import {
 	useRef,
 	useState,
 } from "react";
-import { PaletteContext } from "@/components/site/link-context";
+import { LinkContext } from "@/components/site/link-context";
 import { SiteLink, type SiteLinkProps } from "@/components/site/site-link";
 import type {
 	HeaderChildLink,
@@ -135,7 +135,7 @@ export function SiteHeader({
 	activePage?: string;
 }) {
 	const id = useId();
-	const { controlsVisible, documentUrl } = useContext(PaletteContext);
+	const { controlsVisible, documentUrl } = useContext(LinkContext);
 	const header = useRef<HTMLElement>(null);
 	const dialog = useRef<HTMLDialogElement>(null);
 	const menuButton = useRef<HTMLButtonElement>(null);

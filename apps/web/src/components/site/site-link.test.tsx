@@ -10,7 +10,7 @@ import { afterEach, expect, it, vi } from "vitest";
 import { ExternalLink } from "../external-link";
 import type { SectionBody } from "../page-sections/types";
 import { PageBody } from "../portable-text";
-import { PaletteContext } from "./link-context";
+import { LinkContext } from "./link-context";
 import { SiteLink } from "./site-link";
 
 // Assert the choice of renderer without replacing SiteLink or its wrappers.
@@ -30,15 +30,14 @@ let root = createRoot(container);
 async function render(children: ReactNode) {
 	await act(() =>
 		root.render(
-			<PaletteContext.Provider
+			<LinkContext.Provider
 				value={{
-					palette: "olive",
 					controlsVisible: false,
 					documentUrl: "https://dfn.org.au/about/",
 				}}
 			>
 				{children}
-			</PaletteContext.Provider>,
+			</LinkContext.Provider>,
 		),
 	);
 	const anchor = container.querySelector("a");
@@ -52,14 +51,10 @@ afterEach(async () => {
 });
 
 it.each([
-	["/contact", true, "/contact?variant=olive&clean=1"],
-	["../contact", true, "../contact?variant=olive&clean=1"],
-	[
-		"https://dfn.org.au/contact",
-		true,
-		"https://dfn.org.au/contact?variant=olive&clean=1",
-	],
-	["//dfn.org.au/contact", true, "//dfn.org.au/contact?variant=olive&clean=1"],
+	["/contact", true, "/contact"],
+	["../contact", true, "../contact"],
+	["https://dfn.org.au/contact", true, "https://dfn.org.au/contact"],
+	["//dfn.org.au/contact", true, "//dfn.org.au/contact"],
 	["https://dfn.org.nz/contact", false, "https://dfn.org.nz/contact"],
 	["#team", false, "#team"],
 	["mailto:info@dfn.org.au", false, "mailto:info@dfn.org.au"],
