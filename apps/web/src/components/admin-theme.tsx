@@ -1,19 +1,17 @@
 "use client";
 
 import { Card, ThemeProvider, usePrefersDark } from "@sanity/ui";
-import { buildTheme } from "@sanity/ui/theme";
 import {
 	createContext,
 	type ReactNode,
 	useContext,
 	useSyncExternalStore,
 } from "react";
+import { adminTheme, appearanceStorageKey } from "@/lib/admin-appearance";
 
 type Scheme = "system" | "light" | "dark";
-const storageKey = "dfn-admin-appearance";
 const changeEvent = "dfn-admin-appearance-change";
 let fallbackScheme: Scheme = "system";
-const theme = buildTheme();
 const AppearanceContext = createContext<{
 	scheme: Scheme;
 	setScheme: (scheme: Scheme) => void;
@@ -21,7 +19,7 @@ const AppearanceContext = createContext<{
 
 function getScheme(): Scheme {
 	try {
-		const value = localStorage.getItem(storageKey);
+		const value = localStorage.getItem(appearanceStorageKey);
 		return value === "light" || value === "dark" ? value : "system";
 	} catch {
 		return fallbackScheme;
@@ -29,25 +27,36 @@ function getScheme(): Scheme {
 }
 
 function subscribe(onChange: () => void) {
-	window.addEventListener("storage", onChange);
-	window.addEventListener(changeEvent, onChange);
+	function update() {
+		document.documentElement.dataset.adminAppearance = getScheme();
+		onChange();
+	}
+	window.addEventListener("storage", update);
+	window.addEventListener(changeEvent, update);
 	return () => {
-		window.removeEventListener("storage", onChange);
-		window.removeEventListener(changeEvent, onChange);
+		window.removeEventListener("storage", update);
+		window.removeEventListener(changeEvent, update);
 	};
 }
 
 function setScheme(scheme: Scheme) {
 	fallbackScheme = scheme;
 	try {
-		localStorage.setItem(storageKey, scheme);
+		localStorage.setItem(appearanceStorageKey, scheme);
 	} catch {
 		// Keep the selection for this page when browser storage is unavailable.
 	}
 	window.dispatchEvent(new Event(changeEvent));
 }
 
+const subscribeToHydration = () => () => {};
+
 export function AdminTheme({ children }: { children: ReactNode }) {
+	const hydrated = useSyncExternalStore(
+		subscribeToHydration,
+		() => true,
+		() => false,
+	);
 	const scheme = useSyncExternalStore<Scheme>(
 		subscribe,
 		getScheme,
@@ -57,10 +66,13 @@ export function AdminTheme({ children }: { children: ReactNode }) {
 	return (
 		<AppearanceContext.Provider value={{ scheme, setScheme }}>
 			<ThemeProvider
-				theme={theme}
+				theme={adminTheme}
 				scheme={scheme === "system" ? (prefersDark ? "dark" : "light") : scheme}
 			>
-				<Card style={{ minHeight: "100dvh" }}>{children}</Card>
+				{/* The server cannot know the system or localStorage preference. */}
+				<div hidden={!hydrated}>
+					<Card style={{ minHeight: "100dvh" }}>{children}</Card>
+				</div>
 			</ThemeProvider>
 		</AppearanceContext.Provider>
 	);

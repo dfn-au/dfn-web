@@ -16,7 +16,10 @@ stays separate.
 routes and browser tabs. It passes that preference through `StudioProvider`'s
 `scheme` and `onSchemeChange` props, so Studio's own appearance menu updates
 the same setting. This uses an application-owned storage key, without reading
-Studio's private storage. The initial preference follows the system.
+Studio's private storage. The initial preference follows the system. A blocking
+head script and system-aware CSS set the canvas before the first paint;
+theme-dependent content stays hidden until hydration resolves the browser's
+preference, preventing a flash of the server's light fallback.
 
 ## Admin authentication
 
