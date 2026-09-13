@@ -51,6 +51,7 @@ export default async function PageRoute({ params, searchParams }: RouteProps) {
 			showControls={clean !== "1"}
 		>
 			<PageViewTracker
+				key={slug}
 				event="content_page_viewed"
 				properties={{ slug, title: page.title ?? undefined }}
 			/>
