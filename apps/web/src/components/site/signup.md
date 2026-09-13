@@ -24,6 +24,12 @@ unless Cloudflare requests a checkbox. Verification starts on submission.
 Retries mount a fresh widget because tokens are single-use. Failed requests
 preserve the entered details. Missing configuration fails closed.
 
+The widget uses the community-maintained `@marsidev/react-turnstile` component,
+which [Cloudflare recommends](https://developers.cloudflare.com/turnstile/community-resources/).
+Zod schemas in `src/lib/newsletter.ts` define the request and API response
+contracts and infer their TypeScript types. The route also validates Cloudflare's
+response with a schema before accepting a token.
+
 ## Verification
 
 Run `pnpm test`, `pnpm lint`, `pnpm typecheck`, and `pnpm build`.

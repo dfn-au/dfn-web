@@ -1,6 +1,24 @@
+import { z } from "zod";
+import {
+	type NewsletterResponse,
+	newsletterSignupSchema,
+} from "@/lib/newsletter";
+
 const verificationError = "Verification failed. Please try again.";
 const unavailableError =
 	"Sign-up is temporarily unavailable. Please try again later.";
+
+const verifiedTokenSchema = z.object({
+	success: z.literal(true),
+	action: z.literal("newsletter_signup"),
+	hostname: z.string(),
+});
+
+function reject(error: string, status: number) {
+	return Response.json({ success: false, error } satisfies NewsletterResponse, {
+		status,
+	});
+}
 
 export async function POST(request: Request) {
 	const requestUrl = new URL(request.url);
@@ -8,40 +26,18 @@ export async function POST(request: Request) {
 	// browser-facing authority, including its port; do not trust forwarded-host.
 	const origin = `${requestUrl.protocol}//${request.headers.get("host") ?? requestUrl.host}`;
 	if (request.headers.get("origin") !== origin) {
-		return Response.json({ error: verificationError }, { status: 403 });
+		return reject(verificationError, 403);
 	}
 
 	let body: unknown;
 	try {
 		body = await request.json();
 	} catch {
-		return Response.json({ error: "Invalid submission." }, { status: 400 });
+		return reject("Invalid submission.", 400);
 	}
-	if (!body || typeof body !== "object") {
-		return Response.json({ error: "Invalid submission." }, { status: 400 });
-	}
-	if (
-		!("name" in body) ||
-		typeof body.name !== "string" ||
-		!body.name.trim() ||
-		body.name.length > 200 ||
-		!("email" in body) ||
-		typeof body.email !== "string" ||
-		body.email.length > 254 ||
-		!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(body.email.trim())
-	) {
-		return Response.json(
-			{ error: "Enter your name and a valid email address." },
-			{ status: 400 },
-		);
-	}
-	if (
-		!("token" in body) ||
-		typeof body.token !== "string" ||
-		!body.token.trim() ||
-		body.token.length > 2048
-	) {
-		return Response.json({ error: verificationError }, { status: 400 });
+	const submission = newsletterSignupSchema.safeParse(body);
+	if (!submission.success) {
+		return reject("Invalid submission. Check your details and try again.", 400);
 	}
 
 	const secret = process.env.TURNSTILE_SECRET_KEY;
@@ -49,7 +45,7 @@ export async function POST(request: Request) {
 		.map((hostname) => hostname.trim())
 		.filter(Boolean);
 	if (!secret || !hostnames?.length) {
-		return Response.json({ error: unavailableError }, { status: 503 });
+		return reject(unavailableError, 503);
 	}
 
 	try {
@@ -58,37 +54,30 @@ export async function POST(request: Request) {
 			{
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
-				body: JSON.stringify({ secret, response: body.token }),
+				body: JSON.stringify({ secret, response: submission.data.token }),
 				signal: AbortSignal.timeout(10_000),
 			},
 		);
 		if (!response.ok) {
-			return Response.json({ error: unavailableError }, { status: 503 });
+			return reject(unavailableError, 503);
 		}
-		const verification: unknown = await response.json();
+		const verification = verifiedTokenSchema.safeParse(await response.json());
 		if (
-			!verification ||
-			typeof verification !== "object" ||
-			!("success" in verification) ||
-			verification.success !== true ||
-			!("action" in verification) ||
-			verification.action !== "newsletter_signup" ||
-			!("hostname" in verification) ||
-			typeof verification.hostname !== "string" ||
-			!hostnames.includes(verification.hostname)
+			!verification.success ||
+			!hostnames.includes(verification.data.hostname)
 		) {
-			return Response.json({ error: verificationError }, { status: 403 });
+			return reject(verificationError, 403);
 		}
 	} catch {
-		return Response.json({ error: unavailableError }, { status: 503 });
+		return reject(unavailableError, 503);
 	}
 
 	// Replace this sink with the newsletter provider's double opt-in integration.
 	// Intentionally logs contact details for this temporary flow, never the token.
 	console.info("newsletter.signup", {
-		name: body.name.trim(),
-		email: body.email.trim(),
+		name: submission.data.name,
+		email: submission.data.email,
 		hostname: new URL(origin).hostname,
 	});
-	return Response.json({ success: true });
+	return Response.json({ success: true } satisfies NewsletterResponse);
 }

@@ -69,7 +69,12 @@ describe("newsletter signup", () => {
 		{ ...submission, token: "x".repeat(2049) },
 		{ name: "Test", email: "test@example.org" },
 	])("rejects invalid input before verification: %j", async (body) => {
-		expect((await POST(request(body))).status).toBe(400);
+		const response = await POST(request(body));
+		expect(response.status).toBe(400);
+		expect(await response.json()).toEqual({
+			success: false,
+			error: expect.any(String),
+		});
 		expect(fetchMock).not.toHaveBeenCalled();
 		expect(console.info).not.toHaveBeenCalled();
 	});

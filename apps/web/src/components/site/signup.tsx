@@ -2,6 +2,10 @@
 
 import { type FormEvent, useCallback, useRef, useState } from "react";
 import type { HomepageContent } from "@/components/homepage/content";
+import {
+	type NewsletterSignup,
+	newsletterResponseSchema,
+} from "@/lib/newsletter";
 import { NavigationLink } from "./navigation-link";
 import { Arrow, buttonClasses, Eyebrow, Headline } from "./primitives";
 import { SignupVerification } from "./signup-verification";
@@ -13,7 +17,7 @@ export function Signup({
 }) {
 	const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
 	const form = useRef<HTMLFormElement>(null);
-	const pending = useRef<{ name: string; email: string } | null>(null);
+	const pending = useRef<Omit<NewsletterSignup, "token"> | null>(null);
 	const sending = useRef(false);
 	const [status, setStatus] = useState<
 		"idle" | "verifying" | "sending" | "success" | "error"
@@ -38,14 +42,17 @@ export function Signup({
 			const response = await fetch("/api/newsletter", {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
-				body: JSON.stringify({ ...pending.current, token }),
+				body: JSON.stringify({
+					...pending.current,
+					token,
+				} satisfies NewsletterSignup),
 				signal: AbortSignal.timeout(15_000),
 			});
-			const result = await response.json();
-			if (!response.ok || result.success !== true) {
+			const result = newsletterResponseSchema.safeParse(await response.json());
+			if (!response.ok || !result.success || !result.data.success) {
 				setError(
-					typeof result.error === "string"
-						? result.error
+					result.success && !result.data.success
+						? result.data.error
 						: "We couldn't send your details. Please try again.",
 				);
 				setStatus("error");
