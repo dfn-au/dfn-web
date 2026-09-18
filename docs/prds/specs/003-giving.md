@@ -8,7 +8,7 @@ This is a PRD/epic spec. It is not intended to be implemented directly. Use it t
 
 ## Confirmed Initial Donation Scope
 
-Agreed with Andrew on 13 September 2026. This section governs the initial donation integration; excluded requirements below remain separate work. The architecture is recorded in [ADR 006](../../adr/006-stripe-donation-ownership.md), and the proposed delivery sequence is in the [implementation plan](../../plans/stripe-donations.md).
+Agreed with Andrew on 13 September 2026. This section governs the initial donation integration; excluded requirements below remain separate work. The architecture is recorded in [ADR 006](../../adr/006-stripe-donation-ownership.md), and implementation is tracked in GitHub issues [#62](https://github.com/dfn-au/dfn-web/issues/62)–[#65](https://github.com/dfn-au/dfn-web/issues/65).
 
 - Use a DFN form followed by Stripe Embedded Checkout, accepting Stripe's supported form structure.
 - Carry over Education, Healthcare, Economic Empowerment, Community Village Leader, Support a Village, Shelter Operations, and Where most needed. Staff edit the purposes in Sanity.
@@ -99,7 +99,7 @@ For the initial integration, use the confirmed scope above. Catalogue, public ca
 
 ## Testing Decisions
 
-For the initial donation integration, verify both Country Sites, one-off/monthly and suggested/custom amounts, required/optional donor fields, server validation, safe retries, Stripe attribution, verified thank-you states, and bank-deposit instructions. See the implementation plan for concrete cases. Campaign progress, reporting, and other broader workflow checks below apply when those separate features are scoped. The communication opt-in handoff must be verified before go-live.
+For the initial donation integration, verify both Country Sites, one-off/monthly and suggested/custom amounts, required/optional donor fields, server validation, safe retries, Stripe attribution, verified thank-you states, and bank-deposit instructions. The implementation issues define concrete acceptance cases. Campaign progress, reporting, and other broader workflow checks below apply when those separate features are scoped. The communication opt-in handoff must be verified before go-live.
 
 - Test giving at end-to-end workflow level on both domains: select country/currency where needed, choose purpose, enter donor details, pay, receive confirmation, and verify site attribution.
 - Test direct deposit instructions for country-specific details and purpose/reference guidance.

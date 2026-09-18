@@ -85,9 +85,9 @@ Affected PRDs:
 Owner/date:
 ```
 
-## Implementation Plans and Go-live Follow-ups
+## Implementation Tracking and Go-live Follow-ups
 
-- [Stripe donations](../plans/stripe-donations.md): proposed implementation slices for the confirmed donation scope.
+- Stripe donation implementation: [one-off donations #62](https://github.com/dfn-au/dfn-web/issues/62), [monthly donations #63](https://github.com/dfn-au/dfn-web/issues/63), [appeal attribution #64](https://github.com/dfn-au/dfn-web/issues/64), and [bank-deposit instructions #65](https://github.com/dfn-au/dfn-web/issues/65).
 - [Must revisit before go-live](https://github.com/dfn-au/dfn-web/issues/8): register of deferred work that must be addressed before launch; detailed work stays in the linked issues.
 
 ## Working Reports
