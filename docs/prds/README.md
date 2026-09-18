@@ -85,6 +85,11 @@ Affected PRDs:
 Owner/date:
 ```
 
+## Implementation Plans and Go-live Follow-ups
+
+- [Stripe donations](../plans/stripe-donations.md): proposed implementation slices for the confirmed donation scope.
+- [Must revisit before go-live](https://github.com/dfn-au/dfn-web/issues/8): register of deferred work that must be addressed before launch; detailed work stays in the linked issues.
+
 ## Working Reports
 
 - [DFN Website Q&A Workflow](../discovery/README.md) - Slidev question capture, stakeholder follow-up, and incorporation of confirmed answers into requirements.
