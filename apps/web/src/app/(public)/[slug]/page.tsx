@@ -26,7 +26,7 @@ export async function generateMetadata({
 	const page = await getPage(slug, false);
 	return page
 		? {
-				title: `${page.title} — Dignity Freedom Network`,
+				title: `${page.title} | Dignity Freedom Network`,
 				description: page.description ?? undefined,
 			}
 		: {};

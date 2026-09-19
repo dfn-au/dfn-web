@@ -18,6 +18,17 @@ export default async function PublicLayout({
 	return (
 		<html lang="en-AU" className="[color-scheme:dark]">
 			<head>
+				<link
+					rel="icon"
+					href="/favicon-192x192.png"
+					type="image/png"
+					sizes="192x192"
+				/>
+				<link
+					rel="apple-touch-icon"
+					href="/apple-touch-icon.png"
+					sizes="180x180"
+				/>
 				<link rel="preconnect" href="https://fonts.googleapis.com" />
 				<link
 					rel="preconnect"
