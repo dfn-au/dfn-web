@@ -1,4 +1,5 @@
 import { stegaClean } from "next-sanity";
+import { isCurrentPageLink } from "@/components/site/link-destination";
 import type { HeaderChildLink } from "./content";
 
 export function headerHref(href: string, activePage: string) {
@@ -10,13 +11,16 @@ export function headerHref(href: string, activePage: string) {
 		: destination;
 }
 
-export function isCurrentHeaderLink(href: string, activePage: string) {
-	const destination = stegaClean(href);
-	if (!destination.startsWith("/") || destination.startsWith("//"))
-		return false;
-	if (destination.includes("#")) return false;
-	const path = destination.split("?")[0].replace(/\/$/, "");
-	return path === (activePage === "home" ? "" : `/${stegaClean(activePage)}`);
+export function isCurrentHeaderLink(
+	href: string,
+	activePage: string,
+	documentUrl?: string,
+) {
+	return isCurrentPageLink(
+		stegaClean(href),
+		stegaClean(activePage),
+		documentUrl,
+	);
 }
 
 // Preserve authored order while keeping visual groups together where practical.
