@@ -1,0 +1,282 @@
+DFN Team Meeting - Redacted transcript
+15 October 2026
+Duration: 16 minutes
+Speakers: Speaker 1, Speaker 2 and Speaker 3
+
+Lightly cleaned automated transcript, redacted for public reference.
+Names are replaced with neutral labels; no name-to-label key is included.
+Bracketed redaction markers replace omitted passages and are editorial notes,
+not spoken words. Personal details, internal organisational plans, sensitive
+operational discussion and comments about colleagues have been removed.
+
+Timestamps are relative to the recording. Speaker labels are inferred from voice
+comparison and conversation context. Uncertain labels and unclear wording are
+marked. Punctuation and obvious recognition errors are corrected; some repeated
+acknowledgements are removed. This recording starts mid-conversation.
+
+[00:00] Speaker 1 (uncertain)
+Yeah, great. Thanks.
+
+[00:02] Speaker 2
+[Redacted: personal work arrangements.] So I've made some good progress. I've kind of got a bit of a skeleton up. And I've kind of fiddled with the design a bit, but I'm not quite ready to put that to you guys for review. I'm happy to give you a sneak preview if you're willing to kind of withhold judgment.
+
+[00:47] Speaker 2
+But yeah, I guess, I don't know. I guess I wanted to run through a couple of questions, which I feel like are blockers for me. So with the new website launch, we're going to have two sites that are independent, an AU and an NZ site. And there are a lot of questions I need to figure out around how the content gets managed for that. So there are lots of different ways you can structure the content management system to have content that's shared and content that's separate. So, yeah, there's lots for me to think about there, but I can ask you some questions that will help me to figure it out. Now, do you want the sites to feel like they're completely independent or do you want them to feel like they're siblings where you can kind of like click between AU and NZ?
+
+[01:41] Speaker 1
+For me personally, and this is a good conversation to have because, again, I didn't know if we were going to launch the Christmas campaign on the new website or not. So I haven't asked [colleague] to do any work on the Christmas appeal for our website because I wanted to follow up and find out where we were at. So I now know the answer. I think siblings is good because there is a lot of people who move between the two countries. [Redacted: personal details.] So my initial, I hadn't thought of it, but since you've asked, I think that the sibling idea can work quite well.
+
+[02:30] Speaker 2
+Okay. So one example might...
+
+[02:32] Speaker 1
+Unless it gets confusing for people donating on the wrong page. I know we've had that a couple of times.
+
+[02:38] Speaker 2
+Yeah, I think donate pages we'd probably want to keep very separate.
+
+[02:42] Speaker 1
+Yes.
+
+[02:43] Speaker 2
+So that when you're on the AU site, you cannot access that without switching over to the NZ site.
+
+[02:49] Speaker 1
+Because one of the issues is we're completely tax deductible in Australia, but we're not in New Zealand, only if they give in certain ways. And so when a few people have actually made donations and then asked us for a tax receipt, it's really impossible. We can't issue it. I mean, it's not something we can go, "Sure, I'll just this once make an exception." It's impossible.
+
+[03:10] Speaker 2
+Yeah. Yeah. Okay. So like one question I had was the current footer, it includes like the Australian address and contact and the New Zealand address and contact. Is that something we'd want to keep or would you want to make that feel more separate? Like, do you just want to have the, on the Australia site, you see the Australia details, and maybe there's a little link up the top somewhere, which is like a little flag, AU/NZ, that allows you to switch between the sites and everything else?
+
+[03:39] Speaker 1
+I think that's good.
+
+[03:40] Speaker 2 (uncertain)
+Yeah.
+
+[03:41] Speaker 2
+And another case study...
+
+[03:43] Speaker 1
+The flags are very similar.
+
+[03:44] Speaker 2
+Ah, yeah. Or we can make it clearer.
+
+[03:48] Speaker 2 (uncertain)
+Yeah. Yeah. Yeah.
+
+[03:50] Speaker 2
+Another case study might be the events page. Because in the past sometimes the events have kind of all been mushed together, like you've got your Australia events and your New Zealand events and you can see them all. And maybe you want to keep that. So you've kind of got this bird's eye view for anyone. They can see that you're running Australia and New Zealand events. Or maybe you don't. That's the kind of question that can help me figure out the structure.
+
+[04:15] Speaker 1
+And the other thing too is we have different EOFYs. So that can just get confusing.
+
+[04:20] Speaker 2
+Oh, I'd say we want to keep those very separate, yeah. So I guess with the events, would you prefer to keep them separate or would you want to keep them sort of combined?
+
+[04:31] Speaker 1
+Well, I guess there's pros and cons. I mean, somebody might look and say, oh, my brother's moved to Sydney, you know. Oh, there's a Sydney dinner as well. I've just been to the Christchurch one. [Redacted: personal details.] But I don't know that we've ever really seen anybody or like a significant amount of people come that way. So I guess keep them separate is probably best. But Speaker 3, do you have an opinion?
+
+[04:57] Speaker 3
+Yeah, I think if separate is simpler and cleaner, then I don't think we're losing much. One or two potential people that might have come to a dinner.
+
+[05:07] Speaker 1
+Exactly. I agree.
+
+[05:09] Speaker 2
+Okay, cool. So I think in principle we'll lean towards separate, but we'll have a way to switch between the sites.
+
+[05:17] Speaker 1
+Yes.
+
+[05:18] Speaker 2
+It's sort of obvious.
+
+[05:21] Speaker 3 (uncertain)
+Yeah.
+
+[05:21] Speaker 2
+And then I'm thinking for the content, there'll be kind of a division of shared content and country-specific content. So, for instance, the homepage, it might be mostly shared. So when you've got like the kind of the impacts, like what we're doing, those stories might be, that's the same content, right? When you click through, you'll see the same stuff. But then your things like your events and your campaigns, your end of financial year stuff, that would all be separate. So as an admin, sometimes you'd be looking at some content and it would be shared between the sites. So when you publish it, it goes to both.
+
+[06:09] Speaker 2
+And some you would be looking at a page and that would be specific to a country. So when you publish it, it just goes to that one country.
+
+[06:18] Speaker 1
+Well, Christmas can just be the same across the board. And I understand there's currency differentiation, but we're just not going to do those calculations. They fluctuate all the time anyway.
+
+[06:28] Speaker 2
+Okay. And that's something, if I know that you need the flexibility to be able to have it shared or have it split, I can try and program that into the content management system so you can override it. So you can see clearly, okay, this content's shared between both or this content is split. Okay. So I think that was the main blocker I had at the moment was how to figure out the regional split. But let me just see if I've got anything else I can fire at you.
+
+[07:09] Speaker 2
+I can't do that. No, I'm not prepared enough to be able to do that. I guess a question on the content. [Redacted: comments about a colleague's work.] So do you think that that's, is that a question we want to put to [colleague]? Like could she propose the new content hierarchy? Or I don't know, do you want me to kind of just like throw something together like as a rough guess and then get feedback and iterate on it? Like in some ways I kind of need to get something up first because the design sort of depends on the layout that,
+
+[07:59] Speaker 2
+I don't know what I'm really trying to say here.
+
+[08:02] Speaker 3
+I think it's better if you just put something together and get feedback. [Redacted: internal commentary.]
+
+[08:10] Speaker 2
+Okay, cool.
+
+[08:11] Speaker 1
+[Redacted: internal organisational discussion and comments about a colleague's work.]
+
+[08:59] Speaker 1
+[Redacted: internal organisational plans.]
+
+[09:22] Speaker 2
+Okay. Cool. And then I guess one last question about talking about style, how closely do we need to stick to the current style of the website? Like I know there's part of the brand, like which is the orange, but then some of the things are not clear to me whether it's part of our like formal style guide or it's kind of open to interpretation.
+
+[09:46] Speaker 1
+So we have a whole branding guidelines. [Redacted: internal organisational plans.] But fonts and things like that, colour palettes, et cetera, they're all there. [Redacted: internal organisational plans.]
+
+[10:07] Speaker 2
+Okay. Cool. And is that something where you just want to, you'd rather just stick to the current style guidelines? Or is that kind of just an incident where you just like kind of arrived upon this and it's kind of open to being changed?
+
+[10:21] Speaker 1
+I'm missing the question. Sorry.
+
+[10:25] Speaker 2
+The question is like is the style guide at the moment kind of something we have to adhere to? Or is it can we do like a V2 style? Like I just I don't know how if you want to just keep the current style as it is, fine. Or is there room to like flex on it a bit?
+
+[10:44] Speaker 1
+So with branding, I mean, we typically stick to the guidelines with both the colours and the fonts and those kinds of things. [Redacted: sensitive operational discussion.]
+
+[11:10] Speaker 2
+Oh, yeah. [Unclear brief response.] Yeah, yeah. [Unclear overlapping speech.] I'm purely talking about style.
+
+[11:15] Speaker 1
+Yeah, yeah, yeah. Totally. We try and stick with the guidelines as closely as we can just so that there is that same feel across the board.
+
+[11:23] Speaker 2
+Yeah. Okay, cool. Well, but yeah, please do send me those guidelines so I can make sure that the design is in line with that. Because I've experimented with design, but it's kind of just for fun. And I don't know, you know, I don't know if I'm like totally missing the mark or not.
+
+[11:42] Speaker 1 (uncertain)
+Yeah.
+
+[11:42] Speaker 2
+So I'm sort of like hesitant to show you because it's like such an experimental thing. But if you do want to see what I've got, then I'm happy to show you. So long as there's that caveat there that's like I'm going to take what you say, the style guide, and make it adhere to it.
+
+[11:58] Speaker 1
+Yeah. Why don't you just show us quickly and then I'll send you the two sets of branding guidelines anyway.
+
+[12:04] Speaker 2
+Yeah. Let me see. Okay. Can you see that?
+
+[12:13] Speaker 2 (uncertain)
+Yeah. Yeah.
+
+[12:14] Speaker 2
+So it's very, it's a lot of it in the same ways that a lot of it is the same, like the logo, the colours, the fonts. But I've just, I thought I might just try with a bit of a darker feel. But that might be completely out of line. So it's kind of like inspired by the current website. But with, it's just kind of, I'm trying to make it a little bit more modern.
+
+[12:42] Speaker 1
+Yeah. No, it's good. It might be too dark. To me, I'd have to think about that.
+
+[12:51] Speaker 1 (uncertain)
+Yeah.
+
+[12:52] Speaker 1
+But I like the look of it.
+
+[12:53] Speaker 2
+We can totally go, I can just invert this and go with, go back to like the light background. So what I'd probably do is just take the style guide that you give me, make sure this is in line with it, and then do like three different styles, like a bright, a dark, whatever, and stick it in front of you and see what resonates.
+
+[13:13] Speaker 1 (uncertain)
+Yep.
+
+[13:20] Speaker 1
+So just saying, all those photos are very old, and it's the old school uniform. So we're ditching all of those and only using new school uniforms.
+
+[13:29] Speaker 2
+Oh, if you want to send me new photography and stuff, then I could use that.
+
+[13:35] Speaker 1
+Great.
+
+[13:36] Speaker 2
+If you were to say like, oh, the current about page has these photos, can we swap out with these ones, then I can just take that as guidance to feed into.
+
+[13:44] Speaker 1
+Great. I just didn't want to get down into the nitty gritty with you and have you say, like you're playing right down here.
+
+[13:50] Speaker 2
+Oh, no, no, no. I'm not. I'm just taking what's on the current website and kind of like iterating on it.
+
+[13:55] Speaker 1
+Absolutely. And that's why I didn't want to change them yet because you are doing all this work. But if you are, I'd much rather start with, you know, the updated photos and uniforms.
+
+[14:04] Speaker 2
+Absolutely. Do you want to stick with this kind of this style of the photos with the overlay, the kind of grainy overlay?
+
+[14:14] Speaker 1
+What do you think, Speaker 3?
+
+[14:17] Speaker 3
+Web design is not my area. I really don't know. I cannot tell. The website looked good.
+
+[14:24] Speaker 1
+Okay. Certainly it's what [design agency] did when they started work with us, which was 2019 or something like that, whenever it was. I don't mind it. I'm happy with a cleaner look too.
+
+[14:40] Speaker 2
+I guess we could, that's something we could compare both as well.
+
+[14:44] Speaker 1
+Exactly.
+
+[14:45] Speaker 2 (uncertain)
+Yeah.
+
+[14:46] Speaker 2
+Okay. Cool. Well, I need to like clean up my pile of questions because it's in a, it's quite a mess. And then I can maybe come back to you and drip feed some more questions.
+
+[14:56] Speaker 1
+That sounds great. And if it helps to have, just to keep it moving forward, like even a fortnightly 15 minute connection or something like that, you know, we can make that happen.
+
+[15:08] Speaker 2
+Might help. Yeah. If I've got Speaker 3 pinging me, then, you know, that'll keep me on my toes.
+
+[15:14] Speaker 1
+Speaker 3, you have my permission.
+
+[15:15] Speaker 1 (uncertain)
+[Redacted: personal details.]
+
+[15:16] Speaker 3
+I've been doing it anyway.
+
+[15:18] Speaker 3 (uncertain)
+Great.
+
+[15:18] Speaker 1
+Very good.
+
+[15:21] Speaker 2
+Okay, cool. I think I'm done.
+
+[15:24] Speaker 1 (uncertain)
+Great. Thanks so much. All right.
+
+[15:26] Speaker 1
+I'll get those guidelines to you like straight away. And then I'll create a folder in SharePoint with like new fresher photos. And I'll just try and sort of label them so they're easy to identify.
+
+[15:39] Speaker 2
+Okay. I can't remember if I've got access to that, but I guess when you share it, you'll be able to see if I've got it or not.
+
+[15:45] Speaker 1
+[Redacted: internal access arrangements.]
+
+[15:51] Speaker 2
+Okay.
+
+[15:51] Speaker 1
+So I'll just send her an email and [unclear] you as well.
+
+[15:54] Speaker 2 (uncertain)
+Cool. All right.
+
+[15:56] Speaker 1 (uncertain)
+Great. Thanks so much. Thanks, team. Thanks, guys. Bye.
+
+[15:59] Speakers uncertain
+Bye. See you.
