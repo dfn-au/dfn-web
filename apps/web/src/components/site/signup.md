@@ -1,7 +1,7 @@
 # Newsletter signup
 
 The form posts to `/api/newsletter` after obtaining a Turnstile token. The endpoint
-validates the name, email, token, action and allowed hostname before logging
+validates the name, email, token and action before logging
 `newsletter.signup` with the name, email and request hostname. No subscription is
 created and no email is sent. Contact details are
 intentionally present in server logs for this temporary integration; tokens and
@@ -10,13 +10,11 @@ secrets are never logged by the handler.
 ## Configuration
 
 1. In Cloudflare **Turnstile**, create a **Managed** widget. Add each permitted
-   website hostname. Use separate development/preview and production widgets.
+   website hostname. Cloudflare's widget settings are the source of truth for
+   permitted hostnames. Use separate development/preview and production widgets.
 2. Set these values in `apps/web/.env.local` and the hosting environment:
    - `NEXT_PUBLIC_TURNSTILE_SITE_KEY`: public site key (available at build time).
    - `TURNSTILE_SECRET_KEY`: corresponding private secret, server only.
-   - `TURNSTILE_ALLOWED_HOSTNAMES`: comma-separated exact hostnames, without
-     schemes or ports, matching the widget's allowed hostnames. Include
-     `localhost` for a local development widget.
 3. Restart development or rebuild/redeploy after changing the public key.
 
 The frontend uses `appearance: "interaction-only"`: the widget stays hidden
@@ -40,8 +38,7 @@ when verification or the submission request fails.
 
 Cloudflare publishes [test keys](https://developers.cloudflare.com/turnstile/troubleshooting/testing/)
 for passing, failing and forced-interaction checks. Use them only in isolated
-local tests. Inspect the dummy validation hostname and configure the local
-allowlist accordingly; keep hostname and action validation enabled. Never deploy
+local tests. Keep server-side token and action validation enabled. Never deploy
 test keys to a public environment. Dummy Siteverify responses can contain fixed
 metadata (such as `action: "test"`), which this endpoint deliberately rejects.
 Use a real development widget for the complete browser-to-server success check;
