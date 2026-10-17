@@ -6,6 +6,29 @@ Parent programme PRD: [Parent Rebuild Scope and Launch Parity](001-overview.md)
 
 This is a PRD/epic spec. It is not intended to be implemented directly. Use it to create focused GitHub decision issues and thin vertical implementation issues for giving, attribution, confirmations, receipts, campaign giving, and donation catalogue work.
 
+## Confirmed Initial Donation Scope
+
+Agreed with Andrew on 13 September 2026. This section governs the initial donation integration; excluded requirements below remain separate work. The architecture is recorded in [ADR 006](../../adr/006-stripe-donation-ownership.md), and implementation is tracked in GitHub issues [#62](https://github.com/dfn-au/dfn-web/issues/62)–[#65](https://github.com/dfn-au/dfn-web/issues/65).
+
+- Use a DFN form followed by Stripe Embedded Checkout, accepting Stripe's supported form structure.
+- Carry over Education, Healthcare, Economic Empowerment, Community Village Leader, Support a Village, Shelter Operations, and Where most needed. Staff edit the purposes in Sanity.
+- All seven purposes support one-off and monthly giving. Each donation has one purpose.
+- Provide custom amounts and staff-editable suggested amounts, configured separately for one-off and monthly giving.
+- Default the general form to one-off and Where most needed, with no amount selected. Appeal pages preselect their purpose and retain appeal attribution separately.
+- Require name and email; keep phone and address optional. Collect optional fields outside Checkout where its native fields cannot preserve that optionality.
+- Impose no DFN minimum above Stripe's processing limits. Do not add a processing-fee contribution option.
+- Use a test Stripe account in development and the existing separate AU/NZ Country Payment Accounts at go-live. Follow the current [ADR 001](../../adr/001-website-technical-architecture.md): deployment configuration selects the Country Site, currency, and payment account.
+- Use normal Stripe behaviour for new monthly subscriptions and preserve existing subscriptions and account-managed arrangements.
+- Keep existing Stripe confirmation emails and recurring-management arrangements. No website recurring-management or replacement email workflow is required.
+- Provide a site-owned thank-you page with payment state verified against Stripe.
+- Provide country-specific bank-deposit details and purpose/reference guidance only. Reconciliation stays with the existing finance process; no intended-transfer form is required.
+- Stripe owns donation/payment records and purpose, appeal/source, and Country Site Attribution. Sanity owns editable configuration. Do not add a separate website donation database, ledger, or reporting interface for this slice.
+- Exclude the gift catalogue from initial launch. Campaign totals and CRM/Xero integrations are separate work. Official tax receipts remain in the existing finance workflow.
+
+### Required Before Go-live
+
+**TODO: connect donation communication opt-ins to a working subscription workflow before the AU/NZ sites go live.** This is deferred from the initial Stripe implementation, not beyond launch. General/prayer update opt-ins must be unchecked by default, reach the agreed destination when selected, and not subscribe donors when unselected. Track this in [the go-live register, issue #8](https://github.com/dfn-au/dfn-web/issues/8), with forms work in [#15](https://github.com/dfn-au/dfn-web/issues/15) and mailing-platform/preference ownership in [#27](https://github.com/dfn-au/dfn-web/issues/27). A form that only logs a request does not fulfil this requirement.
+
 ## Problem Statement
 
 DFN needs the rebuilt website to preserve and improve its giving workflows without treating every payment-like interaction as the same kind of transaction.
@@ -40,6 +63,8 @@ Bequests and event tickets are handled separately. Child sponsorship is covered 
 18. As DFN staff, I want internal notifications for relevant giving activity, so that timely follow-up can happen.
 ## Implementation Decisions
 
+For the initial integration, use the confirmed scope above. Catalogue, public campaign progress, and broader operational requirements below are separate work.
+
 - Giving includes one-off donations, recurring donations, appeals, scholarship giving, support-a-village, donor/community campaign donations, and product-like donation catalogue items.
 - Bequests are not a normal giving checkout workflow for launch.
 - Event tickets are not donations by default.
@@ -49,9 +74,9 @@ Bequests and event tickets are handled separately. Child sponsorship is covered 
 - AU/NZ giving should support country-specific payment, direct deposit, confirmation, and receipt wording.
 - Card payments should use separate payment accounts for Australia and New Zealand.
 - Payment should happen inside branded DFN pages where possible.
-- Donor self-service for recurring payment management can be provider-hosted at launch.
+- Existing Stripe arrangements own recurring payment management for the initial integration; no website self-service implementation is required.
 - The site should provide a site-owned confirmation page after payment.
-- Payment confirmation emails are required.
+- Existing Stripe payment confirmation emails satisfy the initial donation integration.
 - Tax receipt handling is in scope at requirements level, with country-specific expectations.
 - Card payments and direct deposit/offline giving instructions should both be supported.
 - Direct deposit instructions should be country-specific and include purpose attribution guidance.
@@ -59,7 +84,7 @@ Bequests and event tickets are handled separately. Child sponsorship is covered 
 - Attribution should include site, purpose, and campaign/page/event/source where available.
 - "Where most needed" is an explicit attribution option.
 - General donations can be one-off or monthly.
-- Appeals and donation-catalogue items default to one-off unless staff mark them recurring-capable.
+- Initial appeal donations use their selected purpose's one-off/monthly options. Catalogue recurrence is a later decision.
 - Donation catalogue items can be fixed-price or variable amount.
 - Giving pages should show tax deductibility by country/purpose where applicable.
 - Donors should be able to give anonymously on public campaign pages.
@@ -69,10 +94,12 @@ Bequests and event tickets are handled separately. Child sponsorship is covered 
 - Staff should be able to create/manage campaigns initially.
 - Campaigns are expected to be country-specific for launch, pending confirmation of whether any campaign needs shared cross-country publishing or combined progress.
 - Supporter self-service campaign creation is out of scope for launch.
-- Reporting/exporting is required, but the system of record is TBD.
+- Stripe owns initial donation/payment records and attribution. Broader reporting/export tooling and handoffs are separate work.
 - The website must capture and expose enough data for reporting, whether internally or via connected external systems, with AU/NZ filtering.
 
 ## Testing Decisions
+
+For the initial donation integration, verify both Country Sites, one-off/monthly and suggested/custom amounts, required/optional donor fields, server validation, safe retries, Stripe attribution, verified thank-you states, and bank-deposit instructions. The implementation issues define concrete acceptance cases. Campaign progress, reporting, and other broader workflow checks below apply when those separate features are scoped. The communication opt-in handoff must be verified before go-live.
 
 - Test giving at end-to-end workflow level on both domains: select country/currency where needed, choose purpose, enter donor details, pay, receive confirmation, and verify site attribution.
 - Test direct deposit instructions for country-specific details and purpose/reference guidance.
@@ -85,6 +112,8 @@ Bequests and event tickets are handled separately. Child sponsorship is covered 
 
 ## Out of Scope
 
+For the initial integration, also exclude the gift catalogue, split-purpose payments, processing-fee contributions, public campaign totals, a separate website donation database/reporting interface, CRM/Xero integrations, replacement payment emails, and website recurring management. Communication opt-ins remain a required pre-go-live follow-up.
+
 - Donor account area on the DFN website.
 - Supporter self-service campaign creation.
 - Public donor wall or public donor messages.
@@ -95,12 +124,12 @@ Bequests and event tickets are handled separately. Child sponsorship is covered 
 ## Open Questions
 
 - Donation catalogue visitor-facing naming.
-- Reporting/export system of record.
-- Final recurring options per giving product.
+- Broader reporting/export tooling and handoffs beyond Stripe-owned initial donation records.
+- Recurring options for later catalogue products; one-off/monthly is settled for the seven initial purposes.
 - Final tax receipt rules for AU/NZ and each giving purpose.
 - Whether any campaign needs shared cross-country publishing or combined progress.
 - Internal notification recipients.
-- Confirmation email ownership.
+- Confirmation email requirements for later giving workflows; existing Stripe ownership is settled for the initial donation integration.
 
 ## Reference URLs
 

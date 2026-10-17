@@ -31,7 +31,7 @@ This ADR does not decide:
 - Exact Sanity schemas, block library, desk structure, content migration inventory, or redirect map.
 - Exact modelling for Shared Content, Site-Specific Content, linked counterparts, field-level site variation, or editor-safe publishing controls. The subsequent [ADR 004](004-country-site-publishing.md) records the publishing model and v1 boundaries for [issue #21](https://github.com/dfn-au/dfn-web/issues/21).
 - Whether Sanity Studio remains embedded in the Next.js application or moves to a separate application. This is owned by [issue #18](https://github.com/dfn-au/dfn-web/issues/18).
-- Operational persistence, payments, transactional notifications, or analytics vendors. Those choices remain undecided and are documented as research rather than ADRs. [ADR 005](005-operational-staff-authentication.md) subsequently decides operational staff authentication.
+- Operational persistence, payments, transactional notifications, or analytics vendors. These choices are addressed by subsequent decisions. [ADR 005](005-operational-staff-authentication.md) decides operational staff authentication; [ADR 006](006-stripe-donation-ownership.md) records donation payments, records, and the boundary with existing Stripe emails and recurring management. Other workflow/vendor choices remain separate.
 
 ## Consequences
 
