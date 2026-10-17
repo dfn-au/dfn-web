@@ -4,7 +4,13 @@
 
 Use Slidev for the stakeholder workshop, run locally by Andrew while screen-sharing with Kat. Monaco editors autosave answers into local Markdown files after a 700 ms pause. Kat follows up with stakeholders on unresolved questions; further calls resolve what remains.
 
-The [deck](workshop/slides.md) contains a title slide and `COM-001` about whether newsletter signups go directly to infoodle or by email to staff. Add further project questions as requested.
+The [deck](workshop/slides.md) contains a title slide and these questions:
+
+- `COM-001`: whether newsletter signups go directly to infoodle or by email to staff.
+- `SITE-001`: how separate the AU and NZ sites should feel, using office contact details as the first example.
+- `SITE-002`: how visibly the site should identify its country, from a prominent flag or country label to a subtle logo difference alongside the domain.
+
+Add further project questions as requested.
 
 ## Running the Workshop
 
