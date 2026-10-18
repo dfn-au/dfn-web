@@ -2,7 +2,7 @@
 
 Inspected 13 September 2026 in the authenticated DFNA Infoodle site, using Andrew's access in Brave. This is a read-only operational investigation, not a migration export or a test of processing live donations. Configuration, representative records, report definitions and dated history were inspected; no forms, messages, payments or configuration changes were submitted.
 
-Personal contact details, child identities, private message bodies and credentials are omitted. Links require authorised CRM access. Counts are snapshots of the visible views, not audited totals. Product documentation is covered separately in [the documentation companion](infoodle-documentation-context.md).
+Personal contact details, child identities, private message bodies and credentials are omitted. Links require authorised CRM access. Counts are snapshots of the visible views, not audited totals. Current CRM evaluation and acceptance questions belong to [#69](https://github.com/dfn-au/dfn-web/issues/69).
 
 ## How to use this reference
 
@@ -14,9 +14,9 @@ Keep three kinds of evidence separate:
 
 - **Current-state evidence:** what is configured, populated or recorded as used, with the limits of the inspection.
 - **Validated need:** the outcome staff/supporters need and any confirmed operational constraints.
-- **Future decision:** the chosen website behaviour, system ownership and implementation, recorded explicitly in the relevant PRD or decision document with its rationale.
+- **Future decision:** the chosen website behaviour, system ownership and implementation, recorded in its owning GitHub issue, with lasting architectural reasons in an ADR.
 
-This research does not approve an architecture, choose a CRM, override the PRDs or establish a migration scope. Where an observation challenges a planning assumption, it creates a question to resolve rather than silently replacing that assumption with the legacy design.
+This research does not approve an architecture, choose a CRM, override agreed requirements or establish a migration scope. Where an observation challenges a planning assumption, it creates a question to resolve rather than silently replacing that assumption with the legacy design.
 
 ## Main findings
 
@@ -202,50 +202,11 @@ The Mailchimp settings themselves warn that inbound unsubscribes/deletions can u
 
 Sources: [Xero setup through Configuration → Xero Setup → Status](https://dfna.infoodle.com/admin_xero), [Payment Methods](https://dfna.infoodle.com/admin_paymentmethods), [System → Mailchimp](https://dfna.infoodle.com/admin_system), [Webhooks](https://dfna.infoodle.com/admin_webhooks), [Roles](https://dfna.infoodle.com/admin_roles), [duplicate scan](https://dfna.infoodle.com/duplicate_scan), [matching settings](https://dfna.infoodle.com/admin_duplicate_matching).
 
-## 5. Implications for the rebuild and CRM decision
+## Limits of inspection
 
-The existing [CRM requirements](../prds/specs/007-crm-dms-ems.md) and [vendor comparison](../prds/crm-selection-report.md) should be read alongside these findings. They were not edited in this investigation.
+This is a dated baseline, not a migration specification. Configuration and representative history were inspected; complete workflow execution and data quality were not verified. Current evaluation and proof requirements belong to [#69](https://github.com/dfn-au/dfn-web/issues/69).
 
-| Prior open question | What this inspection resolves | What remains open |
-| --- | --- | --- |
-| Is Infoodle only a contact database? | No: extensive transactions, campaign attribution, student links, statements, reports and email history are populated | Which records remain canonical elsewhere |
-| Does sponsorship have an existing model? | Yes: separate student records, Person Links, fields and groups | Multi-sponsor edge cases, historical reassignment, availability/reservation rules and safe public profile boundary |
-| Are sponsor updates recorded? | Yes: a real send was observed and current update templates exist | Portal ownership, content matching and consistent coverage across sponsors |
-| Are missing payments followed up? | Purpose-built saved reports exist | Who runs them, when, who owns retries, and how completion is recorded |
-| Are receipts generated only in Xero? | That assumption is not supported: Infoodle receipt history/templates exist; NZ template references GDG | Exact final-document responsibility per entity/gift type |
-| How are AU and NZ separated? | Shared site, with transaction Locations plus country-named operational structures | Enforced access/export boundaries, currency treatment and cross-country supporters |
-| Are supporter journeys automated? | Little workflow automation was visible; extensive reporting/templates support staff-led processes | External automations and actual staff execution cadence |
-| How are preferences represented? | Groups/exclusions and a general Mail Type; archived topic Mail Types | Consent provenance, suppression consistency and prayer approval |
-
-Assess the following information and dependencies before defining integration or migration scope. Establish what needs continuity, what can be transformed or archived, and what is obsolete. This inventory does not require reproducing Infoodle's schema, screens or manual processes in the new website:
-
-1. Person and household IDs, giving numbers, receipt aliases and receipt-to defaults.
-2. Separate student and sponsor records, link direction, programme values, lifecycle dates and payment-cycle semantics.
-3. Group hierarchy, membership state/history, country context and exclusion semantics.
-4. Transaction IDs, batches, internal account-code IDs, Locations, campaigns, tax/GST fields and receipt references; validate split gifts separately.
-5. Notes, To Dos, message metadata, update history and relevant attachments/templates without exposing private student information publicly.
-6. Saved report predicates and the DFNA child-sponsor output. These contain candidate business rules that a flat CSV of contacts would lose; validate which rules still serve a current need.
-7. Country/entity-specific giving-statement variants and the GDG/Education Trust handoff.
-
-## 6. Targeted staff walkthroughs still needed
-
-The highest-value next step is to trace a few real cases with their owners:
-
-| Owner/process | Concrete walkthrough |
-| --- | --- |
-| Finance | One AU gift and one NZ gift from original payment/bank record through batch creation, designation, donor matching and final receipt; explain Xero and GDG touchpoints, currency handling, corrections and refunds |
-| Sponsorship operations | One new allocation, one supporter with multiple students, one transfer/cancellation and one missing payment; confirm whether the referenced sponsorship portal is still used, who owns it, and where school updates are maintained |
-| Communications | One prayer signup and one opt-out through approval, groups, Mail Types and final recipient selection; establish vetting and whether Mailchimp is still used |
-| Event operations | One dinner booking including guests/payment, one inability/cancellation and one attendee follow-up; explain how website submissions become groups and attendance history |
-| Integration/data owner | Identify current API clients/import routines, their matching keys and error handling; explain the small native form response counts and any external form/payment systems |
-
-No conclusion here establishes complete data quality, legal compliance, successful live automation, comprehensive exports or the absence of systems outside this Infoodle instance. The findings provide a grounded current-state model and a much smaller set of ownership questions to resolve.
-
-## 7. Coverage assessment and remaining investigation
-
-The inspection is sufficient as an initial current-state baseline for rebuild discovery and for refining open questions. It is not sufficient to specify a complete migration or claim that every operational handoff is understood. Information structures received broad coverage; workflow execution received selective coverage. Configuration shows an intended process, while dated activity shows use in a particular case. Neither alone establishes consistent execution across the organisation.
-
-| Gap | Coverage so far | Evidence still needed |
+| Area | Coverage at inspection | Not verified |
 | --- | --- | --- |
 | Payment → CRM → receipt | Recent transactions, batch provenance, receipt history, templates and integration status inspected | End-to-end AU/NZ cases, original payment/import source, reconciliation, final-document ownership, corrections and refunds |
 | Sponsorship lifecycle | Linked student/sponsor example, fields, cohorts, saved reports and update-send history | Allocation, multiple students/sponsors, reassignment, cancellation, missed-payment handling and preservation of previous relationships |
@@ -253,5 +214,3 @@ The inspection is sufficient as an initial current-state baseline for rebuild di
 | Consent and suppression | Subscription/exclusion groups, Mail Types, form settings and sampled audience criteria | A signup and opt-out traced across relevant groups, sending systems and approval steps; consent provenance and consistent enforcement |
 | External integrations | Visible payment methods, Xero/Mailchimp status and general webhook settings | API clients, scheduled imports, external forms/payment systems, matching keys, error handling and operational owners |
 | Data quality and access | Representative records, matching settings and role summaries | A broader sample of duplicates, missing/conflicting values, historical/archived records, effective permissions and country boundaries |
-
-Prioritise files/student updates, portal references and import/API configuration for further browser inspection. Then validate the concrete cases in section 6 with process owners. For each case, record what actually happens, where it fails or creates work, the required outcome, and which future decisions remain open. These findings should inform deliberate redesign rather than make current implementation the default.

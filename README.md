@@ -6,6 +6,15 @@
 
 Website rebuild workspace for the DFN Australia and New Zealand Country Sites.
 
+- [Launch scope, checks and next questions](https://github.com/dfn-au/dfn-web/issues/8)
+- [Questions ready for an answer](https://github.com/dfn-au/dfn-web/issues?q=is%3Aissue%20is%3Aopen%20label%3Aquestion%20label%3Aready-for-human)
+- [Delivery work](https://github.com/dfn-au/dfn-web/issues?q=is%3Aissue%20is%3Aopen%20-label%3Aquestion)
+
+GitHub issues hold current scope, decisions and work. The repository keeps
+[domain definitions](CONTEXT.md), [architecture decisions](docs/adr/),
+[dated evidence](docs/research/) and the [workshop capture tool](docs/discovery/README.md).
+CRM selection is separate from website launch in [#69](https://github.com/dfn-au/dfn-web/issues/69).
+
 ## Requirements
 
 - Node 24 LTS
@@ -41,23 +50,8 @@ pnpm test
 
 Root scripts currently target `apps/web`.
 
+See the [application README](apps/web/README.md) for publishing, environment,
+preview and authentication setup.
+
 The frozen legacy website is preserved in
 [dfn-au/dfn-web-legacy-reference](https://github.com/dfn-au/dfn-web-legacy-reference).
-
-## Current Scaffold
-
-- `apps/web`: Next.js App Router app
-- Tailwind CSS
-- Route groups for public and admin surfaces
-- Embedded Sanity Studio at `/admin/studio`
-- Biome for linting and formatting
-- Vitest for unit tests
-- PostHog analytics and error monitoring
-
-Deferred slices:
-
-- Supabase local development and operational schema
-- Playwright end-to-end tests
-- Vercel-specific config
-- Release and changelog automation
-- Component library setup
