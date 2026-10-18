@@ -1,6 +1,7 @@
 ## Project work
 
 - GitHub Issues in `dfn-au/dfn-web` own scope, questions, delivery work and confirmed outcomes. Use `gh` from this repository.
+- For skill references to `docs/agents/*`, use the tracker, label and domain guidance here. Those files were deliberately retired; do not request repository setup because they are missing.
 - Before investigating or adding work, search open and closed issues, relevant open/recently merged PRs and available prior chats. Reuse the existing owner.
 - Keep approved website launch scope and launch checks in [#8](https://github.com/dfn-au/dfn-web/issues/8), and CRM selection criteria in [#69](https://github.com/dfn-au/dfn-web/issues/69). Keep #8's next questions ordered, with links to their owning issues rather than copied questions or statuses.
 - Give each question or deliverable one owning issue. Keep its current question or outcome at the top of the body; comments preserve discussion. Link evidence, related decisions and delivery work.
