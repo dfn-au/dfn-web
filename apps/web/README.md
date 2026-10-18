@@ -89,16 +89,7 @@ and client error reporting skip admin requests. The public and admin root
 layouts cause a full page load when crossing between those surfaces.
 Diagnostics write to the browser console and server logs, not PostHog.
 
-Run commands from the repo root:
-
-```sh
-pnpm dev
-pnpm build
-pnpm lint
-pnpm typegen
-pnpm typecheck
-pnpm test
-```
+## Content editing and generated types
 
 The public homepage and content pages share the grouped navigation authored in
 **Home Page → Header and footer → Header**. Shared visual components live in `src/components/site`; the design-refresh
