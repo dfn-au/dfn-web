@@ -14,7 +14,7 @@ The current site often uses content, email links, external forms, and downloadab
 
 ## Solution
 
-Create supporter engagement requirements that preserve current content-led and email-led pathways, support explicit segmented opt-ins, expose downloadable resources, and allow staff-created community campaign pages with public progress and donation CTAs.
+Create supporter engagement requirements that preserve current content-led and email-led pathways, support explicit segmented opt-ins, expose downloadable resources, and allow staff-created community campaign pages with donation CTAs.
 
 Supporter engagement content may be shared where it is genuinely the same, but contact prompts, campaign activity, notifications, and reportable activity should carry site context.
 
@@ -31,7 +31,7 @@ Supporter self-service campaign creation is out of scope for launch. New onsite 
 7. As a field trip prospect, I want field trip information and contact details, so that I can ask about future trips.
 8. As a community fundraiser, I want fundraising ideas and toolkit downloads, so that I can run a fundraiser.
 9. As a business/community partner, I want to understand partnership options and contact DFN, so that I can explore involvement.
-10. As a campaign donor, I want a public campaign page with story, image, goal/progress, and donate CTA, so that I can understand and support the campaign.
+10. As a campaign donor, I want a public campaign page with story, image, goal, and donate CTA, so that I can understand and support the campaign.
 11. As a campaign organiser, I want DFN staff to set up the campaign page initially, so that the public campaign is accurate and approved.
 12. As DFN staff, I want campaign donations attributed to the right campaign, so that reporting and follow-up are accurate.
 13. As DFN staff, I want internal notifications for relevant supporter activity where tracked, so that follow-up can happen.
@@ -49,8 +49,8 @@ Supporter self-service campaign creation is out of scope for launch. New onsite 
 - Newsletter/prayer update consent should be explicit and segmented.
 - Newsletter/prayer signup should appear globally and contextually inside donation/event flows.
 - Community campaigns will be staff-created initially.
-- Community campaigns are expected to be country-specific for launch, pending confirmation of whether any campaign needs shared cross-country publishing or combined progress.
-- Staff-created campaign pages should have public pages with title, story, image, goal/progress, and donate CTA.
+- Campaign content can be shared or country-specific, with Christmas confirmed as a shared example in [#68](https://github.com/dfn-au/dfn-web/issues/68). Payment routing and attribution remain country-specific. Public progress and combined totals are deferred under [#19](https://github.com/dfn-au/dfn-web/issues/19).
+- Staff-created campaign pages should have public pages with title, story, image, goal, and donate CTA.
 - Campaign donations should be attributable to the site and campaign.
 - Supporter self-service campaign creation/management is out of scope for launch, including fundraiser self-registration, auto-generated fundraiser pages, approval workflow, and fundraiser publish notifications.
 - Functional analytics/conversion tracking should include newsletter/prayer opt-ins, toolkit downloads, and outbound contact clicks where appropriate, with site attribution.
@@ -60,7 +60,7 @@ Supporter self-service campaign creation is out of scope for launch. New onsite 
 - Test newsletter/prayer signup by confirming segmented consent, site attribution, confirmation behaviour, and reporting/export/integration expectations.
 - Test content-led supporter workflows by confirming that volunteer, intern, field trip, speaker, business/community, and campaign pages expose the right contact links, downloads, and external forms.
 - Test intern workflow by confirming current external forms/download links are present or migrated.
-- Test community campaign pages by creating a staff-managed campaign with story, image, goal/progress, and donate CTA.
+- Test community campaign pages by creating a staff-managed campaign with story, image, goal, and donate CTA.
 - Test campaign donation attribution through the giving workflow, including site attribution.
 - Test conversion tracking expectations for opt-ins, downloads, and outbound contact clicks.
 
@@ -73,14 +73,13 @@ Supporter self-service campaign creation is out of scope for launch. New onsite 
 - Field trip application workflow inside the website.
 - Website-based bulk email sending for supporter communications.
 
-## Open Questions
+## Decision Issues
 
-- Whether any new forms should replace current email-only workflows in a later phase.
-- Exact newsletter/prayer/update segments and consent language.
-- Community campaign page field list.
-- Confirm whether campaigns are always country-specific or whether any shared cross-country campaign/progress model is required.
-- Whether peer-to-peer fundraiser self-registration should be added after launch.
-- Whether toolkit downloads should be tracked as conversions.
+Current questions, outcomes and evidence live in the linked issues.
+
+- [Forms, segments, consent and campaign fields #15](https://github.com/dfn-au/dfn-web/issues/15).
+- [Conversion tracking #16](https://github.com/dfn-au/dfn-web/issues/16).
+- [Mailing and preference ownership #27](https://github.com/dfn-au/dfn-web/issues/27).
 
 ## Reference URLs
 

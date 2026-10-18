@@ -1,5 +1,7 @@
 # Website Technical Architecture Research
 
+> Research context: questions and recommendations below are evidence for review, not a current decision queue or approval. Use [GitHub question issues](https://github.com/dfn-au/dfn-web/issues?q=is%3Aissue%20label%3Aquestion) for current outcomes and unresolved work, and the [PRDs](https://github.com/dfn-au/dfn-web/tree/main/docs/prds/specs) / [ADRs](https://github.com/dfn-au/dfn-web/tree/main/docs/adr) for accepted requirements. Reconcile an untracked finding into its owning issue before treating it as work.
+
 This directory contains the research used to evaluate the website technical architecture. Research recommendations are not decisions. Only files in `docs/adr/` with `Accepted` status are authoritative decisions.
 
 ## Research Areas

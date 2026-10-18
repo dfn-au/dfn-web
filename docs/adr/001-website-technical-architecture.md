@@ -17,7 +17,7 @@ Supporting evaluation, evidence, candidate comparisons, scores, exclusions, risk
 - Use TypeScript throughout.
 - Use Next.js App Router for the public application and operational/admin application routes.
 - Use one Next.js codebase deployed separately for `dfn.org.au` and `dfn.org.nz`. Both deployments use the same Sanity content dataset.
-- Fix the Country Site per deployment using `COUNTRY_SITE=AU` or `COUNTRY_SITE=NZ`. This configuration selects country-specific content and payment configuration; request hostnames and visitor location do not select the Country Site. A launch country-switching UX is not required.
+- Fix the Country Site per deployment using `COUNTRY_SITE=AU` or `COUNTRY_SITE=NZ`. This configuration selects country-specific content and payment configuration; request hostnames and visitor location do not select the Country Site. The [15 October country decision #68](https://github.com/dfn-au/dfn-web/issues/68) requires an obvious way to switch between the sites, superseding the earlier deferral of that UI. Switching navigates to the other deployment; it does not change this deployment configuration.
 - Local development and branch/PR preview deployments also explicitly configure their Country Site. Missing or invalid configuration must fail validation rather than silently select a country.
 - Filter public content by Publishing Scope, generate self-canonical URLs per domain, use alternate hints where appropriate, and return 404 for Site-Specific Content outside its Publishing Scope unless an explicit redirect exists.
 - Use Vercel for application hosting, branch/PR preview deployments, CDN delivery, functions, cache revalidation, and both public domains.
@@ -31,7 +31,7 @@ This ADR does not decide:
 - Exact Sanity schemas, block library, desk structure, content migration inventory, or redirect map.
 - Exact modelling for Shared Content, Site-Specific Content, linked counterparts, field-level site variation, or editor-safe publishing controls. The subsequent [ADR 004](004-country-site-publishing.md) records the publishing model and v1 boundaries for [issue #21](https://github.com/dfn-au/dfn-web/issues/21).
 - Whether Sanity Studio remains embedded in the Next.js application or moves to a separate application. This is owned by [issue #18](https://github.com/dfn-au/dfn-web/issues/18).
-- Operational persistence, payments, transactional notifications, or analytics vendors. Those choices remain undecided and are documented as research rather than ADRs. [ADR 005](005-operational-staff-authentication.md) subsequently decides operational staff authentication.
+- Operational persistence, payments, transactional notifications, or analytics vendors. These choices are addressed by subsequent decisions. [ADR 005](005-operational-staff-authentication.md) decides operational staff authentication; [ADR 006](006-stripe-donation-ownership.md) records donation payments, records, and the boundary with existing Stripe emails and recurring management. Other workflow/vendor choices remain separate.
 
 ## Consequences
 

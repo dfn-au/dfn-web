@@ -40,8 +40,8 @@ This is not intended to be a full conference platform. Waitlists and website-bas
 ## Implementation Decisions
 
 - Events cover DFN-run public events only for launch.
-- Events are country-specific by default.
-- A genuinely shared virtual or cross-country event may be published to both domains, but physical events should normally be Australia-only or New Zealand-only.
+- Event listings are separate by country, confirmed in [#68](https://github.com/dfn-au/dfn-web/issues/68). Any shared virtual/cross-country exception needs an explicit decision in [#9](https://github.com/dfn-au/dfn-web/issues/9).
+- An external event platform owns registration, ticketing, capacity, attendee details, confirmations and staff operations, as agreed in [#19](https://github.com/dfn-au/dfn-web/issues/19). Vendor selection remains with [#9](https://github.com/dfn-au/dfn-web/issues/9). The requirements below apply to that workflow; they do not require a custom website registration database or event admin.
 - Third-party/community fundraiser activity belongs under supporter/community campaigns, not event ticketing.
 - Event functionality should support DFN-run public events broadly, not only dinner-style events.
 - Event pages should support multiple sessions/venues under one event campaign.
@@ -67,7 +67,7 @@ This is not intended to be a full conference platform. Waitlists and website-bas
 - Internal notifications are required.
 - Event data should be reportable/exportable, including registrations and dietary requirements, though the system of record is TBD.
 - Event exports should include site, purchaser, guests, session/venue, tickets, payment status, dietary details, seating requests, referral source, and check-in/attendance fields where available.
-- Manual/complimentary/offline registrations are operationally required, but whether the website must support creating them depends on the event registration system of record.
+- Manual/complimentary/offline registrations are operationally required in the external event workflow; its concrete support and staff process remain with [#9](https://github.com/dfn-au/dfn-web/issues/9).
 - Staff event attendee communications are operationally required, but sending emails from the website is out of scope for launch; export/integration is sufficient.
 - Staff should be able to publish events and preview event pages before publishing.
 
@@ -97,20 +97,13 @@ This is not intended to be a full conference platform. Waitlists and website-bas
 - Current event pages include RSVP dates, age suitability notes, donation fallback CTAs, and contact prompts.
 - Current Australian Hope Dinners page shows sold-out labels for some venues, but public page content does not confirm how capacity is configured.
 
-## Open Questions
+## Decision Issues
 
-- Separate event deep dive.
-- Confirm current capacity/sold-out mechanism.
-- Confirm current ticket quantity limits.
-- Event registration system of record.
-- Whether any cross-country or shared virtual event needs to be published to both domains.
-- Whether manual/complimentary/offline registration creation belongs in the website.
-- Seating/table requirements.
-- Cancellations/refunds.
-- Multi-venue event structure details.
-- Guest data model and privacy.
-- Event-specific donation prompt rules.
-- Sensitive event data retention policy.
+Current questions, outcomes and evidence live in the linked issues.
+
+- [Event platform and operational requirements #9](https://github.com/dfn-au/dfn-web/issues/9).
+- [Notifications and confirmations #13](https://github.com/dfn-au/dfn-web/issues/13).
+- [Guest data protection and retention #25](https://github.com/dfn-au/dfn-web/issues/25).
 
 ## Reference URLs
 

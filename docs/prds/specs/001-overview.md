@@ -33,7 +33,7 @@ This parent PRD defines shared launch scope, common acceptance criteria, migrati
 
 1. As a donor, I want the rebuilt site to support the same core ways to give, so that I can continue supporting DFN without friction.
 2. As an event attendee, I want active DFN event registrations to work on the rebuilt site, so that I can register and pay confidently.
-3. As a sponsor, I want sponsorship workflows to remain available, so that I can support a child or sponsorship programme.
+3. As an existing sponsor, I want the rebuild to preserve existing external arrangements; public sponsorship selection is outside launch scope ([#10](https://github.com/dfn-au/dfn-web/issues/10)).
 4. As a supporter, I want current ways to engage with DFN to remain findable, so that I can volunteer, fundraise, receive updates, or contact the team.
 5. As a visitor researching DFN, I want clear trust, contact, impact, and policy information, so that I can decide whether to engage.
 6. As DFN staff, I want live and evergreen content migrated, so that the new site can launch without losing important information.
@@ -49,7 +49,7 @@ This parent PRD defines shared launch scope, common acceptance criteria, migrati
 
 - Preserve current functionality at the workflow level, not by cloning every current page.
 - Avoid technology-stack decisions in PRDs unless later implementation issues require them.
-- Treat Australia and New Zealand as separate public domains.
+- Treat Australia and New Zealand as sibling sites with an obvious country switch. Donations, office details, events and EOFY content are country-specific; shared stories and campaigns remain possible. See [country behaviour #68](https://github.com/dfn-au/dfn-web/issues/68).
 - Both domains are launch-critical.
 - Shared content can be published to both domains in one editorial action.
 - Site-specific content should only appear on its intended domain.
@@ -75,13 +75,12 @@ This parent PRD defines shared launch scope, common acceptance criteria, migrati
 - Payments, sponsorships, event registrations, campaign gifts, confirmations, notifications, analytics conversions, exports, and reports must carry site attribution.
 - Direct deposit/offline giving instructions, transactional email sender configuration, and receipt/trust wording should be AU/NZ-specific.
 - Future AU-only or NZ-only staff permissions should remain possible, but a detailed role/permission matrix is out of scope for launch.
-- The current website includes physical merchandise/store-like items, but the rebuild should not assume a physical merchandise or ecommerce workflow is required for launch.
-- Product-like giving should be treated as donation catalogue/campaign giving unless DFN confirms that physical merchandise, fulfilment, inventory, or shipping is still required.
+- Preserve existing external sponsorship arrangements; public sponsorship selection, catalogue and merchandise workflows are outside website launch scope. Existing URLs need migration/redirect treatment in [#8](https://github.com/dfn-au/dfn-web/issues/8).
 
 ## Testing Decisions
 
 - Test at the highest user-workflow level available rather than testing implementation details.
-- Launch parity should be validated by completing representative end-to-end flows for giving, sponsorship, event registration, newsletter/prayer opt-in, contact discovery, toolkit/resource access, and content discovery.
+- Launch parity should be validated by completing representative end-to-end flows for giving, external event registration, newsletter/prayer opt-in, contact discovery, toolkit/resource access, and content discovery.
 - Launch parity should validate both `dfn.org.au` and `dfn.org.nz`.
 - Migration should be validated by checking the approved evergreen content inventory, active campaign inventory, and redirect map per domain.
 - Accessibility should be validated against keyboard navigation, form labelling, error messaging, focus handling, and screen-reader-friendly core workflows.
@@ -94,30 +93,32 @@ This parent PRD defines shared launch scope, common acceptance criteria, migrati
 - Page-for-page cloning of the existing WordPress structure.
 - Full donor account area on the DFN website.
 - Detailed staff role/permission matrix.
-- Geo-redirect or required country-switching UX.
+- Automatic geo-redirects. Manual country switching is required by [#68](https://github.com/dfn-au/dfn-web/issues/68).
 - Full event deep dive.
 - Full information architecture deep dive.
-- Full ecommerce/physical merchandise rebuild unless confirmed later.
+- Physical merchandise/ecommerce, public child sponsorship, gift catalogue and public campaign totals, as recorded in [#14](https://github.com/dfn-au/dfn-web/issues/14), [#10](https://github.com/dfn-au/dfn-web/issues/10), [#19](https://github.com/dfn-au/dfn-web/issues/19) and [#20](https://github.com/dfn-au/dfn-web/issues/20). Revisit only through an explicit scope decision.
 
-## Open Questions
+## Decision Issues
 
-- Event requirements deep dive.
-- Information architecture and evergreen content deep dive.
-- Child profile availability/locking details.
-- Annual sponsorship confirmation.
-- Reporting/export system of record.
-- Donation catalogue naming.
-- Confirm whether campaigns are always country-specific or whether any shared cross-country campaign/progress model is required.
-- Physical merchandise/store scope, including whether current merchandise is active and whether fulfilment, inventory, shipping, or physical payment/reporting workflows are required.
-- Internal notification recipients by workflow.
-- Confirmation email ownership by workflow.
-- Final AU/NZ tax receipt rules.
-- Community campaign field list.
-- SEO redirect map and migrated URL list per domain.
-- Active/current campaign inventory per domain.
-- Migration acceptance criteria and launch cutover checklist.
-- Analytics event taxonomy and consent/privacy requirements.
-- CRM/DMS/EMS source-of-truth boundaries for contacts, gifts, receipts, subscriptions, event history, sponsorship history, supporter communications, and payment failure status.
+Current questions, outcomes and evidence live in the linked issues.
+
+- [IA, content inventory and design review #7](https://github.com/dfn-au/dfn-web/issues/7).
+- [Redirect map and launch checks #8](https://github.com/dfn-au/dfn-web/issues/8).
+- [External event requirements #9](https://github.com/dfn-au/dfn-web/issues/9).
+- [Donation tax and receipt wording #11](https://github.com/dfn-au/dfn-web/issues/11).
+- [Records, reports and handoffs #12](https://github.com/dfn-au/dfn-web/issues/12).
+- [Other notifications and confirmations #13](https://github.com/dfn-au/dfn-web/issues/13).
+- [Engagement forms and campaign fields #15](https://github.com/dfn-au/dfn-web/issues/15).
+- [Analytics and consent #16](https://github.com/dfn-au/dfn-web/issues/16).
+- [Remaining architecture review #17](https://github.com/dfn-au/dfn-web/issues/17).
+- [Studio deployment #18](https://github.com/dfn-au/dfn-web/issues/18).
+- [Annual receipts and Xero #22](https://github.com/dfn-au/dfn-web/issues/22).
+- [Shared CRM controls #23](https://github.com/dfn-au/dfn-web/issues/23).
+- [Payment failure operations #24](https://github.com/dfn-au/dfn-web/issues/24).
+- [Sensitive data #25](https://github.com/dfn-au/dfn-web/issues/25).
+- [External sponsorship data #26](https://github.com/dfn-au/dfn-web/issues/26).
+- [Marketing communications #27](https://github.com/dfn-au/dfn-web/issues/27).
+- [CRM vendor acceptance #69](https://github.com/dfn-au/dfn-web/issues/69).
 
 ## Reference URLs
 

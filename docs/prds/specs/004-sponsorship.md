@@ -6,19 +6,25 @@ Parent programme PRD: [Parent Rebuild Scope and Launch Parity](001-overview.md)
 
 This is a PRD/epic spec. It is not intended to be implemented directly. Use it to create focused GitHub decision issues and thin vertical implementation issues for sponsorship programme selection, standard child profiles, vulnerable child sponsorship, safeguarding, and sponsorship attribution.
 
-## Problem Statement
+## Current Scope
+
+Public child sponsorship is deferred outside website launch scope, confirmed by Andrew on 12 September in [#10](https://github.com/dfn-au/dfn-web/issues/10) and [#19](https://github.com/dfn-au/dfn-web/issues/19). Revisit only if DFN explicitly reinstates it. The proposal below is retained for that review and does not authorise implementation or block launch. Existing external sponsorship records and obligations remain a separate concern in [#26](https://github.com/dfn-au/dfn-web/issues/26).
+
+## Historical Proposal
+
+### Problem Statement
 
 DFN needs the rebuilt websites to support child sponsorship while protecting vulnerable children and preserving donor confidence.
 
 The current site includes multiple sponsorship programmes, individual standard child profiles, programme-level scholarship giving, and vulnerable child sponsorship that intentionally does not publish child profiles online. The rebuild needs clear functional requirements for profile display, sponsorship checkout, attribution, staff profile management, privacy, and what remains outside the website.
 
-## Solution
+### Solution
 
 Create country-specific sponsorship workflows that support programme-level sponsorship options and standard child profile selection. Published standard profiles can be browsed and selected by donors, while vulnerable child sponsorship remains programme-level and staff-allocated after payment.
 
 The website captures sponsorship intent/payment and confirms next steps. Sponsor updates, reports, child activities, and letters are handled outside the website for launch.
 
-## User Stories
+### User Stories
 
 1. As a donor, I want to compare sponsorship programmes, so that I can choose the form of sponsorship that suits me.
 2. As a donor, I want to browse standard child profiles, so that I can sponsor a specific child.
@@ -35,7 +41,7 @@ The website captures sponsorship intent/payment and confirms next steps. Sponsor
 13. As DFN staff, I want sponsorship records to include programme and child attribution where applicable, so that follow-up and reporting are accurate.
 14. As DFN staff, I want vulnerable child sponsorships to be allocated privately after payment, so that privacy rules are preserved.
 15. As DFN staff, I want sensitive profile content constrained, so that profiles do not expose unsafe family or location details.
-## Implementation Decisions
+### Implementation Decisions
 
 - Child sponsorship is distinct enough to have its own PRD.
 - Sponsorship programme content, child profile availability, checkout, payment account, receipts, notifications, and reports should be country-specific.
@@ -59,7 +65,7 @@ The website captures sponsorship intent/payment and confirms next steps. Sponsor
 - Sponsorships are recurring by default, with annual support if already offered/current.
 - Donor self-service for recurring payment management can be provider-hosted at launch.
 
-## Testing Decisions
+### Testing Decisions
 
 - Test sponsorship on both domains by browsing published profiles, selecting a child, completing checkout, and verifying site and sponsorship attribution.
 - Test that draft/unpublished profiles are not public and cannot be sponsored.
@@ -70,7 +76,7 @@ The website captures sponsorship intent/payment and confirms next steps. Sponsor
 - Test that sponsorship profiles and checkout options appear only on the intended site unless explicitly published to both.
 - Test safeguarding constraints by validating profile fields and published display content.
 
-## Out of Scope
+### Out of Scope
 
 - Sponsor portal/account area.
 - Online sponsor letters, reports, school updates, child activities, or relationship management.
@@ -78,16 +84,16 @@ The website captures sponsorship intent/payment and confirms next steps. Sponsor
 - Complex staff approval workflow beyond draft and published.
 - Detailed role/permission matrix.
 
-## Current-Site Observations
+### Current-Site Observations
 
 - Current standard sponsorship appears to offer individual profile selection at `$48/month` and references `$576/year`. Treat these as observed current-site values only; confirm annual sponsorship and current pricing before implementation.
 
-## Open Questions
+## Decision Issues
 
-- Confirm exact child-profile unavailability/locking behaviour once sponsored.
-- Confirm annual sponsorship is current and should be supported online.
-- Exact child profile fields and safeguarding wording.
-- Whether filters are needed for age, gender, school, or region.
+Current questions, outcomes and evidence live in the linked issues.
+
+- [Deferred public sponsorship scope and revisit condition #10](https://github.com/dfn-au/dfn-web/issues/10).
+- [Existing external sponsorship data boundary #26](https://github.com/dfn-au/dfn-web/issues/26).
 
 ## Reference URLs
 

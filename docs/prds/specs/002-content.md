@@ -42,7 +42,10 @@ This PRD records current functional requirements while leaving final navigation 
 
 - Combine content, navigation, trust, legal, footer, contact, and bequest content into one PRD unless later complexity requires separation.
 - Australia and New Zealand are separate public domains: `dfn.org.au` and `dfn.org.nz`.
-- Each site can have its own homepage, navigation, footer, contact details, charity/legal/tax snippets, and calls to action.
+- Show only the current country's office details in the footer and local contact content, with an obvious way to switch to the other site. Donation journeys, events and EOFY content stay country-specific. This follows [the 15 October decision #68](https://github.com/dfn-au/dfn-web/issues/68).
+- Shared stories, impact content and campaigns can be published to both sites; Christmas was confirmed as a shared-content example. Shared copy does not combine payment accounts or fundraising totals.
+- The final country label, flag use and logo treatment remain part of [design review #7](https://github.com/dfn-au/dfn-web/issues/7). A browser domain alone does not provide the agreed switching control.
+- Andrew proposes the content hierarchy for stakeholder feedback. Follow the existing brand guidelines and replace old school-uniform photography with approved new-uniform photos, as recorded in [#7](https://github.com/dfn-au/dfn-web/issues/7). The transcript does not approve the experimental dark design or photo overlay.
 - Staff should be able to publish shared content to both sites in one action where the public item is genuinely the same.
 - Content must support publishing scope: Australia only, New Zealand only, or both.
 - [ADR 004](../../adr/004-country-site-publishing.md) defines shared documents with optional explicit AU/NZ content differences, country-specific sections, Studio previews, reference safeguards, and v1 deferrals. Different wording does not require separate documents.
@@ -68,7 +71,7 @@ This PRD records current functional requirements while leaving final navigation 
 
 ## Testing Decisions
 
-- Test public content pages by verifying navigation, contact details, trust links, bequest resources, story listing/detail pages, and local information on both domains.
+- Test public content pages by verifying navigation, country identification/switching, local-only office details, trust links, bequest resources and story listing/detail pages on both domains. Switching must not offer a missing counterpart as a working page; review its destination behaviour with navigation in [#7](https://github.com/dfn-au/dfn-web/issues/7).
 - Test SEO/indexability behaviour through page metadata (including Open Graph and Twitter Card tags), sitemap availability, self-canonical URLs, alternate hints where applicable, and redirect outcomes per domain.
 - Test staff content workflows by creating, previewing, publishing, editing, and archiving representative content.
 - Test publishing scope by confirming shared content appears on both domains and site-specific content returns 404 on the other domain unless explicitly redirected.
@@ -85,13 +88,12 @@ This PRD records current functional requirements while leaving final navigation 
 - Detailed staff permissions by role.
 - Bequest-specific legal advice workflows.
 
-## Open Questions
+## Decision Issues
 
-- Information architecture deep dive.
-- Detailed schema and form implementation for the publishing model accepted in [ADR 004](../../adr/004-country-site-publishing.md).
-- Approved evergreen content list.
-- Final URL redirect map per domain.
-- Whether stale historical campaigns become archive pages or redirect only.
+Current questions, outcomes and evidence live in the linked issues.
+
+- [IA, migration inventory and visual review #7](https://github.com/dfn-au/dfn-web/issues/7).
+- [Redirects and launch checks #8](https://github.com/dfn-au/dfn-web/issues/8).
 
 ## Reference URLs
 

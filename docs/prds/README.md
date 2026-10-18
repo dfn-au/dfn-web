@@ -1,6 +1,6 @@
 # PRD Structure
 
-PRDs live in git under `docs/prds/specs`. GitHub Issues are for actual task work created from those PRDs.
+PRDs live in git under `docs/prds/specs`. GitHub Issues own questions, confirmed outcomes and implementation work, following the [issue workflow](../agents/issue-tracker.md).
 
 The canonical requirements are the programme PRD and epic PRDs.
 
@@ -50,7 +50,7 @@ Keep PRDs lean and consistent. Each PRD should make these sections easy to find:
 - Open questions
 - Reference URLs, where useful
 
-Implementation decisions are approved direction. Open questions are unresolved and should not be treated as requirements.
+Implementation decisions are approved direction and link to their decision issues. Open-question sections link to the owning issues; read current status there. Research and workshop notes do not establish approval.
 
 ## GitHub Vertical Implementation Issues
 
@@ -60,30 +60,12 @@ Use GitHub Issues for agent-ready work, not the broad PRDs.
 
 ## Decision Issues
 
-Some areas intentionally remain unresolved. Create focused GitHub decision/deep-dive issues before slicing implementation work where needed:
+Use [open question issues](https://github.com/dfn-au/dfn-web/issues?q=is%3Aissue%20is%3Aopen%20label%3Aquestion) to see what needs a decision, and [closed question issues](https://github.com/dfn-au/dfn-web/issues?q=is%3Aissue%20is%3Aclosed%20label%3Aquestion) to find confirmed or deferred outcomes. The [issue workflow](../agents/issue-tracker.md) defines recording, closure and reconsideration. Keep question text and status in the issue rather than a second register here.
 
-- Event requirements deep dive
-- Information architecture and evergreen content deep dive
-- Child profile availability/locking once sponsored
-- Reporting/export system of record
-- Physical merchandise/store scope
-- Final AU/NZ receipt rules
-- Campaign country scope and whether any shared cross-country campaign/progress model is required
-- CRM/DMS/EMS source-of-truth boundaries for contacts, gifts, receipts, subscriptions, events, sponsorship history, and payment failure status
-- Xero reconciliation/export/integration workflow
-- Marketing/supporter EMS ownership and suppression-list ownership
+## Implementation Tracking and Go-live Follow-ups
 
-Use this lightweight decision shape:
-
-```text
-Title:
-Status:
-Context:
-Decision:
-Consequences:
-Affected PRDs:
-Owner/date:
-```
+- Stripe donation implementation: [one-off donations #62](https://github.com/dfn-au/dfn-web/issues/62), [monthly donations #63](https://github.com/dfn-au/dfn-web/issues/63), [appeal attribution #64](https://github.com/dfn-au/dfn-web/issues/64), and [bank-deposit instructions #65](https://github.com/dfn-au/dfn-web/issues/65).
+- [Must revisit before go-live](https://github.com/dfn-au/dfn-web/issues/8): register of deferred work that must be addressed before launch; detailed work stays in the linked issues.
 
 ## Working Reports
 

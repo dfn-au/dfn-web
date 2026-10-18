@@ -52,10 +52,10 @@ DFN should have a coherent CRM/DMS/EMS operating model where:
 ## Implementation Decisions
 
 - Create a separate CRM/DMS/EMS requirements stream instead of expanding website PRDs to cover donor operations.
-- Treat AU/NZ separation as an ecosystem requirement, not only a website requirement.
+- Use one shared AU/NZ CRM/DMS/EMS setup for now, as confirmed in [#23](https://github.com/dfn-au/dfn-web/issues/23#issuecomment-4796416291). Detailed entity controls and proof of future separation remain in that issue. This does not select a vendor.
 - Contacts may exist across both AU and NZ contexts, but gifts, receipts, campaigns, subscriptions, payment accounts, sender identity, legal entity reporting, and relevant access controls must preserve entity/country context.
 - AU/NZ separability is critical for selection, but it does not have to be solved by native multi-entity CRM features alone. A candidate approach may satisfy this if entity-scoped data can be cleanly exported, migrated, or split into separate systems later.
-- Contact records should support individual and household/family/account relationships.
+- Contact records should support individual and household/family relationships; [#23](https://github.com/dfn-au/dfn-web/issues/23) owns whether these need first-class records or simpler links.
 - Contact records should support tags, groups, structured fields, custom notes, donor acquisition source, and activity history.
 - Activity history should include relevant website forms, donations, sponsorships, event registrations/attendance, emails sent where available, staff notes, recurring payment failures, and supporter interests.
 - Duplicate detection and merge should be an explicit admin workflow.
@@ -105,7 +105,7 @@ DFN should have a coherent CRM/DMS/EMS operating model where:
 - Reporting should support both operational exports and strategic dashboards.
 - Selection-critical reporting outputs include donor/gift history, campaign totals, project/designation totals, active/lapsed donors, recurring payment failures, sponsorship status, and subscription counts.
 - Complete and reliable exports are acceptable for selection-critical reporting. Dashboards are valuable but should-have rather than hard requirements unless staff later identify specific dashboard needs.
-- Offline and direct-deposit gifts should be included in donor history. Public campaign progress should include offline/direct-deposit gifts only where staff deliberately add offline adjustments to the displayed total.
+- Offline and direct-deposit gifts should be included in donor history. Public campaign progress remains deferred under [#19](https://github.com/dfn-au/dfn-web/issues/19).
 - Operational exports should support finance reconciliation, event running, campaign reporting, sponsorship follow-up, communications lists, and recurring payment follow-up.
 - Strategic dashboards should support active donors, lapsed donors, subscribers, campaign totals, sponsorship status, event participation, giving trends, and recurring payment failure status.
 - Staff roles/permissions should restrict access to sensitive donor notes, prayer update lists, child sponsorship details, and financial data.
@@ -152,32 +152,21 @@ DFN should have a coherent CRM/DMS/EMS operating model where:
 - Later optimisation items should not drive CRM/DMS/EMS selection unless critical criteria are otherwise satisfied. This includes SMS campaigns, social media scheduling, A/B testing, advanced email optimisation, abandoned donation recovery, matching gifts, and peer-to-peer fundraiser self-service.
 - Event operations and major donor pipeline tracking should not be hard CRM/DMS/EMS selection criteria. Event history visibility and basic major-donor tracking are sufficient unless staff later identify deeper needs.
 
-## Open Questions
+## Decision Issues
 
-- What is the detailed source-of-truth matrix for contacts, donor records, gifts, receipts, subscriptions, event history, sponsorship history, and payment failure status, given Xero is financial truth and CRM/DMS is donor stewardship truth?
-- Should Australia and New Zealand operate separate CRM/DMS/EMS instances from the start, or use a shared setup that can be cleanly exported, migrated, or split later as the entities separate?
-- What is the exact staff/Xero workflow for generating official AU and NZ annual tax receipts / EOFY statements, including any NZ/GDG handoff?
-- What are the final AU/NZ tax-deductibility rules by gift type, designation, event payment, sponsorship, catalogue item, and merchandise/book sale?
-- Does Xero support need to go beyond reliable reconciliation/export support into direct API integration or a managed accounting workflow?
-- What are the exact recurring payment failure retry, donor notification, staff notification, and close-out rules across the payment provider, CRM/DMS, and EMS?
-- Which EMS owns marketing/supporter email sends, and what preference/suppression sync behaviour is required between EMS and CRM/DMS?
-- Which transactional email system or operational tool owns confirmations, staff notifications, and payment/event receipts for each workflow?
-- Which event system owns registration operations, attendee management, and attendance capture, given CRM/DMS selection only requires event history visibility?
-- What child sponsorship data is safe and practical to manage inside CRM/DMS versus a specialist sponsorship process?
-- What minimum sensitive-data protections are required for donor notes, finance data, prayer update lists, and child sponsorship information?
-- What dashboard/reporting questions are required for board, annual report, fundraising, finance, and operations use?
+Current questions, outcomes and evidence live in the linked issues.
 
-## Questions for Kat Davies / CRM Selection Project
-
-- Should household/family/account relationships be first-class records in the CRM/DMS, or is a simpler contact relationship model sufficient for DFN staff workflows?
-- Should Australia and New Zealand operate separate CRM/DMS/EMS instances from the start, or use a shared setup that can be cleanly exported, migrated, or split later as the entities separate?
-- What minimum website-to-CRM/DMS data contract is required at launch so website-originated contacts, gifts, payments, designations, tax classes, campaign/source attribution, consent, recurring status, and site/entity context can be migrated or synced later?
-- What is the exact staff/Xero workflow for generating official AU and NZ annual tax receipts / EOFY statements, including any NZ/GDG handoff?
-- Should CRM/DMS candidates be rejected if they cannot preserve the donor, gift, designation, tax class, entity, and reconciliation data needed by the accounting/receipting workflow?
-- Does Xero support need to go beyond reliable reconciliation/export support into direct API integration or a managed accounting workflow?
-- What child sponsorship data is safe and practical to manage inside CRM/DMS versus a specialist sponsorship process?
-- What reporting questions must the selected CRM/DMS/EMS answer for board, annual report, fundraising, finance, and operations use?
-- Can the required models and workflows be configured and maintained without specialist vendor consulting, after reasonable setup and staff/admin training?
+- [Event operations #9](https://github.com/dfn-au/dfn-web/issues/9).
+- [Tax and receipt wording #11](https://github.com/dfn-au/dfn-web/issues/11).
+- [Records, reports and data contracts #12](https://github.com/dfn-au/dfn-web/issues/12).
+- [Operational notifications #13](https://github.com/dfn-au/dfn-web/issues/13).
+- [Annual receipts and Xero #22](https://github.com/dfn-au/dfn-web/issues/22).
+- [Shared CRM contacts, controls and separability #23](https://github.com/dfn-au/dfn-web/issues/23).
+- [Payment failure operations #24](https://github.com/dfn-au/dfn-web/issues/24).
+- [Sensitive data #25](https://github.com/dfn-au/dfn-web/issues/25).
+- [Sponsorship data boundary #26](https://github.com/dfn-au/dfn-web/issues/26).
+- [Marketing and suppression ownership #27](https://github.com/dfn-au/dfn-web/issues/27).
+- [Vendor selection and acceptance evidence #69](https://github.com/dfn-au/dfn-web/issues/69).
 
 ## Source CSV Rows
 
