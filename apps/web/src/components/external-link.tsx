@@ -1,17 +1,20 @@
 "use client";
 
 import posthog from "posthog-js";
+import { SiteLink, type SiteLinkProps } from "./site/site-link";
 
-type Props = React.AnchorHTMLAttributes<HTMLAnchorElement>;
-
-export function ExternalLink({ href, children, ...props }: Props) {
+// Keep the legacy rich-text-only event name, eligibility and href property
+// until existing PostHog reports can be reviewed. SiteLink does not emit it.
+export function ExternalLink({ href, onClick, ...props }: SiteLinkProps) {
 	return (
-		<a
-			href={href}
-			onClick={() => posthog.capture("external_link_clicked", { href })}
+		<SiteLink
 			{...props}
-		>
-			{children}
-		</a>
+			href={href}
+			onClick={(event) => {
+				onClick?.(event);
+				if (!event.defaultPrevented)
+					posthog.capture("external_link_clicked", { href });
+			}}
+		/>
 	);
 }

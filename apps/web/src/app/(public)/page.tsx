@@ -3,7 +3,6 @@ import { notFound } from "next/navigation";
 import { Homepage } from "@/components/homepage/homepage";
 import { PageViewTracker } from "@/components/page-view-tracker";
 import { PalettePreview } from "@/components/site/palette-preview";
-import { resolvePalette } from "@/components/site/palettes";
 import { sanityFetch } from "@/sanity/lib/live";
 import { HOME_PAGE_QUERY, type HomePage } from "@/sanity/lib/queries";
 
@@ -19,24 +18,11 @@ export async function generateMetadata(): Promise<Metadata> {
 		: {};
 }
 
-export default async function HomePageRoute({
-	searchParams,
-}: {
-	searchParams: Promise<{
-		variant?: string | string[];
-		clean?: string | string[];
-	}>;
-}) {
-	const [homePage, { variant, clean }] = await Promise.all([
-		getHomePage(),
-		searchParams,
-	]);
+export default async function HomePageRoute() {
+	const homePage = await getHomePage();
 	if (!homePage) notFound();
 	return (
-		<PalettePreview
-			initialPalette={resolvePalette(variant)}
-			showControls={clean !== "1"}
-		>
+		<PalettePreview>
 			<PageViewTracker
 				event="home_page_viewed"
 				properties={{ title: homePage.title ?? undefined }}

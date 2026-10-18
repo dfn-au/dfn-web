@@ -1,9 +1,24 @@
 "use client";
 
-import type { ReactNode } from "react";
-import { useEffect, useState } from "react";
-import { PaletteContext } from "./navigation-link";
+import {
+	type ReactNode,
+	useEffect,
+	useState,
+	useSyncExternalStore,
+} from "react";
+import { LinkContext } from "./link-context";
 import { type Palette, palettes, resolvePalette } from "./palettes";
+
+function subscribeToDocumentUrl(onChange: () => void) {
+	addEventListener("popstate", onChange);
+	addEventListener("hashchange", onChange);
+	return () => {
+		removeEventListener("popstate", onChange);
+		removeEventListener("hashchange", onChange);
+	};
+}
+const getDocumentUrl = () => document.baseURI;
+const getServerDocumentUrl = () => undefined;
 
 const labels: Record<Palette, string> = {
 	charcoal: "Warm charcoal",
@@ -12,33 +27,34 @@ const labels: Record<Palette, string> = {
 	umber: "Earthy umber",
 };
 
-export function PalettePreview({
-	initialPalette,
-	showControls,
-	children,
-}: {
-	initialPalette: Palette;
-	showControls: boolean;
-	children: ReactNode;
-}) {
-	const [palette, setPalette] = useState(initialPalette);
-	const [controlsVisible, setControlsVisible] = useState(showControls);
+export function PalettePreview({ children }: { children: ReactNode }) {
+	const documentUrl = useSyncExternalStore(
+		subscribeToDocumentUrl,
+		getDocumentUrl,
+		getServerDocumentUrl,
+	);
+	const [palette, setPalette] = useState<Palette>("charcoal");
+	const [controlsVisible, setControlsVisible] = useState(true);
 	useEffect(() => {
-		const sync = () => {
-			const params = new URLSearchParams(location.search);
-			setPalette(resolvePalette(params.get("variant")));
-			setControlsVisible(params.get("clean") !== "1");
-		};
-		sync();
-		addEventListener("popstate", sync);
-		return () => removeEventListener("popstate", sync);
+		try {
+			setPalette(resolvePalette(localStorage.getItem("dfn-palette")));
+			setControlsVisible(localStorage.getItem("dfn-palette-hidden") !== "1");
+		} catch {
+			// The temporary controls still work when browser storage is unavailable.
+		}
 	}, []);
 	function changePalette(value: string) {
 		const next = resolvePalette(value);
 		setPalette(next);
-		const url = new URL(location.href);
-		url.searchParams.set("variant", next);
-		history.replaceState(null, "", url);
+		try {
+			localStorage.setItem("dfn-palette", next);
+		} catch {}
+	}
+	function showControls(visible: boolean) {
+		setControlsVisible(visible);
+		try {
+			localStorage.setItem("dfn-palette-hidden", visible ? "0" : "1");
+		} catch {}
 	}
 	function cyclePalette(direction: number) {
 		changePalette(
@@ -54,10 +70,10 @@ export function PalettePreview({
 			data-palette={palette}
 			className="@container min-h-screen bg-page font-body font-normal text-ink [color-scheme:dark] [&_:focus-visible]:outline-2 [&_:focus-visible]:outline-offset-4 [&_:focus-visible]:outline-ink"
 		>
-			<PaletteContext.Provider value={{ palette, controlsVisible }}>
+			<LinkContext.Provider value={{ controlsVisible, documentUrl }}>
 				<div id="dh-top">{children}</div>
-			</PaletteContext.Provider>
-			{controlsVisible && (
+			</LinkContext.Provider>
+			{controlsVisible ? (
 				<nav
 					aria-label="Colour scheme"
 					className="fixed bottom-[max(16px,env(safe-area-inset-bottom))] left-1/2 z-50 flex max-w-[calc(100%-16px)] -translate-x-1/2 items-center gap-[3px] rounded-full border border-[#ccc4b9] bg-[#f4f0e9] p-[5px] font-sans text-sm leading-normal font-medium text-[#272522] shadow-[0_4px_24px_#0005] [color-scheme:light] [&_:focus-visible]:outline-[#272522]"
@@ -94,14 +110,24 @@ export function PalettePreview({
 					>
 						→
 					</button>
-					<a
+					<button
+						type="button"
 						aria-label="Hide controls"
-						href={`?variant=${palette}&clean=1`}
+						onClick={() => showControls(false)}
 						className="flex min-h-11 shrink-0 items-center border-l border-[#cfc7bb] px-2 text-[13px] hover:underline hover:underline-offset-4 max-[360px]:px-1 max-[360px]:text-xs"
 					>
 						Hide<span className="max-[360px]:hidden">&nbsp;controls</span>
-					</a>
+					</button>
 				</nav>
+			) : (
+				<button
+					type="button"
+					onClick={() => showControls(true)}
+					aria-label="Show colour controls"
+					className="fixed right-4 bottom-4 z-50 rounded-full bg-paper px-3 py-2 text-xs text-ink shadow"
+				>
+					Colours
+				</button>
 			)}
 		</div>
 	);
