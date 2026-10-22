@@ -1,7 +1,11 @@
 import { withPostHogConfig } from "@posthog/nextjs-config";
 import type { NextConfig } from "next";
 
+import { getCountrySite } from "./src/lib/country-site";
 import { dataset, projectId } from "./src/sanity/env";
+
+// Throws for a missing or invalid COUNTRY_SITE, stopping build, dev and start.
+getCountrySite();
 
 const nextConfig: NextConfig = {
 	productionBrowserSourceMaps: true,

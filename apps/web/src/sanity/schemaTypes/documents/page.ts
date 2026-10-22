@@ -1,6 +1,12 @@
 import { DocumentTextIcon } from "@sanity/icons/DocumentText";
 import { defineArrayMember, defineField, defineType } from "sanity";
 
+import { openingSectionScopeError } from "../../../lib/country-site";
+import {
+	describeScope,
+	pagePublishingScope,
+	sharedOrCountryFields,
+} from "../country-fields";
 import { pageSectionNames } from "../objects/pageSections";
 
 export const page = defineType({
@@ -38,13 +44,26 @@ export const page = defineType({
 					return true;
 				}),
 		}),
-		defineField({
-			name: "description",
-			title: "Search description",
-			type: "text",
-			rows: 3,
-			description: "A short summary for search results and link previews.",
-		}),
+		pagePublishingScope,
+		// The title stays shared because it is the slug source and Studio list
+		// title. The browser title is the part that can differ by country.
+		...sharedOrCountryFields(
+			defineField({
+				name: "browserTitle",
+				title: "Browser title",
+				type: "string",
+				description: "Leave empty to use the page title.",
+			}),
+		),
+		...sharedOrCountryFields(
+			defineField({
+				name: "description",
+				title: "Search description",
+				type: "text",
+				rows: 3,
+				description: "A short summary for search results and link previews.",
+			}),
+		),
 		defineField({
 			name: "sections",
 			title: "Sections",
@@ -54,7 +73,7 @@ export const page = defineType({
 				rule
 					.required()
 					.min(1)
-					.custom((sections) => {
+					.custom((sections, { document }) => {
 						if (!sections?.length) return true;
 						const openings = sections.filter(
 							(section) =>
@@ -63,9 +82,14 @@ export const page = defineType({
 								"_type" in section &&
 								["pageTitle", "introSection"].includes(String(section._type)),
 						);
-						return openings.length === 1 && openings[0] === sections[0]
-							? true
-							: "Start with one Page title or Introduction with image section.";
+						if (openings.length !== 1 || openings[0] !== sections[0])
+							return "Start with one Page title or Introduction with image section.";
+						return (
+							openingSectionScopeError(
+								(sections[0] as { onlyOn?: string }).onlyOn,
+								document?.publishingScope as string[] | undefined,
+							) ?? true
+						);
 					}),
 		}),
 	],
@@ -73,11 +97,12 @@ export const page = defineType({
 		select: {
 			title: "title",
 			slug: "slug.current",
+			scope: "publishingScope",
 		},
-		prepare({ title, slug }) {
+		prepare({ title, slug, scope }) {
 			return {
 				title,
-				subtitle: slug ? `/${slug}` : "No slug",
+				subtitle: `${slug ? `/${slug}` : "No slug"} · ${describeScope(scope)}`,
 			};
 		},
 	},

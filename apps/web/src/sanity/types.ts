@@ -18,16 +18,29 @@ export declare const internalGroqTypeReferenceTo: unique symbol;
 export type ActionSection = {
   _type: "actionSection";
   navigationLabel?: string;
+  onlyOn?: "AU" | "NZ";
+  eyebrowVariesByCountry?: boolean;
   eyebrow?: string;
+  eyebrowAU?: string;
+  eyebrowNZ?: string;
+  headlineVariesByCountry?: boolean;
   headline?: string;
+  headlineAU?: string;
+  headlineNZ?: string;
+  bodyVariesByCountry?: boolean;
   body?: BlockContent;
+  bodyAU?: BlockContent;
+  bodyNZ?: BlockContent;
   links?: Array<
     {
       _key: string;
     } & HomepageNavigationLink
   >;
   actionTitle?: string;
+  actionBodyVariesByCountry?: boolean;
   actionBody?: BlockContent;
+  actionBodyAU?: BlockContent;
+  actionBodyNZ?: BlockContent;
   primaryAction?: HomepageNavigationLink;
   secondaryAction?: HomepageNavigationLink;
 };
@@ -35,9 +48,19 @@ export type ActionSection = {
 export type ValuesSection = {
   _type: "valuesSection";
   navigationLabel?: string;
+  onlyOn?: "AU" | "NZ";
+  eyebrowVariesByCountry?: boolean;
   eyebrow?: string;
+  eyebrowAU?: string;
+  eyebrowNZ?: string;
+  headlineVariesByCountry?: boolean;
   headline?: string;
+  headlineAU?: string;
+  headlineNZ?: string;
+  bodyVariesByCountry?: boolean;
   body?: BlockContent;
+  bodyAU?: BlockContent;
+  bodyNZ?: BlockContent;
   items?: Array<
     {
       _key: string;
@@ -48,9 +71,19 @@ export type ValuesSection = {
 export type NumberedSection = {
   _type: "numberedSection";
   navigationLabel?: string;
+  onlyOn?: "AU" | "NZ";
+  eyebrowVariesByCountry?: boolean;
   eyebrow?: string;
+  eyebrowAU?: string;
+  eyebrowNZ?: string;
+  headlineVariesByCountry?: boolean;
   headline?: string;
+  headlineAU?: string;
+  headlineNZ?: string;
+  bodyVariesByCountry?: boolean;
   body?: BlockContent;
+  bodyAU?: BlockContent;
+  bodyNZ?: BlockContent;
   link?: HomepageNavigationLink;
   items?: Array<
     {
@@ -62,9 +95,19 @@ export type NumberedSection = {
 export type StatementSection = {
   _type: "statementSection";
   navigationLabel?: string;
+  onlyOn?: "AU" | "NZ";
+  eyebrowVariesByCountry?: boolean;
   eyebrow?: string;
+  eyebrowAU?: string;
+  eyebrowNZ?: string;
+  headlineVariesByCountry?: boolean;
   headline?: string;
+  headlineAU?: string;
+  headlineNZ?: string;
+  bodyVariesByCountry?: boolean;
   body?: BlockContent;
+  bodyAU?: BlockContent;
+  bodyNZ?: BlockContent;
   statementLabel?: string;
   statement?: string;
   attribution?: string;
@@ -73,12 +116,25 @@ export type StatementSection = {
 export type ImageTextSection = {
   _type: "imageTextSection";
   navigationLabel?: string;
+  onlyOn?: "AU" | "NZ";
+  eyebrowVariesByCountry?: boolean;
   eyebrow?: string;
+  eyebrowAU?: string;
+  eyebrowNZ?: string;
+  headlineVariesByCountry?: boolean;
   headline?: string;
+  headlineAU?: string;
+  headlineNZ?: string;
+  bodyVariesByCountry?: boolean;
   body?: BlockContent;
+  bodyAU?: BlockContent;
+  bodyNZ?: BlockContent;
   image?: SectionImage;
   noteTitle?: string;
+  noteBodyVariesByCountry?: boolean;
   noteBody?: BlockContent;
+  noteBodyAU?: BlockContent;
+  noteBodyNZ?: BlockContent;
 };
 
 export type SectionNavigation = {
@@ -89,30 +145,51 @@ export type SectionNavigation = {
 export type IntroSection = {
   _type: "introSection";
   navigationLabel?: string;
+  onlyOn?: "AU" | "NZ";
+  eyebrowVariesByCountry?: boolean;
   eyebrow?: string;
+  eyebrowAU?: string;
+  eyebrowNZ?: string;
+  headlineVariesByCountry?: boolean;
   headline?: string;
+  headlineAU?: string;
+  headlineNZ?: string;
   accentText?: string;
   lead?: string;
+  bodyVariesByCountry?: boolean;
   body?: BlockContent;
+  bodyAU?: BlockContent;
+  bodyNZ?: BlockContent;
   image?: SectionImage;
 };
 
 export type RichTextSection = {
   _type: "richTextSection";
   navigationLabel?: string;
+  onlyOn?: "AU" | "NZ";
+  bodyVariesByCountry?: boolean;
   body?: BlockContent;
+  bodyAU?: BlockContent;
+  bodyNZ?: BlockContent;
 };
 
 export type PageTitle = {
   _type: "pageTitle";
   navigationLabel?: string;
+  onlyOn?: "AU" | "NZ";
+  headlineVariesByCountry?: boolean;
   headline?: string;
+  headlineAU?: string;
+  headlineNZ?: string;
 };
 
 export type SectionItem = {
   _type: "sectionItem";
   title?: string;
+  bodyVariesByCountry?: boolean;
   body?: BlockContent;
+  bodyAU?: BlockContent;
+  bodyNZ?: BlockContent;
 };
 
 export type SanityImageAssetReference = {
@@ -351,7 +428,15 @@ export type Page = {
   _rev: string;
   title?: string;
   slug?: Slug;
+  publishingScope?: Array<string>;
+  browserTitleVariesByCountry?: boolean;
+  browserTitle?: string;
+  browserTitleAU?: string;
+  browserTitleNZ?: string;
+  descriptionVariesByCountry?: boolean;
   description?: string;
+  descriptionAU?: string;
+  descriptionNZ?: string;
   sections?: Array<
     | ({
         _key: string;
@@ -765,10 +850,11 @@ export type SITE_CHROME_QUERY_RESULT = {
 
 // Source: src/sanity/lib/queries.ts
 // Variable: PAGE_QUERY
-// Query: *[_type == "page" && slug.current == $slug][0]{    _id,    title,    description,    slug,    sections[]{      _key, _type, navigationLabel,      _type == "pageTitle" => {headline},      _type == "richTextSection" => {body[]{  ...,  _type == "image" => {    ...,    asset->{      _id,      url,      metadata {        lqip,        dimensions { width, height }      }    }  }}},      _type == "introSection" => {        eyebrow, headline, body[]{  ...,  _type == "image" => {    ...,    asset->{      _id,      url,      metadata {        lqip,        dimensions { width, height }      }    }  }}, accentText, lead,        image{_type, alt, caption, crop, hotspot, asset->{_id, url}}      },      _type == "imageTextSection" => {        eyebrow, headline, body[]{  ...,  _type == "image" => {    ...,    asset->{      _id,      url,      metadata {        lqip,        dimensions { width, height }      }    }  }},        image{_type, alt, caption, crop, hotspot, asset->{_id, url}},        noteTitle, noteBody[]{  ...,  _type == "image" => {    ...,    asset->{      _id,      url,      metadata {        lqip,        dimensions { width, height }      }    }  }}      },      _type == "statementSection" => {        eyebrow, headline, body[]{  ...,  _type == "image" => {    ...,    asset->{      _id,      url,      metadata {        lqip,        dimensions { width, height }      }    }  }}, statementLabel, statement, attribution      },      _type == "valuesSection" => {        eyebrow, headline, body[]{  ...,  _type == "image" => {    ...,    asset->{      _id,      url,      metadata {        lqip,        dimensions { width, height }      }    }  }},        items[]{_key, title, body[]{  ...,  _type == "image" => {    ...,    asset->{      _id,      url,      metadata {        lqip,        dimensions { width, height }      }    }  }}}      },      _type == "numberedSection" => {        eyebrow, headline, body[]{  ...,  _type == "image" => {    ...,    asset->{      _id,      url,      metadata {        lqip,        dimensions { width, height }      }    }  }},        items[]{_key, title, body[]{  ...,  _type == "image" => {    ...,    asset->{      _id,      url,      metadata {        lqip,        dimensions { width, height }      }    }  }}}, link{label, href}      },      _type == "actionSection" => {        eyebrow, headline, body[]{  ...,  _type == "image" => {    ...,    asset->{      _id,      url,      metadata {        lqip,        dimensions { width, height }      }    }  }},        links[]{_key, label, href}, actionTitle, actionBody[]{  ...,  _type == "image" => {    ...,    asset->{      _id,      url,      metadata {        lqip,        dimensions { width, height }      }    }  }},        primaryAction{label, href}, secondaryAction{label, href}      }    }  }
+// Query: *[    _type == "page" && slug.current == $slug &&    (!defined(publishingScope) || $countrySite in publishingScope)  ][0]{    _id,    title,    "browserTitle": select(    browserTitleVariesByCountry => select(      $countrySite == "AU" => browserTitleAU,      $countrySite == "NZ" => browserTitleNZ    ),    browserTitle  ),    "description": select(    descriptionVariesByCountry => select(      $countrySite == "AU" => descriptionAU,      $countrySite == "NZ" => descriptionNZ    ),    description  ),    slug,    sections[!defined(onlyOn) || onlyOn == $countrySite]{      _key, _type, navigationLabel,      _type == "pageTitle" => {"headline": select(    headlineVariesByCountry => select(      $countrySite == "AU" => headlineAU,      $countrySite == "NZ" => headlineNZ    ),    headline  )},      _type == "richTextSection" => {"body": select(    bodyVariesByCountry => select(      $countrySite == "AU" => bodyAU,      $countrySite == "NZ" => bodyNZ    ),    body  )[]{  ...,  _type == "image" => {    ...,    asset->{      _id,      url,      metadata {        lqip,        dimensions { width, height }      }    }  }}},      _type == "introSection" => {        "eyebrow": select(    eyebrowVariesByCountry => select(      $countrySite == "AU" => eyebrowAU,      $countrySite == "NZ" => eyebrowNZ    ),    eyebrow  ),  "headline": select(    headlineVariesByCountry => select(      $countrySite == "AU" => headlineAU,      $countrySite == "NZ" => headlineNZ    ),    headline  ),  "body": select(    bodyVariesByCountry => select(      $countrySite == "AU" => bodyAU,      $countrySite == "NZ" => bodyNZ    ),    body  )[]{  ...,  _type == "image" => {    ...,    asset->{      _id,      url,      metadata {        lqip,        dimensions { width, height }      }    }  }}, accentText, lead,        image{_type, alt, caption, crop, hotspot, asset->{_id, url}}      },      _type == "imageTextSection" => {        "eyebrow": select(    eyebrowVariesByCountry => select(      $countrySite == "AU" => eyebrowAU,      $countrySite == "NZ" => eyebrowNZ    ),    eyebrow  ),  "headline": select(    headlineVariesByCountry => select(      $countrySite == "AU" => headlineAU,      $countrySite == "NZ" => headlineNZ    ),    headline  ),  "body": select(    bodyVariesByCountry => select(      $countrySite == "AU" => bodyAU,      $countrySite == "NZ" => bodyNZ    ),    body  )[]{  ...,  _type == "image" => {    ...,    asset->{      _id,      url,      metadata {        lqip,        dimensions { width, height }      }    }  }},        image{_type, alt, caption, crop, hotspot, asset->{_id, url}},        noteTitle, "noteBody": select(    noteBodyVariesByCountry => select(      $countrySite == "AU" => noteBodyAU,      $countrySite == "NZ" => noteBodyNZ    ),    noteBody  )[]{  ...,  _type == "image" => {    ...,    asset->{      _id,      url,      metadata {        lqip,        dimensions { width, height }      }    }  }}      },      _type == "statementSection" => {        "eyebrow": select(    eyebrowVariesByCountry => select(      $countrySite == "AU" => eyebrowAU,      $countrySite == "NZ" => eyebrowNZ    ),    eyebrow  ),  "headline": select(    headlineVariesByCountry => select(      $countrySite == "AU" => headlineAU,      $countrySite == "NZ" => headlineNZ    ),    headline  ),  "body": select(    bodyVariesByCountry => select(      $countrySite == "AU" => bodyAU,      $countrySite == "NZ" => bodyNZ    ),    body  )[]{  ...,  _type == "image" => {    ...,    asset->{      _id,      url,      metadata {        lqip,        dimensions { width, height }      }    }  }}, statementLabel, statement, attribution      },      _type == "valuesSection" => {        "eyebrow": select(    eyebrowVariesByCountry => select(      $countrySite == "AU" => eyebrowAU,      $countrySite == "NZ" => eyebrowNZ    ),    eyebrow  ),  "headline": select(    headlineVariesByCountry => select(      $countrySite == "AU" => headlineAU,      $countrySite == "NZ" => headlineNZ    ),    headline  ),  "body": select(    bodyVariesByCountry => select(      $countrySite == "AU" => bodyAU,      $countrySite == "NZ" => bodyNZ    ),    body  )[]{  ...,  _type == "image" => {    ...,    asset->{      _id,      url,      metadata {        lqip,        dimensions { width, height }      }    }  }},        items[]{_key, title, "body": select(    bodyVariesByCountry => select(      $countrySite == "AU" => bodyAU,      $countrySite == "NZ" => bodyNZ    ),    body  )[]{  ...,  _type == "image" => {    ...,    asset->{      _id,      url,      metadata {        lqip,        dimensions { width, height }      }    }  }}}      },      _type == "numberedSection" => {        "eyebrow": select(    eyebrowVariesByCountry => select(      $countrySite == "AU" => eyebrowAU,      $countrySite == "NZ" => eyebrowNZ    ),    eyebrow  ),  "headline": select(    headlineVariesByCountry => select(      $countrySite == "AU" => headlineAU,      $countrySite == "NZ" => headlineNZ    ),    headline  ),  "body": select(    bodyVariesByCountry => select(      $countrySite == "AU" => bodyAU,      $countrySite == "NZ" => bodyNZ    ),    body  )[]{  ...,  _type == "image" => {    ...,    asset->{      _id,      url,      metadata {        lqip,        dimensions { width, height }      }    }  }},        items[]{_key, title, "body": select(    bodyVariesByCountry => select(      $countrySite == "AU" => bodyAU,      $countrySite == "NZ" => bodyNZ    ),    body  )[]{  ...,  _type == "image" => {    ...,    asset->{      _id,      url,      metadata {        lqip,        dimensions { width, height }      }    }  }}}, link{label, href}      },      _type == "actionSection" => {        "eyebrow": select(    eyebrowVariesByCountry => select(      $countrySite == "AU" => eyebrowAU,      $countrySite == "NZ" => eyebrowNZ    ),    eyebrow  ),  "headline": select(    headlineVariesByCountry => select(      $countrySite == "AU" => headlineAU,      $countrySite == "NZ" => headlineNZ    ),    headline  ),  "body": select(    bodyVariesByCountry => select(      $countrySite == "AU" => bodyAU,      $countrySite == "NZ" => bodyNZ    ),    body  )[]{  ...,  _type == "image" => {    ...,    asset->{      _id,      url,      metadata {        lqip,        dimensions { width, height }      }    }  }},        links[]{_key, label, href}, actionTitle, "actionBody": select(    actionBodyVariesByCountry => select(      $countrySite == "AU" => actionBodyAU,      $countrySite == "NZ" => actionBodyNZ    ),    actionBody  )[]{  ...,  _type == "image" => {    ...,    asset->{      _id,      url,      metadata {        lqip,        dimensions { width, height }      }    }  }},        primaryAction{label, href}, secondaryAction{label, href}      }    }  }
 export type PAGE_QUERY_RESULT = {
   _id: string;
   title: string | null;
+  browserTitle: string | null;
   description: string | null;
   slug: Slug | null;
   sections: Array<
@@ -1332,7 +1418,7 @@ declare global {
   interface SanityQueries {
     '*[_type == "homePage" && _id == "homePage"][0]{\n    _id, title, description,\n    hero { eyebrow, headline, description, actionLabel, photograph {\n  _type, alt, crop, hotspot, asset->{_id, url}\n} },\n    introduction { eyebrow, headline, description },\n    areas[] { _key, _type, label, headline, body, actionLabel, contentType,\n      photograph {\n  _type, alt, crop, hotspot, asset->{_id, url}\n},\n      pathways[] { _key, title, description }\n    },\n    featuredExample { eyebrow, headline, body, actionLabel },\n    involvement { eyebrow, headline, actionLabel, opportunities[] { _key, title, description, actionLabel } },\n    signup { eyebrow, headline, description, actionLabel },\n    header {\n  navigation[]{_key, label, href, headline, description,\n    children[]{_key, label, href, groupLabel}\n  },\n  menuHeading, give, giveHref\n},\n    footer { summary, navigationTitle, navigation[]{_key, label, href}, legalNavigation[]{_key, label, href}, copyright,\n      offices[] { _key, country, address, phone, tel, email }\n    }\n  }': HOME_PAGE_QUERY_RESULT;
     '*[_type == "homePage" && _id == "homePage"][0]{\n    header {\n  navigation[]{_key, label, href, headline, description,\n    children[]{_key, label, href, groupLabel}\n  },\n  menuHeading, give, giveHref\n},\n    footer { summary, navigationTitle, navigation[]{_key, label, href}, legalNavigation[]{_key, label, href}, copyright,\n      offices[]{_key, country, address, phone, tel, email}\n    }\n}': SITE_CHROME_QUERY_RESULT;
-    '*[_type == "page" && slug.current == $slug][0]{\n    _id,\n    title,\n    description,\n    slug,\n    sections[]{\n      _key, _type, navigationLabel,\n      _type == "pageTitle" => {headline},\n      _type == "richTextSection" => {body[]{\n  ...,\n  _type == "image" => {\n    ...,\n    asset->{\n      _id,\n      url,\n      metadata {\n        lqip,\n        dimensions { width, height }\n      }\n    }\n  }\n}},\n      _type == "introSection" => {\n        eyebrow, headline, body[]{\n  ...,\n  _type == "image" => {\n    ...,\n    asset->{\n      _id,\n      url,\n      metadata {\n        lqip,\n        dimensions { width, height }\n      }\n    }\n  }\n}, accentText, lead,\n        image{_type, alt, caption, crop, hotspot, asset->{_id, url}}\n      },\n      _type == "imageTextSection" => {\n        eyebrow, headline, body[]{\n  ...,\n  _type == "image" => {\n    ...,\n    asset->{\n      _id,\n      url,\n      metadata {\n        lqip,\n        dimensions { width, height }\n      }\n    }\n  }\n},\n        image{_type, alt, caption, crop, hotspot, asset->{_id, url}},\n        noteTitle, noteBody[]{\n  ...,\n  _type == "image" => {\n    ...,\n    asset->{\n      _id,\n      url,\n      metadata {\n        lqip,\n        dimensions { width, height }\n      }\n    }\n  }\n}\n      },\n      _type == "statementSection" => {\n        eyebrow, headline, body[]{\n  ...,\n  _type == "image" => {\n    ...,\n    asset->{\n      _id,\n      url,\n      metadata {\n        lqip,\n        dimensions { width, height }\n      }\n    }\n  }\n}, statementLabel, statement, attribution\n      },\n      _type == "valuesSection" => {\n        eyebrow, headline, body[]{\n  ...,\n  _type == "image" => {\n    ...,\n    asset->{\n      _id,\n      url,\n      metadata {\n        lqip,\n        dimensions { width, height }\n      }\n    }\n  }\n},\n        items[]{_key, title, body[]{\n  ...,\n  _type == "image" => {\n    ...,\n    asset->{\n      _id,\n      url,\n      metadata {\n        lqip,\n        dimensions { width, height }\n      }\n    }\n  }\n}}\n      },\n      _type == "numberedSection" => {\n        eyebrow, headline, body[]{\n  ...,\n  _type == "image" => {\n    ...,\n    asset->{\n      _id,\n      url,\n      metadata {\n        lqip,\n        dimensions { width, height }\n      }\n    }\n  }\n},\n        items[]{_key, title, body[]{\n  ...,\n  _type == "image" => {\n    ...,\n    asset->{\n      _id,\n      url,\n      metadata {\n        lqip,\n        dimensions { width, height }\n      }\n    }\n  }\n}}, link{label, href}\n      },\n      _type == "actionSection" => {\n        eyebrow, headline, body[]{\n  ...,\n  _type == "image" => {\n    ...,\n    asset->{\n      _id,\n      url,\n      metadata {\n        lqip,\n        dimensions { width, height }\n      }\n    }\n  }\n},\n        links[]{_key, label, href}, actionTitle, actionBody[]{\n  ...,\n  _type == "image" => {\n    ...,\n    asset->{\n      _id,\n      url,\n      metadata {\n        lqip,\n        dimensions { width, height }\n      }\n    }\n  }\n},\n        primaryAction{label, href}, secondaryAction{label, href}\n      }\n    }\n  }': PAGE_QUERY_RESULT;
+    '*[\n    _type == "page" && slug.current == $slug &&\n    (!defined(publishingScope) || $countrySite in publishingScope)\n  ][0]{\n    _id,\n    title,\n    "browserTitle": select(\n    browserTitleVariesByCountry => select(\n      $countrySite == "AU" => browserTitleAU,\n      $countrySite == "NZ" => browserTitleNZ\n    ),\n    browserTitle\n  ),\n    "description": select(\n    descriptionVariesByCountry => select(\n      $countrySite == "AU" => descriptionAU,\n      $countrySite == "NZ" => descriptionNZ\n    ),\n    description\n  ),\n    slug,\n    sections[!defined(onlyOn) || onlyOn == $countrySite]{\n      _key, _type, navigationLabel,\n      _type == "pageTitle" => {"headline": select(\n    headlineVariesByCountry => select(\n      $countrySite == "AU" => headlineAU,\n      $countrySite == "NZ" => headlineNZ\n    ),\n    headline\n  )},\n      _type == "richTextSection" => {"body": select(\n    bodyVariesByCountry => select(\n      $countrySite == "AU" => bodyAU,\n      $countrySite == "NZ" => bodyNZ\n    ),\n    body\n  )[]{\n  ...,\n  _type == "image" => {\n    ...,\n    asset->{\n      _id,\n      url,\n      metadata {\n        lqip,\n        dimensions { width, height }\n      }\n    }\n  }\n}},\n      _type == "introSection" => {\n        "eyebrow": select(\n    eyebrowVariesByCountry => select(\n      $countrySite == "AU" => eyebrowAU,\n      $countrySite == "NZ" => eyebrowNZ\n    ),\n    eyebrow\n  ),\n  "headline": select(\n    headlineVariesByCountry => select(\n      $countrySite == "AU" => headlineAU,\n      $countrySite == "NZ" => headlineNZ\n    ),\n    headline\n  ),\n  "body": select(\n    bodyVariesByCountry => select(\n      $countrySite == "AU" => bodyAU,\n      $countrySite == "NZ" => bodyNZ\n    ),\n    body\n  )[]{\n  ...,\n  _type == "image" => {\n    ...,\n    asset->{\n      _id,\n      url,\n      metadata {\n        lqip,\n        dimensions { width, height }\n      }\n    }\n  }\n}, accentText, lead,\n        image{_type, alt, caption, crop, hotspot, asset->{_id, url}}\n      },\n      _type == "imageTextSection" => {\n        "eyebrow": select(\n    eyebrowVariesByCountry => select(\n      $countrySite == "AU" => eyebrowAU,\n      $countrySite == "NZ" => eyebrowNZ\n    ),\n    eyebrow\n  ),\n  "headline": select(\n    headlineVariesByCountry => select(\n      $countrySite == "AU" => headlineAU,\n      $countrySite == "NZ" => headlineNZ\n    ),\n    headline\n  ),\n  "body": select(\n    bodyVariesByCountry => select(\n      $countrySite == "AU" => bodyAU,\n      $countrySite == "NZ" => bodyNZ\n    ),\n    body\n  )[]{\n  ...,\n  _type == "image" => {\n    ...,\n    asset->{\n      _id,\n      url,\n      metadata {\n        lqip,\n        dimensions { width, height }\n      }\n    }\n  }\n},\n        image{_type, alt, caption, crop, hotspot, asset->{_id, url}},\n        noteTitle, "noteBody": select(\n    noteBodyVariesByCountry => select(\n      $countrySite == "AU" => noteBodyAU,\n      $countrySite == "NZ" => noteBodyNZ\n    ),\n    noteBody\n  )[]{\n  ...,\n  _type == "image" => {\n    ...,\n    asset->{\n      _id,\n      url,\n      metadata {\n        lqip,\n        dimensions { width, height }\n      }\n    }\n  }\n}\n      },\n      _type == "statementSection" => {\n        "eyebrow": select(\n    eyebrowVariesByCountry => select(\n      $countrySite == "AU" => eyebrowAU,\n      $countrySite == "NZ" => eyebrowNZ\n    ),\n    eyebrow\n  ),\n  "headline": select(\n    headlineVariesByCountry => select(\n      $countrySite == "AU" => headlineAU,\n      $countrySite == "NZ" => headlineNZ\n    ),\n    headline\n  ),\n  "body": select(\n    bodyVariesByCountry => select(\n      $countrySite == "AU" => bodyAU,\n      $countrySite == "NZ" => bodyNZ\n    ),\n    body\n  )[]{\n  ...,\n  _type == "image" => {\n    ...,\n    asset->{\n      _id,\n      url,\n      metadata {\n        lqip,\n        dimensions { width, height }\n      }\n    }\n  }\n}, statementLabel, statement, attribution\n      },\n      _type == "valuesSection" => {\n        "eyebrow": select(\n    eyebrowVariesByCountry => select(\n      $countrySite == "AU" => eyebrowAU,\n      $countrySite == "NZ" => eyebrowNZ\n    ),\n    eyebrow\n  ),\n  "headline": select(\n    headlineVariesByCountry => select(\n      $countrySite == "AU" => headlineAU,\n      $countrySite == "NZ" => headlineNZ\n    ),\n    headline\n  ),\n  "body": select(\n    bodyVariesByCountry => select(\n      $countrySite == "AU" => bodyAU,\n      $countrySite == "NZ" => bodyNZ\n    ),\n    body\n  )[]{\n  ...,\n  _type == "image" => {\n    ...,\n    asset->{\n      _id,\n      url,\n      metadata {\n        lqip,\n        dimensions { width, height }\n      }\n    }\n  }\n},\n        items[]{_key, title, "body": select(\n    bodyVariesByCountry => select(\n      $countrySite == "AU" => bodyAU,\n      $countrySite == "NZ" => bodyNZ\n    ),\n    body\n  )[]{\n  ...,\n  _type == "image" => {\n    ...,\n    asset->{\n      _id,\n      url,\n      metadata {\n        lqip,\n        dimensions { width, height }\n      }\n    }\n  }\n}}\n      },\n      _type == "numberedSection" => {\n        "eyebrow": select(\n    eyebrowVariesByCountry => select(\n      $countrySite == "AU" => eyebrowAU,\n      $countrySite == "NZ" => eyebrowNZ\n    ),\n    eyebrow\n  ),\n  "headline": select(\n    headlineVariesByCountry => select(\n      $countrySite == "AU" => headlineAU,\n      $countrySite == "NZ" => headlineNZ\n    ),\n    headline\n  ),\n  "body": select(\n    bodyVariesByCountry => select(\n      $countrySite == "AU" => bodyAU,\n      $countrySite == "NZ" => bodyNZ\n    ),\n    body\n  )[]{\n  ...,\n  _type == "image" => {\n    ...,\n    asset->{\n      _id,\n      url,\n      metadata {\n        lqip,\n        dimensions { width, height }\n      }\n    }\n  }\n},\n        items[]{_key, title, "body": select(\n    bodyVariesByCountry => select(\n      $countrySite == "AU" => bodyAU,\n      $countrySite == "NZ" => bodyNZ\n    ),\n    body\n  )[]{\n  ...,\n  _type == "image" => {\n    ...,\n    asset->{\n      _id,\n      url,\n      metadata {\n        lqip,\n        dimensions { width, height }\n      }\n    }\n  }\n}}, link{label, href}\n      },\n      _type == "actionSection" => {\n        "eyebrow": select(\n    eyebrowVariesByCountry => select(\n      $countrySite == "AU" => eyebrowAU,\n      $countrySite == "NZ" => eyebrowNZ\n    ),\n    eyebrow\n  ),\n  "headline": select(\n    headlineVariesByCountry => select(\n      $countrySite == "AU" => headlineAU,\n      $countrySite == "NZ" => headlineNZ\n    ),\n    headline\n  ),\n  "body": select(\n    bodyVariesByCountry => select(\n      $countrySite == "AU" => bodyAU,\n      $countrySite == "NZ" => bodyNZ\n    ),\n    body\n  )[]{\n  ...,\n  _type == "image" => {\n    ...,\n    asset->{\n      _id,\n      url,\n      metadata {\n        lqip,\n        dimensions { width, height }\n      }\n    }\n  }\n},\n        links[]{_key, label, href}, actionTitle, "actionBody": select(\n    actionBodyVariesByCountry => select(\n      $countrySite == "AU" => actionBodyAU,\n      $countrySite == "NZ" => actionBodyNZ\n    ),\n    actionBody\n  )[]{\n  ...,\n  _type == "image" => {\n    ...,\n    asset->{\n      _id,\n      url,\n      metadata {\n        lqip,\n        dimensions { width, height }\n      }\n    }\n  }\n},\n        primaryAction{label, href}, secondaryAction{label, href}\n      }\n    }\n  }': PAGE_QUERY_RESULT;
   }
 }
 // Lets @sanity/client releases that predate the global registry read it too
