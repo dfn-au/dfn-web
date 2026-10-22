@@ -92,7 +92,7 @@ export function sharedOrCountryFields(field: FieldDefinition) {
 			...field,
 			name: `${field.name}${site}`,
 			title: `${field.title} (${site})`,
-			description: `Shown only on the ${site} site. Leave empty to show nothing there.`,
+			description: `Shown only on the ${site} site. ${field.description ?? "Leave empty to show nothing there."}`,
 			hidden: hidden(true),
 		})),
 	];
