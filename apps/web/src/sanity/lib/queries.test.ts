@@ -14,7 +14,11 @@ vi.mock("./live", () => ({ sanityFetch: vi.fn() }));
 it("infers generated results through sanityFetch without a generic or cast", () => {
 	const home = () => sanityFetch({ query: HOME_PAGE_QUERY, stega: false });
 	const page = () =>
-		sanityFetch({ query: PAGE_QUERY, params: { slug: "about" }, stega: false });
+		sanityFetch({
+			query: PAGE_QUERY,
+			params: { slug: "about", countrySite: "AU" },
+			stega: false,
+		});
 	const chrome = () => sanityFetch({ query: SITE_CHROME_QUERY, stega: false });
 	const preview = () => sanityFetch({ query: HOME_PAGE_QUERY });
 
