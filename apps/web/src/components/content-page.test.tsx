@@ -4,6 +4,7 @@ import { ContentPage } from "./content-page";
 import { publicNavigationHref } from "./homepage/navigation";
 import type { SectionBody } from "./page-sections/types";
 import { PageBody } from "./portable-text";
+import { PaletteContext } from "./site/navigation-link";
 
 vi.mock("@/sanity/lib/image", () => ({ urlFor: () => ({ url: () => "" }) }));
 vi.mock("./external-link", () => ({
@@ -165,6 +166,26 @@ describe("general content pages", () => {
 		expect([...markup.matchAll(/<ul\b/g)]).toHaveLength(2);
 		expect(markup).toContain('href="mailto:info@dfn.org.au"');
 		expect(markup).not.toContain('target="_blank"');
+		blocks[2].markDefs[0].href = "/privacy";
+		const previewMarkup = renderToStaticMarkup(
+			<PaletteContext.Provider
+				value={{
+					palette: "olive",
+					controlsVisible: false,
+					brandPreview: "proposed",
+					headingPreview: "existing",
+					bodyPreview: "andada",
+					logoPreview: "guide",
+					labelPreview: "vinyl",
+					iconPreview: "guide",
+				}}
+			>
+				<PageBody value={blocks} />
+			</PaletteContext.Provider>,
+		);
+		expect(previewMarkup).toContain(
+			'href="/privacy?variant=olive&amp;clean=1&amp;brand=proposed&amp;logo=guide"',
+		);
 	});
 	it("keeps palettes and hidden controls across public page navigation", () => {
 		expect(publicNavigationHref("/privacy", "olive", false)).toBe(
@@ -177,5 +198,90 @@ describe("general content pages", () => {
 		expect(publicNavigationHref("mailto:info@dfn.org.au", "olive", true)).toBe(
 			"mailto:info@dfn.org.au",
 		);
+	});
+	it("carries the brand comparison through internal navigation without changing other destinations", () => {
+		expect(
+			publicNavigationHref("/about?ref=home#team", "ink", false, "proposed"),
+		).toBe("/about?ref=home&variant=ink&clean=1&brand=proposed#team");
+		expect(
+			publicNavigationHref(
+				"/privacy?brand=proposed",
+				"charcoal",
+				true,
+				"current",
+			),
+		).toBe("/privacy?brand=current");
+		expect(
+			publicNavigationHref("/privacy", "charcoal", true, "white-text"),
+		).toBe("/privacy");
+		expect(
+			publicNavigationHref(
+				"/about?ref=home#team",
+				"ink",
+				false,
+				"white-text",
+				"existing",
+			),
+		).toBe("/about?ref=home&variant=ink&clean=1#team");
+		expect(
+			publicNavigationHref(
+				"/privacy?headings=existing",
+				"charcoal",
+				true,
+				"current",
+				"current",
+			),
+		).toBe("/privacy?headings=current&brand=current");
+		expect(
+			publicNavigationHref(
+				"/about?ref=home#team",
+				"ink",
+				false,
+				"white-text",
+				"existing",
+				"andada",
+			),
+		).toBe("/about?ref=home&variant=ink&clean=1#team");
+		expect(publicNavigationHref("/privacy?body=andada", "charcoal", true)).toBe(
+			"/privacy",
+		);
+		expect(
+			publicNavigationHref(
+				"/about#team",
+				"guide-light",
+				false,
+				"white-text",
+				"existing",
+				"andada",
+				"guide",
+				"vinyl",
+				"guide",
+			),
+		).toBe("/about?variant=guide-light&clean=1&logo=guide#team");
+		expect(
+			publicNavigationHref(
+				"/privacy?logo=guide&labels=vinyl&icons=guide",
+				"charcoal",
+				true,
+			),
+		).toBe("/privacy");
+		for (const href of [
+			"#dh-work",
+			"#",
+			"mailto:info@dfn.org.au",
+			"https://dfn.org.au/donate/",
+			"//dfn.org.au/donate/",
+		]) {
+			expect(
+				publicNavigationHref(
+					href,
+					"charcoal",
+					true,
+					"white-text",
+					"existing",
+					"andada",
+				),
+			).toBe(href);
+		}
 	});
 });

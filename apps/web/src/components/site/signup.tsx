@@ -125,14 +125,14 @@ export function Signup({
 								autoComplete={field.name}
 								maxLength={field.name === "name" ? 200 : 254}
 								required
-								className="min-h-12 min-w-0 border border-[#94887b] bg-paper px-3 py-[13px] text-base font-normal text-ink [line-height:normal] disabled:cursor-wait disabled:opacity-70"
+								className="min-h-12 min-w-0 border border-control-border bg-paper px-3 py-[13px] text-base font-normal text-ink [line-height:normal] disabled:cursor-wait disabled:opacity-70"
 							/>
 						</label>
 					))}
 					<div className="col-span-full flex flex-wrap items-center justify-between gap-5">
 						<button
 							type="submit"
-							className={`${buttonClasses} bg-action text-white disabled:cursor-wait disabled:opacity-70`}
+							className={`${buttonClasses} bg-action text-action-text disabled:cursor-wait disabled:opacity-70`}
 						>
 							{busy ? "Submitting…" : content.actionLabel}
 							<Arrow />
