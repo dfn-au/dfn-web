@@ -42,7 +42,7 @@ export function DesignLink({
 }
 
 export const buttonClasses =
-	"inline-flex min-h-[46px] cursor-pointer items-center justify-between gap-7 border-0 px-[22px] py-[13px] text-label leading-[1.4] font-medium";
+	"brand-action inline-flex min-h-[46px] cursor-pointer items-center justify-between gap-7 border-0 px-[22px] py-[13px] text-label leading-[1.4] font-medium";
 
 export function ButtonLink({
 	href,
@@ -58,7 +58,7 @@ export function ButtonLink({
 	return (
 		<DesignLink
 			href={href}
-			className={`${buttonClasses} ${light ? "shrink-0 bg-ink text-page" : "bg-action text-white"}`}
+			className={`${buttonClasses} ${light ? "shrink-0 bg-ink text-page" : "bg-action text-action-text"}`}
 		>
 			{children}
 			<Arrow down={down} />
@@ -93,6 +93,7 @@ export function Eyebrow({
 }) {
 	return (
 		<div
+			data-brand-label
 			className={`text-caption leading-normal font-medium tracking-[1.5px] uppercase ${className}`}
 		>
 			{children}
