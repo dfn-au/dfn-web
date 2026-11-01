@@ -58,7 +58,7 @@ export function linkFields({
 			title: urlTitle,
 			type: "url",
 			description:
-				"For external websites, code-owned routes or anchors such as #dh-work, #dh-involved, #dh-signup and #dh-contact. Use # for a placeholder.",
+				"Enter a web address or a homepage section link such as #dh-work, #dh-involved, #dh-signup or #dh-contact. Use # for a placeholder.",
 			hidden: ({ parent }) => Boolean(parent?.[pageName]),
 			validation: (rule, context) =>
 				context?.hidden
