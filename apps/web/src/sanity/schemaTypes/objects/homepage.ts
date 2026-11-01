@@ -1,7 +1,12 @@
 import { DocumentTextIcon } from "@sanity/icons/DocumentText";
 import { ImageIcon } from "@sanity/icons/Image";
 import { LinkIcon } from "@sanity/icons/Link";
-import { defineArrayMember, defineField, defineType } from "sanity";
+import {
+	defineArrayMember,
+	defineField,
+	defineType,
+	type PreviewConfig,
+} from "sanity";
 import { COUNTRY_SITE_NAMES, COUNTRY_SITES } from "../../../lib/country-site";
 import { countryMenuFields } from "../country-menus";
 import { linkFields } from "../link-fields";
@@ -47,6 +52,13 @@ const navigationLabel = defineField({
 		context?.hidden ? rule.skip() : rule.required(),
 });
 const navigationFields = [navigationLabel, ...linkFields()];
+const linkPreview: PreviewConfig = {
+	select: { title: "label", pageTitle: "page.title", href: "href" },
+	prepare: ({ title, pageTitle, href }) => ({
+		title,
+		subtitle: pageTitle || href,
+	}),
+};
 export const homepageObjects = [
 	defineType({
 		name: "homepageAddress",
@@ -68,13 +80,7 @@ export const homepageObjects = [
 		type: "object",
 		icon: LinkIcon,
 		fields: navigationFields,
-		preview: {
-			select: { title: "label", pageTitle: "page.title", href: "href" },
-			prepare: ({ title, pageTitle, href }) => ({
-				title,
-				subtitle: pageTitle || href,
-			}),
-		},
+		preview: linkPreview,
 	}),
 	defineType({
 		name: "homepageHeaderChildLink",
@@ -91,13 +97,7 @@ export const homepageObjects = [
 					"Optional text such as Events or Ongoing support. Use the same label on consecutive links to group them visually; it does not create another submenu.",
 			}),
 		],
-		preview: {
-			select: { title: "label", pageTitle: "page.title", href: "href" },
-			prepare: ({ title, pageTitle, href }) => ({
-				title,
-				subtitle: pageTitle || href,
-			}),
-		},
+		preview: linkPreview,
 	}),
 	defineType({
 		name: "homepageHeaderLink",
@@ -142,13 +142,7 @@ export const homepageObjects = [
 							return "Add a destination or at least one child link.";
 						return true;
 					}),
-		preview: {
-			select: { title: "label", pageTitle: "page.title", href: "href" },
-			prepare: ({ title, pageTitle, href }) => ({
-				title,
-				subtitle: pageTitle || href,
-			}),
-		},
+		preview: linkPreview,
 	}),
 	defineType({
 		name: "homepageRichText",
