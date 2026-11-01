@@ -16,6 +16,7 @@ import { media } from "sanity-plugin-media";
 
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
 import { apiVersion, dataset, previewUrl, projectId } from "./src/sanity/env";
+import { PageFilterLayout } from "./src/sanity/page-filter-layout";
 import { schema } from "./src/sanity/schemaTypes";
 import { HOME_PAGE_DOCUMENT_ID } from "./src/sanity/singletons";
 import { structure } from "./src/sanity/structure";
@@ -60,6 +61,7 @@ export default defineConfig({
 	auth: { loginMethod: "token" },
 	projectId,
 	dataset,
+	studio: { components: { activeToolLayout: PageFilterLayout } },
 	// Add and edit the content schema in the './sanity/schemaTypes' folder.
 	schema,
 	plugins: [

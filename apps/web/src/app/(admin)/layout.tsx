@@ -15,6 +15,17 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
 	return (
 		<html lang="en">
 			<head>
+				<link
+					rel="icon"
+					href="/favicon-192x192.png"
+					type="image/png"
+					sizes="192x192"
+				/>
+				<link
+					rel="apple-touch-icon"
+					href="/apple-touch-icon.png"
+					sizes="180x180"
+				/>
 				<style>{appearanceStyles}</style>
 			</head>
 			<body>

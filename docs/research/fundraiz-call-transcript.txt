@@ -1,0 +1,1206 @@
+Funraiz — audio transcript
+
+Automatically transcribed; names and unclear speech may contain errors.
+
+[00:00:00] Okay, great. Thank you so much.
+[00:00:02] Okay, sorry, back to you.
+[00:00:04] No worries. So we've also got fundraised tasks, which is the way that teams work together on projects and break down elements of work into tasks that can be allocated.
+[00:00:19] Typically teams work with SANA or monday.com or Trello as a third party integration that is now gone and you've got fundraised tasks integrated into your actual CRM,
+[00:00:34] which means that you can be allocating tasks to teams and delegating tasks to individuals as well.
+[00:00:43] So if you've got to contact Carlos back, then you can raise a task allocated to Jonathan and assign Carlos to that so Jonathan knows who is contacting from your CRM very easily.
+[00:00:55] We've also got an approvals process in fundraise. So everything that requires and demands organisational approval can be delegated here on fundraise.
+[00:01:07] We've also got...
+[00:01:09] So does that mean... Sorry, Carlos.
+[00:01:11] Of course.
+[00:01:12] Does that mean, say we're putting together a Christmas promotion and we've got seven steps, we could just list that there and as each person completes their...
+[00:01:24] they can tick it, approve it, keep moving?
+[00:01:26] Yeah, exactly right.
+[00:01:28] Okay.
+[00:01:29] Exactly right.
+[00:01:30] And so I'll jump into this next, but when we're talking about forms, when we're talking about documents that can be created on fundraise,
+[00:01:39] those documents might need to get like some approval from a CEO or things like that.
+[00:01:44] And so we can very easily create a task, attach the document and send it to whoever for approval.
+[00:01:50] And that gets approved on fundraise.
+[00:01:54] Yeah, right.
+[00:01:55] We've got a grants model on fundraise.
+[00:01:58] So, so fundraise doesn't tell you what grants to be applying for, but this is a very unique process for not-for-profits in Australia,
+[00:02:08] that there's a lot of grants applications that can be applied for both with government, federal, local, but also with other institutions.
+[00:02:18] Yeah.
+[00:02:19] And so the way that this works is that if you want to apply for a grant, you go ahead and you find the URL of the grant,
+[00:02:29] or you effectively attach the PDF documentation of the grant, which is typically like goes hand in hand.
+[00:02:37] And so you will basically add the URL here and attach the documentation.
+[00:02:44] And then you just, you know, you copy and paste what the grant is for.
+[00:02:49] And fundraise will actually assess your data and look and give you a predictability score as to what you're likely to,
+[00:02:57] whether or not you're likely to be successful in that grant.
+[00:03:00] So you know whether to proceed.
+[00:03:03] Yeah, right.
+[00:03:05] And if you want to proceed with the grant application, fundraise will utilise the data in your CRM to actually apply for the grant funding,
+[00:03:14] which makes every application you need customised automatically for you.
+[00:03:20] Okay.
+[00:03:21] It'll integrate what the grant is looking for available for with what your match particularly is and custom design it to match that.
+[00:03:30] If it thinks the predictability is high.
+[00:03:32] Yeah.
+[00:03:33] So we're not, we're not telling you what application, what grants to apply for.
+[00:03:37] Yeah.
+[00:03:38] Yeah.
+[00:03:39] But if you find one, then you can come in here and check whether or not you're suitable for that based on your mission,
+[00:03:44] based on the data that you've got and your performance.
+[00:03:47] Yeah.
+[00:03:48] Yeah.
+[00:03:49] Yeah.
+[00:03:50] And so fundraise will give you a score, a predictability score based on how, what it thinks based on the grant application and your data.
+[00:03:59] And you make the call whether you want to apply for that and it'll write you the application.
+[00:04:04] Perfect.
+[00:04:05] Utilising your data for you.
+[00:04:07] Okay.
+[00:04:08] So the other component is that correlating with tasks, a lot of grant applications have a schedule of reporting of like when things need to be done.
+[00:04:21] And those are typically inside of the application.
+[00:04:24] So when you connect the URL or attach the documentation, fundraise picks up those milestones and it adds them for you on tasks automatically.
+[00:04:36] So you know what then you have to be compliant with and you get alerts as to when those reporting milestones come up.
+[00:04:44] Okay.
+[00:04:45] So it helps you to track the grant application and even it does the accrual process of that.
+[00:04:51] So, so.
+[00:04:54] I'll just jump in as, as cool as all this is, we are hopelessly, we never are successful in any grant, any grants.
+[00:05:03] We almost never apply.
+[00:05:04] Yep.
+[00:05:05] Because we're Christian at our core.
+[00:05:07] Yep.
+[00:05:08] We work in India, offshore Australia.
+[00:05:10] Yep.
+[00:05:11] And we are disqualified from almost everything that goes on in our country, which is a sad commentary.
+[00:05:18] Yep.
+[00:05:19] So anything we want to write.
+[00:05:20] It could work for New Zealand though.
+[00:05:22] It might work for New Zealand.
+[00:05:23] New Zealand, yes.
+[00:05:24] But in Australia.
+[00:05:25] Less likely.
+[00:05:26] We work for companies that know us and we just write personal stuff.
+[00:05:30] I mean, this looks unreal Carlos and I wish we could utilize it, but I just know we get, we don't even get beyond the.
+[00:05:39] No, it's tough.
+[00:05:41] Yeah, it is.
+[00:05:42] We just don't even qualify to apply.
+[00:05:44] Yeah.
+[00:05:45] Yeah.
+[00:05:46] The grants, the grant space is hard.
+[00:05:48] It's really, really hard.
+[00:05:49] So the, the tech makes it easier.
+[00:05:51] Um, because you know, we know that like hundreds of hours go towards applying for grants.
+[00:05:56] And so this actually makes it easier.
+[00:05:58] So if you're gonna, if you're not going to be successful, then you're not actually wasting a lot of time in the process.
+[00:06:04] Yeah.
+[00:06:05] Yeah.
+[00:06:06] Going forward.
+[00:06:07] Yeah.
+[00:06:08] Yeah.
+[00:06:09] Yeah.
+[00:06:10] Um, so we've also built in, uh, documents and forms on fundraise.
+[00:06:15] Okay.
+[00:06:16] So typically organizations use a third party to run surveys.
+[00:06:20] They might utilize things like Microsoft word and office and Google documents to be creating documents in house.
+[00:06:30] Um, we have taken the need away from utilizing third parties.
+[00:06:35] Um, so our documents, uh, builder works exactly the same, um, as a Google document.
+[00:06:46] Um, you're not, you're, you're not utilizing Google docs as an integration here.
+[00:06:52] You're actually building documents on fundraise technology.
+[00:06:55] Um, so you can just go ahead and create things like a letterhead and a signature block and write out the document.
+[00:07:01] So we, uh, organizations of fundraise, uh, uh, creating documents for wills and bequests on fundraise.
+[00:07:11] They're working together cohesively as a team because everybody can import into the document.
+[00:07:16] They're getting legal and CEO approved for that if it's necessary through fundraise.
+[00:07:22] And then they can send the other documents to all of the donors that want to be locking in a will or a bequest.
+[00:07:30] And so they're doing, they're doing the whole entire thing on fundraise.
+[00:07:35] From the document to getting legal approval to getting the, the donor to sign and, and leave, um, a portion of their, or their assets to, to the organization.
+[00:07:47] Everything can be done on fundraise.
+[00:07:48] Okay.
+[00:07:49] Carlos, I'm, I'm, I'm a bit confused on that one.
+[00:07:53] What's the benefit of putting documents in here versus just having like a Google doc or a word doc that you get someone to sign off on and then email it to your donor or whatever.
+[00:08:02] Like what, what's the better, what gives a better experience for staff and donors?
+[00:08:08] You're working in one ecosystem.
+[00:08:10] You're never having to work on like multiple platforms anymore.
+[00:08:13] And that is like a massive time consuming exercise for, for teams like everywhere.
+[00:08:21] Uh, you, you don't have to then go and train staff across different things and, and be able to find documents that are, that are often hidden on Google drives that are hard to find.
+[00:08:32] Everything is on fundraisers that have one single point of, of truth.
+[00:08:38] Uh, so there's like a ton of benefits to that.
+[00:08:40] Not, not just from the potential of creating something, but for imagine for teams and for volunteers, often it's, it's the case of, oh yes, we've got a document.
+[00:08:53] It's in Google drive is typically the, the, the feedback that we give people.
+[00:08:57] And then people have to go and find the document and find the right version and things like that.
+[00:09:01] Whereas uniquely on fundraise, when everything is together, we no longer have to do that.
+[00:09:06] We can just say it's in fundrais where we're all working together.
+[00:09:09] Um, so let's say, let's say to your example of like, oh, we've got some dockets in Google drive.
+[00:09:15] I've got to go and find it.
+[00:09:16] Don't know where it is, what it's called or whatever.
+[00:09:18] How does the fundraise avoid that same issue?
+[00:09:21] Because mountains of documents still in here and not be able to find it.
+[00:09:24] So is there a way that it helps you organize the documents so that easy to find or something?
+[00:09:29] Yeah, correct.
+[00:09:30] Yeah, correct.
+[00:09:31] That's right.
+[00:09:32] That's right.
+[00:09:33] So you can, you can be tagging documents.
+[00:09:35] You can be setting up folder structures directly on fundraise, right?
+[00:09:40] And dependent on the level of access that an individual might have on, on fundraise, because we do have like a whole security matrix, uh, built into it.
+[00:09:52] So that you can have, you can then assign some documents to just volunteers, some documents to everybody, everybody else, uh, which are the security parameters on Google documents that you can't necessarily create.
+[00:10:04] You can either just like share or not share.
+[00:10:07] Yeah.
+[00:10:08] And if you do share, then it's either like an edit or a viewer.
+[00:10:11] Whereas in fundraise, it makes a ton more sense based on the security capabilities around that as well.
+[00:10:16] And can you just, can you attach like, um, to organize the documents, like instead of having some bespoke folder structure, can you just keep documents related to a donor?
+[00:10:28] Like just under that donor?
+[00:10:29] Yeah.
+[00:10:30] So you can go click on a donor and see all the documents related to them.
+[00:10:33] Absolutely.
+[00:10:34] Yeah.
+[00:10:35] You're a hundred percent.
+[00:10:36] That's a nice way to be able to organize stuff.
+[00:10:38] Yeah.
+[00:10:39] Yeah.
+[00:10:40] I'm going to come, I'm going to come back to that one.
+[00:10:41] Yes.
+[00:10:42] But definitely.
+[00:10:43] Um, let's.
+[00:10:44] Can I just jump in quickly to ask normally for all of our shared documents and all these SharePoint and we have different silos for the different, um, people with access.
+[00:10:53] So could we actually then incorporate that in here and stop using all these different platforms and just consolidate?
+[00:10:59] A hundred percent.
+[00:11:00] Yeah, absolutely.
+[00:11:01] Okay.
+[00:11:02] Yeah, absolutely.
+[00:11:03] Yes.
+[00:11:04] So moving away from the organizational perspective, and by the way, on the 1st of October, so in a couple of days time, we are, we're launching our volunteer management capability on fundraise, and that's going to go live across all accounts on the 1st of October.
+[00:11:21] Um, so that's an additional layer, um, that's coming, but I'll, I'll get to that one as well.
+[00:11:28] Okay.
+[00:11:29] When we're talking about CRM capability, now we're talking about the intelligence capability that fundraise has to record things against individual contacts.
+[00:11:39] Um, so, um, the first thing to, to mention is that fundraise, one of our AI models is always looking at your data.
+[00:11:49] Um, it's structuring it's segmenting and it's also cleaning up data so that the duplicate issue is a non-issue on fundraise.
+[00:12:01] Where a record is 95% consistent.
+[00:12:04] So that might be first name, last name, and email.
+[00:12:07] Um, but it could be Chris and Christopher, but it's got the same last name and email.
+[00:12:14] Um, and then that's, uh, that's a direct match for fundraise.
+[00:12:18] So it'll merge records together based on those parameters, anything that's outside of 95 percentile consistency.
+[00:12:28] It'll surface that to humans and say, Hey, these records are the same.
+[00:12:33] You might actually merge them together and you make the call.
+[00:12:38] Right?
+[00:12:39] So your database is always clean.
+[00:12:41] You're always updated.
+[00:12:42] You're never having to go through the level of like, you know, inconsistency around duplications.
+[00:12:48] Um, when we're then talking about the actual intelligence capability for individuals, this is where fundraise is miles ahead from everything that's on the market.
+[00:13:00] Um, the, the first, the first point is that, um, the intelligence that gets surfaced on fundraise is easy.
+[00:13:10] Is easy is, is unique.
+[00:13:12] Um, the lifetime value.
+[00:13:14] That's not unique.
+[00:13:15] The average donation that isn't either.
+[00:13:17] What is patented is the optimal last command.
+[00:13:20] Um, so everybody in your database has a different optimal last command.
+[00:13:25] Um, that's based on around about 300 different signals.
+[00:13:29] So these, these factors are computed live, um, and they are superbly intelligent.
+[00:13:36] And so what it means is that when we are sending an email out, an email campaign out for our fundraising efforts, and typically charities say things like, we need a hundred thousand dollars by December 31st.
+[00:13:48] Could you please keep right charities typically have the time to put one email together and send it out to 10,000 contacts.
+[00:13:57] Okay.
+[00:13:58] Um, and what fundraise does, it helps you to write that email.
+[00:14:04] So that humans write and are happy with the messaging, but then it'll actually personalize and customize the email that is received by 10,000 people.
+[00:14:16] And so instead of just saying, we need a hundred thousand dollars by December 31st, it'll say things like our goal is to raise a hundred thousand dollars by December 31st.
+[00:14:24] Would you, would you consider giving $5,500 in this instance?
+[00:14:29] Because it understands that that's the capability of the actual human.
+[00:14:33] Okay.
+[00:14:34] And so, and we know, we understand this holistically at fundraise that overwhelmingly 97% of donors give when the correspondents,
+[00:14:45] is customized.
+[00:14:46] Okay.
+[00:14:47] Fundraise is helping to increase donor retention by as much as 43% this year.
+[00:14:54] And this year, we're really proud to say that we are helping organizations to raise three times, 3.2x what they are raising outside of fundraise.
+[00:15:06] So for an organization that raises a hundred thousand dollars off, of fundraise, fundraise is raising today, 320,000.
+[00:15:14] That's like the level of ROI that we are actually returning.
+[00:15:17] And we're doing so because we are helping to, to break the cycle and actually customize message, which donors really respond to well.
+[00:15:26] So we have a couple of situations like where either he gives or she gives or, or the other way around in a household.
+[00:15:34] And then they, when they could also have a trust or they could also give, you know, through some other particular thing, I guess, so long as all the information is fed in, then it would all be drawn out accordingly.
+[00:15:45] Correct.
+[00:15:46] Yeah, that's right.
+[00:15:47] Okay.
+[00:15:48] Correct.
+[00:15:49] Yep.
+[00:15:50] Yeah.
+[00:15:51] Can I ask a question, Carlos?
+[00:15:52] When do you then, does your analytics on the results of those asks that go out, then get fed back into your models so that they're more accurate next campaign or next year or whatever?
+[00:16:07] Yeah, that's right.
+[00:16:08] That's right.
+[00:16:09] So the, the point to distinguish here is that our models are consistently being fed information from a global fundraising standpoint.
+[00:16:18] Right.
+[00:16:19] So our models weren't just trained like five years ago, and then we just leave them.
+[00:16:22] Right.
+[00:16:23] They are continually being trained up.
+[00:16:26] And what is also occurring with our models is that what, what works in terms of messaging, what works in terms of behaviors, they're also being trained into our models.
+[00:16:37] So that then we can roll out that level, that same level of intelligence and consistency across every single user on fundraise.
+[00:16:43] Right.
+[00:16:44] And so we no longer have to depend on like, or not knowing what works.
+[00:16:50] Fundraise is consistently the models are trained on the parameters that are working, assessing if those signals are in your data and it's telling you that that's actually working surface that as a, as a recommendation.
+[00:17:04] Yeah.
+[00:17:05] Okay.
+[00:17:06] And, and just one quick question on the models.
+[00:17:08] Are those, are they sort of opaque models that just give you out a score and you can't reason about why it gave you that number?
+[00:17:16] Or can it also tell you, oh, it's 80% confidence.
+[00:17:20] And here are the reasons why, like, here are the signals that are pointing towards that 80%.
+[00:17:26] So everything is entirely driven through the, it's, it's not just giving you a score and just saying nothing else.
+[00:17:36] It's giving you the actual indications as to why it's telling you what it's telling you.
+[00:17:41] Yeah.
+[00:17:42] Yeah.
+[00:17:43] Okay.
+[00:17:44] That's cool.
+[00:17:45] Yep.
+[00:17:46] Yep.
+[00:17:47] Yep.
+[00:17:48] Yep.
+[00:17:49] Okay.
+[00:17:50] And so when you, when you look at it again, and Andrew, this goes to answer your question further,
+[00:17:54] that when we're looking at things like propensity to give as a measure for, for this individual,
+[00:18:01] we've got like a 60% confidence that, you know, in the next 30 days, this individual is likely to give just about 27 grand.
+[00:18:09] Right.
+[00:18:10] So it's like, it's, it's, it's breaking down.
+[00:18:13] It's not just giving you the score, but it's actually telling you why and how all of that.
+[00:18:17] Okay.
+[00:18:18] Okay.
+[00:18:19] And also, do we have access to be able to see, you know,
+[00:18:23] able to see the accuracy of that moving forward?
+[00:18:26] Like, let's say it says 60% confidence there or whatever.
+[00:18:30] Can we look back in six months time ago?
+[00:18:32] Oh, the model said this, but here's what actually happened.
+[00:18:35] And here's how it tracked according to the scores that it gave.
+[00:18:40] Yep.
+[00:18:41] Yep.
+[00:18:42] Okay.
+[00:18:43] Yep.
+[00:18:44] So all of those things get recorded in the timeline.
+[00:18:46] Let me just walk through a couple of more things about this.
+[00:18:49] And I'll answer your question as I go.
+[00:18:51] So you can map individuals to individuals and individuals to households and individuals to businesses.
+[00:18:59] So Kate, to your point about the structure of giving and where it comes from, you can do all of that.
+[00:19:04] And you can then just basically define the relationship in terms of whether it's a household or whether it's like a partnership and so on.
+[00:19:13] Okay.
+[00:19:14] The second one is that you've got all the donations now in one single spot as a snapshot of what has happened.
+[00:19:22] You've got all the receipts that are automatically sent as part of like donation processing or fundraise.
+[00:19:31] The donation receipt is both an HTML email template that is customized to your branding, but also a PDF attachment to every single donation.
+[00:19:41] So donors get both.
+[00:19:43] So you've got the timeline of when things occur, when things happen, you can be logging interactions into the timeline.
+[00:19:52] So if you've got, if you've sent an SMS or if you've had a coffee with a particular donor, the difference being is that we allow for an impact score because then this helps to then recompute the actual parameters and recommendations of fundraise.
+[00:20:10] Because signals might be really good right now, but the coffee during the coffee, you know, the donor said, oh, you know what, like things are terrible or like, I'm not, I'm not loving what you're doing, whatever else.
+[00:20:25] And so you can then address that.
+[00:20:28] Okay.
+[00:20:29] And that helps to compute different, different scores.
+[00:20:32] You can add notes.
+[00:20:33] So Andrew, you asked the question about attaching documents and things like that to individuals and to contacts.
+[00:20:38] And to contacts, you can do that directly through this, through notes and attachments.
+[00:20:42] You can even generate custom fields to individual records on fundraise.
+[00:20:47] Okay.
+[00:20:48] And so now from a segmentation perspective, fundraise helps you to even generate segments based on keywords on notes.
+[00:20:58] Okay.
+[00:20:59] Or to like custom fields, whatever you want, whatever you generate on that.
+[00:21:05] Yeah.
+[00:21:06] And groups.
+[00:21:07] I mean, for example, sometimes if we've got something in it, we send something to all the people in that church.
+[00:21:12] Yep.
+[00:21:13] Yep.
+[00:21:14] Absolutely.
+[00:21:15] Absolutely.
+[00:21:16] Yeah.
+[00:21:17] Yeah.
+[00:21:18] So now on the intelligence side, we're the only CRM in the world to actually have research embedded into fundraise.
+[00:21:28] So our, our AI models are closed, so they are sovereign.
+[00:21:34] So we don't ever leak data out of them.
+[00:21:37] But what we do surface is the capability of searching the web for specifics on the contacts.
+[00:21:46] So be it first name, last name, and email.
+[00:21:49] Okay.
+[00:21:50] And so by a single click, fundraise will actually go and search the web and bring in the intelligence that's public out in the web and bring it into the actual record.
+[00:22:02] Brilliant.
+[00:22:03] Okay.
+[00:22:04] So now you're actually getting to know people phenomenally better than what you have in the past.
+[00:22:09] Okay.
+[00:22:10] And also equal to that is that we're the only CRM in the world that has prospect research.
+[00:22:17] And so it's the same capability.
+[00:22:20] So off one prompt, if you ever need to build stronger relationships, or if, you know, Kate was talking to us at conference about coming to Canberra and maybe connecting with churches in Canberra.
+[00:22:34] Typically, you have to go to Google to search for churches in Canberra, and then you've got to like copy and paste into a spreadsheet to get the lists.
+[00:22:42] Or you can just basically type a prompt and you can determine how many leads you want.
+[00:22:56] And within a minute or so, fundraise will return the leads to you.
+[00:23:03] Sorry, this is our test environment.
+[00:23:05] So forgive me for that.
+[00:23:06] But what effectively you get is you get these types of records that we brought in yesterday of another demo.
+[00:23:17] So you can see that you've got the name, you've got the email verified, you've got the phone number verified.
+[00:23:26] That's brought into fundraise.
+[00:23:28] All right.
+[00:23:29] And so now you just import them into your CRM.
+[00:23:32] And now you can start to immediately connect and contact those leads straight off fundraise.
+[00:23:40] Okay.
+[00:23:41] That's all in there.
+[00:23:42] Can I just ask, it's slightly tangential, but you just put the email up there.
+[00:23:46] We buy another product because that helps us with emails.
+[00:23:52] It makes our emails look like they're not coming from our organisation or like, I don't know, whatever that's called.
+[00:23:59] They don't default to junk and spam.
+[00:24:01] They don't.
+[00:24:02] Yes.
+[00:24:03] Yep.
+[00:24:04] That's the plan.
+[00:24:05] What do we use at the moment?
+[00:24:06] Something out of America.
+[00:24:08] Well, MailerLite and just different ones.
+[00:24:11] Yeah.
+[00:24:12] Will we have that issue with you guys?
+[00:24:14] You won't have that issue with us.
+[00:24:15] No, no.
+[00:24:16] Why not?
+[00:24:17] Because fundraise actually connects directly to your domain via DNS records.
+[00:24:24] So, we actually send emails directly from your actual structure.
+[00:24:31] It's not like a third party platform that is looking to kind of like mask itself as your organisation.
+[00:24:42] You're actually emailing directly from your DNS records.
+[00:24:46] So, it's a much safer, much better way of emailing and protecting your actual reputation, your email reputation on that.
+[00:24:57] Okay.
+[00:24:58] I think it's over my pay grade.
+[00:25:00] That's all good.
+[00:25:01] That's all good, John.
+[00:25:02] Like we do something similar with the domain records with the existing system.
+[00:25:07] Okay.
+[00:25:08] I thought the issue was because it comes from DFN, it goes into people's junk and it needs to come from Kate at DFN and then it doesn't.
+[00:25:15] No, she wasn't.
+[00:25:16] Doesn't look like it comes from DFN.
+[00:25:18] So, this makes it say, this is basically a way of saying DFN authorises this email.
+[00:25:25] Okay.
+[00:25:26] Great.
+[00:25:27] All right.
+[00:25:28] Any other questions before I keep going?
+[00:25:33] Oh, okay.
+[00:25:36] Cool.
+[00:25:37] I will show you more capability.
+[00:25:39] So, on the emailing side, because we're talking about that.
+[00:25:43] So, Fundraise is now your emailing platform.
+[00:25:50] So, you can create custom campaigns here.
+[00:25:56] And we can see that we've got like a menu of different templates that we can generate and create.
+[00:26:08] Everything on Fundraise is customizable.
+[00:26:10] So, we can preview what a template looks like, you know, and we can utilize the template.
+[00:26:15] Now, it's about like finding the segmentations and I'll come back to segments in a second.
+[00:26:20] But now, we effectively just write the email, put the email together effectively.
+[00:26:27] Okay.
+[00:26:28] You can preview it.
+[00:26:30] You can send test emails.
+[00:26:31] You can even have like AI to actually write the email.
+[00:26:35] You just give it a prompt as to what the email is about.
+[00:26:38] Okay.
+[00:26:39] It might just be like, we've got an event coming up or whatever else.
+[00:26:42] You just, you tell it the prompt and it'll rewrite the whole entire email for you.
+[00:26:46] Very simple, straightforward.
+[00:26:48] Okay.
+[00:26:49] So, even without dinners, we could create the first one and then just replicate and say,
+[00:26:54] do the same for Adelaide for this date at this venue.
+[00:26:57] Do the same for the next one, change the date venue.
+[00:27:01] That's right.
+[00:27:02] Yeah.
+[00:27:03] You could do that.
+[00:27:04] Okay.
+[00:27:05] So, it's your emailing platform.
+[00:27:08] The analytics in this are superb because it's not only telling you basic things like open rate and click-through rate,
+[00:27:15] but it's actually helping you to understand how your message is working with your audience.
+[00:27:21] Okay.
+[00:27:22] And so, this is helping the, our language model, the fundraise language model to even better understand your message and your audience.
+[00:27:31] So, when it does write emails, they're actually more precise over time.
+[00:27:36] So, this is like the way that AI just trains itself to know what works.
+[00:27:40] So, we've got this capability in fundraise.
+[00:27:43] Okay.
+[00:27:44] Okay.
+[00:27:45] Okay.
+[00:27:46] Okay.
+[00:27:47] Other communication is your social media.
+[00:27:49] Okay.
+[00:27:50] Yeah.
+[00:27:51] It's your one-stop social media platform.
+[00:27:54] So you connect your accounts on Fundraise.
+[00:27:58] And we've got multiple different platforms
+[00:28:00] that you can connect with today.
+[00:28:02] There's more that are on the pipeline.
+[00:28:05] And when you do that, then you create the content on Fundraise.
+[00:28:08] You can schedule it.
+[00:28:09] You can post it directly on Fundraise.
+[00:28:12] The beauty of that is that now you can schedule content
+[00:28:16] across all platforms on Fundraise.
+[00:28:20] You don't need a third party to do that anymore.
+[00:28:22] You can see a calendar view of the content
+[00:28:25] and when it was published.
+[00:28:27] You get analytics on one single spot.
+[00:28:30] And the beauty about having everything on Fundraise
+[00:28:33] is, again, it helps you to understand
+[00:28:34] what message is working across your audiences.
+[00:28:38] Okay.
+[00:28:39] You even run your ad campaigns on Fundraise now.
+[00:28:42] So by connecting your meta business account
+[00:28:45] and your Google account to this,
+[00:28:47] then it's just a matter of creating the digital asset as the ad.
+[00:28:51] and putting together the budget through Fundraise
+[00:28:55] and it'll run the campaign for you on Fundraise.
+[00:28:59] It's your whole entire comments and DMs in one spot.
+[00:29:06] Fundraise even does contact matching,
+[00:29:09] which really no other CRM in the world does
+[00:29:11] without charging a significant amount.
+[00:29:16] So to build this on Salesforce, for example,
+[00:29:18] we know one of our organizations,
+[00:29:21] one of the organizations on Fundraise
+[00:29:22] was quoted $90,000 to build this capability on Salesforce
+[00:29:26] so that it could understand who is following you
+[00:29:30] and where there was a match between the email in your database
+[00:29:33] and the social media account.
+[00:29:35] It matches them together.
+[00:29:36] Fundraise does that instantly.
+[00:29:38] Okay.
+[00:29:41] A couple of other things in terms of donations.
+[00:29:46] Fundraise processes all of your donations for free.
+[00:29:51] So every single donation on Fundraise
+[00:29:54] is processed for free.
+[00:29:57] There are no fees passed on to your organization.
+[00:30:00] The way that we do so,
+[00:30:03] and we've been doing it now for the last five years,
+[00:30:06] that we pass on a tip to the donors.
+[00:30:12] And so when they pay for the tip,
+[00:30:16] then 100% of the donation goes to you.
+[00:30:19] And so that is,
+[00:30:21] that, you know,
+[00:30:23] there's a global research on this.
+[00:30:26] 94% of donors don't care about paying a tip
+[00:30:29] if 100% of the donation goes to the organization.
+[00:30:33] And, you know,
+[00:30:34] there's always fees to pay on this,
+[00:30:36] but we don't charge the organization on that.
+[00:30:39] So you can...
+[00:30:40] Oh, you go, John.
+[00:30:42] You go.
+[00:30:43] Now you go first, Andrew.
+[00:30:44] Oh, so is that a feature that can be turned on or off
+[00:30:49] when you present it to the user?
+[00:30:54] Yeah, so it's an opt-out feature.
+[00:30:56] I mean, but I mean,
+[00:30:57] can we, could we as an organization say,
+[00:30:59] oh, we just want to turn that off.
+[00:31:01] We don't want that.
+[00:31:03] So you would like, so the...
+[00:31:05] Like just disable it
+[00:31:06] so that the user doesn't even see that option at all.
+[00:31:10] And we absorb the fee.
+[00:31:12] Why would we do that?
+[00:31:13] Well, I don't know.
+[00:31:15] Like, it's just not...
+[00:31:16] We might...
+[00:31:18] I don't know.
+[00:31:20] I'm just asking.
+[00:31:21] Yeah.
+[00:31:22] Yeah.
+[00:31:23] Look, the user themselves can opt out of that.
+[00:31:28] Okay.
+[00:31:29] Yeah.
+[00:31:30] And so they can just click one button
+[00:31:32] and decide to not give a tip,
+[00:31:35] which then means that the processing fees
+[00:31:38] come off the donation.
+[00:31:39] So that's less money, like for you guys.
+[00:31:41] Okay.
+[00:31:43] Your mission.
+[00:31:44] But what we're saying is that overwhelmingly,
+[00:31:47] like donors don't untick that box.
+[00:31:51] Okay.
+[00:31:52] They don't mind paying the additional like 1.76% on fees.
+[00:31:57] Yeah.
+[00:31:58] Which is some of like the lowest in the market on fundraise.
+[00:32:01] Like raise list charging up to about 13% now
+[00:32:05] on donations in Australia.
+[00:32:08] So at a bare maximum,
+[00:32:09] it's going to be like around about 2%.
+[00:32:13] Okay.
+[00:32:14] That's not bad.
+[00:32:14] That's not bad.
+[00:32:15] And I'd be curious about the messaging.
+[00:32:17] Like, is it framed as a tip or is it framed as like,
+[00:32:20] you can cover the merchant fees?
+[00:32:23] Like, because tip just sounds a bit like,
+[00:32:26] this is fundraising.
+[00:32:27] You're not like tipping someone.
+[00:32:29] Yeah.
+[00:32:30] Yeah.
+[00:32:31] Yeah.
+[00:32:31] So the, like the language is,
+[00:32:34] it is tip to ensure that 100% of the donation goes to the organization.
+[00:32:40] Yeah.
+[00:32:40] That's around that.
+[00:32:42] Yeah.
+[00:32:43] Yeah.
+[00:32:43] And it's worked really well.
+[00:32:44] If we wanted to just BYO Stripe,
+[00:32:48] can we do that as well?
+[00:32:51] Yeah.
+[00:32:51] So Stripe is interconnected for the payouts,
+[00:32:56] but not for the checkout.
+[00:32:59] So we can't just have our own Stripe donation form?
+[00:33:04] Not on fundraise.
+[00:33:05] No.
+[00:33:07] No.
+[00:33:07] Okay.
+[00:33:09] Why would we want that, Andrew?
+[00:33:10] Well, Stripe's kind of like the benchmark user experience
+[00:33:15] for payments and recurring subscriptions.
+[00:33:20] So if we, I don't know,
+[00:33:24] it just locks us out of that nice user experience.
+[00:33:27] And the user experience given by fundraise might be on par.
+[00:33:31] I don't know.
+[00:33:31] I'm just like, it's nice to have options.
+[00:33:35] Yep.
+[00:33:36] Yep.
+[00:33:37] Yeah.
+[00:33:37] So the,
+[00:33:38] the,
+[00:33:41] the,
+[00:33:42] the downside of you connecting Stripe is that you can't,
+[00:33:47] you have to absorb like the payment fees.
+[00:33:50] Yeah.
+[00:33:51] But I mean,
+[00:33:51] we're going to take fees either way,
+[00:33:52] whether it's through fundraise or through Stripe,
+[00:33:55] we're still paying a merchant fee,
+[00:33:57] like all the users paying it.
+[00:34:00] Either way,
+[00:34:00] there's a fee,
+[00:34:01] right?
+[00:34:01] So if we could,
+[00:34:03] if we have the option to use Stripe and then just push those
+[00:34:05] donations in by the API,
+[00:34:08] then that,
+[00:34:09] that could be nice to know that it's an option.
+[00:34:11] It just gives us a bit more flexibility.
+[00:34:13] So one of the,
+[00:34:14] one of the troubling aspects that I hate in the world,
+[00:34:19] um,
+[00:34:19] is,
+[00:34:20] uh,
+[00:34:22] you know,
+[00:34:22]
+[00:34:22] and we can't understand this globally,
+[00:34:25] but we can understand it from the U S market that like last year,
+[00:34:29] $1.4 billion was absorbed in fees in the U S alone last year.
+[00:34:34] Out of the $627 billion that was donated to charities in the U S last year,
+[00:34:42] 1.4 billion of that did never reach charities because it was just absorbed on fees.
+[00:34:47] And so we're just trying to counter that and say,
+[00:34:50] and we believe effectively at fundraise that a hundred percent of the donation
+[00:34:54] should go to the organization.
+[00:34:58] There is a necessary evil,
+[00:35:00] which is a fee.
+[00:35:00] And what we're saying is that instead of just passing that on blindly,
+[00:35:04] like other,
+[00:35:05] like other third parties do to organizations and say,
+[00:35:08] well,
+[00:35:08] like if you want to raise money,
+[00:35:09] then that's the fee off to you.
+[00:35:12] What we're saying is we're simply just allowing people to pay a really small
+[00:35:16] amount as a tip and to pass on a hundred percent.
+[00:35:20] And Andrew,
+[00:35:21] it's,
+[00:35:22] it's just semantics though.
+[00:35:24] Like at the end of the day,
+[00:35:25] people are still paying a fee.
+[00:35:27] You're just calling it something else.
+[00:35:28] No,
+[00:35:29] no,
+[00:35:29] no,
+[00:35:29] no,
+[00:35:30] no,
+[00:35:30] no,
+[00:35:30] no,
+[00:35:30] no,
+[00:35:30] no.
+[00:35:30] But,
+[00:35:30] but the difference.
+[00:35:31] And maybe what you're not understanding is that the difference being is that it's
+[00:35:35] either a hundred dollars to you or like $94 to you.
+[00:35:40] That's the difference.
+[00:35:42] Right.
+[00:35:43] And I honestly believe that a charity deserves the hundred dollars.
+[00:35:50] Right.
+[00:35:50] Yeah.
+[00:35:50] So it's a necessary evil.
+[00:35:52] It's either passed on to you.
+[00:35:53] and like that's actually less money for your mission or just enabling somebody else to cover
+[00:35:59] the fee which they by the way globally they are happy to do so the research states that's it
+[00:36:07] so i andrew this would be my reflection if we get 100 bucks through any of those platforms um
+[00:36:15] i've never seen 13 carlos but we lose about 1.8 up to maximum 2.2 percent over all the different
+[00:36:23] platforms so out of 100 bucks let's say we get 98 and i've always used exactly the words carlos does
+[00:36:31] it's the cost of doing business but two percent's gone straight off the top and certainly the last
+[00:36:37] three campaigns that individuals have run themselves you know whether they're seven
+[00:36:42] marathons in seven days or whatever and they've used either one of those ones that say give us a
+[00:36:49] tip and you can do it we kate and i look at the numbers and it's unbelievable people are giving
+[00:36:56] 60 and they give a nine dollar tip to the organization it's unreal yeah it always
+[00:37:03] yeah it does so i think we'd have to just road test it well we'd have to think it through sensibly
+[00:37:10] um but certainly in our last in these this dinner campaign that we've just been finishing andrew
+[00:37:18] we for the first time ever on our response form we put we highlighted recommended and the recommended
+[00:37:23] way to give us money is direct deposit into our account and then we don't pay any fees and we make
+[00:37:29] one tiny mention of it and the amount of money that's gone through stripe in this dinner campaign has
+[00:37:35] probably dropped by yeah 75 percent honestly that's awesome and i think that's where we
+[00:37:41] it's fantastic like we should be we should be trying to promote that on the new website
+[00:37:47] so it's like when you give a donation hey we really recommend you direct deposit because we're going to
+[00:37:52] save on fees it costs nothing but i suspect lots of our donors would just go yeah i love dfn i'm i'm
+[00:37:59] going to cover my own fees and if they don't want to don't you know yeah actually um call us how do
+[00:38:05] we deal with direct deposits um like is there a reconciliation system as part of your platform
+[00:38:12] which allows us to enter in direct deposits as donations yeah yeah there is there is so you can um
+[00:38:20] um so the the direct deposit is is managed um of a a donation form that's effectively either filled
+[00:38:34] out by the donor themselves or by you internally um in admin um and uh because because typically the people
+[00:38:43] that like to do it this way and i don't mean any disrespect but like they are sort of like 60 plus
+[00:38:50] younger people like to just give off like a credit card and not have like direct debits um set up so
+[00:38:56] they can be done both ways um either through the the donor filling out a form or you guys doing it on
+[00:39:03] internally on uh on the platform against the contact record it's exactly the way sorry if there's if
+[00:39:10] there's a recurring donation do we only have to fill that form once yeah so fundraise uh fundraise enables
+[00:39:18] like actual donor profiles to be generated when they set up a recurring donation so now it kind of
+[00:39:25] works like your subscriptions on like netflix for example so the donor receives like a link to their
+[00:39:32] profile which means that they can change their credit card they can update giving they can you know
+[00:39:38] they can set up different recurring giving for different campaigns or they can set up a bullwiel and
+[00:39:44] bequest on their profile so it means that you don't have to do that uh electron like electronically or
+[00:39:51] manually on their records yourselves they can manage it themselves but of course if they've selected
+[00:39:57] direct deposit as their way of giving can they like manage that somehow on their profile yep okay yeah they
+[00:40:06] can they can they can yep yep so it's um
+[00:40:13] it's a matter of like being able to set up something like this like as a recurring donation the form looks
+[00:40:18] very similar to the donor uh they enter the amount they select the frequency of that the start date they
+[00:40:26] enter their credit card details effectively but we're talking about direct deposit right there's no credit card details
+[00:40:31] no no i know i know it's exactly the same it's exactly the same just with different fields would
+[00:40:37] they even have to do this if they're doing direct deposit so so they can do yeah but if they just said
+[00:40:47] yep from now on i want to give dfn 100 bucks a month i'm just putting it in from a bank they link which
+[00:40:53] is what the most people that give money to us give it that way more and more yeah do they have to have access into
+[00:41:04] fundraise or not so let me ask you the question how do how does that get set up right now from a donor perspective
+[00:41:11] how does a donor set it up they have our bank details which they've got off the website or off a form
+[00:41:17] they go into their bank they go put our banking details in yeah and create this you know once a
+[00:41:25] month hundred bucks bang off out of my card number this or out of this account yeah set and forget it's
+[00:41:33] the best gift i mean would i rather get a quarter of a million sure but if if kate creates a thousand
+[00:41:40] people giving a hundred bucks a month it's awesome yeah yeah and we just reconcile that
+[00:41:46] that um in batches as it comes through so we just see it in our westpac account
+[00:41:52] yep and then we can't and then we just reconcile that into currently in foodl
+[00:41:59] our crm yep yep so so what we accommodate is is that if someone wants to give
+[00:42:09] uh on a recurring basis yeah um they've got the opportunity to do it like this where they can
+[00:42:17] select whether they want to donate and this is like a payment gateway by the way for a for an active
+[00:42:23] campaign on fundraise so you would enter effectively like the amount right um whatever you want to give
+[00:42:32] effectively and you can set up a one time or a monthly yeah or a monthly whatever else right you
+[00:42:39] can opt out for no tip whatsoever so you can opt out of that okay and then you just basically set this
+[00:42:46] up either through a credit card or with your banking details from you from your like your bsp in your
+[00:42:52] account number okay so that that's built into it it's not something we'd have to customize later on
+[00:42:59] no it's built into it so so jonathan instead of going to your bank first yeah and then setting up
+[00:43:05] from your bank to that you can set it up on the campaign you don't have to go into your bank and log
+[00:43:09] into that so who who makes the link into their bank then fundraise so so we'd like yes yes we do that
+[00:43:22] okay so so this is this is how we like utilize like the strut capability of recurring payments through
+[00:43:34] uh bpay or through actual direct deposit
+[00:43:40] oh so you're saying it gets set up as like the user enters their bank details and then
+[00:43:46] what's going on is your platform direct debits the funds yeah yep well we have a lot of users though
+[00:43:54] who just prefer to do their own push donations where they're the ones in control of the transaction
+[00:44:00] yeah how do we handle those users so with those users you would have them set up exactly the same
+[00:44:08] way that jonathan said they would go to the bank they would just add a recurring donation effectively off
+[00:44:15] their bank and so their reconciliation would happen in this way so that you would get effectively the
+[00:44:24] actual payments into your bank account and they would just appear like this into your bank account
+[00:44:30] as such oh sorry are you sharing something because we're not sorry sorry my bad yep
+[00:44:35] so the donations that get set up from from a bank to your bank yeah okay so uh yeah i'm just i'm
+[00:44:45] basically trying to walk you through the fact that we allow for both scenarios yeah yeah from from from
+[00:44:51] okay so you can just from my bank and then reconcile them yeah that's right that's right okay
+[00:44:57] but if somebody wants to set up a brand new one they can do that from their bank or they can do it
+[00:45:01] on the campaign page that's what that's the scenarios that i was just trying to walk you through yeah
+[00:45:07] yeah and so you would get all of them sorry just push on this um let's say a user's got other recurring
+[00:45:15] donations set up on their bank platform is there like a logical donation a recurring donation that
+[00:45:23] corresponds to that in your system so for our own forecasting purposes because i i can imagine that
+[00:45:31] there's two ways to do it one is you just reckon love sell from zero and go oh we got a donation
+[00:45:35] from this user record it another is like oh we've got a recurring donation we're expecting funds from
+[00:45:41] this user every month yeah and this is now you're touching on the reason why we want to lean more
+[00:45:48] towards setting things up on fundraise than on the bank account because when it's set up through
+[00:45:54] fundraise you can then forecast that cash as coming each and every month on the daily
+[00:46:01] right because it's been set up that way otherwise if it's set up on the bank you have no visibility
+[00:46:06] until the cash comes into your bank yeah right so so you don't know when someone has set up a recurring
+[00:46:14] donation on their bank until you get the cash and then next month we got the same amount so we can start
+[00:46:21] to then go oh that's recurring but actually setting it up on on fundraise helps you to understand with a
+[00:46:29] certain degree of predictability that you've got two hundred thousand dollars coming each and every
+[00:46:33] month based on recurring donations yeah so you're saying there's no way to set it up on fundraise
+[00:46:40] and have the user controlling it at their end
+[00:46:45] so the second scenario that i walked you through yes the second scenario when you set up a recurring
+[00:46:51] donation just like i showed you here okay um be that of a credit card or of your bank account recurring
+[00:47:01] because in australia and around the world you have to add an actual email
+[00:47:07] an email gets sent out to the person that set up a recurring donation
+[00:47:11] a link to a fundraise profile that helps them to see what their donations are that's it like it's
+[00:47:20] it's very limited they don't have visibility to anything else except for what they want what they're
+[00:47:26] doing through fundraise and so then they get a picture as to what they've signed up for recurring
+[00:47:34] donation they can pause it they can change that they can change the method of giving all of that
+[00:47:40] that that's what they you're talking about the fundraise being in control here right fundraise
+[00:47:45] pulling the funds is that right yeah yes because can we let's just put that aside for the moment
+[00:47:52] yeah and just talk about users being in control because this is a like i don't think we're going
+[00:47:56] to get away from a lot of users wanting to be in control of their own like doing their own deposits
+[00:48:03] and not having it pulled from their accounts so in that world is there no way to set up
+[00:48:10] a recurring donation on the back end in the platform that says we're expecting these funds
+[00:48:17] and then like at the date we normally expect it oh we didn't see the payment oh we contact the user
+[00:48:23] and say hey guys did you stop doing your donation do you know what i mean andrew you're asking us to
+[00:48:30] to give you information that the banks themselves don't share
+[00:48:33] like when when i set up a recurring payment on on my bank it doesn't tell the merchant that i've set
+[00:48:40] it up as a recurring payment it just no no i know that but we get we we see the payment come into our
+[00:48:46] system at that time every month yep so if we're expecting it like on the 26th of september and
+[00:48:53] then by the 28th we don't see it we could flag it as a oh this user normally donates on the 26th of
+[00:49:00] the month that we didn't see the payment yeah so the the challenge with that is that payments when
+[00:49:07] they are set up bank to bank they are they are um individual actual um processes so a bank will will
+[00:49:19] process the the the payment on the date and send it to the recipient on the date and so it's it's seen
+[00:49:27] as a one-to-one um what uh if if i'm if i'm reading you right like what i think you're trying to say is
+[00:49:35] if we then have that person set that up does fundraise then acknowledge that as a as a monthly gift
+[00:49:43] over time yeah can we like correlate it to some expectation of a monthly gift where it's like that
+[00:49:52] user has a recurring donation set up it's configured as user direct deposit and and let's be honest here
+[00:49:59] guys most of these guys they don't just do it they tell us they write an email and go hi jonathan
+[00:50:07] love what you and kate and all your team's doing 100 bucks a month coming your way bang i've set it up
+[00:50:11] yeah it's normally not some guessing game we're playing because because what i would say is that
+[00:50:17] the way that you would then do it is that you would tag the individual as a monthly giver yeah
+[00:50:23] which we do now anyway yeah yeah and so that's so if you do it that way um then you can then track
+[00:50:31] and particularly if somebody tells you that they've set it up on their bank account then i would
+[00:50:35] immediately set that that person up as a monthly giver that they give and i will write it on the
+[00:50:42] notes that i would that they give on the 15th of every month a hundred dollars right and so then we've
+[00:50:48] got the capability of reporting then on our monthly givers and seeing who's given and who's not and we
+[00:50:53] can reconcile that okay cool yeah just as long as there's a way that we can we know that we've
+[00:51:00] tagged that user as a monthly giver yeah we can get an automated report at the end of every month that
+[00:51:06] says hey we've got these monthly givers but these users didn't give like we didn't get their payment
+[00:51:11] so what's going on that's right yeah that's right so yes so with that scenario where someone sets up
+[00:51:17] their donation on their bank account and tells you then yes you can tag them and you can run a report of
+[00:51:22] that when someone does it off a form on fundraise it's it's automatically tagged as monthly recurring
+[00:51:29] and and so on got it okay so they can just tick on the form i'm going to set up my own deposit
+[00:51:35] yeah okay do that yeah okay and the other point we just need to acknowledge
+[00:51:40] i mean when we say younger people do this where does all the money come from well it comes from those 50
+[00:51:47] years of no offense andrew it comes from those 50 years of age and older because they've got all the
+[00:51:52] money and every single fundraising seminar i go to we all want to esteem etc the 18 to 35 year old
+[00:52:00] but they've got no money so they give 20 bucks a month and where does the 75 grand come from i'm not
+[00:52:07] talking about you and i'm just saying generally and that's just a fact it's a fact yeah young people
+[00:52:13] buy a t-shirt they run a they're running a marathon and they speak your mission with their mouths yeah
+[00:52:19] yeah it's great um can i just ask can i just ask sorry uh with the um credit card donations i know
+[00:52:27] that every month we have cards that are scammed cards that are expiring is there a mechanism uh we always
+[00:52:37] have to contact people manually oh you're you know we tried to take it out and it bounced um or else you
+[00:52:45] know they call us and say oh my car's been scammed is there a way that that that this can be done
+[00:52:51] autumn automatically through andre yeah so it's it's already done automatically allison so if there's a
+[00:52:59] failed transaction for a gift the person receives an email and so do you letting you know that that
+[00:53:07] there's been a failed transaction okay with the words that we will try again in the next three days okay okay
+[00:53:15] so that gives the donor the chance to update things yeah um if if it continues to fail then it will it
+[00:53:26] will continue to run um the the process of trying to get the donation to you um another three times and
+[00:53:35] then it stops it then assumes that maybe something has happened okay donors that pay through credit card
+[00:53:43] get access to that portal that then enables them to change their credit card details and so on and
+[00:53:48] pause things yes so you no longer have to do any admin in terms of like failed credit card payments
+[00:53:55] and expiry dates that are approaching so donors receive a an email six months ahead of ahead of their
+[00:54:05] credit card expiring letting them know that their donation will fail if they don't update their
+[00:54:10] yes their credit card details okay great thank you okay that's okay um look regardless of how we
+[00:54:17] how do we get donations the reconciliation is super easy yeah okay it's a it's a list of payments
+[00:54:24] effectively that we we connect to zero then we create a batch once the batch is done then we just send it to
+[00:54:32] zero and that's as hard as the reconciliation is nowadays okay um so like really really positive
+[00:54:40] kind of stuff okay when it comes to other things like donation statements which a lot of organizations
+[00:54:49] don't do because it's really hard to do fundraise has donor statements created in it in it so think
+[00:54:58] about running a a um a donor statement either on a quarterly basis or on a yearly basis and you can
+[00:55:06] basically just click one button for the current year um you know and select whether it's donors with emails
+[00:55:15] or tax deductible donations only and so on so forth we generate the statement now we've got a list of
+[00:55:21] people that gave based on this criteria we can take a look at the statement and this is our test
+[00:55:29] environment so it doesn't mean customized but you can see that there's a statement there that's
+[00:55:34] automatically generated that you can view and check and then fundamentally all you do is just click a
+[00:55:41] button and send the statements out to your donors yeah that's the annual statement done okay
+[00:55:52] uh let me keep going because there's a couple of more things to show you uh on social media i've
+[00:55:57] shown you and the email marketing i've shown you on the sms let me show you this fundraise is not
+[00:56:02] a telco company and we won't be sadly okay but we have partnered with twilio the world's leader in sms
+[00:56:09] technology and capability so we just enable you to rent out a a mobile number effectively once you do
+[00:56:18] that you just buy credits to be able to send sms's through fundraise and all of those sms's that you
+[00:56:25] send out to your audiences get recorded in the timeline and it all kind of comes together okay
+[00:56:31] so i like that that's a really powerful way to get messages out really really quickly okay um on the
+[00:56:39] segment side we can create segments based on conditions as we normally do on any other crm the
+[00:56:48] points of difference with fundraise is that we actually give you all the mappable data points
+[00:56:57] on fundraise so you can create segments so tight based on a word on notes okay um you can do it
+[00:57:06] through basically everything as you can see okay but the div the also the difference also is that
+[00:57:13] when we run the query
+[00:57:19] you can see here that it's actually given us the results before we've even run the query or we've even
+[00:57:25] set up the segment so we straight away know who fits into the criteria and whether or not we should
+[00:57:31] be building this into a segment okay other crms you got to write the condition you run the query to
+[00:57:37] find out that no one matches the criteria we we change that the other way that we change it is also
+[00:57:42] through what we call ai smart lists so this is our ai models inquiring on your data and actually
+[00:57:51] surfacing segments that are in your data that you might not be looking for so now you're working
+[00:57:58] in tandem between your own segments with your own conditions and what is in your database based on
+[00:58:03] ai intelligence okay and so that's greater segmentation done for example ready for a large ask
+[00:58:11] there's one donor there's one opportunity in that okay and so we just question about the ai features
+[00:58:19] carlos um is that unlimited usage or do we get a certain amount of credits per month for the ai
+[00:58:26] features how does that work there are you you get unlimited use of ai on the platform yeah so it's not
+[00:58:36] so you know we were talking about this before but but fundraiser is not connected with like claude or
+[00:58:43] chat youtube or anything like that so there's not a tokenized economy oh sure so even if you're like
+[00:58:50] web research then use your own internal models yep wow cool yeah yep so there's never going to be this
+[00:58:59] thing that says hey guys you're using too many tokens this month you got to charge for more tokens
+[00:59:04] that's never going to happen on pod race okay amazing okay is there a limit on on what well like
+[00:59:13] with tokens for example when they run out um you can just keep digging deeper and deeper and more
+[00:59:19] prompts and yeah yeah this is this is entirely our modeling so we're not having to pay third parties for
+[00:59:25] their costings of their of their tokens yeah yeah um so do you know roughly how many emails you guys send out
+[00:59:34] a month do you mean like bulk emails yeah like as a as a total in terms of all emails that you would send
+[00:59:43] in a month for two hour donor base oh what probably one well it depends i mean when we've got our dinners
+[00:59:55] we'll send and so let's say we've got six dinners and all the dinners all get six emails that's 36
+[01:00:01] but then if we don't have dinners and it's more like our quarterly update then that's just once a
+[01:00:05] quarter okay or when campaigns like end of financial year or end of year then um it's probably about once
+[01:00:12] a week four to seven thousand a month okay so on fundraise um when you're sending emails you get
+[01:00:21] you get 25 uh 250 000 emails included uh per month yep oh so that should be enough that should be enough
+[01:00:33] that should that should be enough yeah but you guys are going to grow right and so you're going to be
+[01:00:38] tapping on that um yeah and if you never needed to go to unlimited each and every month it's it's it's
+[01:00:44] 99 extra per month yeah right okay if that's if you wanted to have that that's that's the that and apart
+[01:00:53] from sms is it's the only additional costs if you go over 250 000 emails per month okay um let me just
+[01:01:02] just run there's no other paid add-ons that we have to get that it's purely sms and email yeah
+[01:01:09] like everything else is just included unlimited yeah email over 250 000 per month yeah yeah okay
+[01:01:16] because it's yeah because 250 000 each month is what you get already okay okay so yes so sms would be the
+[01:01:23] only thing that you would pay for um let me show you on the campaign side events so now all of your
+[01:01:32] dinners are run on fundraise so you don't need to have like a humanitix or another third party platform
+[01:01:39] to run your dinners on you basically create an event you give it a nice little banner um
+[01:01:48] um dinner you enter the description you select the event type then you just continue you add more
+[01:01:59] information about where it's happening where it's happening let's just say okay and now you just select
+[01:02:08] the date and the time all of that kind of stuff right like pretty pretty standard stuff then you add
+[01:02:15] your ticketing types on fundraise so you can just like basically customize the price of those of those
+[01:02:22] tickets okay so that when you are now done effectively and create the event
+[01:02:33] you can now preview what the what the event page looks like
+[01:02:36] okay everything's customizable no problem at all okay the the event is not live so i can publish this
+[01:02:48] event and now refresh this page
+[01:02:50] and now i can get tickets and buy tickets directly on fundraise so now it is your ticketing system
+[01:03:09] it's doing all of your it's tagging everybody that buys a ticket and checks into the event
+[01:03:14] okay because it also manages your check-ins okay so when you
+[01:03:21] when you purchase a ticket there's like a barcode or a qr code given to the ticket
+[01:03:26] and when someone turns up someone at the door can just scan the qr code and check that person in
+[01:03:32] it's all done in one system okay and then do the donations from the dinner also then get kind of um
+[01:03:41] uh correlated or matched up with that whole thing absolutely and at the end it just puts together and
+[01:03:47] then if we've got like a bunch of different dinners at the same time so at the moment for example on our
+[01:03:52] website there's i think i don't know eight dinners or something like that and so people have to choose
+[01:03:57] which one they're going to is a drop down menu of which city they're going to um they physically have
+[01:04:03] to choose but here you can have multiple events and the same thing or that'll be on a different page or
+[01:04:07] how would that work no like so so each event would have its own page yep so that so that people know
+[01:04:15] that they're going to the sydney event and not the adelaide event very very it's on url with its own
+[01:04:20] url correct yeah and so what you then would do is create a campaign and call it a like the gala dinner
+[01:04:27] uh dinner uh 2026 and then it's an event fundraiser so it's now got all of our events here right and so we
+[01:04:39] can just select the event that this campaign is for okay and so when we go next we can just determine
+[01:04:47] what the what the goal is going to be for that event okay our ai will actually recommend what is possible
+[01:04:56] to you based on like the donors and and that might be coming to the to the gala and so we can set this
+[01:05:03] up for 25 000 as a as a goal we just write the story based on what the dinners are okay and what
+[01:05:11] we're celebrating or what we're looking to achieve okay um i'm just going to leave that blank right
+[01:05:17] uh but now you can see that fundraise is now going to be building the assets for us okay sorry i didn't
+[01:05:25] assuming by assets sorry man so like the landing page like the the email copy can we can we just
+[01:05:33] pause there because it was something we want to have like we're we're rebuilding our website at the moment
+[01:05:38] yeah we want to try and have a really nice experience for the users where everything feels like well as
+[01:05:43] much as possible you're in the website and you're not going off to some other i love that yeah thing
+[01:05:50] so are there other sort of we like we're quite comfortable with talking to your api um are there
+[01:05:57] other ways that we can bring this stuff into our website without it feeling like going off to a different
+[01:06:02] page of course yeah so andrew like really great point so instead of create having fundraise create
+[01:06:09] you the landing page effectively you would just create the widget on on fundraise completely
+[01:06:15] customize it to your look and feel into your branding and you would embed the widget onto your landing page
+[01:06:22] it can we can we actually just pull campaigns from the api and build our own renderer of that
+[01:06:31] are you building on wordpress or what do you know on like a uh react okay yep um so for the
+[01:06:39] time being what we accommodate is uh is building out the widget as you like on fundraise on the fundraise
+[01:06:47] side um so that people for the for the event for example they would just go ahead and buy tickets
+[01:06:54] that you create on fundraise because fundraise is your ticketing system um and then you customize that
+[01:06:59] widget and embed it onto your website onto your landing page that's that is where we are in our journey
+[01:07:05] uh in in the future with in the future roadmap we do have um the capability but we we haven't yet launched it as to how we then integrate with cms's um and other bits and pieces like that for
+[01:07:21] for actual websites but the widget is is where we stand right now okay because i mean it seems like it'd be reasonably straightforward for you guys to just expose all this stuff through your api um like
+[01:07:33] um like um like you know we don't need help with integrating with any cms or anything but if we can get the data out and push registrations in then we can just do it ourselves
+[01:07:45] yeah so what we offer right now because of the way that our models work and the way that like we we need to protect data is through widget it's through widget um capability
+[01:07:57] okay i mean i just being up front that might not work for us like having a campaign widget like we want to have full control over the user experience um is that so
+[01:08:11] so this is just just so that i just so that i'm clear and just so that this is all making sense to everybody that this is a website culture break is on fundraise this is their website um it's entirely there look and feel it's all it's in
+[01:08:25] look and feel it's it's everything there's when you go to donate you donate on their website it's all like it's all their wording it's all their language this widget here is fundraise
+[01:08:42] right and so they've created that widget on fundraise customized it entirely to their branding to the dollar amounts to everything
+[01:08:52] and now this is the only thing that is fundraising so it is entirely your customized entity it's entirely your website it's entirely your look and feel it just so happens to process one entity one donation one ticket purchase one registration of something that is
+[01:09:13] okay okay okay so i guess we just want to know we've got options for
+[01:09:22] using different integrations if we want to like if we decide we want more control and we want to use
+[01:09:28] humanitix like can we use humanitix and then push a few things into our donor history like and use a different event ticketing system
+[01:09:38] so yeah so we do have we do have like a lot of uh a lot of great um integrations already built out on fundraise
+[01:09:49] um and there are there are some that are already live there are some that are coming um when it comes to
+[01:09:56] when it comes to third parties like humanitix uh you can um you can effectively generate that just like with
+[01:10:04] melchim for example through an api integration um and so if organizations want to keep paying for
+[01:10:12] melchimp as well as fundraise then i guess ultimately they can they can do that they can select to do that
+[01:10:19] um it's it's whether or not you need to do that going forward because the functionality is all in one
+[01:10:24] single place yeah i mean i'd love to just i'd prefer to just get everything out of the box but as an
+[01:10:31] engineer i'd like to have options and i'd like to know okay i can't control your systems like if
+[01:10:38] something doesn't work for me i can't just get on the phone and say hey can you guys fix this like
+[01:10:44] oh you but you can i mean it might take you six months to get around to doing that feature right um
+[01:10:51] so i just it's just nice to know okay if we don't want to use this event registration system
+[01:10:56] and use humanitix and we can push um attendance and stuff into the um into the crm and have that
+[01:11:05] against the donor history yep yep yeah yeah look i like i completely understand and i and i love and
+[01:11:12] appreciate that you are a developer and you and you're an engineer and so you think you think outside
+[01:11:17] the box literally so i i i very much appreciate that um and so yeah so if there are there are things that
+[01:11:24] need to be worked in tandem where you need data that we're not providing you can raise that through
+[01:11:30] support and we can see what we can do um you know we we're we're not a company that says no to things
+[01:11:38] easily but it's like the fundamental principle of how we share data with other integrations is that
+[01:11:44] it's got to be safe because we we uphold data sovereignty on our side and you know and like i was
+[01:11:53] asked the question for example on microsoft authentication um and whether or not we will ever
+[01:12:00] have the ability for people to sign up using microsoft authentication on fundraise um the question is
+[01:12:08] well the answer is like today we don't and there's a reason why we don't have that uh and because if
+[01:12:15] the data sovereignty cannot be ensured across like even authentications like that then we will not
+[01:12:24] proceed um where like we're talking about with like really sensitive information so but i i completely
+[01:12:30] get your point on that and happy to work on on things together okay um reporting let me just dive really
+[01:12:41] quickly into this because we've talked about it there's a menu of reports standalone reports you can
+[01:12:47] run uh you can create folders for reports you can even go down the path of building customized reports
+[01:12:59] so we have built in the capability of salesforce where you can actually go and query any level of data
+[01:13:07] data down to the like the micro level yeah to be pulling together actual lists okay great we understand
+[01:13:18] that most organizations hate that that functionality but it doesn't mean that we haven't built it
+[01:13:23] because it's useful we love we love that functionality carlos honestly love it great we do it down to the
+[01:13:32] the postcode etc yeah that's that's really awesome that's it's great that you do that on fundraise we
+[01:13:38] also have the capability of running reports based on prompts um so it's got some examples here like
+[01:13:47] show me the major donors who gave more than ten thousand dollars in the last six months grouped by
+[01:13:51] campaign that's a prompt it's picked up it's interpreted the actual query and what we need to see
+[01:13:58] and then we click the button and it runs the report for us okay it's given us the list of donors that meet the
+[01:14:08] criteria and we can customize this report not an issue all right um analytics different way of viewing
+[01:14:19] statistics but you can see here that like all of the metrics run and superbly fast the guys at vision
+[01:14:28] uh and the guys at reema saw this uh at conference and they were like does it run this fast all the time
+[01:14:36] yeah and they were super impressed and the answer is yeah yep because your data is siloed into one
+[01:14:43] entity it's not being shared across different uh different organizations so you're seeing everything on
+[01:14:51] fundraise all right any questions please quick question about the analytics so let's say if someone
+[01:15:00] makes a donation can we then track that and we've got them linked in this database can we then track
+[01:15:06] their behavior on the website yes yeah so if you set up the funnel capability on the analytics so you know
+[01:15:17] so you effectively funnel people in through a url you map the you map where they come from and things like
+[01:15:25] that uh we've got organizations that are mapping from ads to funnel on fundraise so they're running ads so
+[01:15:32] they know where they're coming from what social media platform what ads working they're funneling that
+[01:15:36] through to the url and so they can try trace the individual both where they come from and where they go to
+[01:15:43] yeah cool okay any other questions guys on on stuff that i've shown you i mean i have lots of questions
+[01:15:54] about other things but um not related to what yeah sorry okay
+[01:16:01] yeah we uh we have um around about 600 um child sponsors
+[01:16:09] uh so we have children who are represented in our database currently with a code a name agenda
+[01:16:18] a record actually and that sits linked into the um the sponsors record do you have and do you have
+[01:16:28] facility to do that in fundraise that kind of a a little profile within a profile if you like yeah
+[01:16:35] yeah yes so um alison the way that this would work um
+[01:16:45] is we would customize this front end for you through onboarding so that we effectively have like a child
+[01:16:53] record or a child sponsor record let's just um i don't want to use i don't want to use the wrong
+[01:16:59] terminology um but let's just uh let's just say his name is tom jones okay um and then we we wouldn't
+[01:17:09] they might not have an email so no about that but we would like customize this as well um so that
+[01:17:16] there's no email there would not be an address and so then fundamentally what we would do is when we are
+[01:17:23] searching for the actual contact on our database and crumpet is my dog i use her during the the um the
+[01:17:34] demos because she's very generous um but what we would what we what we would do is create a relationship
+[01:17:41] between the person yeah and so now we would add tom jones to yeah and this would be like the child
+[01:17:49] sponsorship if there would be like another category here right so it's like the child being sponsored
+[01:17:56] by crumpet if that if that makes sense yes and we have a list of school the school the child goes to
+[01:18:04] and that kind of thing when it can be added yeah yeah exactly the same exactly yeah yeah yeah yeah yeah
+[01:18:10] so we talk about fundraisers being 80 complete the 20 is not is not actually like a 20 that ever really
+[01:18:19] ends and we understand that the 20 is really worked through onboarding and ongoing customization of
+[01:18:26] the platform all right and that's the that's that it's basically our um our model that we work alongside
+[01:18:34] organizations and then customize the ui like the user interface the front end of of fundraise to better
+[01:18:41] cater for your work and for your systems not every organization works the same we get it
+[01:18:47] and so we would need to like just change and update the names of fields and add different things that's
+[01:18:54] all worked through with you doing onboarding okay okay good thank you and and if you say we're looking
+[01:19:03] at a record now would there be an easy way to say oh that person's a child sponsor can that be flagged
+[01:19:10] yeah yeah yes this would be tagged here like in the flag area um instead of like just major donor it'd be
+[01:19:18] like child sponsor yeah yeah yeah okay yeah thank you of course good questions out um i have a question
+[01:19:28] about um the separation between the au and nz entities um we would just run through this through one
+[01:19:37] subscription and kind of have a we just want to have very clean separation segregation between au and
+[01:19:43] nz donors yes yeah really great question yeah and kate i remember you and i briefly spoke about this
+[01:19:51] at conference and so what we would effectively have you guys in um the name is enterprise for us at
+[01:19:58] fundraise which effectively has you guys as a parent organization to then two entities or like
+[01:20:06] however many entities you want underneath that and so you then are able to have one login effectively
+[01:20:13] select which entity you want to be working on whether it's australia or new zealand the same level
+[01:20:18] of functionality happens across both but you just need to select basically who you want to see and what
+[01:20:24] okay and so then you're creating donation widgets for your nz campaigns and your donors go directly to
+[01:20:31] that and there's no overlap okay but the reporting standpoint at a parent level you run either on
+[01:20:41] australia or new zealand or combined you can see everything yeah it's kind of like it's almost like
+[01:20:49] having two completely separate accounts except when it comes to reporting you can get data from both yeah
+[01:20:55] that's right is that does that sort of model work okay it sounds like it would i'd have to see it
+[01:21:02] and trial it but i believe that it would work really well okay i think i think it's much better than
+[01:21:08] having everything mixed together in one account but it just puts you in a much better position later if
+[01:21:13] you want to split the entities to like all the data's already completely separate
+[01:21:17] yeah with that in mind if i can just say um we send letters out like physical letters sometimes uh
+[01:21:30] three times a year we will send something to someone's letterbox yeah um new zealand's
+[01:21:36] um address layout is quite different from australia it is yeah will that will that be able to be set up
+[01:21:45] yeah i guess two entities it will it can be yeah that's right that's right so so upon onboarding
+[01:21:54] um the onboarding process is you selecting the country where the entity is and so the address
+[01:22:02] autumn like and the address fields automatically default to that country um yeah for mail outs we have
+[01:22:10] um address verification um and so you know that you're sending emails to actual address and live
+[01:22:19] addresses it tidies the data for you upon exporting the data so all the addresses are correctly matched so
+[01:22:27] to speak um so do you have a like an australia post uh prompt you know you start putting the address in and it will
+[01:22:35] fill it out for you which is what we have now yeah yeah yeah that's right that's right yeah thank you
+[01:22:43] yep yep yep so when you when you when you map it to addresses um and so it knows effectively from
+[01:22:51] onboarding down so even even think about processing donations in nzd for uh for new zealand
+[01:22:59] new zealand so that would be the default for your new zealand entity because it's based in new zealand
+[01:23:08] right yeah yeah so everything's worked out from the from the from top down
+[01:23:14] and so at the moment i take the data out of our database and i mail merge external to the database and i uh
+[01:23:24] i do a mail merge and that's how that's when i print the letters how would that be different
+[01:23:29] with fundraise so you don't need to do a mail merge because you're you're effectively merging
+[01:23:38] names to addresses yeah that's that's the mail merge component this is all already mapped address to name
+[01:23:47] to individual yeah so there's no mail component out of that when you export this as a report when you run
+[01:23:55] the report it'll cross validate each and every address on that list so you would tag all the contacts
+[01:24:06] for mail out yeah effectively because not everybody wants one uh even further than that by creating like
+[01:24:13] a um it's not an enrollment form but like a subscription form on what fundraise as a widget
+[01:24:21] then people can actually manage their own subscriptions some people like you might have 10 products that
+[01:24:27] you might want to send out so people can then select what they want to receive and the quantities of
+[01:24:32] that yeah so all of that is managed on fundraise so that when you pull out the report and the list
+[01:24:41] everything's mapped everything's like been validated even the quantities of products that then has to be
+[01:24:47] sent out to individuals is already mapped for you okay and so with a physical letter how does the address
+[01:24:56] get onto the letter and then be printed
+[01:25:02] uh as in like the actual label do you mean yeah the address on a letter to then be processed and put in a um
+[01:25:11] um window in below which is what yeah yep so um so we understand that typically organizations do engage with
+[01:25:24] like a mail house to do this in bulk yep not us not you so how do you do it now how we do it in house
+[01:25:33] manual manual you do a manual yeah yeah we just have someone come in and we fold them and put them
+[01:25:40] in our inbox you're talking to the mail house at the moment carla i love it i love it we well it's only
+[01:25:47] really it's not a huge database for letters we would send 1500 in australia yep australia and we have
+[01:25:55] volunteer volunteers come in also to help it's kind of like they love jumping in and helping with that too
+[01:26:01] yeah yeah um it's manageable yeah yeah yeah so i guess the same mechanic works because we have
+[01:26:11] um the report that gets typically passed on to the mail house has like the the name and this
+[01:26:17] is it like the salutation is that the word yeah yeah that's right yeah um as well as the address
+[01:26:24] that's on file effectively and so instead of passing that out you could export it off
+[01:26:31] or fundraise on a uh like on um spreadsheet or whatever you like yeah be printing them in
+[01:26:38] internally that's not an issue yeah yeah yeah okay yeah okay thank you no worries all right
+[01:26:49] well we've just taken two hours of your time carlos but it's probably been quite valuable
+[01:26:53] um good we're not tire kickers um so but we do we don't want to make a mistake this would be
+[01:27:03] catastrophic if we went down your track and then thought far out that was dreadful um but we we
+[01:27:10] literally were in the throes of actually working on do we want to stay with who we're at yeah using do we
+[01:27:18] actually want to move and doing a whole lot of research in the area so when i came across you um
+[01:27:24] you know just the other day it just seemed like a very timely thing so as jonathan says we are very
+[01:27:28] serious about this yeah yeah can i ask carlos if ellison goes on today and creates an account
+[01:27:36] um can andrew go on tomorrow and create his own account for three days
+[01:27:41] yeah well yeah like even better than that just even better than that um when you create your account
+[01:27:48] allison yeah um go to in settings and then go to um go to invitations yeah and then you can just invite
+[01:28:05] andrew via email to to your fundraise demo organization okay okay i guess the question
+[01:28:15] also is though that if we've only got three days for the organization we actually have like a crazy
+[01:28:20] week this week i wouldn't be able jonathan and myself to start looking at until friday by which
+[01:28:25] stage the free trial would have expired so i think the question is could we have a three-day free trial
+[01:28:32] ourselves so that we've got friday saturday sunday to look at it um because if allison has started
+[01:28:37] now we just won't get to it no can we all just do it at different times is that all right that's
+[01:28:41] all i'm asking yeah look of course you can of course yeah okay yeah so allison you can you've
+[01:28:46] already started the process uh so if you want to complete that the your your trial then you can add
+[01:28:53] andrew to that and invite him to it um you can like you can test out the functionality for doing
+[01:28:59] that and then kate and jonathan you guys can start another trial at another time okay okay great and
+[01:29:05] i just didn't want to start like one for the organization and then find out that we like we're
+[01:29:10] very pressured no so good okay and look all you're going to do is if you don't want to proceed with um
+[01:29:19] with it after the fact you just come into billing and then you just basically cancel your subscription
+[01:29:25] yeah right so you're not going to get charged anything inside of the three days yeah cool okay
+[01:29:31] and it's three um three like business days is that correct it's it's 24 hour periods from the from the
+[01:29:39] moment that you start okay even if it's over the weekend yeah yeah yeah yep so ellison you use your
+[01:29:46] own credit card not ours so then that'll motivate you to not run over three days
+[01:29:53] by the way you mentioned something about with onboarding with every customer you'll go through
+[01:29:59] and customize a bunch of things like how does that let's say i wanted to run like a test migration
+[01:30:08] during the trial period is that something i could do would i have the power to be able to
+[01:30:12] customize a bunch of different things so that we can fit our data into the system or is that something
+[01:30:20] where we'd need your help to first understand all our needs and the shape of our data before we can
+[01:30:25] run a migration so it's kind of both and is the answer so as soon as you start a demo then all of
+[01:30:34] the functionality is effectively live on whatever subscription you have the demo in so starter has 80
+[01:30:41] 80 of the capability growth has everything that i've shown you here so you can start uploading
+[01:30:46] data and things like that to fundraise that's not an issue when you cancel your subscription the data gets wiped out
+[01:30:52] because that's like that's sovereignty perspective on that um the customizing things some things like
+[01:31:00] some things are done through the ui like widgets and templates like receipts and and um and campaign templates and all of that kind of stuff
+[01:31:07] the stuff that we're talking about changing fields and adding fields that's all done through the back end
+[01:31:13] which we would not understand the actual requirements and how we do that is we when you make a decision to
+[01:31:22] join fundraise we send you out a survey that you fill out it's a form that you tell us like how you how you
+[01:31:28] work and what data you need and so on so forth and then we work together on our on our rollout plan for that
+[01:31:33] okay and then who actually does the migration like is it do you guys do the migration like you ask for us
+[01:31:43] ask us for the data we give you the data and you pull it all in or do you give us tips and stuff and
+[01:31:50] we do it ourselves so it's it's again both and um so depending on the size of the organization and
+[01:31:59] and how how large the database is and just how not connected the data might be right because we're
+[01:32:08] like we're working with habitat for humanity in the us they're a massive organization like you know more
+[01:32:14] than 60 years worth of data right and so for them it's not just uploading one spreadsheet with 50 contacts
+[01:32:22] for some organizations that's all they have right and so they can do that directly through the ui and the
+[01:32:28] ui helps you to map the data right through the interface but when it's like significant amount of
+[01:32:33] data and it's complex mapping then we get engaged
+[01:32:39] okay but i guess like well if you if you guys have helped with doing like setting up the back
+[01:32:46] end and stuff so it's got all the fields and mappings and things we need
+[01:32:51] we could actually run the migration ourselves after the fact yeah after that after that's all done
+[01:32:57] and like if we hit roadblocks along the way we could come back to you and say oh this we actually
+[01:33:02] need you to set the fields up like this um correct and what sort of correct like is that like a hourly
+[01:33:10] paid support sort of process or like yeah it's so it's worked out at um at a start of one standalone fee
+[01:33:20] um that we that we basically communicate what that what that looks like and then we just roll it out
+[01:33:26] based on based on based on that yeah okay and it can you can you determine that fee but yeah we need
+[01:33:34] to determine that fee based on the results that we give you to the survey correct that's right that's
+[01:33:40] right yeah yeah it's all done based on understanding really how complex your data is how much more
+[01:33:48] mapping and how many changes we need to make to the ui to cater for you yeah yeah yeah but like to give you
+[01:33:57] to give you an estimate because i can do today is that is that typically that fee does not exceed
+[01:34:03] eight thousand dollars um and so for christian organizations we like we cap we kept that to a
+[01:34:12] maximum of twenty thousand a maximum um for onboarding and and implementing every change on the on the ui for
+[01:34:20] you but we don't exceed over eight thousand so it's fixed between like three and eight thousand in total
+[01:34:27] as a single onboarding cost
+[01:34:35] all right yeah so yeah so please allison please continue to set up your organization as a test dummy
+[01:34:43] i was going to mention by the way i get asked why three days um oh yeah because when we roll this
+[01:34:50] out around the world through beta testing um it took it took less than less than four hours for
+[01:34:59] organizations to upload their own data start raising money and we figured that if we figured that like
+[01:35:06] after three days effectively organizations don't need the platform anymore
+[01:35:11] like they've been able to like run a fundraising campaign raise money within three days and then
+[01:35:17] effectively walk away from platform without even paying them so so that's why it's limited to three
+[01:35:24] days yep that's a very short-sighted attitude by an organization though it is it is but look we're
+[01:35:34] we're working with a an australian-based charity they're called australian books for zim for zimbabwe
+[01:35:39] um started by a refugee to australia and now he's raising money to set up libraries in zimbabwe he wants
+[01:35:48] to educate kids um in his in his native country and um when we spoke to him about raising money he just
+[01:35:55] said like he's never done it because it's just been really hard and so apart from having conversations
+[01:36:01] and presenting at churches that's all he could ever do right and we got him set up in fundraise in 30 minutes
+[01:36:09] he had launched a fundraising campaign in less than two hours he had received his first donation
+[01:36:14] yeah um so things can work that fast um yeah and so it's really cool to see that that's what's happening
+[01:36:23] with our tech they just work less fast when you've got um three grandchildren competing for time no doubt
+[01:36:33] yeah no doubt yeah and are you done yeah ellison
+[01:36:39] yeah i think so uh the only other question i would have is along the way can we
+[01:36:48] is it flexible so i think oh i'm going to set up another field or i'm going to do this so i'm going to change that wording there
+[01:36:55] there is it flexible that you know if we change our terminologies and you know that we can do that ourselves
+[01:37:08] you can you can continue to raise tickets with it with our team yeah so yeah so there are things that
+[01:37:14] you can change like templates that that go from you to users yeah but the stuff in the system you can't
+[01:37:21] just go and change the name of a field right yeah but what you can do is just to be raising tickets
+[01:37:28] on fundraise um and then just asking for a feature request and things like that and saying hey this
+[01:37:34] field to be a custom field custom field or whatever else yeah and what's normal turnaround for that kind
+[01:37:39] of thing and is there a cost involved look most things could turn around for within 48 hours at no cost
+[01:37:47] if we're talking about like a significant feature that you guys need and want after the fact that we
+[01:37:55] can like we can get involved and cost that out okay yeah yeah so if we're just like oh the structure of
+[01:38:01] the child sponsorship thing doesn't quite work like we need to change that then that's probably just going
+[01:38:06] to be covered right yeah yeah whereas we're actually looking at um the work in india is called good shepherd
+[01:38:13] and um the different dfns actually transitioning um and conversation is happening with different
+[01:38:21] boards around the world about making that transition which will then change a whole lot of stuff um basically
+[01:38:27] just around um got branding and that kind of thing branding and name and color and templates and so on
+[01:38:34] not about the actual work or anything else to do with it yeah yeah yeah so so then you would need
+[01:38:41] like that customization on your on your letterheads and your templates and all of that yes yeah but
+[01:38:47] i mean we should be able to do that ourselves uh graphic designers and so on should be able to do that
+[01:38:52] at our end anyway i would imagine but i'm just saying like it's quite feasible that this is what will
+[01:38:57] happen sometime in the next 12 months yep um when we're looking at when we're looking at all things like
+[01:39:04] everything is customizable yeah right so when we're looking at forms and surveys and stuff like that
+[01:39:10] we can like change the fonts we can you know we've we've got like google fonts integrated into here
+[01:39:16] we've got like the capability of changing all colors yeah yeah so we can just do that at our end that's easy
+[01:39:24] we yeah so so a lot of customization for the stuff that that looks out of your organization
+[01:39:31] uh people are seeing it then yes all of that is customized by you because it needs to be it needs
+[01:39:38] to be yeah so that when you publish it it looks like your organization yeah that's it yeah yeah that's
+[01:39:43] all done so carlos do you seriously have people with only 50 donors or names on their database come and
+[01:39:51] use you we have less yeah we have we have one organization in new zealand um and they started on
+[01:40:00] fundraising because they had no database after three years in operation they had no database and they
+[01:40:08] came on board because they started to build their database of prospect research
+[01:40:18] and so they have i saw that they have just launched their very first fundraising gala dinner that's
+[01:40:26] happening for them uh and they've utilized fundraised marketing to do all of that to sell their tickets
+[01:40:31] and everything like that and they had no database at all it feels like they bought a ferrari when they
+[01:40:38] needed a hyundai xl actually um carlos are there any other organizations like ours that you've on boarded in the last year or so that you could that we could reach out to to just ask you got their experience
+[01:40:54] questions good question ah i can't believe i didn't ask that
+[01:41:01] the the organizations that are happy um to be on fire well to be um because it's not everybody
+[01:41:11] uh these are the organizations that are on fundraise that you can be reaching out to
+[01:41:18] um and then do you would you have any way you would like oh you should reach out to these guys because
+[01:41:22] they they do similar stuff to you guys or yeah i mean there's there's there's a lot of overlap that i
+[01:41:28] see um when it comes to child sponsorship um no um but yeah there's like culture apart from habitat i
+[01:41:39] don't know any of these people at all well vision radio i mean the radio stations of course but um christian
+[01:41:45] media and arts australia they're on yes that that's the conference we were at last week yeah
+[01:41:51] so education diversa like they uh they're in australia um they set up projects in latin america to help kids
+[01:42:00] get off the streets um missing school based out of canberra um shelter now is australia isn't it
+[01:42:09] yeah yeah yeah it's really nice to speak to an organization that's come from an existing crm
+[01:42:18] and gone through the migration journey yeah helping hands i know yep yep so i like i reckon someone
+[01:42:27] like jenny who you already know kate i would and jonathan you would know them from from christian media
+[01:42:32] announce i don't know jonathan wouldn't and and i don't know them i was leah's guest at the conference
+[01:42:39] oh forgive me but i'm happy if you want to put me on in touch with them that would be great yeah
+[01:42:43] all they can yeah yeah okay i'll put you in touch with with jenny at cm double a um great yeah because
+[01:42:53] they left salesforce to come on board or fundraise uh okay and uh you know so they like they love
+[01:43:01] fundraise and it's for for us and with them it's a continuing continuous cycle so this will make a
+[01:43:08] lot of sense for you because we we on boarded them um and now it's all about continuous customization of
+[01:43:16] the platform for them they've been on it now for five months uh so they're so they're relatively new
+[01:43:23] on fundraise so you know make all sense to your journey uh and what it'll be likely for you um
+[01:43:31] yeah and look i i by no means want to lie and say that we get everything right and that we respond
+[01:43:38] to every single query within 30 minutes yeah because we're humans and we've got like a growing
+[01:43:45] list of users and we service people around the world um so we strive to do our best in in all things and i
+[01:43:51] think that i think that that that's what jenny would say that sometimes they're really responsive and
+[01:43:56] sometimes they're not and that's the truth and so we need to get better at what we do but i think
+[01:44:02] certainly it's the it's the right testimony for you guys yeah
+[01:44:09] okay okay um what's your what's your title that'd be great what's your title carlos founder and ceo
+[01:44:18] oh you're the founder yeah yes yeah right so it's an aussie product yeah it's building in
+[01:44:26] building canberra for the world yep but oh really okay we'll be in canberra next week
+[01:44:34] yeah oh will you yeah well like let me get you let me buy you coffee
+[01:44:39] yeah can we call you the jackal does anyone call you the jackal not in a long time oh not in a long
+[01:44:50] time okay yeah yeah just seems really logical to me uh yeah last week we were the finalist at the
+[01:44:59] australian uh tech awards for 2026 and we are in the top five ai tech companies in australia in 2026.
+[01:45:08] so yeah yeah yeah cool we're doing really good stuff yeah if i was to call shelter now or the girls
+[01:45:18] leadership team that's okay with you yeah so the girls leadership network network sorry yeah the girls
+[01:45:27] leadership network yeah so uh you want to ask for sean um s-i-a-n um so she works um
+[01:45:38] with the ordinary um and if you tell her that you saw her logo on fundraise um listed on fundraise
+[01:45:46] then yeah like um yeah have a chat see if they see if they have a chat yeah otherwise otherwise if you
+[01:45:55] would like um i can also follow up with them see whoever wants to talk with you and i can then pass on
+[01:46:01] the details i would love that because for 10 years we've been the main point of reference for in food
+[01:46:08] in terms of if anyone wants to jump in we've just said use us and i always chat to people and go
+[01:46:15] here's the good the bad and the ugly but yeah yeah we've been i think we've been pretty supportive
+[01:46:20] of in food and i'd want to exit out of them graciously too yeah totally yeah they're really good guys
+[01:46:25] i've been to our dinners they're supportive yeah okay i'll wait for you to come back carlos yeah let
+[01:46:31] me come back to you with a couple of names yeah easily and if you could connect me with the cmaa
+[01:46:35] people that would be great of course can do excellent thanks so much for your time carlos that's okay
+[01:46:43] and thanks for your time buddy yeah yeah time to go bitcoining pal what it's time to go bitcoining
+[01:46:52] sure mate i know i know this this takes time and takes a lot of consideration i appreciate you guys
+[01:47:03] and your time and thank you for asking questions and hopefully hopefully i've been able to answer
+[01:47:08] them in a way that is like honest and sincere um and yeah hopefully we can we can uh see where we get
+[01:47:15] to okay thanks good see you guys thanks guys appreciate it thanks carlos
+[01:47:22] um
+[01:47:29] and
+[01:47:31] and
+[01:47:32] and
+[01:47:33]
+[01:47:33]
+[01:47:33]
+[01:47:33] Thor
+[01:47:34] and
+[01:47:35] and
+[01:47:35] and

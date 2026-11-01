@@ -2,6 +2,8 @@ import { DocumentTextIcon } from "@sanity/icons/DocumentText";
 import { ImageIcon } from "@sanity/icons/Image";
 import { LinkIcon } from "@sanity/icons/Link";
 import { defineArrayMember, defineField, defineType } from "sanity";
+import { COUNTRY_SITE_NAMES, COUNTRY_SITES } from "../../../lib/country-site";
+import { countryMenuFields } from "../country-menus";
 
 const text = (name: string, title: string) =>
 	defineField({
@@ -34,8 +36,17 @@ const body = defineField({
 });
 const introductionFields = [text("eyebrow", "Eyebrow"), headline, description];
 
+// Hidden menu lists can retain unfinished edits. Only the active menu's
+// items should block publication; Sanity passes hidden state to descendants.
+const navigationLabel = defineField({
+	name: "label",
+	title: "Label",
+	type: "string",
+	validation: (rule, context) =>
+		context?.hidden ? rule.skip() : rule.required(),
+});
 const navigationFields = [
-	text("label", "Label"),
+	navigationLabel,
 	defineField({
 		name: "href",
 		title: "Destination",
@@ -43,22 +54,14 @@ const navigationFields = [
 		initialValue: "#",
 		description:
 			"Use # for pages that are not ready yet. Homepage sections: #dh-work, #dh-involved, #dh-signup, #dh-contact.",
-		validation: (rule) =>
-			rule.required().uri({ allowRelative: true, scheme: ["http", "https"] }),
+		validation: (rule, context) =>
+			context?.hidden
+				? rule.skip()
+				: rule
+						.required()
+						.uri({ allowRelative: true, scheme: ["http", "https"] }),
 	}),
 ];
-const navigation = (
-	name: string,
-	title: string,
-	itemType = "homepageNavigationLink",
-) =>
-	defineField({
-		name,
-		title,
-		type: "array",
-		of: [defineArrayMember({ type: itemType })],
-	});
-
 export const homepageObjects = [
 	defineType({
 		name: "homepageAddress",
@@ -105,15 +108,17 @@ export const homepageObjects = [
 		type: "object",
 		icon: LinkIcon,
 		fields: [
-			text("label", "Label"),
+			navigationLabel,
 			defineField({
 				name: "href",
 				title: "Destination",
 				type: "url",
 				description:
 					"For a direct link only. To make this item open a submenu, clear this destination and add child links below. Add any overview page as the first child link.",
-				validation: (rule) =>
-					rule.uri({ allowRelative: true, scheme: ["http", "https"] }),
+				validation: (rule, context) =>
+					context?.hidden
+						? rule.skip()
+						: rule.uri({ allowRelative: true, scheme: ["http", "https"] }),
 			}),
 			defineField({
 				name: "headline",
@@ -133,20 +138,23 @@ export const homepageObjects = [
 				description:
 					"The category label opens these links on desktop and mobile. Child links cannot contain further submenus.",
 				of: [defineArrayMember({ type: "homepageHeaderChildLink" })],
-				validation: (rule) => rule.min(1),
+				validation: (rule, context) =>
+					context?.hidden ? rule.skip() : rule.min(1),
 			}),
 		],
-		validation: (rule) =>
-			rule.custom((item) => {
-				if (!item) return true;
-				const hasChildren =
-					Array.isArray(item.children) && item.children.length > 0;
-				if (hasChildren && item.href)
-					return "Clear the category destination and include its overview page as a child link.";
-				if (!hasChildren && !item.href)
-					return "Add a destination or at least one child link.";
-				return true;
-			}),
+		validation: (rule, context) =>
+			context?.hidden
+				? rule.skip()
+				: rule.custom((item) => {
+						if (!item) return true;
+						const hasChildren =
+							Array.isArray(item.children) && item.children.length > 0;
+						if (hasChildren && item.href)
+							return "Clear the category destination and include its overview page as a child link.";
+						if (!hasChildren && !item.href)
+							return "Add a destination or at least one child link.";
+						return true;
+					}),
 		preview: { select: { title: "label", subtitle: "href" } },
 	}),
 	defineType({
@@ -317,7 +325,11 @@ export const homepageObjects = [
 		type: "object",
 		icon: DocumentTextIcon,
 		fields: [
-			navigation("navigation", "Navigation links", "homepageHeaderLink"),
+			...countryMenuFields(
+				"navigation",
+				"Navigation links",
+				"homepageHeaderLink",
+			),
 			defineField({
 				name: "menuHeading",
 				title: "Mobile menu heading",
@@ -342,7 +354,25 @@ export const homepageObjects = [
 		type: "object",
 		icon: DocumentTextIcon,
 		fields: [
-			text("country", "Country"),
+			defineField({
+				name: "country",
+				title: "Country",
+				type: "string",
+				options: {
+					list: COUNTRY_SITES.map((site) => ({
+						title: COUNTRY_SITE_NAMES[site],
+						value: COUNTRY_SITE_NAMES[site],
+					})),
+				},
+				validation: (rule) =>
+					rule
+						.required()
+						.custom((country) =>
+							!country || Object.values(COUNTRY_SITE_NAMES).includes(country)
+								? true
+								: "Choose Australia or New Zealand.",
+						),
+			}),
 			defineField({
 				name: "address",
 				title: "Address",
@@ -380,14 +410,30 @@ export const homepageObjects = [
 				validation: (rule) => rule.required(),
 			}),
 			text("navigationTitle", "Navigation heading"),
-			navigation("navigation", "Navigation links"),
+			...countryMenuFields("navigation", "Navigation links"),
 			defineField({
 				name: "offices",
 				type: "array",
 				of: [defineArrayMember({ type: "homepageOffice" })],
-				validation: (rule) => rule.required().min(1),
+				description:
+					"Each site shows only its own office. Add one office for Australia and one for New Zealand.",
+				validation: (rule) =>
+					rule
+						.required()
+						.custom((offices) =>
+							COUNTRY_SITES.every(
+								(site) =>
+									offices?.filter(
+										(office) =>
+											(office as { country?: string }).country ===
+											COUNTRY_SITE_NAMES[site],
+									).length === 1,
+							)
+								? true
+								: "Add exactly one Australian office and one New Zealand office.",
+						),
 			}),
-			navigation("legalNavigation", "Legal links"),
+			...countryMenuFields("legalNavigation", "Legal links"),
 			text("copyright", "Copyright notice"),
 		],
 	}),

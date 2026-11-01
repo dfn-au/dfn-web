@@ -1,0 +1,20 @@
+{
+  "name": "@dfn/workshop",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "test": "node --experimental-strip-types --test server/answers.test.ts",
+    "dev": "slidev slides.md --port 3030",
+    "build": "slidev build slides.md"
+  },
+  "devDependencies": {
+    "@fontsource-variable/dm-sans": "^5.3.0",
+    "@fontsource-variable/fraunces": "^5.3.0",
+    "@fontsource-variable/oswald": "^5.3.0",
+    "@slidev/cli": "52.19.1",
+    "@slidev/client": "52.19.1",
+    "@slidev/theme-default": "0.25.0",
+    "@slidev/types": "52.19.1",
+    "vite": "8.3.0"
+  }
+}

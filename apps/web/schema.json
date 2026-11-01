@@ -673,7 +673,68 @@
           },
           "optional": true
         },
+        "navigationMode": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "union",
+            "of": [
+              {
+                "type": "string",
+                "value": "shared"
+              },
+              {
+                "type": "string",
+                "value": "country"
+              }
+            ]
+          },
+          "optional": true
+        },
         "navigation": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "array",
+            "of": {
+              "type": "object",
+              "attributes": {
+                "_key": {
+                  "type": "objectAttribute",
+                  "value": {
+                    "type": "string"
+                  }
+                }
+              },
+              "rest": {
+                "type": "inline",
+                "name": "homepageNavigationLink"
+              }
+            }
+          },
+          "optional": true
+        },
+        "navigationAU": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "array",
+            "of": {
+              "type": "object",
+              "attributes": {
+                "_key": {
+                  "type": "objectAttribute",
+                  "value": {
+                    "type": "string"
+                  }
+                }
+              },
+              "rest": {
+                "type": "inline",
+                "name": "homepageNavigationLink"
+              }
+            }
+          },
+          "optional": true
+        },
+        "navigationNZ": {
           "type": "objectAttribute",
           "value": {
             "type": "array",
@@ -717,7 +778,68 @@
           },
           "optional": true
         },
+        "legalNavigationMode": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "union",
+            "of": [
+              {
+                "type": "string",
+                "value": "shared"
+              },
+              {
+                "type": "string",
+                "value": "country"
+              }
+            ]
+          },
+          "optional": true
+        },
         "legalNavigation": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "array",
+            "of": {
+              "type": "object",
+              "attributes": {
+                "_key": {
+                  "type": "objectAttribute",
+                  "value": {
+                    "type": "string"
+                  }
+                }
+              },
+              "rest": {
+                "type": "inline",
+                "name": "homepageNavigationLink"
+              }
+            }
+          },
+          "optional": true
+        },
+        "legalNavigationAU": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "array",
+            "of": {
+              "type": "object",
+              "attributes": {
+                "_key": {
+                  "type": "objectAttribute",
+                  "value": {
+                    "type": "string"
+                  }
+                }
+              },
+              "rest": {
+                "type": "inline",
+                "name": "homepageNavigationLink"
+              }
+            }
+          },
+          "optional": true
+        },
+        "legalNavigationNZ": {
           "type": "objectAttribute",
           "value": {
             "type": "array",
@@ -765,7 +887,17 @@
         "country": {
           "type": "objectAttribute",
           "value": {
-            "type": "string"
+            "type": "union",
+            "of": [
+              {
+                "type": "string",
+                "value": "Australia"
+              },
+              {
+                "type": "string",
+                "value": "New Zealand"
+              }
+            ]
           },
           "optional": true
         },
@@ -814,7 +946,68 @@
             "value": "homepageHeader"
           }
         },
+        "navigationMode": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "union",
+            "of": [
+              {
+                "type": "string",
+                "value": "shared"
+              },
+              {
+                "type": "string",
+                "value": "country"
+              }
+            ]
+          },
+          "optional": true
+        },
         "navigation": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "array",
+            "of": {
+              "type": "object",
+              "attributes": {
+                "_key": {
+                  "type": "objectAttribute",
+                  "value": {
+                    "type": "string"
+                  }
+                }
+              },
+              "rest": {
+                "type": "inline",
+                "name": "homepageHeaderLink"
+              }
+            }
+          },
+          "optional": true
+        },
+        "navigationAU": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "array",
+            "of": {
+              "type": "object",
+              "attributes": {
+                "_key": {
+                  "type": "objectAttribute",
+                  "value": {
+                    "type": "string"
+                  }
+                }
+              },
+              "rest": {
+                "type": "inline",
+                "name": "homepageHeaderLink"
+              }
+            }
+          },
+          "optional": true
+        },
+        "navigationNZ": {
           "type": "objectAttribute",
           "value": {
             "type": "array",
@@ -1950,6 +2143,16 @@
         "value": {
           "type": "inline",
           "name": "slug"
+        },
+        "optional": true
+      },
+      "publishingScope": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "array",
+          "of": {
+            "type": "string"
+          }
         },
         "optional": true
       },

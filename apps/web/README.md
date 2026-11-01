@@ -4,6 +4,15 @@ Next.js App Router application for the DFN public Country Sites, admin routes,
 and embedded Sanity Studio at `/admin/studio`. Studio supports content editing
 and live preview of the public pages.
 
+## Country Site
+
+Each deployment serves one Country Site, set by `COUNTRY_SITE=AU` or
+`COUNTRY_SITE=NZ` ([ADR 001](../../docs/adr/001-website-technical-architecture.md)).
+Set it in `.env.local` for local development. A missing or invalid value stops
+`next build`, `next dev` and `next start`; hostname and visitor location never
+change it. Server code reads it with `getCountrySite()` from
+`src/lib/country-site.ts`.
+
 ## Admin appearance
 
 The admin dashboard, diagnostics, login states, and Studio navigation use
@@ -89,16 +98,7 @@ and client error reporting skip admin requests. The public and admin root
 layouts cause a full page load when crossing between those surfaces.
 Diagnostics write to the browser console and server logs, not PostHog.
 
-Run commands from the repo root:
-
-```sh
-pnpm dev
-pnpm build
-pnpm lint
-pnpm typegen
-pnpm typecheck
-pnpm test
-```
+## Content editing and generated types
 
 The public homepage and content pages share the grouped navigation authored in
 **Home Page → Header and footer → Header**. Shared visual components live in `src/components/site`; the design-refresh
