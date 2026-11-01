@@ -26,11 +26,14 @@ export const pagePublishingScope = defineField({
 	of: [{ type: "string" }],
 	options: { list: siteOptions, layout: "grid" },
 	initialValue: [...COUNTRY_SITES],
-	// Pages saved before this field existed are published to both sites, but Studio asks editors to choose before the next publish.
+	// Clearing the last checkbox unsets this field, just like an older page
+	// with no saved scope. Neither state can be published without a selection.
 	validation: (rule) =>
-		rule.unique().custom((scope) => {
-			if (!scope)
-				return "Choose the sites for this page. Until you do, it is published to AU and NZ.";
-			return scope.length ? true : "Choose at least one site.";
-		}),
+		rule
+			.unique()
+			.custom((scope) =>
+				scope?.length
+					? true
+					: "Select Australia, New Zealand, or both before publishing.",
+			),
 });
