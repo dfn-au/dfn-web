@@ -25,11 +25,11 @@ import {
 import { publicNavigationHref } from "./navigation";
 
 const topLinkClass =
-	"flex min-h-12 items-center gap-2.5 border-b-2 border-transparent bg-transparent font-nav text-[15px] leading-[1.4] tracking-[.25px] whitespace-nowrap text-white uppercase hover:border-accent hover:text-accent aria-expanded:border-accent aria-expanded:text-accent aria-[current=page]:border-accent aria-[current=page]:text-accent data-[active=true]:border-accent data-[active=true]:text-accent @min-[1200px]:text-base";
+	"flex min-h-12 items-center gap-2.5 border-b-2 border-transparent bg-transparent font-nav text-[15px] leading-[1.4] tracking-[.25px] whitespace-nowrap text-header-ink uppercase hover:border-header-accent hover:text-header-accent aria-expanded:border-header-accent aria-expanded:text-header-accent aria-[current=page]:border-header-accent aria-[current=page]:text-header-accent data-[active=true]:border-header-accent data-[active=true]:text-header-accent @min-[1200px]:text-base";
 const categoryClass =
 	"flex min-h-[62px] w-full items-center justify-between gap-4 bg-transparent py-3 text-left text-[19px] leading-snug text-ink hover:text-accent aria-expanded:text-accent aria-[current=page]:text-accent aria-[current=page]:underline aria-[current=page]:underline-offset-8";
 const giveClass =
-	"inline-flex min-h-[46px] min-w-[60px] shrink-0 items-center justify-center bg-action px-3.5 py-2.5 font-nav text-base leading-[1.4] text-white uppercase hover:bg-[#9d3010] hover:underline hover:underline-offset-4 @wide:min-w-[72px] @wide:px-[22px] @wide:py-[11px]";
+	"brand-action inline-flex min-h-[46px] min-w-[60px] shrink-0 items-center justify-center bg-action px-3.5 py-2.5 font-nav text-base leading-[1.4] text-action-text uppercase hover:bg-action-hover hover:underline hover:underline-offset-4 @wide:min-w-[72px] @wide:px-[22px] @wide:py-[11px]";
 
 function Chevron({ open }: { open: boolean }) {
 	return (
@@ -45,7 +45,16 @@ function HeaderLink({
 	activePage,
 	...props
 }: ComponentProps<"a"> & { href: string; activePage: string }) {
-	const { palette, controlsVisible } = useContext(PaletteContext);
+	const {
+		palette,
+		controlsVisible,
+		brandPreview,
+		headingPreview,
+		bodyPreview,
+		logoPreview,
+		labelPreview,
+		iconPreview,
+	} = useContext(PaletteContext);
 	return (
 		<a
 			{...props}
@@ -53,6 +62,12 @@ function HeaderLink({
 				headerHref(href, activePage),
 				palette,
 				controlsVisible,
+				brandPreview,
+				headingPreview,
+				bodyPreview,
+				logoPreview,
+				labelPreview,
+				iconPreview,
 			)}
 			aria-current={isCurrentHeaderLink(href, activePage) ? "page" : undefined}
 		/>
@@ -66,13 +81,18 @@ function Logo({
 	activePage: string;
 	onNavigate?: () => void;
 }) {
+	const { logoPreview } = useContext(PaletteContext);
 	return (
 		<HeaderLink
 			href={activePage === "home" ? "#dh-top" : "/#dh-top"}
 			activePage={activePage}
 			aria-label="DFN home"
 			onClick={onNavigate}
-			className="relative block aspect-[600/269] w-40 shrink-0 bg-brand @max-[381px]:w-[140px] @desktop:w-[216px]"
+			className={
+				logoPreview === "guide"
+					? "relative block shrink-0 bg-brand p-3 @desktop:aspect-[600/269] @desktop:w-[216px] @desktop:p-0"
+					: "relative block aspect-[600/269] w-40 shrink-0 bg-brand @max-[381px]:w-[140px] @desktop:w-[216px]"
+			}
 		>
 			<Image
 				src="/logos/dfn-logo-transparent.svg"
@@ -80,7 +100,13 @@ function Logo({
 				width={1345.677}
 				height={586.551}
 				unoptimized
-				className="absolute top-[16.144%] left-[19.7566%] h-auto w-[67.2839%]"
+				// Tagline height is 65.872 / 1345.677 of artwork width. At 120px,
+				// twice that height is 11.75px, covered by the panel's 12px padding.
+				className={
+					logoPreview === "guide"
+						? "block h-auto w-[120px] @desktop:absolute @desktop:top-[16.144%] @desktop:left-[19.7566%] @desktop:w-[67.2839%]"
+						: "absolute top-[16.144%] left-[19.7566%] h-auto w-[67.2839%]"
+				}
 			/>
 		</HeaderLink>
 	);
@@ -140,7 +166,8 @@ export function SiteHeader({
 	activePage?: string;
 }) {
 	const id = useId();
-	const { controlsVisible } = useContext(PaletteContext);
+	const { logoPreview } = useContext(PaletteContext);
+	const guideLogo = logoPreview === "guide";
 	const header = useRef<HTMLElement>(null);
 	const dialog = useRef<HTMLDialogElement>(null);
 	const menuButton = useRef<HTMLButtonElement>(null);
@@ -217,17 +244,13 @@ export function SiteHeader({
 			opener?.focus();
 		}
 		function resizePanel() {
+			// Open site menus sit above the preview panel and use the available viewport.
 			const panel = header.current?.querySelector<HTMLElement>(
 				"[data-navigation-panel]:not([hidden])",
 			);
 			if (panel)
 				setPanelHeight(
-					Math.max(
-						100,
-						innerHeight -
-							panel.getBoundingClientRect().top -
-							(controlsVisible ? 88 : 20),
-					),
+					Math.max(100, innerHeight - panel.getBoundingClientRect().top - 20),
 				);
 		}
 		resizePanel();
@@ -243,7 +266,7 @@ export function SiteHeader({
 			window.removeEventListener("resize", resizePanel);
 			window.removeEventListener("scroll", resizePanel);
 		};
-	}, [openGroup, drawerOpen, controlsVisible]);
+	}, [openGroup, drawerOpen]);
 
 	function trapFocus(event: KeyboardEvent<HTMLDialogElement>) {
 		if (event.key !== "Tab") return;
@@ -281,11 +304,11 @@ export function SiteHeader({
 			<header
 				ref={header}
 				data-site-header="grouped"
-				className={`relative z-40 -mx-2.5 flex min-h-[88px] items-center justify-between gap-2 py-3 pr-4 @max-[381px]:pr-3 @desktop:mx-0 @desktop:min-h-0 @desktop:gap-5 @desktop:pr-[max(28px,calc((min(100cqi,1920px)-1120px)/2-16px))] [&_:focus-visible]:outline-accent [&_button]:cursor-pointer ${overlay ? "@desktop:absolute @desktop:inset-x-0 @desktop:top-[46px] @desktop:right-frame @desktop:py-0" : "@desktop:py-5"}`}
+				className={`${guideLogo ? "@max-[381px]:gap-1.5" : ""} relative ${openGroup ? "z-[60]" : "z-40"} -mx-2.5 flex min-h-[88px] items-center justify-between gap-2 py-3 pr-4 @max-[381px]:pr-3 @desktop:mx-0 @desktop:min-h-0 @desktop:gap-5 @desktop:pr-[max(28px,calc((min(100cqi,1920px)-1120px)/2-16px))] [&_:focus-visible]:outline-header-accent [&_button]:cursor-pointer ${overlay ? "@desktop:absolute @desktop:inset-x-0 @desktop:top-[46px] @desktop:right-frame @desktop:py-0" : "@desktop:py-5"}`}
 			>
 				<Logo activePage={activePage} />
 				<div
-					className={`ml-auto flex min-w-0 items-center gap-2 @wide:gap-[18px] @min-[1200px]:gap-6 ${overlay ? "@wide:bg-overlay/80 @wide:pl-3.5" : ""}`}
+					className={`${guideLogo ? "@max-[381px]:gap-1.5" : ""} ml-auto flex min-w-0 items-center gap-2 @wide:gap-[18px] @min-[1200px]:gap-6 ${overlay ? "@wide:bg-overlay/80 @wide:pl-3.5 @wide:[--header-ink:#fff] @wide:[--header-accent:var(--hero-accent,var(--accent))]" : ""}`}
 				>
 					<nav aria-label="Main navigation" className="hidden @wide:block">
 						<ul className="flex items-center gap-[18px] @min-[1200px]:gap-6">
@@ -313,7 +336,7 @@ export function SiteHeader({
 												data-navigation-panel
 												hidden={openGroup !== item._key}
 												style={{ maxHeight: panelHeight }}
-												className={`absolute top-[calc(100%+14px)] right-0 left-4 grid gap-16 overflow-y-auto overscroll-contain border-t-2 border-accent bg-paper px-[max(32px,calc((min(100cqi,1920px)-1200px)/2))] pt-7 pb-[34px] text-ink shadow-[0_20px_50px_#0005] [scrollbar-gutter:stable] ${item.headline || item.description ? "grid-cols-[minmax(220px,.85fr)_2fr]" : "grid-cols-1"}`}
+												className={`absolute top-[calc(100%+14px)] right-0 left-4 grid gap-16 overflow-y-auto overscroll-contain border-t-2 border-accent bg-paper [--header-accent:var(--accent)] px-[max(32px,calc((min(100cqi,1920px)-1200px)/2))] pt-7 pb-[34px] text-ink shadow-[0_20px_50px_#0005] [scrollbar-gutter:stable] ${item.headline || item.description ? "grid-cols-[minmax(220px,.85fr)_2fr]" : "grid-cols-1"}`}
 											>
 												{(item.headline || item.description) && (
 													<div className="py-3">
@@ -379,7 +402,7 @@ export function SiteHeader({
 						type="button"
 						aria-expanded={drawerOpen}
 						aria-controls={`${id}-drawer`}
-						className="min-h-[46px] min-w-[62px] border border-white/60 bg-overlay/80 p-2.5 text-sm text-white @wide:hidden"
+						className={`min-h-[46px] min-w-[62px] border border-menu-border bg-menu-paper p-2.5 text-sm text-menu-ink @wide:hidden ${guideLogo ? "@max-[381px]:min-w-[54px] @max-[381px]:px-1.5" : ""}`}
 						onClick={() => {
 							setOpenGroup(null);
 							restoreDrawerFocus.current = true;
@@ -391,7 +414,7 @@ export function SiteHeader({
 					<HeaderLink
 						href={giveHref}
 						activePage={activePage}
-						className={giveClass}
+						className={`${giveClass} ${guideLogo ? "@max-[381px]:min-w-[52px] @max-[381px]:px-2" : ""}`}
 					>
 						{content.give}
 					</HeaderLink>
@@ -415,16 +438,22 @@ export function SiteHeader({
 				onKeyDown={trapFocus}
 				className="fixed inset-0 m-0 h-dvh max-h-none w-full max-w-none overflow-hidden border-0 bg-page p-0 text-ink backdrop:bg-overlay/90 [&_:focus-visible]:outline-accent [&_button]:cursor-pointer"
 			>
-				<div className="flex h-[96px] shrink-0 items-center justify-between gap-2 border-b border-rule py-3 pr-4 @max-[381px]:h-[88px] @max-[381px]:pr-3 @desktop:h-[137px] @desktop:py-5 @desktop:pr-7">
+				<div
+					className={`flex h-[96px] shrink-0 items-center justify-between gap-2 border-b border-rule py-3 pr-4 @max-[381px]:h-[88px] @max-[381px]:pr-3 @desktop:h-[137px] @desktop:py-5 @desktop:pr-7 ${guideLogo ? "@max-[381px]:gap-1.5" : ""}`}
+				>
 					<Logo activePage={activePage} onNavigate={navigateFromDrawer} />
-					<div className="flex items-center gap-2 @tablet:gap-3">
+					<div
+						className={`flex items-center gap-2 @tablet:gap-3 ${guideLogo ? "@max-[381px]:gap-1.5" : ""}`}
+					>
 						<button
 							ref={closeButton}
 							type="button"
 							onClick={closeDrawer}
-							className="flex min-h-[46px] items-center gap-[7px] border border-rule px-2.5 py-2 text-[13px] text-ink"
+							className="flex min-h-[46px] min-w-11 items-center justify-center gap-[7px] border border-rule px-2.5 py-2 text-[13px] text-ink"
 						>
-							Close
+							<span className={guideLogo ? "@max-[381px]:sr-only" : undefined}>
+								Close
+							</span>
 							<span aria-hidden="true" className="text-[22px] leading-none">
 								×
 							</span>
@@ -432,7 +461,7 @@ export function SiteHeader({
 						<HeaderLink
 							href={giveHref}
 							activePage={activePage}
-							className={giveClass}
+							className={`${giveClass} ${guideLogo ? "@max-[381px]:min-w-[52px] @max-[381px]:px-2" : ""}`}
 							onClick={navigateFromDrawer}
 						>
 							{content.give}

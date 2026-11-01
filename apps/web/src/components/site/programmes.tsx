@@ -14,6 +14,7 @@ import {
 	ProgrammeTitle,
 	TextLink,
 } from "./primitives";
+import { SectorMarker } from "./sector-marker";
 
 export function Introduction({
 	content,
@@ -50,7 +51,10 @@ export function Introduction({
 					>
 						<span>
 							<small className="mb-[9px] block text-caption leading-normal text-accent">
-								{String(index + 1).padStart(2, "0")}
+								<SectorMarker
+									id={area.id}
+									number={String(index + 1).padStart(2, "0")}
+								/>
 							</small>
 							{area.label}
 						</span>
@@ -112,7 +116,8 @@ export function Programme({
 				}
 			>
 				<Eyebrow className="mb-[18px] text-accent">
-					{number} / {label}
+					<SectorMarker id={id} number={number} separator />
+					{label}
 				</Eyebrow>
 				<ProgrammeTitle>{title}</ProgrammeTitle>
 				<RichTextBody value={body} variant="programme" />
@@ -141,7 +146,8 @@ export function Enterprise({
 		>
 			<div>
 				<Eyebrow className="mb-[18px] text-accent">
-					{number} / {content.label}
+					<SectorMarker id={id} number={number} separator />
+					{content.label}
 				</Eyebrow>
 				<h2 className="mb-[19px] max-w-[400px] font-display text-[34px] leading-[1.13] font-normal tracking-[-.8px] @tablet:text-[39px]">
 					<Headline text={content.headline} />

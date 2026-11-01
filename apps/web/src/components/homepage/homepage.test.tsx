@@ -161,7 +161,7 @@ describe("Sanity homepage", () => {
 			expect(sections).toEqual(content.areas.map((area) => area._key));
 			expect(links).toEqual(sections);
 			for (const [index, area] of content.areas.entries()) {
-				expect(markup).toContain(
+				expect(markup.replace(/<[^>]+>/g, "")).toContain(
 					`${String(index + 1).padStart(2, "0")} / ${area.label}`,
 				);
 			}

@@ -74,7 +74,7 @@ function Link({
 			href={link.href ?? "#"}
 			className={
 				button
-					? `${buttonClasses} bg-action text-white`
+					? `${buttonClasses} bg-action text-action-text`
 					: (className ??
 						"inline-flex min-h-11 items-center gap-[18px] py-2.5 text-label leading-normal font-medium text-accent")
 			}
@@ -273,7 +273,10 @@ export function RenderSections({
 									<Body value={section.body} className={`${bodyClass} mt-6`} />
 								</div>
 								<div className="border-t border-rule pt-7 @desktop:self-center @desktop:border-t-0 @desktop:border-l @desktop:pt-0 @desktop:pl-12">
-									<h3 className="mb-4 text-caption font-medium tracking-[1.5px] text-accent uppercase">
+									<h3
+										data-brand-label
+										className="mb-4 text-caption font-medium tracking-[1.5px] text-accent uppercase"
+									>
 										{section.statementLabel}
 									</h3>
 									<p className="max-w-[26ch] font-display text-[27px] leading-[1.4] @desktop:text-[30px]">

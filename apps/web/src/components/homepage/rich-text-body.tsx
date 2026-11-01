@@ -53,5 +53,16 @@ export function RichTextBody({
 	value?: RichTextValue;
 	variant: keyof typeof components;
 }) {
-	return <PortableText value={value ?? []} components={components[variant]} />;
+	return (
+		<PortableText
+			value={value ?? []}
+			components={{
+				...components[variant],
+				list: {
+					bullet: ({ children }) => <ul data-body-copy>{children}</ul>,
+					number: ({ children }) => <ol data-body-copy>{children}</ol>,
+				},
+			}}
+		/>
+	);
 }

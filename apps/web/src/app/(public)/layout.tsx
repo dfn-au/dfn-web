@@ -16,7 +16,10 @@ export default async function PublicLayout({
 }) {
 	const { isEnabled } = await draftMode();
 	return (
-		<html lang="en-AU" className="[color-scheme:dark]">
+		<html
+			lang="en-AU"
+			className="[color-scheme:dark] has-[[data-palette=guide-light]]:[color-scheme:light]"
+		>
 			<head>
 				<link
 					rel="icon"
@@ -40,7 +43,7 @@ export default async function PublicLayout({
 					href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Oswald:wght@400;500&display=swap"
 				/>
 			</head>
-			<body className="m-0 bg-[#1b1a19]">
+			<body className="m-0 bg-[#1b1a19] has-[[data-palette=guide-light]]:bg-white">
 				{children}
 				<SanityLive includeDrafts={isEnabled} />
 				{isEnabled && <VisualEditing />}

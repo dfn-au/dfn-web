@@ -13,7 +13,7 @@ export function Hero({
 		<div className="relative mx-auto max-w-[1920px] px-2.5 @desktop:px-frame @desktop:pt-frame">
 			{headerElement}
 			<section
-				className="relative bg-paper @desktop:flex @desktop:min-h-[clamp(580px,34cqi,640px)] @desktop:items-end @desktop:px-hero @desktop:pt-[170px] @desktop:pb-12"
+				className="relative bg-hero-paper [--focus-ring:#fff] @desktop:flex @desktop:min-h-[clamp(580px,34cqi,640px)] @desktop:items-end @desktop:px-hero @desktop:pt-[170px] @desktop:pb-12"
 				aria-labelledby="hero-title"
 			>
 				<Photo
