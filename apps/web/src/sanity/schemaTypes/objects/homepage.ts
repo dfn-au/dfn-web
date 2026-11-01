@@ -359,7 +359,10 @@ export const homepageObjects = [
 				title: "Country",
 				type: "string",
 				options: {
-					list: COUNTRY_SITES.map((site) => COUNTRY_SITE_NAMES[site]),
+					list: COUNTRY_SITES.map((site) => ({
+						title: COUNTRY_SITE_NAMES[site],
+						value: COUNTRY_SITE_NAMES[site],
+					})),
 				},
 				validation: (rule) =>
 					rule
