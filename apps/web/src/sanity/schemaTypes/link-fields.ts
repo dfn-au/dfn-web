@@ -1,5 +1,6 @@
 import { defineField } from "sanity";
 import { COUNTRY_SITE_NAMES } from "../../lib/country-site";
+import { COMPATIBLE_LINK_TARGET_QUERY } from "../lib/link-queries";
 import { LINK_TARGET_FILTER, linkCountries } from "../link-scope";
 
 /** Keep URL fields in place so existing content works before migration. */
@@ -40,13 +41,10 @@ export function linkFields({
 							const target = await context
 								.getClient({ apiVersion: "2026-06-10" })
 								.withConfig({ perspective: "published", useCdn: false })
-								.fetch<string | null>(
-									`*[_id == $id && ${LINK_TARGET_FILTER}][0]._id`,
-									{
-										id: reference._ref.replace(/^drafts\./, ""),
-										sites,
-									},
-								);
+								.fetch(COMPATIBLE_LINK_TARGET_QUERY, {
+									id: reference._ref.replace(/^drafts\./, ""),
+									sites,
+								});
 							return (
 								Boolean(target) ||
 								`Choose a published page available on ${sites.map((site) => COUNTRY_SITE_NAMES[site]).join(" and ")}.`
