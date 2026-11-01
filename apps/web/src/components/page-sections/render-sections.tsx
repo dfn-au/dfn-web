@@ -68,10 +68,10 @@ function Link({
 	className?: string;
 	button?: boolean;
 }) {
-	if (!link?.label) return null;
+	if (!link?.label || !link.href) return null;
 	return (
 		<NavigationLink
-			href={link.href ?? "#"}
+			href={link.href}
 			className={
 				button
 					? `${buttonClasses} bg-action text-action-text`

@@ -177,7 +177,7 @@ export function SiteHeader({
 	const [drawerOpen, setDrawerOpen] = useState(false);
 	const [panelHeight, setPanelHeight] = useState<number>();
 	const navigation = content?.navigation ?? [];
-	const giveHref = content?.giveHref ?? "https://dfn.org.au/donate/";
+	const giveHref = content?.giveHref;
 
 	function closeDrawer() {
 		setDrawerOpen(false);
@@ -411,13 +411,15 @@ export function SiteHeader({
 					>
 						Menu
 					</button>
-					<HeaderLink
-						href={giveHref}
-						activePage={activePage}
-						className={`${giveClass} ${guideLogo ? "@max-[381px]:min-w-[52px] @max-[381px]:px-2" : ""}`}
-					>
-						{content.give}
-					</HeaderLink>
+					{giveHref && (
+						<HeaderLink
+							href={giveHref}
+							activePage={activePage}
+							className={`${giveClass} ${guideLogo ? "@max-[381px]:min-w-[52px] @max-[381px]:px-2" : ""}`}
+						>
+							{content.give}
+						</HeaderLink>
+					)}
 				</div>
 			</header>
 			<dialog
@@ -458,14 +460,16 @@ export function SiteHeader({
 								×
 							</span>
 						</button>
-						<HeaderLink
-							href={giveHref}
-							activePage={activePage}
-							className={`${giveClass} ${guideLogo ? "@max-[381px]:min-w-[52px] @max-[381px]:px-2" : ""}`}
-							onClick={navigateFromDrawer}
-						>
-							{content.give}
-						</HeaderLink>
+						{giveHref && (
+							<HeaderLink
+								href={giveHref}
+								activePage={activePage}
+								className={`${giveClass} ${guideLogo ? "@max-[381px]:min-w-[52px] @max-[381px]:px-2" : ""}`}
+								onClick={navigateFromDrawer}
+							>
+								{content.give}
+							</HeaderLink>
+						)}
 					</div>
 				</div>
 				<div className="h-[calc(100dvh-96px)] overflow-y-auto overscroll-contain px-6 pt-[26px] pb-9 [scrollbar-gutter:stable] @max-[381px]:h-[calc(100dvh-88px)] @max-[381px]:px-[18px] @desktop:h-[calc(100dvh-137px)]">

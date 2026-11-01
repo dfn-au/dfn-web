@@ -70,7 +70,7 @@ function contentWithImages() {
 		header: {
 			give: "Give",
 			menuHeading: null,
-			giveHref: null,
+			giveHref: "https://dfn.org.au/donate/",
 			navigation: [
 				{
 					_key: "work",
