@@ -19,16 +19,17 @@ page menu; menu links follow section order and stable section keys.
 
 ## AU and NZ sites
 
+In Studio, **Pages** opens the page list with **All pages**, **Shared pages**,
+**AU only** and **NZ only** filters at the top. The selected filter stays in the
+URL when opening a page or refreshing. Shared pages publish to both sites, including
+older pages with no saved Publishing Scope. Each page's list entry shows its scope before
+its URL path.
+
 Each page's **Publishing Scope** chooses the sites that publish it; other sites
 return 404 at its slug. Pages saved before Publishing Scope existed are published
-to both until an editor chooses. A section's **Show only on** limits it to one of
-the page's sites; the opening section can't be limited.
-
-The browser title, search description, and each section's eyebrow, headline and
-rich-text bodies can be shared or set separately for AU and NZ. Turn on
-**separate AU and NZ values** for a field to fill in its AU and NZ versions. An
-empty AU or NZ value shows nothing on that site; it never uses the other
-country's value. The page title and slug are always shared.
+to both until an editor chooses. The page's title, search description and every
+section use the same content on all selected sites. Country-specific field
+values and section visibility belong to a later delivery slice.
 
 Rich-text fields support paragraphs, two heading levels, bold, italic, quotes,
 bullet and numbered lists, links and images with alt text/captions. Typography

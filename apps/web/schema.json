@@ -19,55 +19,10 @@
           },
           "optional": true
         },
-        "onlyOn": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "union",
-            "of": [
-              {
-                "type": "string",
-                "value": "AU"
-              },
-              {
-                "type": "string",
-                "value": "NZ"
-              }
-            ]
-          },
-          "optional": true
-        },
-        "eyebrowVariesByCountry": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "boolean"
-          },
-          "optional": true
-        },
         "eyebrow": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
-          },
-          "optional": true
-        },
-        "eyebrowAU": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "string"
-          },
-          "optional": true
-        },
-        "eyebrowNZ": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "string"
-          },
-          "optional": true
-        },
-        "headlineVariesByCountry": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "boolean"
           },
           "optional": true
         },
@@ -78,44 +33,7 @@
           },
           "optional": true
         },
-        "headlineAU": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "string"
-          },
-          "optional": true
-        },
-        "headlineNZ": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "string"
-          },
-          "optional": true
-        },
-        "bodyVariesByCountry": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "boolean"
-          },
-          "optional": true
-        },
         "body": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "inline",
-            "name": "blockContent"
-          },
-          "optional": true
-        },
-        "bodyAU": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "inline",
-            "name": "blockContent"
-          },
-          "optional": true
-        },
-        "bodyNZ": {
           "type": "objectAttribute",
           "value": {
             "type": "inline",
@@ -152,30 +70,7 @@
           },
           "optional": true
         },
-        "actionBodyVariesByCountry": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "boolean"
-          },
-          "optional": true
-        },
         "actionBody": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "inline",
-            "name": "blockContent"
-          },
-          "optional": true
-        },
-        "actionBodyAU": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "inline",
-            "name": "blockContent"
-          },
-          "optional": true
-        },
-        "actionBodyNZ": {
           "type": "objectAttribute",
           "value": {
             "type": "inline",
@@ -222,55 +117,10 @@
           },
           "optional": true
         },
-        "onlyOn": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "union",
-            "of": [
-              {
-                "type": "string",
-                "value": "AU"
-              },
-              {
-                "type": "string",
-                "value": "NZ"
-              }
-            ]
-          },
-          "optional": true
-        },
-        "eyebrowVariesByCountry": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "boolean"
-          },
-          "optional": true
-        },
         "eyebrow": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
-          },
-          "optional": true
-        },
-        "eyebrowAU": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "string"
-          },
-          "optional": true
-        },
-        "eyebrowNZ": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "string"
-          },
-          "optional": true
-        },
-        "headlineVariesByCountry": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "boolean"
           },
           "optional": true
         },
@@ -281,44 +131,7 @@
           },
           "optional": true
         },
-        "headlineAU": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "string"
-          },
-          "optional": true
-        },
-        "headlineNZ": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "string"
-          },
-          "optional": true
-        },
-        "bodyVariesByCountry": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "boolean"
-          },
-          "optional": true
-        },
         "body": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "inline",
-            "name": "blockContent"
-          },
-          "optional": true
-        },
-        "bodyAU": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "inline",
-            "name": "blockContent"
-          },
-          "optional": true
-        },
-        "bodyNZ": {
           "type": "objectAttribute",
           "value": {
             "type": "inline",
@@ -371,55 +184,10 @@
           },
           "optional": true
         },
-        "onlyOn": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "union",
-            "of": [
-              {
-                "type": "string",
-                "value": "AU"
-              },
-              {
-                "type": "string",
-                "value": "NZ"
-              }
-            ]
-          },
-          "optional": true
-        },
-        "eyebrowVariesByCountry": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "boolean"
-          },
-          "optional": true
-        },
         "eyebrow": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
-          },
-          "optional": true
-        },
-        "eyebrowAU": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "string"
-          },
-          "optional": true
-        },
-        "eyebrowNZ": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "string"
-          },
-          "optional": true
-        },
-        "headlineVariesByCountry": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "boolean"
           },
           "optional": true
         },
@@ -430,44 +198,7 @@
           },
           "optional": true
         },
-        "headlineAU": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "string"
-          },
-          "optional": true
-        },
-        "headlineNZ": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "string"
-          },
-          "optional": true
-        },
-        "bodyVariesByCountry": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "boolean"
-          },
-          "optional": true
-        },
         "body": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "inline",
-            "name": "blockContent"
-          },
-          "optional": true
-        },
-        "bodyAU": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "inline",
-            "name": "blockContent"
-          },
-          "optional": true
-        },
-        "bodyNZ": {
           "type": "objectAttribute",
           "value": {
             "type": "inline",
@@ -528,55 +259,10 @@
           },
           "optional": true
         },
-        "onlyOn": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "union",
-            "of": [
-              {
-                "type": "string",
-                "value": "AU"
-              },
-              {
-                "type": "string",
-                "value": "NZ"
-              }
-            ]
-          },
-          "optional": true
-        },
-        "eyebrowVariesByCountry": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "boolean"
-          },
-          "optional": true
-        },
         "eyebrow": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
-          },
-          "optional": true
-        },
-        "eyebrowAU": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "string"
-          },
-          "optional": true
-        },
-        "eyebrowNZ": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "string"
-          },
-          "optional": true
-        },
-        "headlineVariesByCountry": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "boolean"
           },
           "optional": true
         },
@@ -587,44 +273,7 @@
           },
           "optional": true
         },
-        "headlineAU": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "string"
-          },
-          "optional": true
-        },
-        "headlineNZ": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "string"
-          },
-          "optional": true
-        },
-        "bodyVariesByCountry": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "boolean"
-          },
-          "optional": true
-        },
         "body": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "inline",
-            "name": "blockContent"
-          },
-          "optional": true
-        },
-        "bodyAU": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "inline",
-            "name": "blockContent"
-          },
-          "optional": true
-        },
-        "bodyNZ": {
           "type": "objectAttribute",
           "value": {
             "type": "inline",
@@ -676,55 +325,10 @@
           },
           "optional": true
         },
-        "onlyOn": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "union",
-            "of": [
-              {
-                "type": "string",
-                "value": "AU"
-              },
-              {
-                "type": "string",
-                "value": "NZ"
-              }
-            ]
-          },
-          "optional": true
-        },
-        "eyebrowVariesByCountry": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "boolean"
-          },
-          "optional": true
-        },
         "eyebrow": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
-          },
-          "optional": true
-        },
-        "eyebrowAU": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "string"
-          },
-          "optional": true
-        },
-        "eyebrowNZ": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "string"
-          },
-          "optional": true
-        },
-        "headlineVariesByCountry": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "boolean"
           },
           "optional": true
         },
@@ -735,44 +339,7 @@
           },
           "optional": true
         },
-        "headlineAU": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "string"
-          },
-          "optional": true
-        },
-        "headlineNZ": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "string"
-          },
-          "optional": true
-        },
-        "bodyVariesByCountry": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "boolean"
-          },
-          "optional": true
-        },
         "body": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "inline",
-            "name": "blockContent"
-          },
-          "optional": true
-        },
-        "bodyAU": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "inline",
-            "name": "blockContent"
-          },
-          "optional": true
-        },
-        "bodyNZ": {
           "type": "objectAttribute",
           "value": {
             "type": "inline",
@@ -795,30 +362,7 @@
           },
           "optional": true
         },
-        "noteBodyVariesByCountry": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "boolean"
-          },
-          "optional": true
-        },
         "noteBody": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "inline",
-            "name": "blockContent"
-          },
-          "optional": true
-        },
-        "noteBodyAU": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "inline",
-            "name": "blockContent"
-          },
-          "optional": true
-        },
-        "noteBodyNZ": {
           "type": "objectAttribute",
           "value": {
             "type": "inline",
@@ -872,30 +416,6 @@
           },
           "optional": true
         },
-        "onlyOn": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "union",
-            "of": [
-              {
-                "type": "string",
-                "value": "AU"
-              },
-              {
-                "type": "string",
-                "value": "NZ"
-              }
-            ]
-          },
-          "optional": true
-        },
-        "eyebrowVariesByCountry": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "boolean"
-          },
-          "optional": true
-        },
         "eyebrow": {
           "type": "objectAttribute",
           "value": {
@@ -903,42 +423,7 @@
           },
           "optional": true
         },
-        "eyebrowAU": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "string"
-          },
-          "optional": true
-        },
-        "eyebrowNZ": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "string"
-          },
-          "optional": true
-        },
-        "headlineVariesByCountry": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "boolean"
-          },
-          "optional": true
-        },
         "headline": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "string"
-          },
-          "optional": true
-        },
-        "headlineAU": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "string"
-          },
-          "optional": true
-        },
-        "headlineNZ": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
@@ -959,30 +444,7 @@
           },
           "optional": true
         },
-        "bodyVariesByCountry": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "boolean"
-          },
-          "optional": true
-        },
         "body": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "inline",
-            "name": "blockContent"
-          },
-          "optional": true
-        },
-        "bodyAU": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "inline",
-            "name": "blockContent"
-          },
-          "optional": true
-        },
-        "bodyNZ": {
           "type": "objectAttribute",
           "value": {
             "type": "inline",
@@ -1021,47 +483,7 @@
           },
           "optional": true
         },
-        "onlyOn": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "union",
-            "of": [
-              {
-                "type": "string",
-                "value": "AU"
-              },
-              {
-                "type": "string",
-                "value": "NZ"
-              }
-            ]
-          },
-          "optional": true
-        },
-        "bodyVariesByCountry": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "boolean"
-          },
-          "optional": true
-        },
         "body": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "inline",
-            "name": "blockContent"
-          },
-          "optional": true
-        },
-        "bodyAU": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "inline",
-            "name": "blockContent"
-          },
-          "optional": true
-        },
-        "bodyNZ": {
           "type": "objectAttribute",
           "value": {
             "type": "inline",
@@ -1092,45 +514,7 @@
           },
           "optional": true
         },
-        "onlyOn": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "union",
-            "of": [
-              {
-                "type": "string",
-                "value": "AU"
-              },
-              {
-                "type": "string",
-                "value": "NZ"
-              }
-            ]
-          },
-          "optional": true
-        },
-        "headlineVariesByCountry": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "boolean"
-          },
-          "optional": true
-        },
         "headline": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "string"
-          },
-          "optional": true
-        },
-        "headlineAU": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "string"
-          },
-          "optional": true
-        },
-        "headlineNZ": {
           "type": "objectAttribute",
           "value": {
             "type": "string"
@@ -1160,30 +544,7 @@
           },
           "optional": true
         },
-        "bodyVariesByCountry": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "boolean"
-          },
-          "optional": true
-        },
         "body": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "inline",
-            "name": "blockContent"
-          },
-          "optional": true
-        },
-        "bodyAU": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "inline",
-            "name": "blockContent"
-          },
-          "optional": true
-        },
-        "bodyNZ": {
           "type": "objectAttribute",
           "value": {
             "type": "inline",
@@ -2602,56 +1963,7 @@
         },
         "optional": true
       },
-      "browserTitleVariesByCountry": {
-        "type": "objectAttribute",
-        "value": {
-          "type": "boolean"
-        },
-        "optional": true
-      },
-      "browserTitle": {
-        "type": "objectAttribute",
-        "value": {
-          "type": "string"
-        },
-        "optional": true
-      },
-      "browserTitleAU": {
-        "type": "objectAttribute",
-        "value": {
-          "type": "string"
-        },
-        "optional": true
-      },
-      "browserTitleNZ": {
-        "type": "objectAttribute",
-        "value": {
-          "type": "string"
-        },
-        "optional": true
-      },
-      "descriptionVariesByCountry": {
-        "type": "objectAttribute",
-        "value": {
-          "type": "boolean"
-        },
-        "optional": true
-      },
       "description": {
-        "type": "objectAttribute",
-        "value": {
-          "type": "string"
-        },
-        "optional": true
-      },
-      "descriptionAU": {
-        "type": "objectAttribute",
-        "value": {
-          "type": "string"
-        },
-        "optional": true
-      },
-      "descriptionNZ": {
         "type": "objectAttribute",
         "value": {
           "type": "string"

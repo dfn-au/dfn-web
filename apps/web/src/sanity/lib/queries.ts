@@ -62,65 +62,41 @@ export const SITE_CHROME_QUERY =
 }`);
 export type SiteChrome = NonNullable<SITE_CHROME_QUERY_RESULT>;
 
-/**
- * Reads a field written with `sharedOrCountryFields`: the shared value, or this
- * Country Site's own value when the field varies by country. An empty
- * country value stays empty; it never falls back to the other country.
- */
-// `as const` keeps the query's literal type, which sanityFetch uses to find
-// its generated result type.
-const countryValue = <Field extends string>(field: Field) =>
-	`select(
-    ${field}VariesByCountry => select(
-      $countrySite == "AU" => ${field}AU,
-      $countrySite == "NZ" => ${field}NZ
-    ),
-    ${field}
-  )` as const;
-
-const COPY_PROJECTION = `"eyebrow": ${countryValue("eyebrow")},
-  "headline": ${countryValue("headline")},
-  "body": ${countryValue("body")}${RICH_TEXT_PROJECTION}` as const;
-
-// A page or section with no Publishing Scope was saved before scopes existed
-// and appears on every site (see publishingScopeSites).
+// Pages without a saved Publishing Scope remain available on both sites.
 export const PAGE_QUERY = defineQuery(
-	`*[
-    _type == "page" && slug.current == $slug &&
-    (!defined(publishingScope) || $countrySite in publishingScope)
-  ][0]{
+	`*[_type == "page" && slug.current == $slug &&
+    (!defined(publishingScope) || $countrySite in publishingScope)][0]{
     _id,
     title,
-    "browserTitle": ${countryValue("browserTitle")},
-    "description": ${countryValue("description")},
+    description,
     slug,
-    sections[!defined(onlyOn) || onlyOn == $countrySite]{
+    sections[]{
       _key, _type, navigationLabel,
-      _type == "pageTitle" => {"headline": ${countryValue("headline")}},
-      _type == "richTextSection" => {"body": ${countryValue("body")}${RICH_TEXT_PROJECTION}},
+      _type == "pageTitle" => {headline},
+      _type == "richTextSection" => {body${RICH_TEXT_PROJECTION}},
       _type == "introSection" => {
-        ${COPY_PROJECTION}, accentText, lead,
+        eyebrow, headline, body${RICH_TEXT_PROJECTION}, accentText, lead,
         image{_type, alt, caption, crop, hotspot, asset->{_id, url}}
       },
       _type == "imageTextSection" => {
-        ${COPY_PROJECTION},
+        eyebrow, headline, body${RICH_TEXT_PROJECTION},
         image{_type, alt, caption, crop, hotspot, asset->{_id, url}},
-        noteTitle, "noteBody": ${countryValue("noteBody")}${RICH_TEXT_PROJECTION}
+        noteTitle, noteBody${RICH_TEXT_PROJECTION}
       },
       _type == "statementSection" => {
-        ${COPY_PROJECTION}, statementLabel, statement, attribution
+        eyebrow, headline, body${RICH_TEXT_PROJECTION}, statementLabel, statement, attribution
       },
       _type == "valuesSection" => {
-        ${COPY_PROJECTION},
-        items[]{_key, title, "body": ${countryValue("body")}${RICH_TEXT_PROJECTION}}
+        eyebrow, headline, body${RICH_TEXT_PROJECTION},
+        items[]{_key, title, body${RICH_TEXT_PROJECTION}}
       },
       _type == "numberedSection" => {
-        ${COPY_PROJECTION},
-        items[]{_key, title, "body": ${countryValue("body")}${RICH_TEXT_PROJECTION}}, link{label, href}
+        eyebrow, headline, body${RICH_TEXT_PROJECTION},
+        items[]{_key, title, body${RICH_TEXT_PROJECTION}}, link{label, href}
       },
       _type == "actionSection" => {
-        ${COPY_PROJECTION},
-        links[]{_key, label, href}, actionTitle, "actionBody": ${countryValue("actionBody")}${RICH_TEXT_PROJECTION},
+        eyebrow, headline, body${RICH_TEXT_PROJECTION},
+        links[]{_key, label, href}, actionTitle, actionBody${RICH_TEXT_PROJECTION},
         primaryAction{label, href}, secondaryAction{label, href}
       }
     }

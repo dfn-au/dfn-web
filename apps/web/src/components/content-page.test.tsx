@@ -17,7 +17,6 @@ describe("general content pages", () => {
 				page={{
 					_id: "draft",
 					title: null,
-					browserTitle: null,
 					description: null,
 					slug: null,
 					sections: null,
@@ -34,7 +33,6 @@ describe("general content pages", () => {
 				page={{
 					_id: "example-page",
 					title: "Example page",
-					browserTitle: null,
 					description: null,
 					slug: { _type: "slug", current: "example" },
 					sections: [
@@ -125,7 +123,6 @@ describe("general content pages", () => {
 				page={{
 					_id: "page",
 					title: "Authored page",
-					browserTitle: null,
 					description: null,
 					slug: { _type: "slug", current: "page" },
 					sections: [

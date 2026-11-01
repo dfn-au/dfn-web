@@ -2,25 +2,18 @@ import { BlockContentIcon } from "@sanity/icons/BlockContent";
 import { DocumentTextIcon } from "@sanity/icons/DocumentText";
 import { ImageIcon } from "@sanity/icons/Image";
 import { LinkIcon } from "@sanity/icons/Link";
-import {
-	defineArrayMember,
-	defineField,
-	defineType,
-	type FieldDefinition,
-} from "sanity";
-
-import { sectionOnlyOn, sharedOrCountryFields } from "../country-fields";
+import { defineArrayMember, defineField, defineType } from "sanity";
 
 const text = (name: string, title: string) =>
 	defineField({ name, title, type: "string" });
-// Eyebrows, headlines and rich-text bodies can differ between AU and NZ.
-// Other section fields are shared until a page needs them to differ.
-const eyebrow = sharedOrCountryFields(text("eyebrow", "Eyebrow"));
-const headline = sharedOrCountryFields(
-	defineField({ name: "headline", title: "Headline", type: "text", rows: 2 }),
-);
+const headline = defineField({
+	name: "headline",
+	title: "Headline",
+	type: "text",
+	rows: 2,
+});
 const body = (name = "body", title = "Body") =>
-	sharedOrCountryFields(defineField({ name, title, type: "blockContent" }));
+	defineField({ name, title, type: "blockContent" });
 const navigationLabel = defineField({
 	name: "navigationLabel",
 	title: "Section navigation label",
@@ -28,7 +21,7 @@ const navigationLabel = defineField({
 	description:
 		"Fill this in to include this section in an On this page menu. Links follow the page's section order.",
 });
-const copy = [...eyebrow, ...headline, ...body()];
+const copy = [text("eyebrow", "Eyebrow"), headline, body()];
 const image = defineField({
 	name: "image",
 	title: "Image",
@@ -42,27 +35,21 @@ const items = defineField({
 });
 const link = (name: string, title: string) =>
 	defineField({ name, title, type: "homepageNavigationLink" });
-const section = (name: string, title: string, fields: FieldDefinition[]) =>
+const section = (
+	name: string,
+	title: string,
+	fields: ReturnType<typeof defineField>[],
+) =>
 	defineType({
 		name,
 		title,
 		type: "object",
 		icon: BlockContentIcon,
-		fields: [navigationLabel, sectionOnlyOn, ...fields],
+		fields: [navigationLabel, ...fields],
 		preview: {
-			select: {
-				title: "headline",
-				headlineAU: "headlineAU",
-				label: "navigationLabel",
-				media: "image",
-				onlyOn: "onlyOn",
-			},
-			prepare({ title: heading, headlineAU, label, media, onlyOn }) {
-				return {
-					title: heading || headlineAU || label || title,
-					subtitle: onlyOn ? `${title} · ${onlyOn} only` : title,
-					media,
-				};
+			select: { title: "headline", label: "navigationLabel", media: "image" },
+			prepare({ title: heading, label, media }) {
+				return { title: heading || label || title, subtitle: title, media };
 			},
 		},
 	});
@@ -88,17 +75,17 @@ export const pageSections = [
 		title: "Item",
 		type: "object",
 		icon: DocumentTextIcon,
-		fields: [text("title", "Title"), ...body()],
+		fields: [text("title", "Title"), body()],
 		preview: { select: { title: "title" } },
 	}),
-	section("pageTitle", "Page title", headline),
-	section("richTextSection", "Rich text", body()),
+	section("pageTitle", "Page title", [headline]),
+	section("richTextSection", "Rich text", [body()]),
 	section("introSection", "Introduction with image", [
-		...eyebrow,
-		...headline,
+		text("eyebrow", "Eyebrow"),
+		headline,
 		text("accentText", "Highlighted headline ending"),
 		defineField({ name: "lead", title: "Introduction", type: "text", rows: 3 }),
-		...body(),
+		body(),
 		image,
 	]),
 	defineType({
@@ -127,7 +114,7 @@ export const pageSections = [
 		...copy,
 		image,
 		text("noteTitle", "Image note heading"),
-		...body("noteBody", "Image note"),
+		body("noteBody", "Image note"),
 	]),
 	section("statementSection", "Statement", [
 		...copy,
@@ -155,7 +142,7 @@ export const pageSections = [
 			of: [defineArrayMember({ type: "homepageNavigationLink" })],
 		}),
 		text("actionTitle", "Action heading"),
-		...body("actionBody", "Action body"),
+		body("actionBody", "Action body"),
 		link("primaryAction", "Primary action"),
 		link("secondaryAction", "Secondary action"),
 	]),
