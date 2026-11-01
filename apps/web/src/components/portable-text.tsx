@@ -8,6 +8,7 @@ import { ExternalLink } from "@/components/external-link";
 import { SanityImage } from "@/components/sanity-image";
 
 import type { SectionBody } from "./page-sections/types";
+import { NavigationLink } from "./site/navigation-link";
 
 const components: PortableTextComponents<SectionBody[number]> = {
 	block: {
@@ -32,12 +33,18 @@ const components: PortableTextComponents<SectionBody[number]> = {
 	},
 	list: {
 		bullet: ({ children }) => (
-			<ul className="mt-4 list-disc space-y-2 pl-6 text-copy leading-[1.8] text-muted">
+			<ul
+				data-body-copy
+				className="mt-4 list-disc space-y-2 pl-6 text-copy leading-[1.8] text-muted"
+			>
 				{children}
 			</ul>
 		),
 		number: ({ children }) => (
-			<ol className="mt-4 list-decimal space-y-2 pl-6 text-copy leading-[1.8] text-muted">
+			<ol
+				data-body-copy
+				className="mt-4 list-decimal space-y-2 pl-6 text-copy leading-[1.8] text-muted"
+			>
 				{children}
 			</ol>
 		),
@@ -81,12 +88,12 @@ const components: PortableTextComponents<SectionBody[number]> = {
 				);
 			}
 			return (
-				<a
+				<NavigationLink
 					href={href}
 					className="text-ink underline underline-offset-4 transition hover:text-muted"
 				>
 					{children}
-				</a>
+				</NavigationLink>
 			);
 		},
 	},

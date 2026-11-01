@@ -5,11 +5,40 @@
 @source "../page-sections";
 @source "../portable-text.tsx";
 
+/* Exact files served by dfn.org.au, used only when a typography preview selects them.
+   The existing banner synthesises bold from Andada Regular; Vinyl has one regular face. */
+@font-face {
+	font-family: "DFN Andada";
+	src: url("/fonts/Andada-Regular.otf") format("opentype");
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+}
+@font-face {
+	font-family: "DFN Vinyl";
+	src: url("/fonts/vinyl.ttf") format("truetype");
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+}
+
+/* DFN UK's original Semibold webfont; use its real 600 weight without synthesis. */
+@font-face {
+	font-family: "DFN Battersea Slab";
+	src: url("/fonts/BatterseaSLAB-SemiBold.woff") format("woff");
+	font-style: normal;
+	font-weight: 600;
+	font-display: swap;
+}
+
 /* Tokens only: component layout and presentation live in Tailwind utilities. */
 @theme {
 	--font-body: "DM Sans", sans-serif;
 	--font-display: "Fraunces", Georgia, serif;
 	--font-nav: "Oswald", sans-serif;
+	--font-andada: "DFN Andada", Georgia, serif;
+	--font-vinyl: "DFN Vinyl", sans-serif;
+	--font-battersea: "DFN Battersea Slab", Georgia, serif;
 	--container-tablet: 651px;
 	--container-nav: 761px;
 	--container-desktop: 901px;
@@ -28,8 +57,11 @@
 	--text-copy: 16px;
 	--text-intro: 15px;
 	--color-action: #b43a13;
+	--color-action-text: #fff;
+	--color-action-hover: #9d3010;
 	--color-brand: #ef5600;
 	--color-brand-ink: #203332;
+	--header-ink: #fff;
 }
 
 @theme inline {
@@ -43,6 +75,14 @@
 			transparent 72%
 		);
 	--color-page: var(--page);
+	--color-hero-paper: var(--hero-paper, var(--paper));
+	--color-header-ink: var(--header-ink, var(--ink));
+	--color-header-accent: var(--header-accent, var(--accent));
+	--color-menu-paper: var(--menu-paper, rgb(var(--overlay) / 0.8));
+	--color-menu-ink: var(--menu-ink, #fff);
+	--color-menu-border: var(--menu-border, rgb(255 255 255 / 0.6));
+	--color-control-border: var(--control-border, #94887b);
+	--color-focus: var(--focus-ring, var(--ink));
 	--color-paper: var(--paper);
 	--color-ink: var(--ink);
 	--color-muted: var(--muted);
@@ -96,4 +136,45 @@
 	--sand: #3d3026;
 	--involved: #4b3528;
 	--overlay: 27 19 15;
+}
+
+/* Light interpretation of the guide's website examples. Its dark grey and
+   secondary blue remain readable on every reading surface. The photo hero stays dark. */
+[data-palette="guide-light"] {
+	--page: #fff;
+	--paper: #f2f4f2;
+	--ink: #404743;
+	--muted: #5c635e;
+	--rule: #c3cbc5;
+	--accent: #1d5a7c;
+	--sand: #fbf0e8;
+	--involved: #eaf1f4;
+	--overlay: 19 18 17;
+	--hero-paper: #282624;
+	--hero-accent: #f5a078;
+	--header-ink: #404743;
+	--menu-paper: #f2f4f2;
+	--menu-ink: #404743;
+	--menu-border: #788079;
+	--control-border: #788079;
+	--action-dark: #1b1a19;
+	--scheme: light;
+}
+
+/* Compare button colours only; the logo panels retain their website orange.
+   Keep peach text accents for contrast on dark surfaces. */
+[data-brand-preview="proposed"],
+[data-brand-preview="white-text"] {
+	--color-action: #de6026;
+	--color-action-hover: #de6026;
+}
+
+[data-brand-preview="proposed"] {
+	--color-action-text: var(--action-dark, var(--page));
+}
+
+/* White labels on guide orange are a visual-review option (3.62:1 contrast).
+   The dark-text option meets 4.5:1 across all palettes. */
+[data-brand-preview="white-text"] {
+	--color-action-text: #fff;
 }
