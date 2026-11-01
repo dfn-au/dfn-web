@@ -60,7 +60,10 @@ export default async function PageRoute({ params, searchParams }: RouteProps) {
 		{ variant, clean, brand, headings, body, logo, labels, icons },
 	] = await Promise.all([
 		getPage(slug),
-		sanityFetch({ query: SITE_CHROME_QUERY }),
+		sanityFetch({
+			query: SITE_CHROME_QUERY,
+			params: { countrySite: getCountrySite() },
+		}),
 		searchParams,
 	]);
 	if (!page) notFound();
