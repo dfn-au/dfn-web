@@ -25,12 +25,30 @@ const HOMEPAGE_IMAGE_PROJECTION = `{
   _type, alt, crop, hotspot, asset->{_id, url}
 }`;
 
+// A separate menu never falls back to the shared or other country's list.
+// Missing mode uses existing shared menus saved before country choices existed.
+const menuValue = <Name extends string>(name: Name) =>
+	`select(${name}Mode == "country" => select(
+    $countrySite == "AU" => ${name}AU,
+    $countrySite == "NZ" => ${name}NZ
+  ), ${name})` as const;
+
 const HEADER_PROJECTION = `header {
-  navigation[]{_key, label, href, headline, description,
+  "navigation": ${menuValue("navigation")}[]{_key, label, href, headline, description,
     children[]{_key, label, href, groupLabel}
   },
   menuHeading, give, giveHref
-}`;
+}` as const;
+
+const FOOTER_PROJECTION = `footer {
+  summary, navigationTitle,
+  "navigation": ${menuValue("navigation")}[]{_key, label, href},
+  "legalNavigation": ${menuValue("legalNavigation")}[]{_key, label, href},
+  copyright,
+  offices[country == select($countrySite == "AU" => "Australia", $countrySite == "NZ" => "New Zealand")]{
+    _key, country, address, phone, tel, email
+  }
+}` as const;
 
 export const HOME_PAGE_QUERY = defineQuery(
 	`*[_type == "homePage" && _id == "${HOME_PAGE_DOCUMENT_ID}"][0]{
@@ -45,9 +63,7 @@ export const HOME_PAGE_QUERY = defineQuery(
     involvement { eyebrow, headline, actionLabel, opportunities[] { _key, title, description, actionLabel } },
     signup { eyebrow, headline, description, actionLabel },
     ${HEADER_PROJECTION},
-    footer { summary, navigationTitle, navigation[]{_key, label, href}, legalNavigation[]{_key, label, href}, copyright,
-      offices[] { _key, country, address, phone, tel, email }
-    }
+    ${FOOTER_PROJECTION}
   }`,
 );
 
@@ -56,11 +72,11 @@ export const HOME_PAGE_QUERY = defineQuery(
 export const SITE_CHROME_QUERY =
 	defineQuery(`*[_type == "homePage" && _id == "${HOME_PAGE_DOCUMENT_ID}"][0]{
     ${HEADER_PROJECTION},
-    footer { summary, navigationTitle, navigation[]{_key, label, href}, legalNavigation[]{_key, label, href}, copyright,
-      offices[]{_key, country, address, phone, tel, email}
-    }
+    ${FOOTER_PROJECTION}
 }`);
-export type SiteChrome = NonNullable<SITE_CHROME_QUERY_RESULT>;
+export type SiteChrome = NonNullable<
+	SITE_CHROME_QUERY_RESULT | StegaBranded<SITE_CHROME_QUERY_RESULT>
+>;
 
 // Pages without a saved Publishing Scope remain available on both sites.
 export const PAGE_QUERY = defineQuery(

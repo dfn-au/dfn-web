@@ -24,6 +24,24 @@ Unfinished link destinations can use `#`.
 The content objects are separately named schema types so they can later be used
 in a section builder. The current homepage composition remains fixed.
 
+## AU and NZ menus and contacts
+
+In **Home Page > Header and footer**, header navigation, footer navigation and
+legal links each offer **Same on both sites** or **Different by country**.
+Shared menus have one list. Separate menus have Australia and New Zealand lists;
+both must contain valid links before publishing. Existing menus start in shared
+mode without changing their saved content.
+
+Changing mode does not copy or delete lists. Sanity retains hidden values, but
+only the visible menus are validated and rendered. A missing country menu never
+falls back to the shared menu or the other country's menu. One homepage publish
+still publishes the homepage and its header/footer for both sites.
+
+Keep one office for Australia and one for New Zealand. Each deployment renders
+only its own office on the homepage and general pages. The existing country names
+remain the stored values, so existing office entries need no migration. The Give
+button destination remains shared until its separate country-delivery change.
+
 ## Selected defaults
 
 Pages without preview parameters use Fraunces headings, Andada Regular body text,

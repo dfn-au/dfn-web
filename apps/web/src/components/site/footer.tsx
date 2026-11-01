@@ -15,7 +15,7 @@ export function Footer({
 	const offices = content.offices ?? [];
 	return (
 		<footer id="dh-contact">
-			<div className="mx-2.5 grid grid-cols-2 bg-paper @max-[381px]:grid-cols-1 @tablet:mx-frame @desktop:grid-cols-[1.1fr_.85fr_1fr_1fr] @wide:px-footer">
+			<div className="mx-2.5 grid grid-cols-2 bg-paper @max-[381px]:grid-cols-1 @tablet:mx-frame @desktop:grid-cols-[1.1fr_.85fr_1fr] @wide:px-footer">
 				<div className="col-span-full grid grid-cols-2 items-center gap-[23px] bg-brand px-[23px] py-[25px] text-brand-ink @max-[351px]:grid-cols-1 @max-[351px]:gap-[18px] @tablet:col-span-1 @tablet:block @tablet:p-7 @nav:px-[25px] @nav:py-[31px]">
 					<Image
 						src="/logos/dfn-logo-transparent.svg"
@@ -50,7 +50,7 @@ export function Footer({
 				{offices.map((office) => (
 					<div
 						key={office._key}
-						className="px-5 py-[26px] @max-[381px]:px-6 @max-[381px]:py-5 @tablet:px-[23px] @tablet:py-[31px]"
+						className="col-span-full px-5 py-[26px] @max-[381px]:px-6 @max-[381px]:py-5 @tablet:px-[23px] @tablet:py-[31px] @desktop:col-span-1"
 					>
 						<h2 className="mb-[15px] text-sm leading-normal font-medium">
 							{office.country}
