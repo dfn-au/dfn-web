@@ -185,6 +185,20 @@ export type HomepageOffice = {
   email?: string;
 };
 
+export type PageReference = {
+  _ref: string;
+  _type: "reference";
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: "page";
+};
+
+export type HomePageReference = {
+  _ref: string;
+  _type: "reference";
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: "homePage";
+};
+
 export type HomepageHeader = {
   _type: "homepageHeader";
   navigationMode?: "shared" | "country";
@@ -205,6 +219,7 @@ export type HomepageHeader = {
   >;
   menuHeading?: string;
   give?: string;
+  givePage?: PageReference | HomePageReference;
   giveHref?: string;
 };
 
@@ -307,6 +322,7 @@ export type HomepageRichText = Array<{
 export type HomepageHeaderLink = {
   _type: "homepageHeaderLink";
   label?: string;
+  page?: PageReference | HomePageReference;
   href?: string;
   headline?: string;
   description?: string;
@@ -320,6 +336,7 @@ export type HomepageHeaderLink = {
 export type HomepageHeaderChildLink = {
   _type: "homepageHeaderChildLink";
   label?: string;
+  page?: PageReference | HomePageReference;
   href?: string;
   groupLabel?: string;
 };
@@ -327,6 +344,7 @@ export type HomepageHeaderChildLink = {
 export type HomepageNavigationLink = {
   _type: "homepageNavigationLink";
   label?: string;
+  page?: PageReference | HomePageReference;
   href?: string;
 };
 
@@ -599,6 +617,8 @@ export type AllSanitySchemaTypes =
   | SectionImage
   | HomepageFooter
   | HomepageOffice
+  | PageReference
+  | HomePageReference
   | HomepageHeader
   | HomepageSignup
   | HomepageInvolvement
@@ -634,7 +654,7 @@ export type AllSanitySchemaTypes =
 
 // Source: src/sanity/lib/queries.ts
 // Variable: HOME_PAGE_QUERY
-// Query: *[_type == "homePage" && _id == "homePage"][0]{    _id, title, description,    hero { eyebrow, headline, description, actionLabel, photograph {  _type, alt, crop, hotspot, asset->{_id, url}} },    introduction { eyebrow, headline, description },    areas[] { _key, _type, label, headline, body, actionLabel, contentType,      photograph {  _type, alt, crop, hotspot, asset->{_id, url}},      pathways[] { _key, title, description }    },    featuredExample { eyebrow, headline, body, actionLabel },    involvement { eyebrow, headline, actionLabel, opportunities[] { _key, title, description, actionLabel } },    signup { eyebrow, headline, description, actionLabel },    header {  "navigation": select(navigationMode == "country" => select(    $countrySite == "AU" => navigationAU,    $countrySite == "NZ" => navigationNZ  ), navigation)[]{_key, label, href, headline, description,    children[]{_key, label, href, groupLabel}  },  menuHeading, give, giveHref},    footer {  summary, navigationTitle,  "navigation": select(navigationMode == "country" => select(    $countrySite == "AU" => navigationAU,    $countrySite == "NZ" => navigationNZ  ), navigation)[]{_key, label, href},  "legalNavigation": select(legalNavigationMode == "country" => select(    $countrySite == "AU" => legalNavigationAU,    $countrySite == "NZ" => legalNavigationNZ  ), legalNavigation)[]{_key, label, href},  copyright,  offices[country == select($countrySite == "AU" => "Australia", $countrySite == "NZ" => "New Zealand")]{    _key, country, address, phone, tel, email  }}  }
+// Query: *[_type == "homePage" && _id == "homePage"][0]{    _id, title, description,    hero { eyebrow, headline, description, actionLabel, photograph {  _type, alt, crop, hotspot, asset->{_id, url}} },    introduction { eyebrow, headline, description },    areas[] { _key, _type, label, headline, body, actionLabel, contentType,      photograph {  _type, alt, crop, hotspot, asset->{_id, url}},      pathways[] { _key, title, description }    },    featuredExample { eyebrow, headline, body, actionLabel },    involvement { eyebrow, headline, actionLabel, opportunities[] { _key, title, description, actionLabel } },    signup { eyebrow, headline, description, actionLabel },    header {  "navigation": select(navigationMode == "country" => select(    $countrySite == "AU" => navigationAU,    $countrySite == "NZ" => navigationNZ  ), navigation)[]{_key, label, "href": select(defined(page) => page->{    "path": select(      _type == "homePage" && _id == "homePage" => "/",      _type == "page" && defined(slug.current) &&        (!defined(publishingScope) || $countrySite in publishingScope) => "/" + slug.current    )  }.path, href), headline, description,    children[]{_key, label, "href": select(defined(page) => page->{    "path": select(      _type == "homePage" && _id == "homePage" => "/",      _type == "page" && defined(slug.current) &&        (!defined(publishingScope) || $countrySite in publishingScope) => "/" + slug.current    )  }.path, href), groupLabel}[defined(href)]  }[defined(href) || count(children) > 0],  menuHeading, give, "giveHref": select(defined(givePage) => givePage->{    "path": select(      _type == "homePage" && _id == "homePage" => "/",      _type == "page" && defined(slug.current) &&        (!defined(publishingScope) || $countrySite in publishingScope) => "/" + slug.current    )  }.path, coalesce(giveHref, "https://dfn.org.au/donate/"))},    footer {  summary, navigationTitle,  "navigation": select(navigationMode == "country" => select(    $countrySite == "AU" => navigationAU,    $countrySite == "NZ" => navigationNZ  ), navigation)[]{_key, label, "href": select(defined(page) => page->{    "path": select(      _type == "homePage" && _id == "homePage" => "/",      _type == "page" && defined(slug.current) &&        (!defined(publishingScope) || $countrySite in publishingScope) => "/" + slug.current    )  }.path, href)}[defined(href)],  "legalNavigation": select(legalNavigationMode == "country" => select(    $countrySite == "AU" => legalNavigationAU,    $countrySite == "NZ" => legalNavigationNZ  ), legalNavigation)[]{_key, label, "href": select(defined(page) => page->{    "path": select(      _type == "homePage" && _id == "homePage" => "/",      _type == "page" && defined(slug.current) &&        (!defined(publishingScope) || $countrySite in publishingScope) => "/" + slug.current    )  }.path, href)}[defined(href)],  copyright,  offices[country == select($countrySite == "AU" => "Australia", $countrySite == "NZ" => "New Zealand")]{    _key, country, address, phone, tel, email  }}  }
 export type HOME_PAGE_QUERY_RESULT = {
   _id: "homePage";
   title: string | null;
@@ -711,19 +731,19 @@ export type HOME_PAGE_QUERY_RESULT = {
     navigation: Array<{
       _key: string;
       label: string | null;
-      href: string | null;
+      href: string | null | "/";
       headline: string | null;
       description: string | null;
       children: Array<{
         _key: string;
         label: string | null;
-        href: string | null;
+        href: string | "/";
         groupLabel: string | null;
       }> | null;
     }> | null;
     menuHeading: string | null;
     give: string | null;
-    giveHref: string | null;
+    giveHref: string | "/" | null | "https://dfn.org.au/donate/";
   } | null;
   footer: {
     summary: string | null;
@@ -731,12 +751,12 @@ export type HOME_PAGE_QUERY_RESULT = {
     navigation: Array<{
       _key: string;
       label: string | null;
-      href: string | null;
+      href: string | "/";
     }> | null;
     legalNavigation: Array<{
       _key: string;
       label: string | null;
-      href: string | null;
+      href: string | "/";
     }> | null;
     copyright: string | null;
     offices: Array<{
@@ -752,25 +772,25 @@ export type HOME_PAGE_QUERY_RESULT = {
 
 // Source: src/sanity/lib/queries.ts
 // Variable: SITE_CHROME_QUERY
-// Query: *[_type == "homePage" && _id == "homePage"][0]{    header {  "navigation": select(navigationMode == "country" => select(    $countrySite == "AU" => navigationAU,    $countrySite == "NZ" => navigationNZ  ), navigation)[]{_key, label, href, headline, description,    children[]{_key, label, href, groupLabel}  },  menuHeading, give, giveHref},    footer {  summary, navigationTitle,  "navigation": select(navigationMode == "country" => select(    $countrySite == "AU" => navigationAU,    $countrySite == "NZ" => navigationNZ  ), navigation)[]{_key, label, href},  "legalNavigation": select(legalNavigationMode == "country" => select(    $countrySite == "AU" => legalNavigationAU,    $countrySite == "NZ" => legalNavigationNZ  ), legalNavigation)[]{_key, label, href},  copyright,  offices[country == select($countrySite == "AU" => "Australia", $countrySite == "NZ" => "New Zealand")]{    _key, country, address, phone, tel, email  }}}
+// Query: *[_type == "homePage" && _id == "homePage"][0]{    header {  "navigation": select(navigationMode == "country" => select(    $countrySite == "AU" => navigationAU,    $countrySite == "NZ" => navigationNZ  ), navigation)[]{_key, label, "href": select(defined(page) => page->{    "path": select(      _type == "homePage" && _id == "homePage" => "/",      _type == "page" && defined(slug.current) &&        (!defined(publishingScope) || $countrySite in publishingScope) => "/" + slug.current    )  }.path, href), headline, description,    children[]{_key, label, "href": select(defined(page) => page->{    "path": select(      _type == "homePage" && _id == "homePage" => "/",      _type == "page" && defined(slug.current) &&        (!defined(publishingScope) || $countrySite in publishingScope) => "/" + slug.current    )  }.path, href), groupLabel}[defined(href)]  }[defined(href) || count(children) > 0],  menuHeading, give, "giveHref": select(defined(givePage) => givePage->{    "path": select(      _type == "homePage" && _id == "homePage" => "/",      _type == "page" && defined(slug.current) &&        (!defined(publishingScope) || $countrySite in publishingScope) => "/" + slug.current    )  }.path, coalesce(giveHref, "https://dfn.org.au/donate/"))},    footer {  summary, navigationTitle,  "navigation": select(navigationMode == "country" => select(    $countrySite == "AU" => navigationAU,    $countrySite == "NZ" => navigationNZ  ), navigation)[]{_key, label, "href": select(defined(page) => page->{    "path": select(      _type == "homePage" && _id == "homePage" => "/",      _type == "page" && defined(slug.current) &&        (!defined(publishingScope) || $countrySite in publishingScope) => "/" + slug.current    )  }.path, href)}[defined(href)],  "legalNavigation": select(legalNavigationMode == "country" => select(    $countrySite == "AU" => legalNavigationAU,    $countrySite == "NZ" => legalNavigationNZ  ), legalNavigation)[]{_key, label, "href": select(defined(page) => page->{    "path": select(      _type == "homePage" && _id == "homePage" => "/",      _type == "page" && defined(slug.current) &&        (!defined(publishingScope) || $countrySite in publishingScope) => "/" + slug.current    )  }.path, href)}[defined(href)],  copyright,  offices[country == select($countrySite == "AU" => "Australia", $countrySite == "NZ" => "New Zealand")]{    _key, country, address, phone, tel, email  }}}
 export type SITE_CHROME_QUERY_RESULT = {
   header: {
     navigation: Array<{
       _key: string;
       label: string | null;
-      href: string | null;
+      href: string | null | "/";
       headline: string | null;
       description: string | null;
       children: Array<{
         _key: string;
         label: string | null;
-        href: string | null;
+        href: string | "/";
         groupLabel: string | null;
       }> | null;
     }> | null;
     menuHeading: string | null;
     give: string | null;
-    giveHref: string | null;
+    giveHref: string | "/" | null | "https://dfn.org.au/donate/";
   } | null;
   footer: {
     summary: string | null;
@@ -778,12 +798,12 @@ export type SITE_CHROME_QUERY_RESULT = {
     navigation: Array<{
       _key: string;
       label: string | null;
-      href: string | null;
+      href: string | "/";
     }> | null;
     legalNavigation: Array<{
       _key: string;
       label: string | null;
-      href: string | null;
+      href: string | "/";
     }> | null;
     copyright: string | null;
     offices: Array<{
@@ -799,7 +819,7 @@ export type SITE_CHROME_QUERY_RESULT = {
 
 // Source: src/sanity/lib/queries.ts
 // Variable: PAGE_QUERY
-// Query: *[_type == "page" && slug.current == $slug &&    (!defined(publishingScope) || $countrySite in publishingScope)][0]{    _id,    title,    description,    slug,    sections[]{      _key, _type, navigationLabel,      _type == "pageTitle" => {headline},      _type == "richTextSection" => {body[]{  ...,  _type == "image" => {    ...,    asset->{      _id,      url,      metadata {        lqip,        dimensions { width, height }      }    }  }}},      _type == "introSection" => {        eyebrow, headline, body[]{  ...,  _type == "image" => {    ...,    asset->{      _id,      url,      metadata {        lqip,        dimensions { width, height }      }    }  }}, accentText, lead,        image{_type, alt, caption, crop, hotspot, asset->{_id, url}}      },      _type == "imageTextSection" => {        eyebrow, headline, body[]{  ...,  _type == "image" => {    ...,    asset->{      _id,      url,      metadata {        lqip,        dimensions { width, height }      }    }  }},        image{_type, alt, caption, crop, hotspot, asset->{_id, url}},        noteTitle, noteBody[]{  ...,  _type == "image" => {    ...,    asset->{      _id,      url,      metadata {        lqip,        dimensions { width, height }      }    }  }}      },      _type == "statementSection" => {        eyebrow, headline, body[]{  ...,  _type == "image" => {    ...,    asset->{      _id,      url,      metadata {        lqip,        dimensions { width, height }      }    }  }}, statementLabel, statement, attribution      },      _type == "valuesSection" => {        eyebrow, headline, body[]{  ...,  _type == "image" => {    ...,    asset->{      _id,      url,      metadata {        lqip,        dimensions { width, height }      }    }  }},        items[]{_key, title, body[]{  ...,  _type == "image" => {    ...,    asset->{      _id,      url,      metadata {        lqip,        dimensions { width, height }      }    }  }}}      },      _type == "numberedSection" => {        eyebrow, headline, body[]{  ...,  _type == "image" => {    ...,    asset->{      _id,      url,      metadata {        lqip,        dimensions { width, height }      }    }  }},        items[]{_key, title, body[]{  ...,  _type == "image" => {    ...,    asset->{      _id,      url,      metadata {        lqip,        dimensions { width, height }      }    }  }}}, link{label, href}      },      _type == "actionSection" => {        eyebrow, headline, body[]{  ...,  _type == "image" => {    ...,    asset->{      _id,      url,      metadata {        lqip,        dimensions { width, height }      }    }  }},        links[]{_key, label, href}, actionTitle, actionBody[]{  ...,  _type == "image" => {    ...,    asset->{      _id,      url,      metadata {        lqip,        dimensions { width, height }      }    }  }},        primaryAction{label, href}, secondaryAction{label, href}      }    }  }
+// Query: *[_type == "page" && slug.current == $slug &&    (!defined(publishingScope) || $countrySite in publishingScope)][0]{    _id,    title,    description,    slug,    sections[]{      _key, _type, navigationLabel,      _type == "pageTitle" => {headline},      _type == "richTextSection" => {body[]{  ...,  _type == "image" => {    ...,    asset->{      _id,      url,      metadata {        lqip,        dimensions { width, height }      }    }  }}},      _type == "introSection" => {        eyebrow, headline, body[]{  ...,  _type == "image" => {    ...,    asset->{      _id,      url,      metadata {        lqip,        dimensions { width, height }      }    }  }}, accentText, lead,        image{_type, alt, caption, crop, hotspot, asset->{_id, url}}      },      _type == "imageTextSection" => {        eyebrow, headline, body[]{  ...,  _type == "image" => {    ...,    asset->{      _id,      url,      metadata {        lqip,        dimensions { width, height }      }    }  }},        image{_type, alt, caption, crop, hotspot, asset->{_id, url}},        noteTitle, noteBody[]{  ...,  _type == "image" => {    ...,    asset->{      _id,      url,      metadata {        lqip,        dimensions { width, height }      }    }  }}      },      _type == "statementSection" => {        eyebrow, headline, body[]{  ...,  _type == "image" => {    ...,    asset->{      _id,      url,      metadata {        lqip,        dimensions { width, height }      }    }  }}, statementLabel, statement, attribution      },      _type == "valuesSection" => {        eyebrow, headline, body[]{  ...,  _type == "image" => {    ...,    asset->{      _id,      url,      metadata {        lqip,        dimensions { width, height }      }    }  }},        items[]{_key, title, body[]{  ...,  _type == "image" => {    ...,    asset->{      _id,      url,      metadata {        lqip,        dimensions { width, height }      }    }  }}}      },      _type == "numberedSection" => {        eyebrow, headline, body[]{  ...,  _type == "image" => {    ...,    asset->{      _id,      url,      metadata {        lqip,        dimensions { width, height }      }    }  }},        items[]{_key, title, body[]{  ...,  _type == "image" => {    ...,    asset->{      _id,      url,      metadata {        lqip,        dimensions { width, height }      }    }  }}}, link{label, "href": select(defined(page) => page->{    "path": select(      _type == "homePage" && _id == "homePage" => "/",      _type == "page" && defined(slug.current) &&        (!defined(publishingScope) || $countrySite in publishingScope) => "/" + slug.current    )  }.path, href)}      },      _type == "actionSection" => {        eyebrow, headline, body[]{  ...,  _type == "image" => {    ...,    asset->{      _id,      url,      metadata {        lqip,        dimensions { width, height }      }    }  }},        links[]{_key, label, "href": select(defined(page) => page->{    "path": select(      _type == "homePage" && _id == "homePage" => "/",      _type == "page" && defined(slug.current) &&        (!defined(publishingScope) || $countrySite in publishingScope) => "/" + slug.current    )  }.path, href)}[defined(href)], actionTitle, actionBody[]{  ...,  _type == "image" => {    ...,    asset->{      _id,      url,      metadata {        lqip,        dimensions { width, height }      }    }  }},        primaryAction{label, "href": select(defined(page) => page->{    "path": select(      _type == "homePage" && _id == "homePage" => "/",      _type == "page" && defined(slug.current) &&        (!defined(publishingScope) || $countrySite in publishingScope) => "/" + slug.current    )  }.path, href)}, secondaryAction{label, "href": select(defined(page) => page->{    "path": select(      _type == "homePage" && _id == "homePage" => "/",      _type == "page" && defined(slug.current) &&        (!defined(publishingScope) || $countrySite in publishingScope) => "/" + slug.current    )  }.path, href)}      }    }  }
 export type PAGE_QUERY_RESULT = {
   _id: string;
   title: string | null;
@@ -855,7 +875,7 @@ export type PAGE_QUERY_RESULT = {
         links: Array<{
           _key: string;
           label: string | null;
-          href: string | null;
+          href: string | "/";
         }> | null;
         actionTitle: string | null;
         actionBody: Array<
@@ -900,11 +920,11 @@ export type PAGE_QUERY_RESULT = {
         > | null;
         primaryAction: {
           label: string | null;
-          href: string | null;
+          href: string | null | "/";
         } | null;
         secondaryAction: {
           label: string | null;
-          href: string | null;
+          href: string | null | "/";
         } | null;
       }
     | {
@@ -1158,7 +1178,7 @@ export type PAGE_QUERY_RESULT = {
         }> | null;
         link: {
           label: string | null;
-          href: string | null;
+          href: string | null | "/";
         } | null;
       }
     | {
@@ -1364,9 +1384,9 @@ export type PAGE_QUERY_RESULT = {
 // Query TypeMap
 declare global {
   interface SanityQueries {
-    '*[_type == "homePage" && _id == "homePage"][0]{\n    _id, title, description,\n    hero { eyebrow, headline, description, actionLabel, photograph {\n  _type, alt, crop, hotspot, asset->{_id, url}\n} },\n    introduction { eyebrow, headline, description },\n    areas[] { _key, _type, label, headline, body, actionLabel, contentType,\n      photograph {\n  _type, alt, crop, hotspot, asset->{_id, url}\n},\n      pathways[] { _key, title, description }\n    },\n    featuredExample { eyebrow, headline, body, actionLabel },\n    involvement { eyebrow, headline, actionLabel, opportunities[] { _key, title, description, actionLabel } },\n    signup { eyebrow, headline, description, actionLabel },\n    header {\n  "navigation": select(navigationMode == "country" => select(\n    $countrySite == "AU" => navigationAU,\n    $countrySite == "NZ" => navigationNZ\n  ), navigation)[]{_key, label, href, headline, description,\n    children[]{_key, label, href, groupLabel}\n  },\n  menuHeading, give, giveHref\n},\n    footer {\n  summary, navigationTitle,\n  "navigation": select(navigationMode == "country" => select(\n    $countrySite == "AU" => navigationAU,\n    $countrySite == "NZ" => navigationNZ\n  ), navigation)[]{_key, label, href},\n  "legalNavigation": select(legalNavigationMode == "country" => select(\n    $countrySite == "AU" => legalNavigationAU,\n    $countrySite == "NZ" => legalNavigationNZ\n  ), legalNavigation)[]{_key, label, href},\n  copyright,\n  offices[country == select($countrySite == "AU" => "Australia", $countrySite == "NZ" => "New Zealand")]{\n    _key, country, address, phone, tel, email\n  }\n}\n  }': HOME_PAGE_QUERY_RESULT;
-    '*[_type == "homePage" && _id == "homePage"][0]{\n    header {\n  "navigation": select(navigationMode == "country" => select(\n    $countrySite == "AU" => navigationAU,\n    $countrySite == "NZ" => navigationNZ\n  ), navigation)[]{_key, label, href, headline, description,\n    children[]{_key, label, href, groupLabel}\n  },\n  menuHeading, give, giveHref\n},\n    footer {\n  summary, navigationTitle,\n  "navigation": select(navigationMode == "country" => select(\n    $countrySite == "AU" => navigationAU,\n    $countrySite == "NZ" => navigationNZ\n  ), navigation)[]{_key, label, href},\n  "legalNavigation": select(legalNavigationMode == "country" => select(\n    $countrySite == "AU" => legalNavigationAU,\n    $countrySite == "NZ" => legalNavigationNZ\n  ), legalNavigation)[]{_key, label, href},\n  copyright,\n  offices[country == select($countrySite == "AU" => "Australia", $countrySite == "NZ" => "New Zealand")]{\n    _key, country, address, phone, tel, email\n  }\n}\n}': SITE_CHROME_QUERY_RESULT;
-    '*[_type == "page" && slug.current == $slug &&\n    (!defined(publishingScope) || $countrySite in publishingScope)][0]{\n    _id,\n    title,\n    description,\n    slug,\n    sections[]{\n      _key, _type, navigationLabel,\n      _type == "pageTitle" => {headline},\n      _type == "richTextSection" => {body[]{\n  ...,\n  _type == "image" => {\n    ...,\n    asset->{\n      _id,\n      url,\n      metadata {\n        lqip,\n        dimensions { width, height }\n      }\n    }\n  }\n}},\n      _type == "introSection" => {\n        eyebrow, headline, body[]{\n  ...,\n  _type == "image" => {\n    ...,\n    asset->{\n      _id,\n      url,\n      metadata {\n        lqip,\n        dimensions { width, height }\n      }\n    }\n  }\n}, accentText, lead,\n        image{_type, alt, caption, crop, hotspot, asset->{_id, url}}\n      },\n      _type == "imageTextSection" => {\n        eyebrow, headline, body[]{\n  ...,\n  _type == "image" => {\n    ...,\n    asset->{\n      _id,\n      url,\n      metadata {\n        lqip,\n        dimensions { width, height }\n      }\n    }\n  }\n},\n        image{_type, alt, caption, crop, hotspot, asset->{_id, url}},\n        noteTitle, noteBody[]{\n  ...,\n  _type == "image" => {\n    ...,\n    asset->{\n      _id,\n      url,\n      metadata {\n        lqip,\n        dimensions { width, height }\n      }\n    }\n  }\n}\n      },\n      _type == "statementSection" => {\n        eyebrow, headline, body[]{\n  ...,\n  _type == "image" => {\n    ...,\n    asset->{\n      _id,\n      url,\n      metadata {\n        lqip,\n        dimensions { width, height }\n      }\n    }\n  }\n}, statementLabel, statement, attribution\n      },\n      _type == "valuesSection" => {\n        eyebrow, headline, body[]{\n  ...,\n  _type == "image" => {\n    ...,\n    asset->{\n      _id,\n      url,\n      metadata {\n        lqip,\n        dimensions { width, height }\n      }\n    }\n  }\n},\n        items[]{_key, title, body[]{\n  ...,\n  _type == "image" => {\n    ...,\n    asset->{\n      _id,\n      url,\n      metadata {\n        lqip,\n        dimensions { width, height }\n      }\n    }\n  }\n}}\n      },\n      _type == "numberedSection" => {\n        eyebrow, headline, body[]{\n  ...,\n  _type == "image" => {\n    ...,\n    asset->{\n      _id,\n      url,\n      metadata {\n        lqip,\n        dimensions { width, height }\n      }\n    }\n  }\n},\n        items[]{_key, title, body[]{\n  ...,\n  _type == "image" => {\n    ...,\n    asset->{\n      _id,\n      url,\n      metadata {\n        lqip,\n        dimensions { width, height }\n      }\n    }\n  }\n}}, link{label, href}\n      },\n      _type == "actionSection" => {\n        eyebrow, headline, body[]{\n  ...,\n  _type == "image" => {\n    ...,\n    asset->{\n      _id,\n      url,\n      metadata {\n        lqip,\n        dimensions { width, height }\n      }\n    }\n  }\n},\n        links[]{_key, label, href}, actionTitle, actionBody[]{\n  ...,\n  _type == "image" => {\n    ...,\n    asset->{\n      _id,\n      url,\n      metadata {\n        lqip,\n        dimensions { width, height }\n      }\n    }\n  }\n},\n        primaryAction{label, href}, secondaryAction{label, href}\n      }\n    }\n  }': PAGE_QUERY_RESULT;
+    '*[_type == "homePage" && _id == "homePage"][0]{\n    _id, title, description,\n    hero { eyebrow, headline, description, actionLabel, photograph {\n  _type, alt, crop, hotspot, asset->{_id, url}\n} },\n    introduction { eyebrow, headline, description },\n    areas[] { _key, _type, label, headline, body, actionLabel, contentType,\n      photograph {\n  _type, alt, crop, hotspot, asset->{_id, url}\n},\n      pathways[] { _key, title, description }\n    },\n    featuredExample { eyebrow, headline, body, actionLabel },\n    involvement { eyebrow, headline, actionLabel, opportunities[] { _key, title, description, actionLabel } },\n    signup { eyebrow, headline, description, actionLabel },\n    header {\n  "navigation": select(navigationMode == "country" => select(\n    $countrySite == "AU" => navigationAU,\n    $countrySite == "NZ" => navigationNZ\n  ), navigation)[]{_key, label, "href": select(defined(page) => page->{\n    "path": select(\n      _type == "homePage" && _id == "homePage" => "/",\n      _type == "page" && defined(slug.current) &&\n        (!defined(publishingScope) || $countrySite in publishingScope) => "/" + slug.current\n    )\n  }.path, href), headline, description,\n    children[]{_key, label, "href": select(defined(page) => page->{\n    "path": select(\n      _type == "homePage" && _id == "homePage" => "/",\n      _type == "page" && defined(slug.current) &&\n        (!defined(publishingScope) || $countrySite in publishingScope) => "/" + slug.current\n    )\n  }.path, href), groupLabel}[defined(href)]\n  }[defined(href) || count(children) > 0],\n  menuHeading, give, "giveHref": select(defined(givePage) => givePage->{\n    "path": select(\n      _type == "homePage" && _id == "homePage" => "/",\n      _type == "page" && defined(slug.current) &&\n        (!defined(publishingScope) || $countrySite in publishingScope) => "/" + slug.current\n    )\n  }.path, coalesce(giveHref, "https://dfn.org.au/donate/"))\n},\n    footer {\n  summary, navigationTitle,\n  "navigation": select(navigationMode == "country" => select(\n    $countrySite == "AU" => navigationAU,\n    $countrySite == "NZ" => navigationNZ\n  ), navigation)[]{_key, label, "href": select(defined(page) => page->{\n    "path": select(\n      _type == "homePage" && _id == "homePage" => "/",\n      _type == "page" && defined(slug.current) &&\n        (!defined(publishingScope) || $countrySite in publishingScope) => "/" + slug.current\n    )\n  }.path, href)}[defined(href)],\n  "legalNavigation": select(legalNavigationMode == "country" => select(\n    $countrySite == "AU" => legalNavigationAU,\n    $countrySite == "NZ" => legalNavigationNZ\n  ), legalNavigation)[]{_key, label, "href": select(defined(page) => page->{\n    "path": select(\n      _type == "homePage" && _id == "homePage" => "/",\n      _type == "page" && defined(slug.current) &&\n        (!defined(publishingScope) || $countrySite in publishingScope) => "/" + slug.current\n    )\n  }.path, href)}[defined(href)],\n  copyright,\n  offices[country == select($countrySite == "AU" => "Australia", $countrySite == "NZ" => "New Zealand")]{\n    _key, country, address, phone, tel, email\n  }\n}\n  }': HOME_PAGE_QUERY_RESULT;
+    '*[_type == "homePage" && _id == "homePage"][0]{\n    header {\n  "navigation": select(navigationMode == "country" => select(\n    $countrySite == "AU" => navigationAU,\n    $countrySite == "NZ" => navigationNZ\n  ), navigation)[]{_key, label, "href": select(defined(page) => page->{\n    "path": select(\n      _type == "homePage" && _id == "homePage" => "/",\n      _type == "page" && defined(slug.current) &&\n        (!defined(publishingScope) || $countrySite in publishingScope) => "/" + slug.current\n    )\n  }.path, href), headline, description,\n    children[]{_key, label, "href": select(defined(page) => page->{\n    "path": select(\n      _type == "homePage" && _id == "homePage" => "/",\n      _type == "page" && defined(slug.current) &&\n        (!defined(publishingScope) || $countrySite in publishingScope) => "/" + slug.current\n    )\n  }.path, href), groupLabel}[defined(href)]\n  }[defined(href) || count(children) > 0],\n  menuHeading, give, "giveHref": select(defined(givePage) => givePage->{\n    "path": select(\n      _type == "homePage" && _id == "homePage" => "/",\n      _type == "page" && defined(slug.current) &&\n        (!defined(publishingScope) || $countrySite in publishingScope) => "/" + slug.current\n    )\n  }.path, coalesce(giveHref, "https://dfn.org.au/donate/"))\n},\n    footer {\n  summary, navigationTitle,\n  "navigation": select(navigationMode == "country" => select(\n    $countrySite == "AU" => navigationAU,\n    $countrySite == "NZ" => navigationNZ\n  ), navigation)[]{_key, label, "href": select(defined(page) => page->{\n    "path": select(\n      _type == "homePage" && _id == "homePage" => "/",\n      _type == "page" && defined(slug.current) &&\n        (!defined(publishingScope) || $countrySite in publishingScope) => "/" + slug.current\n    )\n  }.path, href)}[defined(href)],\n  "legalNavigation": select(legalNavigationMode == "country" => select(\n    $countrySite == "AU" => legalNavigationAU,\n    $countrySite == "NZ" => legalNavigationNZ\n  ), legalNavigation)[]{_key, label, "href": select(defined(page) => page->{\n    "path": select(\n      _type == "homePage" && _id == "homePage" => "/",\n      _type == "page" && defined(slug.current) &&\n        (!defined(publishingScope) || $countrySite in publishingScope) => "/" + slug.current\n    )\n  }.path, href)}[defined(href)],\n  copyright,\n  offices[country == select($countrySite == "AU" => "Australia", $countrySite == "NZ" => "New Zealand")]{\n    _key, country, address, phone, tel, email\n  }\n}\n}': SITE_CHROME_QUERY_RESULT;
+    '*[_type == "page" && slug.current == $slug &&\n    (!defined(publishingScope) || $countrySite in publishingScope)][0]{\n    _id,\n    title,\n    description,\n    slug,\n    sections[]{\n      _key, _type, navigationLabel,\n      _type == "pageTitle" => {headline},\n      _type == "richTextSection" => {body[]{\n  ...,\n  _type == "image" => {\n    ...,\n    asset->{\n      _id,\n      url,\n      metadata {\n        lqip,\n        dimensions { width, height }\n      }\n    }\n  }\n}},\n      _type == "introSection" => {\n        eyebrow, headline, body[]{\n  ...,\n  _type == "image" => {\n    ...,\n    asset->{\n      _id,\n      url,\n      metadata {\n        lqip,\n        dimensions { width, height }\n      }\n    }\n  }\n}, accentText, lead,\n        image{_type, alt, caption, crop, hotspot, asset->{_id, url}}\n      },\n      _type == "imageTextSection" => {\n        eyebrow, headline, body[]{\n  ...,\n  _type == "image" => {\n    ...,\n    asset->{\n      _id,\n      url,\n      metadata {\n        lqip,\n        dimensions { width, height }\n      }\n    }\n  }\n},\n        image{_type, alt, caption, crop, hotspot, asset->{_id, url}},\n        noteTitle, noteBody[]{\n  ...,\n  _type == "image" => {\n    ...,\n    asset->{\n      _id,\n      url,\n      metadata {\n        lqip,\n        dimensions { width, height }\n      }\n    }\n  }\n}\n      },\n      _type == "statementSection" => {\n        eyebrow, headline, body[]{\n  ...,\n  _type == "image" => {\n    ...,\n    asset->{\n      _id,\n      url,\n      metadata {\n        lqip,\n        dimensions { width, height }\n      }\n    }\n  }\n}, statementLabel, statement, attribution\n      },\n      _type == "valuesSection" => {\n        eyebrow, headline, body[]{\n  ...,\n  _type == "image" => {\n    ...,\n    asset->{\n      _id,\n      url,\n      metadata {\n        lqip,\n        dimensions { width, height }\n      }\n    }\n  }\n},\n        items[]{_key, title, body[]{\n  ...,\n  _type == "image" => {\n    ...,\n    asset->{\n      _id,\n      url,\n      metadata {\n        lqip,\n        dimensions { width, height }\n      }\n    }\n  }\n}}\n      },\n      _type == "numberedSection" => {\n        eyebrow, headline, body[]{\n  ...,\n  _type == "image" => {\n    ...,\n    asset->{\n      _id,\n      url,\n      metadata {\n        lqip,\n        dimensions { width, height }\n      }\n    }\n  }\n},\n        items[]{_key, title, body[]{\n  ...,\n  _type == "image" => {\n    ...,\n    asset->{\n      _id,\n      url,\n      metadata {\n        lqip,\n        dimensions { width, height }\n      }\n    }\n  }\n}}, link{label, "href": select(defined(page) => page->{\n    "path": select(\n      _type == "homePage" && _id == "homePage" => "/",\n      _type == "page" && defined(slug.current) &&\n        (!defined(publishingScope) || $countrySite in publishingScope) => "/" + slug.current\n    )\n  }.path, href)}\n      },\n      _type == "actionSection" => {\n        eyebrow, headline, body[]{\n  ...,\n  _type == "image" => {\n    ...,\n    asset->{\n      _id,\n      url,\n      metadata {\n        lqip,\n        dimensions { width, height }\n      }\n    }\n  }\n},\n        links[]{_key, label, "href": select(defined(page) => page->{\n    "path": select(\n      _type == "homePage" && _id == "homePage" => "/",\n      _type == "page" && defined(slug.current) &&\n        (!defined(publishingScope) || $countrySite in publishingScope) => "/" + slug.current\n    )\n  }.path, href)}[defined(href)], actionTitle, actionBody[]{\n  ...,\n  _type == "image" => {\n    ...,\n    asset->{\n      _id,\n      url,\n      metadata {\n        lqip,\n        dimensions { width, height }\n      }\n    }\n  }\n},\n        primaryAction{label, "href": select(defined(page) => page->{\n    "path": select(\n      _type == "homePage" && _id == "homePage" => "/",\n      _type == "page" && defined(slug.current) &&\n        (!defined(publishingScope) || $countrySite in publishingScope) => "/" + slug.current\n    )\n  }.path, href)}, secondaryAction{label, "href": select(defined(page) => page->{\n    "path": select(\n      _type == "homePage" && _id == "homePage" => "/",\n      _type == "page" && defined(slug.current) &&\n        (!defined(publishingScope) || $countrySite in publishingScope) => "/" + slug.current\n    )\n  }.path, href)}\n      }\n    }\n  }': PAGE_QUERY_RESULT;
   }
 }
 // Lets @sanity/client releases that predate the global registry read it too

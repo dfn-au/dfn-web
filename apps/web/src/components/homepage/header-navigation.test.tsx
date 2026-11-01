@@ -140,5 +140,7 @@ describe("grouped public navigation", () => {
 		);
 		expect(markup.match(/href="\/contact"/g)).toHaveLength(2);
 		expect(markup).not.toContain("data-navigation-panel");
+		expect(markup).not.toContain("dfn.org.au/donate");
+		expect(markup).not.toContain(">Give</a>");
 	});
 });

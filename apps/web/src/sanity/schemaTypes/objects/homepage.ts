@@ -4,6 +4,7 @@ import { LinkIcon } from "@sanity/icons/Link";
 import { defineArrayMember, defineField, defineType } from "sanity";
 import { COUNTRY_SITE_NAMES, COUNTRY_SITES } from "../../../lib/country-site";
 import { countryMenuFields } from "../country-menus";
+import { linkFields } from "../link-fields";
 
 const text = (name: string, title: string) =>
 	defineField({
@@ -45,23 +46,7 @@ const navigationLabel = defineField({
 	validation: (rule, context) =>
 		context?.hidden ? rule.skip() : rule.required(),
 });
-const navigationFields = [
-	navigationLabel,
-	defineField({
-		name: "href",
-		title: "Destination",
-		type: "url",
-		initialValue: "#",
-		description:
-			"Use # for pages that are not ready yet. Homepage sections: #dh-work, #dh-involved, #dh-signup, #dh-contact.",
-		validation: (rule, context) =>
-			context?.hidden
-				? rule.skip()
-				: rule
-						.required()
-						.uri({ allowRelative: true, scheme: ["http", "https"] }),
-	}),
-];
+const navigationFields = [navigationLabel, ...linkFields()];
 export const homepageObjects = [
 	defineType({
 		name: "homepageAddress",
@@ -83,7 +68,13 @@ export const homepageObjects = [
 		type: "object",
 		icon: LinkIcon,
 		fields: navigationFields,
-		preview: { select: { title: "label", subtitle: "href" } },
+		preview: {
+			select: { title: "label", pageTitle: "page.title", href: "href" },
+			prepare: ({ title, pageTitle, href }) => ({
+				title,
+				subtitle: pageTitle || href,
+			}),
+		},
 	}),
 	defineType({
 		name: "homepageHeaderChildLink",
@@ -100,7 +91,13 @@ export const homepageObjects = [
 					"Optional text such as Events or Ongoing support. Use the same label on consecutive links to group them visually; it does not create another submenu.",
 			}),
 		],
-		preview: { select: { title: "label", subtitle: "href" } },
+		preview: {
+			select: { title: "label", pageTitle: "page.title", href: "href" },
+			prepare: ({ title, pageTitle, href }) => ({
+				title,
+				subtitle: pageTitle || href,
+			}),
+		},
 	}),
 	defineType({
 		name: "homepageHeaderLink",
@@ -109,17 +106,7 @@ export const homepageObjects = [
 		icon: LinkIcon,
 		fields: [
 			navigationLabel,
-			defineField({
-				name: "href",
-				title: "Destination",
-				type: "url",
-				description:
-					"For a direct link only. To make this item open a submenu, clear this destination and add child links below. Add any overview page as the first child link.",
-				validation: (rule, context) =>
-					context?.hidden
-						? rule.skip()
-						: rule.uri({ allowRelative: true, scheme: ["http", "https"] }),
-			}),
+			...linkFields({ required: false }),
 			defineField({
 				name: "headline",
 				title: "Submenu headline",
@@ -149,13 +136,19 @@ export const homepageObjects = [
 						if (!item) return true;
 						const hasChildren =
 							Array.isArray(item.children) && item.children.length > 0;
-						if (hasChildren && item.href)
+						if (hasChildren && (item.page || item.href))
 							return "Clear the category destination and include its overview page as a child link.";
-						if (!hasChildren && !item.href)
+						if (!hasChildren && !item.page && !item.href)
 							return "Add a destination or at least one child link.";
 						return true;
 					}),
-		preview: { select: { title: "label", subtitle: "href" } },
+		preview: {
+			select: { title: "label", pageTitle: "page.title", href: "href" },
+			prepare: ({ title, pageTitle, href }) => ({
+				title,
+				subtitle: pageTitle || href,
+			}),
+		},
 	}),
 	defineType({
 		name: "homepageRichText",
@@ -336,15 +329,12 @@ export const homepageObjects = [
 				type: "string",
 			}),
 			text("give", "Give label"),
-			defineField({
-				name: "giveHref",
-				title: "Give destination",
-				type: "url",
-				initialValue: "https://dfn.org.au/donate/",
-				description:
-					"The direct donation flow. Existing headers without this field continue to use https://dfn.org.au/donate/.",
-				validation: (rule) =>
-					rule.uri({ allowRelative: true, scheme: ["http", "https"] }),
+			...linkFields({
+				pageName: "givePage",
+				urlName: "giveHref",
+				pageTitle: "Give page",
+				urlTitle: "Give URL or anchor",
+				required: false,
 			}),
 		],
 	}),

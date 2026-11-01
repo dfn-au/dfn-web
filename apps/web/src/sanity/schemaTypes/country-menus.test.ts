@@ -1,7 +1,7 @@
 import { createClient } from "@sanity/client";
 import { createSchema, validateDocument, type Workspace } from "sanity";
 import { describe, expect, it } from "vitest";
-import { homepageObjects } from "./objects/homepage";
+import { schema } from "./index";
 
 const getClient = () =>
 	createClient({
@@ -14,7 +14,7 @@ const workspace = {
 	schema: createSchema({
 		name: "menu-tests",
 		types: [
-			...homepageObjects,
+			...schema.types,
 			{
 				name: "menuTest",
 				type: "document",

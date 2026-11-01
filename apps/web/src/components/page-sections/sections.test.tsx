@@ -86,4 +86,31 @@ describe("buildable content pages", () => {
 		for (const id of links) expect(markup).toContain(`id="${id}"`);
 		expect([...markup.matchAll(/<h1\b/g)]).toHaveLength(1);
 	});
+	it("does not render an unavailable referenced destination as a placeholder link", () => {
+		const markup = renderToStaticMarkup(
+			<RenderSections
+				title="Page"
+				sections={[
+					{
+						_key: "actions",
+						_type: "actionSection",
+						navigationLabel: null,
+						headline: "Help",
+						eyebrow: null,
+						body: null,
+						links: [],
+						actionTitle: null,
+						actionBody: null,
+						primaryAction: { label: "Unavailable page", href: null },
+						secondaryAction: {
+							label: "External destination",
+							href: "https://example.org",
+						},
+					},
+				]}
+			/>,
+		);
+		expect(markup).not.toContain("Unavailable page");
+		expect(markup).toContain('href="https://example.org"');
+	});
 });

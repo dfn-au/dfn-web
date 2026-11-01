@@ -33,17 +33,32 @@ const menuValue = <Name extends string>(name: Name) =>
     $countrySite == "NZ" => ${name}NZ
   ), ${name})` as const;
 
+// A selected page is authoritative. An unavailable target must not revive a
+// previously entered URL. Scope is checked again when public content is read.
+const linkHref = <PageField extends string, UrlField extends string>(
+	pageField: PageField,
+	urlField: UrlField,
+) =>
+	`select(defined(${pageField}) => ${pageField}->{
+    "path": select(
+      _type == "homePage" && _id == "homePage" => "/",
+      _type == "page" && defined(slug.current) &&
+        (!defined(publishingScope) || $countrySite in publishingScope) => "/" + slug.current
+    )
+  }.path, ${urlField})` as const;
+const LINK_FIELDS = `label, "href": ${linkHref("page", "href")}` as const;
+
 const HEADER_PROJECTION = `header {
-  "navigation": ${menuValue("navigation")}[]{_key, label, href, headline, description,
-    children[]{_key, label, href, groupLabel}
-  },
-  menuHeading, give, giveHref
+  "navigation": ${menuValue("navigation")}[]{_key, label, "href": ${linkHref("page", "href")}, headline, description,
+    children[]{_key, label, "href": ${linkHref("page", "href")}, groupLabel}[defined(href)]
+  }[defined(href) || count(children) > 0],
+  menuHeading, give, "giveHref": ${linkHref("givePage", 'coalesce(giveHref, "https://dfn.org.au/donate/")')}
 }` as const;
 
 const FOOTER_PROJECTION = `footer {
   summary, navigationTitle,
-  "navigation": ${menuValue("navigation")}[]{_key, label, href},
-  "legalNavigation": ${menuValue("legalNavigation")}[]{_key, label, href},
+  "navigation": ${menuValue("navigation")}[]{_key, ${LINK_FIELDS}}[defined(href)],
+  "legalNavigation": ${menuValue("legalNavigation")}[]{_key, ${LINK_FIELDS}}[defined(href)],
   copyright,
   offices[country == select($countrySite == "AU" => "Australia", $countrySite == "NZ" => "New Zealand")]{
     _key, country, address, phone, tel, email
@@ -108,12 +123,12 @@ export const PAGE_QUERY = defineQuery(
       },
       _type == "numberedSection" => {
         eyebrow, headline, body${RICH_TEXT_PROJECTION},
-        items[]{_key, title, body${RICH_TEXT_PROJECTION}}, link{label, href}
+        items[]{_key, title, body${RICH_TEXT_PROJECTION}}, link{${LINK_FIELDS}}
       },
       _type == "actionSection" => {
         eyebrow, headline, body${RICH_TEXT_PROJECTION},
-        links[]{_key, label, href}, actionTitle, actionBody${RICH_TEXT_PROJECTION},
-        primaryAction{label, href}, secondaryAction{label, href}
+        links[]{_key, ${LINK_FIELDS}}[defined(href)], actionTitle, actionBody${RICH_TEXT_PROJECTION},
+        primaryAction{${LINK_FIELDS}}, secondaryAction{${LINK_FIELDS}}
       }
     }
   }`,
