@@ -15,25 +15,27 @@ export function Footer({
 	const offices = content.offices ?? [];
 	return (
 		<footer id="dh-contact">
-			<div className="mx-2.5 grid grid-cols-2 bg-paper @max-[381px]:grid-cols-1 @tablet:mx-frame @desktop:grid-cols-[1.1fr_.85fr_1fr_1fr] @wide:px-footer">
-				<div className="col-span-full grid grid-cols-2 items-center gap-[23px] bg-brand px-[23px] py-[25px] text-brand-ink @max-[351px]:grid-cols-1 @max-[351px]:gap-[18px] @tablet:col-span-1 @tablet:block @tablet:p-7 @nav:px-[25px] @nav:py-[31px]">
+			<div className="mx-2.5 grid grid-cols-1 bg-paper @tablet:mx-frame @tablet:grid-cols-2 @desktop:grid-cols-[1.15fr_1fr_1fr] @wide:px-footer">
+				<div className="col-span-full grid grid-cols-1 items-center gap-6 bg-brand p-6 text-brand-ink @tablet:grid-cols-[auto_1fr] @tablet:p-8 @desktop:col-span-1 @desktop:block">
 					<Image
 						src="/logos/dfn-logo-transparent.svg"
 						width={1345.677}
 						height={586.551}
 						alt="Dignity Freedom Network"
 						unoptimized
-						className="h-auto w-[135px] @tablet:mb-[23px] @tablet:w-[153px]"
+						className="h-auto w-[135px] @tablet:w-[153px] @desktop:mb-6"
 					/>
-					<p className="text-sm leading-[1.65]">{content.summary}</p>
+					<p className="max-w-[36ch] text-sm leading-[1.65]">
+						{content.summary}
+					</p>
 				</div>
-				<div className="col-span-full px-5 pt-[26px] @tablet:col-span-1 @tablet:px-[23px] @tablet:py-[31px]">
-					<h2 className="mb-[7px] text-sm leading-normal font-medium @tablet:mb-[15px]">
+				<div className="p-6 @tablet:p-8">
+					<h2 className="mb-3 text-sm leading-normal font-medium">
 						{content.navigationTitle}
 					</h2>
 					<nav
 						aria-label="Footer navigation"
-						className="flex flex-wrap gap-x-5 gap-y-2 @tablet:block"
+						className="grid grid-cols-2 gap-x-4"
 					>
 						{(content.navigation ?? []).map((link) => (
 							<NavigationLink
@@ -48,13 +50,8 @@ export function Footer({
 					</nav>
 				</div>
 				{offices.map((office) => (
-					<div
-						key={office._key}
-						className="px-5 py-[26px] @max-[381px]:px-6 @max-[381px]:py-5 @tablet:px-[23px] @tablet:py-[31px]"
-					>
-						<h2 className="mb-[15px] text-sm leading-normal font-medium">
-							{office.country}
-						</h2>
+					<div key={office._key} className="px-6 pb-6 @tablet:p-8">
+						<h2 className="mb-3 text-sm leading-normal font-medium">Contact</h2>
 						<address className="text-sm leading-[1.65] not-italic">
 							<RichTextBody value={office.address} variant="address" />
 							<DesignLink

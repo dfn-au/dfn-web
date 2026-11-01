@@ -12,11 +12,16 @@ import {
 } from "@/components/site/brand-preview";
 import { PalettePreview } from "@/components/site/palette-preview";
 import { resolvePalette } from "@/components/site/palettes";
+import { getCountrySite } from "@/lib/country-site";
 import { sanityFetch } from "@/sanity/lib/live";
 import { HOME_PAGE_QUERY, type HomePage } from "@/sanity/lib/queries";
 
 async function getHomePage(stega?: false): Promise<HomePage | null> {
-	const { data } = await sanityFetch({ query: HOME_PAGE_QUERY, stega });
+	const { data } = await sanityFetch({
+		query: HOME_PAGE_QUERY,
+		params: { countrySite: getCountrySite() },
+		stega,
+	});
 	return data;
 }
 
