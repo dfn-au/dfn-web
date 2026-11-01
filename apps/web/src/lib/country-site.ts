@@ -7,8 +7,8 @@ export const COUNTRY_SITE_NAMES: Record<CountrySite, string> = {
 };
 
 /**
- * Each deployment serves exactly one Country Site, fixed by `COUNTRY_SITE`
- *. Request hostname, headers and visitor location never select it,
+ * Each deployment serves exactly one Country Site, fixed by `COUNTRY_SITE`.
+ * Request hostname, headers and visitor location never select it,
  * so this reads only the environment. Matching is exact: `au` is rejected
  * rather than normalised, so a typo can't pass on one deployment and fail on
  * another.
@@ -23,7 +23,7 @@ export function parseCountrySite(value: string | undefined): CountrySite {
 	);
 }
 
-/** next.config.ts calls this so a bad value stops `next build/dev/start`. */
+/** Build/dev config and server startup call this to reject a bad value. */
 export function getCountrySite(): CountrySite {
 	return parseCountrySite(process.env.COUNTRY_SITE);
 }
