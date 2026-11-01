@@ -25,11 +25,11 @@ describe("selected brand defaults", () => {
 		"uses the selected defaults for missing or invalid choices (%j)",
 		(value) => {
 			expect(resolveChoices(value)).toEqual({
-				brand: "white-text",
-				headings: "existing",
+				brand: "proposed",
+				headings: "current",
 				body: "andada",
 				logo: "current",
-				labels: "vinyl",
+				labels: "current",
 				icons: "guide",
 			});
 		},
@@ -40,6 +40,7 @@ describe("selected brand defaults", () => {
 		);
 	});
 	it.each([
+		["proposed", "current", "andada", "current", "current", "guide"],
 		["white-text", "existing", "andada", "current", "vinyl", "guide"],
 		["current", "current", "current", "current", "current", "current"],
 		["proposed", "battersea", "andada", "guide", "current", "guide"],

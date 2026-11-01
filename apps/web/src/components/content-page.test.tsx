@@ -184,7 +184,7 @@ describe("general content pages", () => {
 			</PaletteContext.Provider>,
 		);
 		expect(previewMarkup).toContain(
-			'href="/privacy?variant=olive&amp;clean=1&amp;brand=proposed&amp;logo=guide"',
+			'href="/privacy?variant=olive&amp;clean=1&amp;headings=existing&amp;logo=guide&amp;labels=vinyl"',
 		);
 	});
 	it("keeps palettes and hidden controls across public page navigation", () => {
@@ -202,7 +202,7 @@ describe("general content pages", () => {
 	it("carries the brand comparison through internal navigation without changing other destinations", () => {
 		expect(
 			publicNavigationHref("/about?ref=home#team", "ink", false, "proposed"),
-		).toBe("/about?ref=home&variant=ink&clean=1&brand=proposed#team");
+		).toBe("/about?ref=home&variant=ink&clean=1#team");
 		expect(
 			publicNavigationHref(
 				"/privacy?brand=proposed",
@@ -213,7 +213,7 @@ describe("general content pages", () => {
 		).toBe("/privacy?brand=current");
 		expect(
 			publicNavigationHref("/privacy", "charcoal", true, "white-text"),
-		).toBe("/privacy");
+		).toBe("/privacy?brand=white-text");
 		expect(
 			publicNavigationHref(
 				"/about?ref=home#team",
@@ -222,7 +222,9 @@ describe("general content pages", () => {
 				"white-text",
 				"existing",
 			),
-		).toBe("/about?ref=home&variant=ink&clean=1#team");
+		).toBe(
+			"/about?ref=home&variant=ink&clean=1&brand=white-text&headings=existing#team",
+		);
 		expect(
 			publicNavigationHref(
 				"/privacy?headings=existing",
@@ -231,7 +233,7 @@ describe("general content pages", () => {
 				"current",
 				"current",
 			),
-		).toBe("/privacy?headings=current&brand=current");
+		).toBe("/privacy?brand=current");
 		expect(
 			publicNavigationHref(
 				"/about?ref=home#team",
@@ -241,7 +243,9 @@ describe("general content pages", () => {
 				"existing",
 				"andada",
 			),
-		).toBe("/about?ref=home&variant=ink&clean=1#team");
+		).toBe(
+			"/about?ref=home&variant=ink&clean=1&brand=white-text&headings=existing#team",
+		);
 		expect(publicNavigationHref("/privacy?body=andada", "charcoal", true)).toBe(
 			"/privacy",
 		);
@@ -257,7 +261,9 @@ describe("general content pages", () => {
 				"vinyl",
 				"guide",
 			),
-		).toBe("/about?variant=guide-light&clean=1&logo=guide#team");
+		).toBe(
+			"/about?variant=guide-light&clean=1&brand=white-text&headings=existing&logo=guide&labels=vinyl#team",
+		);
 		expect(
 			publicNavigationHref(
 				"/privacy?logo=guide&labels=vinyl&icons=guide",

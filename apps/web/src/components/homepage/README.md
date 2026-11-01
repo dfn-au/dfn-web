@@ -26,10 +26,11 @@ in a section builder. The current homepage composition remains fixed.
 
 ## Selected defaults
 
-Pages without preview parameters use Existing DFN site headings, Andada Regular
-body text, Vinyl uppercase buttons and small labels, white text on guide-orange
-buttons, guide sector icons and the original logo size. The colour palette remains
-Warm charcoal. The preview panel stays available, including every original option.
+Pages without preview parameters use Fraunces headings, Andada Regular body text,
+original button and small-label typography, dark text on guide-orange buttons,
+guide sector icons and the original logo size. The colour palette remains
+Warm charcoal. Sector icons remain until an alternative without implied ordering
+is selected; the line/dot treatment is not implemented. The preview panel stays available, including every original option.
 `previewDefaults` in `site/brand-preview.ts` is shared by URL parsing, controls and
 navigation. Missing or invalid values use these defaults; explicit `current` values
 still select the original design. Returning a control to its default removes that
@@ -45,7 +46,7 @@ same. Peach accents remain because the guide's orange does not meet normal
 text contrast on several dark surfaces.
 
 White text on guide orange is a visual-review option with 3.62:1 contrast;
-the dark-text option meets 4.5:1 across all palettes. White text is the selected default. `?brand=current` restores the original colours. `?brand=proposed` opens dark text, and `?brand=white-text` opens white
+the dark-text option meets 4.5:1 across all palettes. Dark text is the selected default. `?brand=current` restores the original colours. `?brand=proposed` opens dark text, and `?brand=white-text` opens white
 text. The choice survives refresh, palette changes, hiding controls (`clean=1`)
 and public-page navigation. Switching uses browser history replacement, so it
 keeps scroll position and form input. The corner **Design preview** button reopens collapsed controls (`clean=1`).
@@ -69,7 +70,8 @@ semantic headings including the home banner, preserving authored case. Small
 headings marked `data-brand-label` belong to the separate label comparison.
 Body copy, navigation, buttons and display quotes keep their own fonts.
 
-`?headings=existing` selects the comparison; omitting it uses the same default. `?headings=current` restores Fraunces.
+`?headings=existing` selects the existing-site comparison. Omitting `headings` or
+using `?headings=current` selects the Fraunces default.
 Retired `?headings=arial` links resolve to the selected default. The heading choice
 survives refresh, public-page navigation and hiding controls, and combines
 independently with button colours and the background palette.
@@ -142,7 +144,7 @@ Sign up, but excludes menu controls, navigation links, form labels and prose.
 Vinyl uses its supplied regular face, uppercase and 0.025em tracking. Small labels
 use 13px for readability; button sizes remain unchanged. This comparison is
 independent of heading and body fonts and survives navigation and collapse.
-Vinyl is the default; `?labels=current` restores the original fonts.
+Original fonts are the default; `?labels=vinyl` selects Vinyl uppercase.
 
 ## Sector icon comparison
 

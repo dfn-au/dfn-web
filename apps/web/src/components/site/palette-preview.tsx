@@ -36,18 +36,18 @@ const labels: Record<Palette, string> = {
 const brandLabels: Record<BrandPreview, string> = {
 	current: "Original",
 	proposed: "Dark text",
-	"white-text": "White text (default)",
+	"white-text": "White text",
 };
 
 const headingLabels: Record<HeadingPreview, string> = {
-	current: "Fraunces (original)",
-	existing: "Existing DFN site (default)",
+	current: "Fraunces",
+	existing: "Existing DFN site",
 	battersea: "Battersea Slab",
 };
 
 const bodyLabels: Record<BodyPreview, string> = {
 	current: "DM Sans (original)",
-	andada: "Andada Regular (default)",
+	andada: "Andada Regular",
 };
 
 function PreviewChoices<Value extends string>({
@@ -56,6 +56,7 @@ function PreviewChoices<Value extends string>({
 	values,
 	labels,
 	value,
+	defaultValue,
 	onChange,
 }: {
 	title: string;
@@ -63,6 +64,7 @@ function PreviewChoices<Value extends string>({
 	values: readonly Value[];
 	labels: Record<Value, string>;
 	value: Value;
+	defaultValue: Value;
 	onChange: (value: Value) => void;
 }) {
 	const descriptionId = useId();
@@ -81,6 +83,7 @@ function PreviewChoices<Value extends string>({
 						className="min-h-11 min-w-0 flex-1 cursor-pointer rounded-lg px-2 py-2 text-xs leading-snug text-[#505a53] transition-colors hover:bg-white/70 aria-pressed:bg-[#404743] aria-pressed:text-white aria-pressed:shadow-sm motion-reduce:transition-none"
 					>
 						{labels[next]}
+						{next === defaultValue ? " (default)" : ""}
 					</button>
 				))}
 			</div>
@@ -336,6 +339,7 @@ export function PalettePreview({
 							values={headingPreviews}
 							labels={headingLabels}
 							value={headingPreview}
+							defaultValue={previewDefaults.headings}
 							onChange={changeHeadings}
 							description={
 								<>
@@ -354,6 +358,7 @@ export function PalettePreview({
 							values={bodyPreviews}
 							labels={bodyLabels}
 							value={bodyPreview}
+							defaultValue={previewDefaults.body}
 							onChange={changeBody}
 							description={
 								<>
@@ -371,9 +376,10 @@ export function PalettePreview({
 							values={labelPreviews}
 							labels={{
 								current: "Original",
-								vinyl: "Vinyl uppercase (default)",
+								vinyl: "Vinyl uppercase",
 							}}
 							value={labelPreview}
+							defaultValue={previewDefaults.labels}
 							onChange={changeLabels}
 							description={
 								<>
@@ -391,6 +397,7 @@ export function PalettePreview({
 							values={brandPreviews}
 							labels={brandLabels}
 							value={brandPreview}
+							defaultValue={previewDefaults.brand}
 							onChange={changeProposal}
 							description={
 								<>
@@ -434,9 +441,10 @@ export function PalettePreview({
 							values={iconPreviews}
 							labels={{
 								current: "Numbers (original)",
-								guide: "Guide icons (default)",
+								guide: "Guide icons",
 							}}
 							value={iconPreview}
+							defaultValue={previewDefaults.icons}
 							onChange={changeIcons}
 							description={
 								<>

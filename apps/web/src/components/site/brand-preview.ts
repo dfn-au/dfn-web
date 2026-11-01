@@ -1,11 +1,11 @@
 // Missing or invalid URL choices use the selected site defaults. "current" remains
 // an explicit option for the original design, including when it is not the default.
 export const previewDefaults = {
-	brand: "white-text",
-	headings: "existing",
+	brand: "proposed",
+	headings: "current",
 	body: "andada",
 	logo: "current",
-	labels: "vinyl",
+	labels: "current",
 	icons: "guide",
 } as const;
 
