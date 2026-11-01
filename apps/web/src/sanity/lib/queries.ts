@@ -62,8 +62,10 @@ export const SITE_CHROME_QUERY =
 }`);
 export type SiteChrome = NonNullable<SITE_CHROME_QUERY_RESULT>;
 
+// Pages without a saved Publishing Scope remain available on both sites.
 export const PAGE_QUERY = defineQuery(
-	`*[_type == "page" && slug.current == $slug][0]{
+	`*[_type == "page" && slug.current == $slug &&
+    (!defined(publishingScope) || $countrySite in publishingScope)][0]{
     _id,
     title,
     description,

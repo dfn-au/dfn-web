@@ -12,6 +12,7 @@ import {
 } from "@/components/site/brand-preview";
 import { PalettePreview } from "@/components/site/palette-preview";
 import { resolvePalette } from "@/components/site/palettes";
+import { getCountrySite } from "@/lib/country-site";
 import { sanityFetch } from "@/sanity/lib/live";
 import { PAGE_QUERY, type Page, SITE_CHROME_QUERY } from "@/sanity/lib/queries";
 
@@ -32,7 +33,7 @@ type RouteProps = {
 async function getPage(slug: string, stega?: false): Promise<Page | null> {
 	const { data } = await sanityFetch({
 		query: PAGE_QUERY,
-		params: { slug },
+		params: { slug, countrySite: getCountrySite() },
 		stega,
 	});
 	return data;

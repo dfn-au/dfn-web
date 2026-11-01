@@ -1,7 +1,12 @@
 import type { Instrumentation } from "next";
 import { isAdminPath } from "@/lib/analytics-policy";
+import { getCountrySite } from "@/lib/country-site";
 
-export function register() {}
+// `next start` reuses the config compiled at build time, so next.config.ts
+// can't stop a server started with a missing or invalid COUNTRY_SITE. This can.
+export function register() {
+	getCountrySite();
+}
 
 export const onRequestError: Instrumentation.onRequestError = async (
 	error,

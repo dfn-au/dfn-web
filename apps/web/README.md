@@ -4,6 +4,15 @@ Next.js App Router application for the DFN public Country Sites, admin routes,
 and embedded Sanity Studio at `/admin/studio`. Studio supports content editing
 and live preview of the public pages.
 
+## Country Site
+
+Each deployment serves one Country Site, set by `COUNTRY_SITE=AU` or
+`COUNTRY_SITE=NZ` ([ADR 001](../../docs/adr/001-website-technical-architecture.md)).
+Set it in `.env.local` for local development. A missing or invalid value stops
+`next build`, `next dev` and `next start`; hostname and visitor location never
+change it. Server code reads it with `getCountrySite()` from
+`src/lib/country-site.ts`.
+
 ## Admin appearance
 
 The admin dashboard, diagnostics, login states, and Studio navigation use

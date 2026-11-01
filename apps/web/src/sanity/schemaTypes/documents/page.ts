@@ -1,6 +1,7 @@
 import { DocumentTextIcon } from "@sanity/icons/DocumentText";
 import { defineArrayMember, defineField, defineType } from "sanity";
 
+import { describeScope, pagePublishingScope } from "../country-fields";
 import { pageSectionNames } from "../objects/pageSections";
 
 export const page = defineType({
@@ -38,6 +39,7 @@ export const page = defineType({
 					return true;
 				}),
 		}),
+		pagePublishingScope,
 		defineField({
 			name: "description",
 			title: "Search description",
@@ -73,11 +75,12 @@ export const page = defineType({
 		select: {
 			title: "title",
 			slug: "slug.current",
+			scope: "publishingScope",
 		},
-		prepare({ title, slug }) {
+		prepare({ title, slug, scope }) {
 			return {
 				title,
-				subtitle: slug ? `/${slug}` : "No slug",
+				subtitle: `${describeScope(scope)} · ${slug ? `/${slug}` : "No slug"}`,
 			};
 		},
 	},
