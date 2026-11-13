@@ -25,6 +25,7 @@ const fixtures = [
 	page("au", ["AU"]),
 	page("nz", ["NZ"]),
 	page("legacy"),
+	page("admin-team", ["AU", "NZ"]),
 	page("null-scope", null),
 	page("empty-scope", []),
 	page("drafts.new-page", ["AU", "NZ"], "unpublished"),
@@ -76,6 +77,7 @@ describe.each([
 				`${origin}/`,
 				`${origin}/${countrySlug}`,
 				`${origin}/legacy`,
+				`${origin}/admin-team`,
 				`${origin}/null-scope`,
 				`${origin}/shared`,
 			].sort(),
@@ -123,6 +125,7 @@ describe.each([
 		expect(after.map(({ url }) => url).sort()).toEqual(
 			[
 				`${origin}/legacy`,
+				`${origin}/admin-team`,
 				`${origin}/null-scope`,
 				`${origin}/renamed`,
 				`${origin}/newly-published`,
@@ -134,7 +137,9 @@ describe.each([
 		vi.stubEnv("VERCEL_URL", "preview.example");
 		const text = resolveRobots(robots());
 		expect(text).toContain(`Sitemap: ${origin}/sitemap.xml`);
-		expect(text).toContain("Disallow: /admin");
+		expect(text).toContain("Disallow: /admin$\n");
+		expect(text).toContain("Disallow: /admin/\n");
+		expect(text).not.toContain("Disallow: /admin\n");
 		expect(text).toContain("Disallow: /api/");
 		expect(text).not.toContain("preview.example");
 	});
