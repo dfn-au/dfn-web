@@ -1,6 +1,11 @@
 export const COUNTRY_SITES = ["AU", "NZ"] as const;
 export type CountrySite = (typeof COUNTRY_SITES)[number];
 
+export const COUNTRY_SITE_ORIGINS: Record<CountrySite, string> = {
+	AU: "https://dfn.org.au",
+	NZ: "https://dfn.org.nz",
+};
+
 export const COUNTRY_SITE_NAMES: Record<CountrySite, string> = {
 	AU: "Australia",
 	NZ: "New Zealand",

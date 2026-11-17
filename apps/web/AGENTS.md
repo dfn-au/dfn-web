@@ -7,3 +7,7 @@ This version has breaking changes — APIs, conventions, and file structure may 
 This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
 
 <!-- END:nextjs-agent-rules -->
+
+## Public content routes
+
+- When adding a content type with its own public URL, or changing its routes or Country Site eligibility, update [the sitemap query](src/sanity/lib/sitemap-query.ts) and [URL mapping and path filter](src/app/sitemap.ts) in the same change. The sitemap explicitly selects content types and paths, so new routes are not included automatically. Extend [the sitemap tests](src/app/sitemap.test.ts) to cover the new URLs on AU/NZ, publication changes and exclusion of drafts and unavailable content.
