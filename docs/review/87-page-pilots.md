@@ -15,11 +15,13 @@ Open [How we work](http://localhost:3100/how-we-work?clean=1) and [Reports](http
 
 The separate application in `apps/web/review` uses the real `PAGE_QUERY`, `ContentPage` and section renderer against `fixtures.json`. It has no Sanity client, dataset writes, sign-in or analytics integration. Its image builder always returns a neutral placeholder. The normal website build does not serve its pages or assets. Public logo and font files are reused through relative symlinks. The sample PDFs contain only a rehearsal label, filename and a statement that they contain no financial or impact claims.
 
-This local preview is not a Sanity Presentation session. Automated checks exercise Sanity's actual schema validation, editing/reordering the stored page values, the public query and the rendered links. A signed-in Studio create/edit/reorder/Presentation check in an isolated dataset remains required before marking the rehearsal fully accepted. A private `issue87-review` dataset has now been prepared with only the synthetic report and neutral image. The real Studio reached sign-in, but the signed-in authoring check is awaiting permission to use the intended account. No Pages have been created there and production content remains untouched.
+The local fixture preview is separate from Sanity Presentation. A signed-in Studio check also passed on 19 November 2026 in the private `issue87-review` dataset: two ordinary Pages were created through Studio, a file and URL entry were added, entries were dragged into a different order, and an edited title appeared in the live preview. The complete fixture compositions were then loaded into those existing draft documents using uploaded synthetic assets. Both full Pages rendered in Presentation, including the single undated booklet, and How we work's action opened Reports. The dataset contains only two draft Pages and no published Pages. Production content remains untouched.
+
+To repeat the live check, configure the normal local application for that private dataset, an authorised Sanity read token and `http://localhost:3100` as the Studio/preview origin. Run `pnpm --filter web exec next dev --hostname 127.0.0.1 --port 3100` and open `/admin/studio`. Do not run the fixture application on that port at the same time. The private dataset has no global site content, so its live preview demonstrates page sections rather than the complete site navigation.
 
 ## Reproduce the compositions in Studio
 
-Use a separate review dataset. Create two ordinary **Pages**, choose **Australia and New Zealand** as their Publishing Scope, and use the titles and slugs below. Leave them as drafts during editorial review. The fixture IDs are local test identities, not IDs to import into Sanity. Select the new Reports Page in the How we work action after both exist.
+Use a separate review dataset. Create two ordinary **Pages**, choose **Australia and New Zealand** as their Publishing Scope, and use the titles and slugs below. Leave them as drafts during editorial review. The fixture IDs are local test identities, not IDs to import into Sanity. The review drafts use `/reports` in the existing action URL field because the Page picker lists published Pages. Once publication is approved, select the Reports Page there to keep the link tied to its slug.
 
 | Page | Sections, in order | Review purpose |
 | --- | --- | --- |
@@ -38,6 +40,8 @@ Captured from the isolated fixture application on 19 November 2026:
 
 - [How we work, desktop](87-evidence/how-we-work-desktop.jpg) and [390px mobile](87-evidence/how-we-work-mobile.jpg).
 - [Reports, desktop](87-evidence/reports-desktop.jpg) and [390px mobile](87-evidence/reports-mobile.jpg).
+
+Signed-in private-dataset evidence: [How we work in Presentation](87-evidence/studio-how-we-work.jpg), [Reports in Presentation](87-evidence/studio-reports.jpg) and [reordered download entries](87-evidence/studio-reports-reordered.jpg).
 
 ## Copy, files and image sources
 
@@ -61,9 +65,9 @@ Reports needs no editorial photo. File covers, if later added, would still need 
 - Both full fixture Pages pass Sanity schema validation. Download validation rejects missing titles, missing/both destinations, non-web URLs, invalid dates and empty lists.
 - The actual GROQ query and renderer preserve edited list order, resolve uploaded file references, retain exact external URLs and show optional dates. An unresolved uploaded file does not revive a stale URL. Both AU and NZ query paths are covered.
 - The local browser rehearsal checked both pages on a narrow 390px viewport and desktop. No horizontal overflow was observed. Keyboard focus followed report order; Enter reached the selected PDF URL. Menu opening, Escape/focus return and How we work's Reports action worked.
-- All three sample resource URLs returned HTTP 200 and `application/pdf`. The in-app browser reached the PDF URL but did not display its contents; this is not evidence of an embedded PDF viewer.
+- All three local sample resource URLs and all three uploaded synthetic resource URLs returned HTTP 200 and `application/pdf`. The uploaded files also have the expected PDF signature. The in-app browser reached the PDF URL but did not display its contents; this is not evidence of an embedded PDF viewer.
 - Type checking, lint and the five targeted test files are the local checks. The full suite stays with CI.
 
-Editorial approval, actual report-file review, the full communications source check, real Studio/Presentation verification, final navigation, publication and rollout remain open. Keep the pilot under #87 until its remaining acceptance checks are recorded. Broader migration and launch decisions stay with [#7](https://github.com/dfn-au/dfn-web/issues/7) and [#8](https://github.com/dfn-au/dfn-web/issues/8).
+Editorial approval, actual report-file review, the full communications source check, final navigation, publication and rollout remain open. Keep the pilot under #87 until its remaining acceptance checks are recorded. Broader migration and launch decisions stay with [#7](https://github.com/dfn-au/dfn-web/issues/7) and [#8](https://github.com/dfn-au/dfn-web/issues/8).
 
 Also considered: rich-text links lack file selection and date fields; a standalone Report document is unnecessary for this first library. A preview route in the normal website would mix sample content with deployable routes, so the rehearsal runs as a separate local application.
