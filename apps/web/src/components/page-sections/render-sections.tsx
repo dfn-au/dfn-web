@@ -350,7 +350,7 @@ export function RenderSections({
 									</div>
 									<Body value={section.body} />
 								</div>
-								<dl className="grid gap-7 @tablet:grid-cols-2 @desktop:grid-cols-3 @desktop:gap-6 @wide:grid-cols-5">
+								<dl className="grid gap-7 @tablet:grid-cols-[repeat(auto-fit,minmax(180px,1fr))] @desktop:gap-8">
 									{(section.items ?? []).map((item) => (
 										<div key={item._key} className="border-t border-rule pt-5">
 											<dt className="mb-3 font-display text-[23px] leading-[1.3]">

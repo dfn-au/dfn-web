@@ -105,7 +105,7 @@ describe("Page pilot downloads", () => {
 		expect(doc.body.innerHTML).not.toContain("javascript:");
 		expect(doc.body.textContent).not.toContain("Invalid Date");
 	});
-	it("composes How we work with one title, image context, section navigation and the Reports action", async () => {
+	it("composes How we work with one title, image context, distinct roles and the Reports action", async () => {
 		const doc = await render("how-we-work");
 		expect(doc.querySelectorAll("h1")).toHaveLength(1);
 		expect(
@@ -115,15 +115,14 @@ describe("Page pilot downloads", () => {
 			"placeholder",
 		);
 		expect(doc.body.textContent).toContain("does not depict a person or place");
-		for (const link of doc.querySelectorAll(
-			'nav[aria-label="On this page"] a',
-		)) {
-			expect(
-				doc.getElementById(link.getAttribute("href")?.slice(1) ?? ""),
-			).not.toBeNull();
-		}
+		expect(
+			[...doc.querySelectorAll("dt")].map((item) => item.textContent),
+		).toEqual(["Local partners", "DFN", "You"]);
+		expect(doc.querySelector("#privacy")?.textContent).toContain(
+			"Every person has worth and dignity.",
+		);
 		expect(doc.querySelector('a[href^="/reports"]')?.textContent).toContain(
-			"View reports",
+			"Read our reports",
 		);
 	});
 });

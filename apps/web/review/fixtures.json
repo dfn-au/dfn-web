@@ -11,57 +11,13 @@
 		"description": "Editorial rehearsal. Sample content awaiting review.",
 		"sections": [
 			{
-				"_key": "title",
-				"_type": "pageTitle",
-				"headline": "How we work"
-			},
-			{
-				"_key": "intro",
-				"_type": "richTextSection",
-				"body": [
-					{
-						"_key": "lead",
-						"_type": "block",
-						"style": "normal",
-						"markDefs": [],
-						"children": [
-							{
-								"_key": "text",
-								"_type": "span",
-								"text": "DFN funds and supports work that is owned and operated by local partners.",
-								"marks": []
-							}
-						]
-					},
-					{
-						"_key": "copy",
-						"_type": "block",
-						"style": "normal",
-						"markDefs": [],
-						"children": [
-							{
-								"_key": "text",
-								"_type": "span",
-								"text": "Our role is to support locally led work in education, healthcare, economic empowerment and freedom from exploitation.",
-								"marks": []
-							}
-						]
-					}
-				]
-			},
-			{
-				"_key": "navigation",
-				"_type": "sectionNavigation"
-			},
-			{
 				"_key": "local-work",
-				"_type": "imageTextSection",
-				"navigationLabel": "Locally led",
-				"eyebrow": "Working together",
-				"headline": "Led by local partners",
+				"_type": "introSection",
+				"eyebrow": "How we work",
+				"headline": "Local people\nlead the way.",
 				"body": [
 					{
-						"_key": "copy",
+						"_key": "p1",
 						"_type": "block",
 						"style": "normal",
 						"markDefs": [],
@@ -69,7 +25,7 @@
 							{
 								"_key": "text",
 								"_type": "span",
-								"text": "Local partners understand their communities and lead the work. DFN provides funding and support for their locally owned and operated programmes.",
+								"text": "Our partners work alongside communities in South Asia through education, healthcare, economic empowerment and freedom from exploitation.",
 								"marks": []
 							}
 						]
@@ -83,37 +39,22 @@
 					},
 					"alt": "Neutral image placeholder. A photograph of locally led work is awaiting approval.",
 					"caption": "Image for review: local partners at work. This placeholder does not depict a person or place."
-				}
+				},
+				"lead": "We support locally led work that helps people build lives of dignity and freedom."
 			},
 			{
 				"_key": "partnership",
-				"_type": "numberedSection",
-				"navigationLabel": "Our approach",
-				"headline": "Working in partnership",
-				"body": [
-					{
-						"_key": "copy",
-						"_type": "block",
-						"style": "normal",
-						"markDefs": [],
-						"children": [
-							{
-								"_key": "text",
-								"_type": "span",
-								"text": "Lasting change is led by people who understand their own communities.",
-								"marks": []
-							}
-						]
-					}
-				],
+				"_type": "valuesSection",
+				"eyebrow": "Working together",
+				"headline": "Different roles.\nA shared purpose.",
 				"items": [
 					{
 						"_key": "local",
 						"_type": "sectionItem",
-						"title": "Local ownership",
+						"title": "Local partners",
 						"body": [
 							{
-								"_key": "copy",
+								"_key": "p0",
 								"_type": "block",
 								"style": "normal",
 								"markDefs": [],
@@ -121,7 +62,7 @@
 									{
 										"_key": "text",
 										"_type": "span",
-										"text": "Local partners lead and operate the work. DFN does not own or run partner institutions.",
+										"text": "Own and operate the programmes, with local people leading and delivering the work.",
 										"marks": []
 									}
 								]
@@ -129,12 +70,12 @@
 						]
 					},
 					{
-						"_key": "support",
+						"_key": "dfn",
 						"_type": "sectionItem",
-						"title": "Funding and support",
+						"title": "DFN",
 						"body": [
 							{
-								"_key": "copy",
+								"_key": "p0",
 								"_type": "block",
 								"style": "normal",
 								"markDefs": [],
@@ -142,7 +83,7 @@
 									{
 										"_key": "text",
 										"_type": "span",
-										"text": "DFN connects supporters with opportunities to fund and support this locally led work.",
+										"text": "Raises funds and provides support for this locally led work.",
 										"marks": []
 									}
 								]
@@ -150,12 +91,12 @@
 						]
 					},
 					{
-						"_key": "review",
+						"_key": "supporters",
 						"_type": "sectionItem",
-						"title": "Sharing the work",
+						"title": "You",
 						"body": [
 							{
-								"_key": "copy",
+								"_key": "p0",
 								"_type": "block",
 								"style": "normal",
 								"markDefs": [],
@@ -163,7 +104,7 @@
 									{
 										"_key": "text",
 										"_type": "span",
-										"text": "We share reviewed reports and stories so supporters can learn about the work they help make possible.",
+										"text": "Help make the work possible through your giving and support.",
 										"marks": []
 									}
 								]
@@ -174,25 +115,11 @@
 			},
 			{
 				"_key": "privacy",
-				"_type": "richTextSection",
-				"navigationLabel": "Respect and care",
+				"_type": "statementSection",
+				"headline": "Respect and care",
 				"body": [
 					{
-						"_key": "heading",
-						"_type": "block",
-						"style": "h2",
-						"markDefs": [],
-						"children": [
-							{
-								"_key": "text",
-								"_type": "span",
-								"text": "Respect and care",
-								"marks": []
-							}
-						]
-					},
-					{
-						"_key": "copy",
+						"_key": "p0",
 						"_type": "block",
 						"style": "normal",
 						"markDefs": [],
@@ -200,21 +127,22 @@
 							{
 								"_key": "text",
 								"_type": "span",
-								"text": "We take care when sharing stories and images. Personal details and precise locations are kept private where needed to protect the people involved.",
+								"text": "We take care with the stories and images we share. Personal details and precise locations are kept private where needed to protect the people involved.",
 								"marks": []
 							}
 						]
 					}
-				]
+				],
+				"statementLabel": "Our starting point",
+				"statement": "Every person has worth and dignity."
 			},
 			{
 				"_key": "reports",
 				"_type": "actionSection",
-				"navigationLabel": "Read our reports",
-				"headline": "Learn more about the work",
+				"headline": "See the work\nyou help make possible.",
 				"body": [
 					{
-						"_key": "copy",
+						"_key": "p0",
 						"_type": "block",
 						"style": "normal",
 						"markDefs": [],
@@ -222,7 +150,7 @@
 							{
 								"_key": "text",
 								"_type": "span",
-								"text": "Read reports from DFN and its partners.",
+								"text": "Explore reports from DFN and its partners.",
 								"marks": []
 							}
 						]
@@ -230,7 +158,7 @@
 				],
 				"primaryAction": {
 					"_type": "homepageNavigationLink",
-					"label": "View reports",
+					"label": "Read our reports",
 					"page": {
 						"_type": "reference",
 						"_ref": "pilot-reports"

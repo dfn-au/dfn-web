@@ -2,6 +2,16 @@
 
 Prepared 19 November 2026 for [#87](https://github.com/dfn-au/dfn-web/issues/87). Kat owns content approval. This is a review of page composition and the reusable download list; it does not publish either page.
 
+## Current design direction
+
+Revised on 19 November 2026 after Andrew clarified that his concern about “Respect and care” was its visual treatment. Keep the section. The page now uses an introduction with a photo, three equal columns explaining local partners / DFN / supporters, a full-width Statement panel for respect and care, and one Reports action. The short page no longer needs an On this page menu. All four sections already exist in the Page builder.
+
+Retain warm charcoal, Fraunces headings, Andada body text and original labels, following [Kat’s reviewed preferences](https://github.com/dfn-au/dfn-web/pull/75#issuecomment-6434735501). Those later preferences supersede the earlier unapproved experiment; the light palette remains an optional comparison, not the selected direction.
+
+The revised wording draws on the [existing homepage’s locally led approach](https://dfn.org.au/) and the [About page’s dignity, freedom and equal-worth values](https://dfn.org.au/about/), read on 19 November 2026, within Kat’s newer communication constraints. It is newly drafted copy for review, not a quotation or final approval. “Every person has worth and dignity” is a paraphrase of the existing dignity value. The protection paragraph retains the original meaning.
+
+Also considered: merely enlarging the old rich-text heading would leave it isolated; a new component is unnecessary because the existing Statement block supports the two-column treatment. Changing to a light theme would disregard Kat’s selected palette.
+
 ## Open the pilots
 
 From this checkout, run:
@@ -25,7 +35,7 @@ Use a separate review dataset. Create two ordinary **Pages**, choose **Australia
 
 | Page | Sections, in order | Review purpose |
 | --- | --- | --- |
-| How we work (`how-we-work`) | Page title; Rich text; On this page; Text with image; Numbered items; Rich text; Call to action | Explain local ownership and DFN's supporting role, then link to Reports. |
+| How we work (`how-we-work`) | Introduction with image; Values (local partners, DFN, supporters); Statement (Respect and care); Call to action | Explain local ownership and DFN's supporting role, then link to Reports. |
 | Reports (`reports`) | Page title; Rich text; On this page; Download list: Annual reports; Download list: About our work | Demonstrate an ordered report library and a single booklet using the same section. |
 
 All sample field values are in `apps/web/review/fixtures.json`. The source is readable JSON in the same shape as authored Sanity documents. Use the sample copy as a draft, not as approved publication text. Replace the placeholder with an approved uploaded image and the sample files with approved uploaded reports or permanent public resource URLs. Never import the synthetic asset references or localhost links.
@@ -41,20 +51,20 @@ Captured from the isolated fixture application on 19 November 2026:
 - [How we work, desktop](87-evidence/how-we-work-desktop.jpg) and [390px mobile](87-evidence/how-we-work-mobile.jpg).
 - [Reports, desktop](87-evidence/reports-desktop.jpg) and [390px mobile](87-evidence/reports-mobile.jpg).
 
-Signed-in private-dataset evidence: [How we work in Presentation](87-evidence/studio-how-we-work.jpg), [Reports in Presentation](87-evidence/studio-reports.jpg) and [reordered download entries](87-evidence/studio-reports-reordered.jpg).
+The following signed-in evidence records the earlier composition and authoring checks; the current design is shown in the desktop/mobile screenshots above. Private-dataset evidence: [How we work in Presentation](87-evidence/studio-how-we-work.jpg), [Reports in Presentation](87-evidence/studio-reports.jpg) and [reordered download entries](87-evidence/studio-reports-reordered.jpg).
 
 ## Copy, files and image sources
 
 | Material | Source and status | Kat's review |
 | --- | --- | --- |
 | Page intent and local ownership/funding distinction | [Kat's proposed launch brief](https://github.com/user-attachments/files/34295870/dfn-proposed-launch-sitemap.md), sections 4, 7 and 8; proposal attached to [#7](https://github.com/dfn-au/dfn-web/issues/7). Read in full on 19 November 2026. | Confirm the draft describes DFN's role accurately and supplies enough detail. All pilot sentences are newly written for this rehearsal. |
-| How we work copy | Short paraphrases of that brief. No personal stories, named institutions, locations, statistics or funding amounts. | Review the headline, programme terminology, partnership explanation and privacy wording against the full communications guidance. |
+| How we work copy | New draft based on that brief and the current public Home/About pages, with only broad South Asia geography. No personal stories, named institutions, precise locations, statistics or funding amounts. | Review the headline, programme terminology, partnership explanation and privacy wording against the full communications guidance. |
 | Annual report titles/dates and booklet | Invented, explicitly labelled samples. No legacy report has been copied, linked or cleared for republication. | Select the actual files; verify title, reporting period, publication date, country eligibility and all content inside each file before upload. Leave dates blank when unknown. |
 | How we work image | Neutral SVG placeholder made for the rehearsal. No documentary image or private source URL is included. | Approve a relevant photo, crop, caption, alt text and permission before replacing it. Photography selection belongs to [#88](https://github.com/dfn-au/dfn-web/issues/88). |
 
 ### Image slot
 
-Use **Text with image**, after the introduction and section navigation, beside “Led by local partners”. The current block uses a 3:2 frame on desktop and mobile. Prefer a scene that shows people doing or sharing practical work, with enough space to retain the relevant people, hands and activity in that crop. Keep a plain text opening rather than forcing the photograph into a banner.
+Use **Introduction with image**, beside “Local people lead the way”. The existing block uses a 6:5 frame on desktop and 4:3 on mobile. The revised layout replaces the earlier 3:2 slot. Review the provisional selection at both crops before approval, retaining the relevant people, hands and activity. There is no text over the photograph.
 
 The photography worker has a provisional private selection and context questions under #88. It is not approved for publication. Its private reference and permission checks are in the local photography handoff; they are deliberately absent from this repository and preview. Do not label a photograph as a particular partner's work or attach it to a person's story unless that context is confirmed. Write alt text from visible content; review any readable signs or badges and the exported filename/metadata as well as the caption.
 
