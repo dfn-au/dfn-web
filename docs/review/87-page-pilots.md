@@ -15,7 +15,7 @@ Open [How we work](http://localhost:3100/how-we-work?clean=1) and [Reports](http
 
 The separate application in `apps/web/review` uses the real `PAGE_QUERY`, `ContentPage` and section renderer against `fixtures.json`. It has no Sanity client, dataset writes, sign-in or analytics integration. Its image builder always returns a neutral placeholder. The normal website build does not serve its pages or assets. Public logo and font files are reused through relative symlinks. The sample PDFs contain only a rehearsal label, filename and a statement that they contain no financial or impact claims.
 
-This local preview is not a Sanity Presentation session. Automated checks exercise Sanity's actual schema validation, editing/reordering the stored page values, the public query and the rendered links. A signed-in Studio create/edit/reorder/Presentation check in an isolated dataset remains required before marking the rehearsal fully accepted. No isolated dataset or write credential was provided; the production dataset has not been used for this rehearsal.
+This local preview is not a Sanity Presentation session. Automated checks exercise Sanity's actual schema validation, editing/reordering the stored page values, the public query and the rendered links. A signed-in Studio create/edit/reorder/Presentation check in an isolated dataset remains required before marking the rehearsal fully accepted. A private `issue87-review` dataset has now been prepared with only the synthetic report and neutral image. The real Studio reached sign-in, but the signed-in authoring check is awaiting permission to use the intended account. No Pages have been created there and production content remains untouched.
 
 ## Reproduce the compositions in Studio
 
