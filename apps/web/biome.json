@@ -3,7 +3,7 @@
 	"files": {
 		"includes": [
 			"**",
-			"!**/.next",
+			"!.next",
 			"!node_modules",
 			"!tmp",
 			"!schema.json",

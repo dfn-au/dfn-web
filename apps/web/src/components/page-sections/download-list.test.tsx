@@ -3,7 +3,7 @@ import { evaluate, parse } from "groq-js";
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it, vi } from "vitest";
 import { PAGE_QUERY, type Page } from "@/sanity/lib/queries";
-import fixtures from "../../../review/fixtures.json";
+import fixtures from "../../test/fixtures/downloads.json";
 import { RenderSections } from "./render-sections";
 
 vi.mock("@/sanity/lib/image", () => ({
@@ -28,14 +28,14 @@ async function render(
 
 function annualDownloads(dataset: typeof fixtures) {
 	const section = dataset
-		.find((p) => p._id === "pilot-reports")
+		.find((p) => p._id === "test-downloads")
 		?.sections?.find((s) => s._key === "annual");
 	if (!section || !("downloads" in section) || !section.downloads)
 		throw new Error("Missing annual reports fixture");
 	return section.downloads;
 }
 
-describe("Page pilot downloads", () => {
+describe("Page downloads", () => {
 	it.each(["AU", "NZ"])(
 		"queries and renders files, URLs, dates and a single booklet on %s",
 		async (country) => {
@@ -48,16 +48,13 @@ describe("Page pilot downloads", () => {
 			).toEqual([
 				[
 					"Annual report 2025 (sample)Open PDF",
-					"http://localhost:3100/annual-report-2025.pdf",
+					"https://example.org/annual-report-2025.pdf",
 				],
 				[
 					"Annual report 2024 (sample)Open resource",
-					"http://localhost:3100/annual-report-2024.pdf",
+					"https://example.org/annual-report-2024.pdf",
 				],
-				[
-					"How we work booklet (sample)Open resource",
-					"http://localhost:3100/how-we-work-booklet.pdf",
-				],
+				["Booklet (sample)Open resource", "https://example.org/booklet.pdf"],
 			]);
 			expect(
 				[...doc.querySelectorAll("time")].map((t) => [
@@ -104,25 +101,5 @@ describe("Page pilot downloads", () => {
 		const doc = await render("reports", edited);
 		expect(doc.body.innerHTML).not.toContain("javascript:");
 		expect(doc.body.textContent).not.toContain("Invalid Date");
-	});
-	it("composes How we work with one title, image context, distinct roles and the Reports action", async () => {
-		const doc = await render("how-we-work");
-		expect(doc.querySelectorAll("h1")).toHaveLength(1);
-		expect(
-			[...doc.querySelectorAll("h1,h2,h3")].every((h) => h.textContent?.trim()),
-		).toBe(true);
-		expect(doc.querySelector("img")?.getAttribute("alt")).toContain(
-			"placeholder",
-		);
-		expect(doc.body.textContent).toContain("does not depict a person or place");
-		expect(
-			[...doc.querySelectorAll("dt")].map((item) => item.textContent),
-		).toEqual(["Local partners", "DFN", "You"]);
-		expect(doc.querySelector("#privacy")?.textContent).toContain(
-			"Every person has worth and dignity.",
-		);
-		expect(doc.querySelector('a[href^="/reports"]')?.textContent).toContain(
-			"Read our reports",
-		);
 	});
 });

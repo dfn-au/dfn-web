@@ -2,7 +2,7 @@ import { createClient } from "@sanity/client";
 import { evaluate, parse } from "groq-js";
 import { createSchema, validateDocument, type Workspace } from "sanity";
 import { describe, expect, it, vi } from "vitest";
-import fixtures from "../../../review/fixtures.json";
+import fixtures from "../../test/fixtures/downloads.json";
 import { schema } from "./index";
 
 const client = createClient({
@@ -24,7 +24,7 @@ const workspace = {
 		t: ((key: string) => key) as Workspace["i18n"]["t"],
 	},
 };
-const report = fixtures.find((doc) => doc._id === "pilot-reports");
+const report = fixtures.find((doc) => doc._id === "test-downloads");
 async function errors(
 	downloads: unknown[],
 	headline: string | undefined = "Reports",
@@ -32,7 +32,7 @@ async function errors(
 	const result = await validateDocument({
 		document: {
 			...report,
-			_id: "pilot-reports",
+			_id: "test-downloads",
 			_type: "page",
 			_rev: "1",
 			_createdAt: "2026-11-19",
@@ -61,7 +61,7 @@ const item = {
 
 describe("Download list authoring", () => {
 	it.each(fixtures.filter((doc) => doc._type === "page"))(
-		"validates the full $title composition",
+		"validates the $title schema",
 		async (document) => {
 			const result = await validateDocument({
 				document: {

@@ -1,0 +1,67 @@
+[
+	{
+		"_id": "test-downloads",
+		"_type": "page",
+		"title": "Download test page",
+		"slug": {
+			"_type": "slug",
+			"current": "reports"
+		},
+		"publishingScope": ["AU", "NZ"],
+		"description": "Synthetic content for download component tests.",
+		"sections": [
+			{
+				"_key": "title",
+				"_type": "pageTitle",
+				"headline": "Download test page"
+			},
+			{
+				"_key": "annual",
+				"_type": "downloadListSection",
+				"headline": "Annual reports",
+				"downloads": [
+					{
+						"_key": "2025",
+						"_type": "downloadItem",
+						"title": "Annual report 2025 (sample)",
+						"date": "2026-03-01",
+						"file": {
+							"_type": "file",
+							"asset": {
+								"_type": "reference",
+								"_ref": "file-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb-pdf"
+							}
+						}
+					},
+					{
+						"_key": "2024",
+						"_type": "downloadItem",
+						"title": "Annual report 2024 (sample)",
+						"date": "2025-03-01",
+						"url": "https://example.org/annual-report-2024.pdf"
+					}
+				]
+			},
+			{
+				"_key": "booklet",
+				"_type": "downloadListSection",
+				"headline": "About our work",
+				"downloads": [
+					{
+						"_key": "booklet",
+						"_type": "downloadItem",
+						"title": "Booklet (sample)",
+						"url": "https://example.org/booklet.pdf"
+					}
+				]
+			}
+		]
+	},
+	{
+		"_id": "file-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb-pdf",
+		"_type": "sanity.fileAsset",
+		"url": "https://example.org/annual-report-2025.pdf",
+		"extension": "pdf",
+		"originalFilename": "annual-report-2025.pdf"
+	}
+]
