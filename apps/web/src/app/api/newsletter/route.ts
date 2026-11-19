@@ -11,7 +11,6 @@ const unavailableError =
 const verifiedTokenSchema = z.object({
 	success: z.literal(true),
 	action: z.literal("newsletter_signup"),
-	hostname: z.string(),
 });
 
 function reject(error: string, status: number) {
@@ -41,10 +40,7 @@ export async function POST(request: Request) {
 	}
 
 	const secret = process.env.TURNSTILE_SECRET_KEY;
-	const hostnames = process.env.TURNSTILE_ALLOWED_HOSTNAMES?.split(",")
-		.map((hostname) => hostname.trim())
-		.filter(Boolean);
-	if (!secret || !hostnames?.length) {
+	if (!secret) {
 		return reject(unavailableError, 503);
 	}
 
@@ -62,10 +58,7 @@ export async function POST(request: Request) {
 			return reject(unavailableError, 503);
 		}
 		const verification = verifiedTokenSchema.safeParse(await response.json());
-		if (
-			!verification.success ||
-			!hostnames.includes(verification.data.hostname)
-		) {
+		if (!verification.success) {
 			return reject(verificationError, 403);
 		}
 	} catch {
