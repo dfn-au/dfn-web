@@ -32,6 +32,13 @@ For each **Download list**, enter a heading and optionally an introduction and s
 
 Rehearse adding an entry, changing its title, moving it before another entry, removing it, and previewing the result. Open every link. Check that a single booklet still reads as a list of one. Use Tab and Enter and a narrow viewport; the title remains part of each link's accessible name.
 
+## Preview evidence
+
+Captured from the isolated fixture application on 19 November 2026:
+
+- [How we work, desktop](87-evidence/how-we-work-desktop.jpg) and [390px mobile](87-evidence/how-we-work-mobile.jpg).
+- [Reports, desktop](87-evidence/reports-desktop.jpg) and [390px mobile](87-evidence/reports-mobile.jpg).
+
 ## Copy, files and image sources
 
 | Material | Source and status | Kat's review |
