@@ -111,6 +111,7 @@ describe("buildable content pages", () => {
 			/>,
 		);
 		expect(markup).not.toContain("Unavailable page");
+		expect(markup).not.toContain("<h3");
 		expect(markup).toContain('href="https://example.org"');
 	});
 });

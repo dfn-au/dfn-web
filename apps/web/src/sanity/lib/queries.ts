@@ -125,6 +125,14 @@ export const PAGE_QUERY = defineQuery(
         eyebrow, headline, body${RICH_TEXT_PROJECTION},
         items[]{_key, title, body${RICH_TEXT_PROJECTION}}, link{${LINK_FIELDS}}
       },
+      _type == "downloadListSection" => {
+        headline, body${RICH_TEXT_PROJECTION},
+        downloads[]{
+          _key, title, date,
+          "href": select(defined(file.asset) => file.asset->url, url),
+          "extension": select(defined(file.asset) => file.asset->extension)
+        }
+      },
       _type == "actionSection" => {
         eyebrow, headline, body${RICH_TEXT_PROJECTION},
         links[]{_key, ${LINK_FIELDS}}[defined(href)], actionTitle, actionBody${RICH_TEXT_PROJECTION},
