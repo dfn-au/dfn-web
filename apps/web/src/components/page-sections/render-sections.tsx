@@ -10,6 +10,7 @@ import {
 } from "@/components/site/primitives";
 import { urlFor } from "@/sanity/lib/image";
 import { PageBody } from "../portable-text";
+import { DownloadList } from "./download-list";
 import type { PageSection, SectionImage, SectionLink } from "./types";
 
 const width =
@@ -364,6 +365,17 @@ export function RenderSections({
 							</div>
 						);
 						break;
+					case "downloadListSection":
+						content = (
+							<div className={`${reading} py-12 @desktop:py-20`}>
+								<h2 id={titleId} className={`${heading} mb-6`}>
+									<Headline text={section.headline} />
+								</h2>
+								<Body value={section.body} />
+								<DownloadList downloads={section.downloads} />
+							</div>
+						);
+						break;
 					case "actionSection":
 						content = (
 							<div
@@ -386,9 +398,11 @@ export function RenderSections({
 									</div>
 								</div>
 								<div className="self-center border-t border-rule pt-7 @desktop:border-t-0 @desktop:border-l @desktop:pt-0 @desktop:pl-12">
-									<h3 className="mb-4 font-display text-[29px] leading-[1.2]">
-										{section.actionTitle}
-									</h3>
+									{section.actionTitle && (
+										<h3 className="mb-4 font-display text-[29px] leading-[1.2]">
+											{section.actionTitle}
+										</h3>
+									)}
 									<Body
 										value={section.actionBody}
 										className={`${bodyClass} mb-6`}

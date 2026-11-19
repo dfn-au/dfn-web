@@ -3,6 +3,7 @@ import { DocumentTextIcon } from "@sanity/icons/DocumentText";
 import { ImageIcon } from "@sanity/icons/Image";
 import { LinkIcon } from "@sanity/icons/Link";
 import { defineArrayMember, defineField, defineType } from "sanity";
+import { downloadItem } from "./downloadItem";
 
 const text = (name: string, title: string) =>
 	defineField({ name, title, type: "string" });
@@ -54,6 +55,7 @@ const section = (
 		},
 	});
 export const pageSections = [
+	downloadItem,
 	defineType({
 		name: "sectionImage",
 		title: "Image",
@@ -133,6 +135,19 @@ export const pageSections = [
 		items,
 	]),
 	section("valuesSection", "Values", [...copy, items]),
+	section("downloadListSection", "Download list", [
+		defineField({ ...headline, validation: (rule) => rule.required() }),
+		body(),
+		defineField({
+			name: "downloads",
+			title: "Downloads",
+			type: "array",
+			description:
+				"Drag entries to set their order on the page. A single resource uses the same list.",
+			of: [defineArrayMember({ type: "downloadItem" })],
+			validation: (rule) => rule.required().min(1),
+		}),
+	]),
 	section("actionSection", "Call to action", [
 		...copy,
 		defineField({
@@ -157,4 +172,5 @@ export const pageSectionNames = [
 	"numberedSection",
 	"valuesSection",
 	"actionSection",
+	"downloadListSection",
 ];

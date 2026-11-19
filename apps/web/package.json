@@ -3,6 +3,7 @@
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {
+		"review:pages": "COUNTRY_SITE=AU NEXT_PUBLIC_SANITY_PROJECT_ID=bt057kcd NEXT_PUBLIC_SANITY_DATASET=pilot next dev review --hostname 127.0.0.1 --port 3100",
 		"dev": "NODE_OPTIONS=--no-network-family-autoselection next dev",
 		"build": "next build",
 		"start": "next start",

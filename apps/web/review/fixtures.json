@@ -1,0 +1,354 @@
+[
+	{
+		"_id": "pilot-how-we-work",
+		"_type": "page",
+		"title": "How we work",
+		"slug": {
+			"_type": "slug",
+			"current": "how-we-work"
+		},
+		"publishingScope": ["AU", "NZ"],
+		"description": "Editorial rehearsal. Sample content awaiting review.",
+		"sections": [
+			{
+				"_key": "title",
+				"_type": "pageTitle",
+				"headline": "How we work"
+			},
+			{
+				"_key": "intro",
+				"_type": "richTextSection",
+				"body": [
+					{
+						"_key": "lead",
+						"_type": "block",
+						"style": "normal",
+						"markDefs": [],
+						"children": [
+							{
+								"_key": "text",
+								"_type": "span",
+								"text": "DFN funds and supports work that is owned and operated by local partners.",
+								"marks": []
+							}
+						]
+					},
+					{
+						"_key": "copy",
+						"_type": "block",
+						"style": "normal",
+						"markDefs": [],
+						"children": [
+							{
+								"_key": "text",
+								"_type": "span",
+								"text": "Our role is to support locally led work in education, healthcare, economic empowerment and freedom from exploitation.",
+								"marks": []
+							}
+						]
+					}
+				]
+			},
+			{
+				"_key": "navigation",
+				"_type": "sectionNavigation"
+			},
+			{
+				"_key": "local-work",
+				"_type": "imageTextSection",
+				"navigationLabel": "Locally led",
+				"eyebrow": "Working together",
+				"headline": "Led by local partners",
+				"body": [
+					{
+						"_key": "copy",
+						"_type": "block",
+						"style": "normal",
+						"markDefs": [],
+						"children": [
+							{
+								"_key": "text",
+								"_type": "span",
+								"text": "Local partners understand their communities and lead the work. DFN provides funding and support for their locally owned and operated programmes.",
+								"marks": []
+							}
+						]
+					}
+				],
+				"image": {
+					"_type": "sectionImage",
+					"asset": {
+						"_type": "reference",
+						"_ref": "image-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-1200x900-svg"
+					},
+					"alt": "Neutral image placeholder. A photograph of locally led work is awaiting approval.",
+					"caption": "Image for review: local partners at work. This placeholder does not depict a person or place."
+				}
+			},
+			{
+				"_key": "partnership",
+				"_type": "numberedSection",
+				"navigationLabel": "Our approach",
+				"headline": "Working in partnership",
+				"body": [
+					{
+						"_key": "copy",
+						"_type": "block",
+						"style": "normal",
+						"markDefs": [],
+						"children": [
+							{
+								"_key": "text",
+								"_type": "span",
+								"text": "Lasting change is led by people who understand their own communities.",
+								"marks": []
+							}
+						]
+					}
+				],
+				"items": [
+					{
+						"_key": "local",
+						"_type": "sectionItem",
+						"title": "Local ownership",
+						"body": [
+							{
+								"_key": "copy",
+								"_type": "block",
+								"style": "normal",
+								"markDefs": [],
+								"children": [
+									{
+										"_key": "text",
+										"_type": "span",
+										"text": "Local partners lead and operate the work. DFN does not own or run partner institutions.",
+										"marks": []
+									}
+								]
+							}
+						]
+					},
+					{
+						"_key": "support",
+						"_type": "sectionItem",
+						"title": "Funding and support",
+						"body": [
+							{
+								"_key": "copy",
+								"_type": "block",
+								"style": "normal",
+								"markDefs": [],
+								"children": [
+									{
+										"_key": "text",
+										"_type": "span",
+										"text": "DFN connects supporters with opportunities to fund and support this locally led work.",
+										"marks": []
+									}
+								]
+							}
+						]
+					},
+					{
+						"_key": "review",
+						"_type": "sectionItem",
+						"title": "Sharing the work",
+						"body": [
+							{
+								"_key": "copy",
+								"_type": "block",
+								"style": "normal",
+								"markDefs": [],
+								"children": [
+									{
+										"_key": "text",
+										"_type": "span",
+										"text": "We share reviewed reports and stories so supporters can learn about the work they help make possible.",
+										"marks": []
+									}
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"_key": "privacy",
+				"_type": "richTextSection",
+				"navigationLabel": "Respect and care",
+				"body": [
+					{
+						"_key": "heading",
+						"_type": "block",
+						"style": "h2",
+						"markDefs": [],
+						"children": [
+							{
+								"_key": "text",
+								"_type": "span",
+								"text": "Respect and care",
+								"marks": []
+							}
+						]
+					},
+					{
+						"_key": "copy",
+						"_type": "block",
+						"style": "normal",
+						"markDefs": [],
+						"children": [
+							{
+								"_key": "text",
+								"_type": "span",
+								"text": "We take care when sharing stories and images. Personal details and precise locations are kept private where needed to protect the people involved.",
+								"marks": []
+							}
+						]
+					}
+				]
+			},
+			{
+				"_key": "reports",
+				"_type": "actionSection",
+				"navigationLabel": "Read our reports",
+				"headline": "Learn more about the work",
+				"body": [
+					{
+						"_key": "copy",
+						"_type": "block",
+						"style": "normal",
+						"markDefs": [],
+						"children": [
+							{
+								"_key": "text",
+								"_type": "span",
+								"text": "Read reports from DFN and its partners.",
+								"marks": []
+							}
+						]
+					}
+				],
+				"primaryAction": {
+					"_type": "homepageNavigationLink",
+					"label": "View reports",
+					"page": {
+						"_type": "reference",
+						"_ref": "pilot-reports"
+					}
+				}
+			}
+		]
+	},
+	{
+		"_id": "pilot-reports",
+		"_type": "page",
+		"title": "Reports",
+		"slug": {
+			"_type": "slug",
+			"current": "reports"
+		},
+		"publishingScope": ["AU", "NZ"],
+		"description": "Editorial rehearsal. Sample content awaiting review.",
+		"sections": [
+			{
+				"_key": "title",
+				"_type": "pageTitle",
+				"headline": "Reports"
+			},
+			{
+				"_key": "intro",
+				"_type": "richTextSection",
+				"body": [
+					{
+						"_key": "copy",
+						"_type": "block",
+						"style": "normal",
+						"markDefs": [],
+						"children": [
+							{
+								"_key": "text",
+								"_type": "span",
+								"text": "Read about the work DFN supports. This rehearsal uses sample documents to show the layout. Kat will choose and approve the reports before publication.",
+								"marks": []
+							}
+						]
+					}
+				]
+			},
+			{
+				"_key": "navigation",
+				"_type": "sectionNavigation"
+			},
+			{
+				"_key": "annual",
+				"_type": "downloadListSection",
+				"headline": "Annual reports",
+				"navigationLabel": "Annual reports",
+				"body": [
+					{
+						"_key": "copy",
+						"_type": "block",
+						"style": "normal",
+						"markDefs": [],
+						"children": [
+							{
+								"_key": "text",
+								"_type": "span",
+								"text": "Sample entries, ordered newest first. Dates are illustrative.",
+								"marks": []
+							}
+						]
+					}
+				],
+				"downloads": [
+					{
+						"_key": "2025",
+						"_type": "downloadItem",
+						"title": "Annual report 2025 (sample)",
+						"date": "2026-03-01",
+						"file": {
+							"_type": "file",
+							"asset": {
+								"_type": "reference",
+								"_ref": "file-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb-pdf"
+							}
+						}
+					},
+					{
+						"_key": "2024",
+						"_type": "downloadItem",
+						"title": "Annual report 2024 (sample)",
+						"date": "2025-03-01",
+						"url": "http://localhost:3100/annual-report-2024.pdf"
+					}
+				]
+			},
+			{
+				"_key": "booklet",
+				"_type": "downloadListSection",
+				"headline": "About our work",
+				"navigationLabel": "Booklet",
+				"downloads": [
+					{
+						"_key": "booklet",
+						"_type": "downloadItem",
+						"title": "How we work booklet (sample)",
+						"url": "http://localhost:3100/how-we-work-booklet.pdf"
+					}
+				]
+			}
+		]
+	},
+	{
+		"_id": "file-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb-pdf",
+		"_type": "sanity.fileAsset",
+		"url": "http://localhost:3100/annual-report-2025.pdf",
+		"extension": "pdf",
+		"originalFilename": "annual-report-2025.pdf"
+	},
+	{
+		"_id": "image-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-1200x900-svg",
+		"_type": "sanity.imageAsset",
+		"url": "http://localhost:3100/image-slot.svg"
+	}
+]
