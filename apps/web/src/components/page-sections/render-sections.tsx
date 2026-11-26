@@ -259,9 +259,15 @@ export function RenderSections({
 							</div>
 						);
 						break;
-					case "statementSection":
+					case "statementSection": {
+						const hasAside =
+							section.statement ||
+							section.statementLabel ||
+							section.attribution;
 						content = (
-							<div className="mx-frame grid gap-8 bg-paper px-stack-band py-10 @desktop:grid-cols-[1.2fr_1fr] @desktop:gap-20 @desktop:px-band @desktop:py-14">
+							<div
+								className={`mx-frame bg-paper px-stack-band py-10 @desktop:px-band @desktop:py-14 ${hasAside ? "grid gap-8 @desktop:grid-cols-[1.2fr_1fr] @desktop:gap-20" : ""}`}
+							>
 								<div>
 									{section.eyebrow && (
 										<Eyebrow className="mb-4 text-accent">
@@ -273,23 +279,26 @@ export function RenderSections({
 									</h2>
 									<Body value={section.body} className={`${bodyClass} mt-6`} />
 								</div>
-								<div className="border-t border-rule pt-7 @desktop:self-center @desktop:border-t-0 @desktop:border-l @desktop:pt-0 @desktop:pl-12">
-									<h3
-										data-brand-label
-										className="mb-4 text-caption font-medium tracking-[1.5px] text-accent uppercase"
-									>
-										{section.statementLabel}
-									</h3>
-									<p className="max-w-[26ch] font-display text-[27px] leading-[1.4] @desktop:text-[30px]">
-										{section.statement}
-									</p>
-									<p className="mt-5 text-sm text-muted">
-										{section.attribution}
-									</p>
-								</div>
+								{hasAside && (
+									<div className="border-t border-rule pt-7 @desktop:self-center @desktop:border-t-0 @desktop:border-l @desktop:pt-0 @desktop:pl-12">
+										<h3
+											data-brand-label
+											className="mb-4 text-caption font-medium tracking-[1.5px] text-accent uppercase"
+										>
+											{section.statementLabel}
+										</h3>
+										<p className="max-w-[26ch] font-display text-[27px] leading-[1.4] @desktop:text-[30px]">
+											{section.statement}
+										</p>
+										<p className="mt-5 text-sm text-muted">
+											{section.attribution}
+										</p>
+									</div>
+								)}
 							</div>
 						);
 						break;
+					}
 					case "numberedSection":
 						content = (
 							<div

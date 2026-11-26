@@ -20,11 +20,13 @@ The old separate fixture application has been removed. There is no copy of the e
 | Page | Existing sections, in order | Purpose |
 | --- | --- | --- |
 | How we work (`how-we-work`) | Introduction with image; Values; Statement; Call to action | Introduce locally led work, explain local partners / DFN / supporters, give Respect and care a distinct panel, and link to Reports. |
-| Reports (`reports`) | Page title; Rich text; On this page; Download list: Annual reports; Download list: About our work | Show an ordered report library and a single undated booklet using the same reusable section. |
+| Reports (`reports`) | Page title; Rich text; Download list: Annual reports; Download list: About our work | Show an ordered report library and a single undated booklet using the same reusable section. |
 
 Both Pages have Australia and New Zealand selected as Publishing Scope. How we work uses `/reports` in the existing action URL field because the Page picker lists published Pages. After publication is approved, select the Reports Page there to keep the link tied to its slug.
 
-For a Download list, enter a heading and optionally an introduction and section navigation label. Add entries with a readable title, either **File** or **Existing resource URL**, and a publication date only when known. Do not enter both destinations. Drag entries to set their visible order; dates do not sort the list. Uploaded files show their format; existing URLs say “Open resource”. Links open in the same tab, letting the file server and browser determine whether to display or download the resource.
+For a Download list, enter a heading and optionally an introduction and section navigation label. Add entries with a readable title, either **File** or **Existing resource URL**, and a publication date only when known. Do not enter both destinations. Drag entries to set their visible order; dates do not sort the list. The report title is the link. Its publication date and known file format appear together beneath it. Links open in the same tab, letting the file server and browser determine whether to display or download the resource.
+
+On 26 November, Andrew requested a simpler mobile layout. Reports now opens with a one-sentence introduction and the newest annual report first. The Statement block uses Respect and care as the label above the dignity headline and the existing privacy paragraph.
 
 ## Design and copy evidence
 

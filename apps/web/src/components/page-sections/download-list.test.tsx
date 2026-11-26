@@ -42,19 +42,19 @@ describe("Page downloads", () => {
 			const doc = await render("reports", fixtures, country);
 			expect(
 				[...doc.querySelectorAll("ol a")].map((a) => [
-					a.textContent,
+					a.firstElementChild?.textContent,
 					a.getAttribute("href"),
 				]),
 			).toEqual([
 				[
-					"Annual report 2025 (sample)Open PDF",
+					"Annual report 2025 (sample)",
 					"https://example.org/annual-report-2025.pdf",
 				],
 				[
-					"Annual report 2024 (sample)Open resource",
+					"Annual report 2024 (sample)",
 					"https://example.org/annual-report-2024.pdf",
 				],
-				["Booklet (sample)Open resource", "https://example.org/booklet.pdf"],
+				["Booklet (sample)", "https://example.org/booklet.pdf"],
 			]);
 			expect(
 				[...doc.querySelectorAll("time")].map((t) => [
@@ -65,6 +65,9 @@ describe("Page downloads", () => {
 				["2026-03-01", "1 March 2026"],
 				["2025-03-01", "1 March 2025"],
 			]);
+			expect(doc.querySelector("ol a")?.lastElementChild?.textContent).toBe(
+				"1 March 2026 · PDF",
+			);
 			expect(doc.querySelectorAll("ol")[1].children).toHaveLength(1);
 			expect(doc.querySelectorAll("h1")).toHaveLength(1);
 		},
