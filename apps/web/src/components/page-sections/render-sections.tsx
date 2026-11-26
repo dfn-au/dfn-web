@@ -10,6 +10,7 @@ import {
 } from "@/components/site/primitives";
 import { urlFor } from "@/sanity/lib/image";
 import { PageBody } from "../portable-text";
+import { DownloadList } from "./download-list";
 import type { PageSection, SectionImage, SectionLink } from "./types";
 
 const width =
@@ -120,7 +121,11 @@ export function RenderSections({
 				const Heading = index === 0 ? "h1" : "h2";
 				let content: ReactNode;
 				switch (section._type) {
-					case "pageTitle":
+					case "pageTitle": {
+						const opensDownloads =
+							sections[index + 1]?._type === "downloadListSection" ||
+							(sections[index + 1]?._type === "richTextSection" &&
+								sections[index + 2]?._type === "downloadListSection");
 						return (
 							<section
 								key={id}
@@ -130,23 +135,25 @@ export function RenderSections({
 								{index === 0 && <Breadcrumb title={title} />}
 								<Heading
 									id={titleId}
-									className="mb-9 font-display text-[clamp(40px,8cqi,64px)] leading-[1.08] font-normal tracking-[-1.2px]"
+									className={`font-display leading-[1.08] font-normal tracking-[-1.2px] ${opensDownloads ? "mb-2 text-[clamp(40px,6cqi,52px)]" : "mb-9 text-[clamp(40px,8cqi,64px)]"}`}
 								>
 									<Headline text={section.headline || title} />
 								</Heading>
 							</section>
 						);
+					}
 					case "richTextSection":
 						return (
 							<section
 								id={id}
 								key={id}
-								className={`${reading} pb-16 @desktop:pb-24 wrap-anywhere`}
+								className={`${reading} wrap-anywhere ${sections[index + 1]?._type === "downloadListSection" ? "" : "pb-16 @desktop:pb-24"}`}
 							>
 								<PageBody value={section.body ?? []} />
 							</section>
 						);
-					case "introSection":
+					case "introSection": {
+						const hasPhoto = Boolean(section.image?.asset);
 						return (
 							<section
 								id={id}
@@ -155,48 +162,57 @@ export function RenderSections({
 								aria-labelledby={titleId}
 							>
 								{index === 0 && <Breadcrumb title={title} wide />}
-								<div className="grid items-center gap-8 @desktop:grid-cols-2 @desktop:gap-14">
-									<div>
-										{section.eyebrow && (
-											<Eyebrow className="mb-5 text-accent">
-												{section.eyebrow}
-											</Eyebrow>
-										)}
-										<Heading
-											id={titleId}
-											className="mb-6 font-display text-[clamp(42px,9cqi,56px)] leading-[1.04] font-medium tracking-[-1.5px] @desktop:text-[64px]"
-										>
-											<Headline text={section.headline || title} />
-											{section.accentText && (
-												<>
-													<br />
-													<span className="text-accent">
-														{section.accentText}
-													</span>
-												</>
+								<div
+									className={`grid gap-5 @desktop:grid-cols-2 @desktop:gap-14 ${hasPhoto ? "items-center" : "items-start"}`}
+								>
+									<div className={hasPhoto ? undefined : "contents"}>
+										<div>
+											{section.eyebrow && (
+												<Eyebrow className="mb-5 text-accent">
+													{section.eyebrow}
+												</Eyebrow>
 											)}
-										</Heading>
-										{section.lead && (
-											<p className="mb-5 max-w-[39ch] text-[19px] leading-[1.6] @desktop:text-[21px]">
-												{section.lead}
-											</p>
-										)}
-										<Body value={section.body} />
+											<Heading
+												id={titleId}
+												className="font-display text-[clamp(42px,9cqi,56px)] leading-[1.04] font-medium tracking-[-1.5px] @desktop:text-[64px]"
+											>
+												<Headline text={section.headline || title} />
+												{section.accentText && (
+													<>
+														<br />
+														<span className="text-accent">
+															{section.accentText}
+														</span>
+													</>
+												)}
+											</Heading>
+										</div>
+										<div className={hasPhoto ? "mt-6" : undefined}>
+											{section.lead && (
+												<p className="mb-5 max-w-[39ch] text-[19px] leading-[1.6] @desktop:text-[21px]">
+													{section.lead}
+												</p>
+											)}
+											<Body value={section.body} />
+										</div>
 									</div>
-									<figure>
-										<SectionPhoto
-											image={section.image}
-											className="aspect-4/3 h-auto w-full object-cover object-center @desktop:aspect-[6/5]"
-										/>
-										{section.image?.caption && (
-											<figcaption className="mt-3 text-sm leading-[1.6] text-muted">
-												{section.image.caption}
-											</figcaption>
-										)}
-									</figure>
+									{hasPhoto && (
+										<figure>
+											<SectionPhoto
+												image={section.image}
+												className="aspect-4/3 h-auto w-full object-cover object-center @desktop:aspect-[6/5]"
+											/>
+											{section.image?.caption && (
+												<figcaption className="mt-3 text-sm leading-[1.6] text-muted">
+													{section.image.caption}
+												</figcaption>
+											)}
+										</figure>
+									)}
 								</div>
 							</section>
 						);
+					}
 					case "sectionNavigation": {
 						const targets = sections.filter((item) => item.navigationLabel);
 						return targets.length ? (
@@ -258,9 +274,15 @@ export function RenderSections({
 							</div>
 						);
 						break;
-					case "statementSection":
+					case "statementSection": {
+						const hasAside =
+							section.statement ||
+							section.statementLabel ||
+							section.attribution;
 						content = (
-							<div className="mx-frame grid gap-8 bg-paper px-stack-band py-10 @desktop:grid-cols-[1.2fr_1fr] @desktop:gap-20 @desktop:px-band @desktop:py-14">
+							<div
+								className={`mx-frame bg-paper px-stack-band py-8 @desktop:px-band @desktop:py-10 ${hasAside ? "grid gap-8 @desktop:grid-cols-[1.2fr_1fr] @desktop:gap-20" : ""}`}
+							>
 								<div>
 									{section.eyebrow && (
 										<Eyebrow className="mb-4 text-accent">
@@ -270,25 +292,28 @@ export function RenderSections({
 									<h2 id={titleId} className={heading}>
 										<Headline text={section.headline} />
 									</h2>
-									<Body value={section.body} className={`${bodyClass} mt-6`} />
+									<Body value={section.body} className={`${bodyClass} mt-3`} />
 								</div>
-								<div className="border-t border-rule pt-7 @desktop:self-center @desktop:border-t-0 @desktop:border-l @desktop:pt-0 @desktop:pl-12">
-									<h3
-										data-brand-label
-										className="mb-4 text-caption font-medium tracking-[1.5px] text-accent uppercase"
-									>
-										{section.statementLabel}
-									</h3>
-									<p className="max-w-[26ch] font-display text-[27px] leading-[1.4] @desktop:text-[30px]">
-										{section.statement}
-									</p>
-									<p className="mt-5 text-sm text-muted">
-										{section.attribution}
-									</p>
-								</div>
+								{hasAside && (
+									<div className="border-t border-rule pt-7 @desktop:self-center @desktop:border-t-0 @desktop:border-l @desktop:pt-0 @desktop:pl-12">
+										<h3
+											data-brand-label
+											className="mb-4 text-caption font-medium tracking-[1.5px] text-accent uppercase"
+										>
+											{section.statementLabel}
+										</h3>
+										<p className="max-w-[26ch] font-display text-[27px] leading-[1.4] @desktop:text-[30px]">
+											{section.statement}
+										</p>
+										<p className="mt-5 text-sm text-muted">
+											{section.attribution}
+										</p>
+									</div>
+								)}
 							</div>
 						);
 						break;
+					}
 					case "numberedSection":
 						content = (
 							<div
@@ -335,8 +360,10 @@ export function RenderSections({
 						break;
 					case "valuesSection":
 						content = (
-							<div className="mx-frame bg-sand px-stack-band py-10 @desktop:px-band @desktop:py-14">
-								<div className="mb-9 grid gap-5 @desktop:grid-cols-2 @desktop:items-end @desktop:gap-14">
+							<div className="mx-frame bg-sand px-stack-band py-7 @desktop:px-band @desktop:py-8">
+								<div
+									className={`mb-5 grid gap-3 ${section.body?.length ? "@desktop:grid-cols-2 @desktop:items-end @desktop:gap-14" : ""}`}
+								>
 									<div>
 										{section.eyebrow && (
 											<Eyebrow className="mb-4 text-accent">
@@ -349,10 +376,10 @@ export function RenderSections({
 									</div>
 									<Body value={section.body} />
 								</div>
-								<dl className="grid gap-7 @tablet:grid-cols-2 @desktop:grid-cols-3 @desktop:gap-6 @wide:grid-cols-5">
+								<dl className="grid gap-4 @tablet:grid-cols-[repeat(auto-fit,minmax(180px,1fr))] @desktop:gap-8">
 									{(section.items ?? []).map((item) => (
-										<div key={item._key} className="border-t border-rule pt-5">
-											<dt className="mb-3 font-display text-[23px] leading-[1.3]">
+										<div key={item._key} className="border-t border-rule pt-3">
+											<dt className="mb-1 font-display text-[23px] leading-[1.3]">
 												{item.title}
 											</dt>
 											<dd>
@@ -364,10 +391,30 @@ export function RenderSections({
 							</div>
 						);
 						break;
-					case "actionSection":
+					case "downloadListSection":
 						content = (
 							<div
-								className={`${width} grid gap-8 py-12 @desktop:grid-cols-2 @desktop:gap-20 @desktop:py-16`}
+								className={`${reading} pt-7 @desktop:pt-8${index === sections.length - 1 ? " pb-10" : ""}`}
+							>
+								<h2
+									id={titleId}
+									className="mb-2 font-display text-[25px] leading-tight tracking-[-.4px] @desktop:text-[28px]"
+								>
+									<Headline text={section.headline} />
+								</h2>
+								<Body value={section.body} />
+								<DownloadList downloads={section.downloads} />
+							</div>
+						);
+						break;
+					case "actionSection": {
+						const detailed =
+							section.actionTitle ||
+							section.actionBody?.length ||
+							section.secondaryAction?.href;
+						content = (
+							<div
+								className={`${width} grid gap-4 py-7 @desktop:items-center @desktop:gap-12 @desktop:py-9 ${detailed ? "@desktop:grid-cols-2" : "@desktop:grid-cols-[1fr_auto]"}`}
 							>
 								<div>
 									{section.eyebrow && (
@@ -375,20 +422,30 @@ export function RenderSections({
 											{section.eyebrow}
 										</Eyebrow>
 									)}
-									<h2 id={titleId} className={`${heading} mb-5`}>
+									<h2 id={titleId} className={`${heading} mb-2`}>
 										<Headline text={section.headline} />
 									</h2>
 									<Body value={section.body} />
-									<div className="mt-5 flex flex-col items-start">
-										{(section.links ?? []).map((link) => (
-											<Link key={link._key} link={link} />
-										))}
-									</div>
+									{Boolean(section.links?.length) && (
+										<div className="mt-5 flex flex-col items-start">
+											{(section.links ?? []).map((link) => (
+												<Link key={link._key} link={link} />
+											))}
+										</div>
+									)}
 								</div>
-								<div className="self-center border-t border-rule pt-7 @desktop:border-t-0 @desktop:border-l @desktop:pt-0 @desktop:pl-12">
-									<h3 className="mb-4 font-display text-[29px] leading-[1.2]">
-										{section.actionTitle}
-									</h3>
+								<div
+									className={
+										detailed
+											? "self-center border-t border-rule pt-7 @desktop:border-t-0 @desktop:border-l @desktop:pt-0 @desktop:pl-12"
+											: undefined
+									}
+								>
+									{section.actionTitle && (
+										<h3 className="mb-4 font-display text-[29px] leading-[1.2]">
+											{section.actionTitle}
+										</h3>
+									)}
 									<Body
 										value={section.actionBody}
 										className={`${bodyClass} mb-6`}
@@ -402,6 +459,7 @@ export function RenderSections({
 							</div>
 						);
 						break;
+					}
 					default:
 						return null;
 				}
