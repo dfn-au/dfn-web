@@ -121,7 +121,11 @@ export function RenderSections({
 				const Heading = index === 0 ? "h1" : "h2";
 				let content: ReactNode;
 				switch (section._type) {
-					case "pageTitle":
+					case "pageTitle": {
+						const opensDownloads =
+							sections[index + 1]?._type === "downloadListSection" ||
+							(sections[index + 1]?._type === "richTextSection" &&
+								sections[index + 2]?._type === "downloadListSection");
 						return (
 							<section
 								key={id}
@@ -131,18 +135,19 @@ export function RenderSections({
 								{index === 0 && <Breadcrumb title={title} />}
 								<Heading
 									id={titleId}
-									className="mb-9 font-display text-[clamp(40px,8cqi,64px)] leading-[1.08] font-normal tracking-[-1.2px]"
+									className={`font-display leading-[1.08] font-normal tracking-[-1.2px] ${opensDownloads ? "mb-2 text-[clamp(40px,6cqi,52px)]" : "mb-9 text-[clamp(40px,8cqi,64px)]"}`}
 								>
 									<Headline text={section.headline || title} />
 								</Heading>
 							</section>
 						);
+					}
 					case "richTextSection":
 						return (
 							<section
 								id={id}
 								key={id}
-								className={`${reading} pb-16 @desktop:pb-24 wrap-anywhere`}
+								className={`${reading} wrap-anywhere ${sections[index + 1]?._type === "downloadListSection" ? "" : "pb-16 @desktop:pb-24"}`}
 							>
 								<PageBody value={section.body ?? []} />
 							</section>
@@ -376,8 +381,13 @@ export function RenderSections({
 						break;
 					case "downloadListSection":
 						content = (
-							<div className={`${reading} py-12 @desktop:py-20`}>
-								<h2 id={titleId} className={`${heading} mb-6`}>
+							<div
+								className={`${reading} pt-7 @desktop:pt-8${index === sections.length - 1 ? " pb-10" : ""}`}
+							>
+								<h2
+									id={titleId}
+									className="mb-2 font-display text-[25px] leading-tight tracking-[-.4px] @desktop:text-[28px]"
+								>
 									<Headline text={section.headline} />
 								</h2>
 								<Body value={section.body} />

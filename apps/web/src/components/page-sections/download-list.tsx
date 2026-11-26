@@ -19,7 +19,7 @@ export function DownloadList({ downloads }: { downloads: Downloads }) {
 	);
 	if (!available.length) return null;
 	return (
-		<ol className="mt-8 border-t border-rule">
+		<ol className="mt-3 border-t border-rule">
 			{available.map((item) => {
 				const date = item.date ? stegaClean(item.date) : null;
 				const hasDate = date && !Number.isNaN(Date.parse(date));
@@ -30,13 +30,13 @@ export function DownloadList({ downloads }: { downloads: Downloads }) {
 						{/* Resource URLs must stay exact: page preview parameters can invalidate signed downloads. */}
 						<a
 							href={stegaClean(item.href ?? "")}
-							className="group flex min-h-11 flex-col items-start gap-2 py-4 focus-visible:outline-2 focus-visible:outline-offset-4"
+							className="group flex min-h-11 flex-col justify-center gap-0.5 py-2.5 @tablet:flex-row @tablet:items-baseline @tablet:justify-between @tablet:gap-5 @tablet:py-3 focus-visible:outline-2 focus-visible:outline-offset-4"
 						>
-							<span className="wrap-anywhere text-[21px] leading-snug text-accent underline decoration-1 underline-offset-4 group-hover:decoration-2">
+							<span className="min-w-0 wrap-anywhere text-[17px] font-medium leading-snug text-accent underline decoration-1 underline-offset-4 group-hover:decoration-2">
 								{item.title}
 							</span>
 							{(hasDate || format) && (
-								<span className="text-sm text-muted">
+								<span className="shrink-0 text-sm leading-snug text-muted">
 									{hasDate && (
 										<time dateTime={date}>
 											{dateFormat.format(new Date(date))}

@@ -24,7 +24,7 @@ The old separate fixture application has been removed. There is no copy of the e
 
 Both Pages have Australia and New Zealand selected as Publishing Scope. How we work uses `/reports` in the existing action URL field because the Page picker lists published Pages. After publication is approved, select the Reports Page there to keep the link tied to its slug.
 
-For a Download list, enter a heading and optionally an introduction and section navigation label. Add entries with a readable title, either **File** or **Existing resource URL**, and a publication date only when known. Do not enter both destinations. Drag entries to set their visible order; dates do not sort the list. The report title is the link. Its publication date and known file format appear together beneath it. Links open in the same tab, letting the file server and browser determine whether to display or download the resource.
+For a Download list, enter a heading and optionally an introduction and section navigation label. Add entries with a readable title, either **File** or **Existing resource URL**, and a publication date only when known. Do not enter both destinations. Drag entries to set their visible order; dates do not sort the list. The report title is the link. Its publication date and known file format sit on the right on wide screens and below the title on phones. Links open in the same tab, letting the file server and browser determine whether to display or download the resource.
 
 On 26 November, Andrew requested a simpler mobile layout. Reports now opens with a one-sentence introduction and the newest annual report first. The Statement block uses Respect and care as the label above the dignity headline and the existing privacy paragraph.
 
